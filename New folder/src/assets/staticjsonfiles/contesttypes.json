@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "contest_id": 1,
+      "contest_name": "DAILY",
+      "contest_desc": "Daily",
+      "icon_source": ""
+    },
+    {
+      "contest_id": 2,
+      "contest_name": "WEEKLY",
+      "contest_desc": "Weekly",
+      "icon_source": ""
+    },
+    {
+      "contest_id": 3,
+      "contest_name": "MONTHLY",
+      "contest_desc": "Monthly",
+      "icon_source": ""
+    },
+    {
+      "contest_id": 4,
+      "contest_name": "YEARLY",
+      "contest_desc": "Yearly",
+      "icon_source": ""
+    },
+    {
+      "contest_id": 5,
+      "contest_name": "SPECIAL",
+      "contest_desc": "Special",
+      "icon_source": ""
+    }
+  ]
+}

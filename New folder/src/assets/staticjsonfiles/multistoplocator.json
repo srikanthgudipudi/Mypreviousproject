@@ -1,0 +1,610 @@
+
+        {
+    "statusCode": "1028",
+    "message": "Data fetched successfully",
+    "result": [
+        {
+            "_id": 1,
+            "salesOrder": "12305286",
+            "delivery": "606809005",
+            "pickSlip": "92306157",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "13167350",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Released",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "100-7565",
+                    "description": "ITHACA, ACCESSORY, BLACK RIBBON CASSETTE, PRICED PER CASSETTE, 12 PER CASE",
+                    "pickQty": 3,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54494545608759",
+                        "17.422717712059164"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "2.1",
+                    "partNumber": "100-7565",
+                    "description": "ITHACA, ACCESSORY, BLACK RIBBON CASSETTE, PRICED PER CASSETTE, 12 PER CASE",
+                    "pickQty": 3,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "3.1",
+                    "partNumber": "100-7565",
+                    "description": "ITHACA, ACCESSORY, BLACK RIBBON CASSETTE, PRICED PER CASSETTE, 12 PER CASE",
+                    "pickQty": 3,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.5448180511594",
+                        "17.422737225605704"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "4.1",
+                    "partNumber": "243-006",
+                    "description": "SYSTEM, 6'USB TYPE A TO B CABLE, GRAY, FOR PRINTERS",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                       "78.54487437754871",
+                       "17.422702677030063"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "011.03.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 2,
+            "salesOrder": "12305287",
+            "delivery": "606809138",
+            "pickSlip": "92306179",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "13167356",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Released",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "100-7565",
+                    "description": "ITHACA, ACCESSORY, BLACK RIBBON CASSETTE, PRICED PER CASSETTE, 12 PER CASE",
+                    "pickQty": 1,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54494545608759",
+                        "17.422717712059164"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "2.1",
+                    "partNumber": "100-7565",
+                    "description": "ITHACA, ACCESSORY, BLACK RIBBON CASSETTE, PRICED PER CASSETTE, 12 PER CASE",
+                    "pickQty": 1,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "3.1",
+                    "partNumber": "243-006",
+                    "description": "SYSTEM, 6'USB TYPE A TO B CABLE, GRAY, FOR PRINTERS",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.5448180511594",
+                        "17.422737225605704"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "011.03.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 3,
+            "salesOrder": "12305289",
+            "delivery": "606812438",
+            "pickSlip": "92306863",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "13167368",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Assigned",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB20000",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54494545608759",
+                        "17.422717712059164"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB20000",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 4,
+            "salesOrder": "12305288",
+            "delivery": "606809368",
+            "pickSlip": "92306248",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "13167360",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Released",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "100-7565",
+                    "description": "THACA, ACCESSORY, BLACK RIBBON CASSETTE, PRICED PER CASSETTE, 12 PER CASE",
+                    "pickQty": 1,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54494545608759",
+                        "17.422717712059164"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "2.1",
+                    "partNumber": "243-006",
+                    "description": "SYSTEM, 6'USB TYPE A TO B CABLE, GRAY, FOR PRINTERS",
+                    "pickQty": 1,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "011.03.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 5,
+            "salesOrder": "205",
+            "delivery": "45",
+            "pickSlip": "185",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "1815",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Assigned",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54494545608759",
+                        "17.422717712059164"
+
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 6,
+            "salesOrder": "206",
+            "delivery": "46",
+            "pickSlip": "186",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "1816",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Canceled",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54494545608759",
+                        "17.422717712059164"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 7,
+            "salesOrder": "207",
+            "delivery": "47",
+            "pickSlip": "187",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "1817",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Picked",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54494545608759",
+                        "17.422717712059164"
+                    ],
+                    "pickedQty": 2,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 2,
+                    "Locator": "000.01.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 8,
+            "salesOrder": "208",
+            "delivery": "48",
+            "pickSlip": "188",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "1818",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Picked",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54494545608759",
+                        "17.422717712059164"
+                    ],
+                    "pickedQty": 2,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 2,
+                    "Locator": "000.01.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 9,
+            "salesOrder": "209",
+            "delivery": "49",
+            "pickSlip": "189",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "1819",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Closed",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.5448180511594",
+                        "17.422737225605704"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54487437754871",
+                        "17.422702677030063"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        },
+        {
+            "_id": 10,
+            "salesOrder": "2010",
+            "delivery": "410",
+            "pickSlip": "1810",
+            "wareHouse": "Florence (FLO)",
+            "pickSlipDate": "2016-01-01T00:00:00.000Z",
+            "pickBatch": "18110",
+            "orderDate": "2016-01-01T00:00:00.000Z",
+            "status": "Closed",
+            "freightTerms": "Prepaid And Add",
+            "freightMethods": "FedEx-LTL-Ground",
+            "accountManager": "France, Mr. Adam",
+            "createdAt": "2016-01-01T00:00:00.000Z",
+            "createdBy": "superadmin",
+            "updatedAt": "2016-01-01T00:00:00.000Z",
+            "updatedBy": "superadmin",
+            "deliveries": [
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.54496020823717",
+                        "17.422687961894006"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                },
+                {
+                    "line": "1.1",
+                    "partNumber": "WWMB000001",
+                    "description": "SATO, MB200I, PORTABLE PRINTER, 1.89IN, 203DPI, 4IPS, BATTERY, SERIAL/IRDA INTERFACE, DT",
+                    "pickQty": 2,
+                    "subInventory": "PRIMARY",
+                    "fleetStatus": "Active",
+                    "coordinates": [
+                        "78.5448180511594",
+                        "17.422737225605704"
+                    ],
+                    "pickedQty": 0,
+                    "Locator": "000.01.01.01"
+                }
+            ],
+            "enterprise": {
+                "enterpriseId": {
+                    "_id": 1,
+                    "enterpriseIcon": "srisys-logo.png",
+                    "enterpriseIconFilePath": "assets/enterprises/0"
+                },
+                "enterpriseName": "Vedic Systems"
+            }
+        }
+    ]
+}

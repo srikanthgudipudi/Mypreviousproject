@@ -1,0 +1,191 @@
+<div id="main" class="">
+  <div class="card">
+    <div class="card-header">
+      <div class="row no-gutter">
+        <div class="col-md-9">
+          <h5 class="section-title mb0 pull-left">{{fleetCommonName}}{{ 'COMMON_PAGE_TITLES.LIST_FLEET_TYPE_ATTRIBUTES' | translate}}</h5>
+          <div class="cardicons-header pull-left">
+            <a *ngIf="fleetTypeAttributesaddstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}"
+              (click)="getSelectedFleetAttribute('Create','')">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetTypeAttributesaddstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="getSelectedFleetAttribute('Create','')"></i>
+          </a>
+            <a *ngIf="fleetTypeAttributesexportstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+              (click)="exportData(searchstring)">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetTypeAttributesexportstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+          </a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group mb0">
+            <div class="input-group">
+              <button type="button" class="btn btn-primary btn-sm advanced-btn" (click)="advancedAttributes()">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+              <input type="text" id="input1-group2" #input [(ngModel)]="searchstring" (keypress)="handleKeyPress($event)" name="input1-group2"
+                class="form-control input-sm mb0" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT'  | translate}}">
+              <span class="input-group-btn">
+                <button type="button" (click)="getAllFleetssSeachList(searchstring)" class="btn btn-primary btn-sm">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-block">
+      <p-dataTable [responsive]="true" [stacked]="stacked" [value]="allFleetAttributes" [rows]="rowsPerPage" [paginator]="true"
+        [pageLinks]="2" expandableRows="true" sortMode="multiple">
+        <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="fleetType" header="{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="attributeName" header="{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_NAME' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="attributeType" header="{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_TYPE' | translate}}" [sortable]="true" styleClass="startdate"></p-column>
+        <p-column field="lookupType" header="{{'LOOKUPS.LOOKUP_TYPE' | translate}}" [sortable]="true"></p-column>
+        <p-column field="sequenceOrder" header="{{'COMMON_FIELDS.DISPLAY_SEQUENCE' | translate}}" styleClass="startdate" [sortable]="true">
+          <template let-user="rowData" pTemplate="body">
+            <div class="text-right">{{user.sequenceOrder}}</div>
+          </template>
+        </p-column>
+        <p-column field="isEnabled" styleClass="text-capitalize enabled" header="{{'COMMON_FIELDS.ENABLED' | translate}}" [sortable]="true"></p-column>
+        <p-column field="isMandatory" styleClass="text-capitalize mandatory" header="{{'FLEET_TYPE_ATTRIBUTES.IS_MANDATORY' | translate}}"
+          [sortable]="true"></p-column>
+        <p-column header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-three-col">
+          <ng-template let-fleetattribute="rowData" pTemplate="body">
+            <a *ngIf="fleetTypeAttributesviewstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+              (click)="getSelectedFleetAttribute('View',fleetattribute)">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetTypeAttributesviewstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="getSelectedFleetAttribute('View',fleetattribute)"></i>
+          </a>
+            <a *ngIf="fleetTypeAttributeseditstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}"
+              (click)="getSelectedFleetAttribute('Edit',fleetattribute)">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetTypeAttributeseditstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+            <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="getSelectedFleetAttribute('Edit',fleetattribute)"></i>
+          </a>
+            <a *ngIf="fleetTypeAttributesdeletedstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+              (click)="getSelectedFleetAttribute('Delete',fleetattribute)">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetTypeAttributesdeletedstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+            <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="getSelectedFleetAttribute('Delete',fleetattribute)"></i>
+          </a>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+  <div bsModal #advancedModel="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvancedModal()"
+    tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="hideAdvancedModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row">
+            <div class="col-md-12">
+              <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+              <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                class="pull-right">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <div class="col-md-4 form-control-label">
+              <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}} </label>
+            </div>
+            <div class=" col-md-8">
+              <input name="" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="form-control input-sm"
+                [(ngModel)]="enterpriseValue" (click)="clearmessage()" onkeypress="return event.charCode != 34" />
+              <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+                id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseName" disabled>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-4 form-control-label">
+              <label for="">{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+            </div>
+            <div class=" col-md-8">
+              <input name="" class="form-control input-sm" [(ngModel)]="fleettypeValue" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-4 form-control-label">
+              <label for="">{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_NAME' | translate}}</label>
+            </div>
+            <div class=" col-md-8">
+              <input name="" class="form-control input-sm" [(ngModel)]="attributeNameValue" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-4 form-control-label">
+              <label for="">{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_TYPE' | translate}}</label>
+            </div>
+            <div class=" col-md-8">
+              <input name="" class="form-control input-sm" [(ngModel)]="attributetypeValue" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-4 form-control-label">
+              <label for="">{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+            </div>
+            <div class=" col-md-8">
+              <label class="checkbox-inline" for="">
+                <label class="checkbox-inline" for="inline-checkbox1">
+                  <input id="inline-checkbox1" name="inline-checkbox1" type="checkbox" [(ngModel)]="enabledfleet" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkbox1"></label>
+                </label>
+              </label>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-4 form-control-label">
+              <label for="">{{'FLEET_TYPE_ATTRIBUTES.IS_MANDATORY' | translate}}</label>
+            </div>
+            <div class=" col-md-8">
+              <label class="checkbox-inline" for="">
+                <label class="checkbox-inline" for="inline-checkbox1">
+                  <input id="inline-checkbox2" name="inline-checkbox2" type="checkbox" [(ngModel)]="mandatoryfleet" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkbox2">
+                  </label>
+                </label>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md-12 p0">
+            <div class="pull-left">
+              <app-powered></app-powered>
+            </div>
+            <div class="pull-right text-right">
+              <button type="button" class="btn btn-primary" (click)="advancedAttributesSearch()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+              <button type="button" class="btn btn-primary" (click)="clearAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+              <button type="button" class="btn btn-primary" (click)="hideAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-attributeslisting-popup (updatedList)="emitChanges($event)"></app-attributeslisting-popup>

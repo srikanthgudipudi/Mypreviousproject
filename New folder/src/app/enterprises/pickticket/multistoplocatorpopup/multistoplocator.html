@@ -1,0 +1,323 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideChildModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="updateaction == 'VIEW' || updateaction == 'CANCEL' || updateaction == 'DELETE'" class="modal-body">
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{selectedObj.enterprise.enterpriseName}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.SALES_ORDER' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.salesOrder}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.DELIVERY' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.delivery}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.PICK_SLIP' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.pickSlip}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.WAREHOUSE' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.wareHouse}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.PICK_SLIP_DATE' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.pickSlipDate}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.PICK_BATCH' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.pickBatch}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.ORDER_DATE' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.orderDate}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Freight Terms</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.freightTerms}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Freight Method</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.freightMethods}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Account Manager</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.accountManager}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.status}}" disabled>
+          </div>
+          <div class="col-md-4 form-group"> <label>{{'MULTI_STOP.ASSIGNED_TO' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.assignedTo}}"
+              disabled>
+          </div>
+        </div>
+        <p-accordion>
+          <p-accordionTab header="Delivery Data">
+            <div class="row">
+              <div class="col-md-1 form-group">
+                <label>Line</label>
+              </div>
+              <div class="col-md-2 form-group">
+                <label>Part Number</label>
+              </div>
+              <div class="col-md-3 form-group">
+                <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+              </div>
+              <div class="col-md-1 form-group">
+                <label>Pick Qty</label>
+              </div>
+              <div class="col-md-2 form-group">
+                <label>Sub Inventory</label>
+              </div>
+              <div class="col-md-2 form-group">
+                <label>Locator</label>
+              </div>
+              <div class="col-md-1 form-group">
+                <label>PckdQty</label>
+              </div>
+            </div>
+            <div class="row" *ngFor="let ftar of selectedObj.deliveries; let i='index'">
+              <div class="col-md-1 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.line}}" id="fleetTypeId{{i}}" name="fleetTypeName" disabled>
+              </div>
+              <div class="col-md-2 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.partNumber}}" id="fleetTypeId{{i}}" name="fleetTypeName" disabled>
+              </div>
+              <div class="col-md-3 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.description}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+              <div class="col-md-1 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.pickQty}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+              <div class="col-md-2 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.subInventory}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+              <div class="col-md-2 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.Locator}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+              <div class="col-md-1 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.pickedQty}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="CREATEDBY" [(ngModel)]="selectedObj.createdBy" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="CREATION_DATE" value="{{selectedObj.createdAt}}  {{userpreferedtimezone}}"
+                  disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="LAST_UPDATED_BY" [(ngModel)]="selectedObj.updatedBy" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="LAST_UPDATED_DATE" value="{{selectedObj.updatedAt}}  {{userpreferedtimezone}}"
+                  disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div *ngIf="updateaction == 'EDIT'" class="modal-body">
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{selectedObj.enterprise.enterpriseName}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.SALES_ORDER' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.salesOrder}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.DELIVERY' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.delivery}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.PICK_SLIP' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.pickSlip}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.WAREHOUSE' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.wareHouse}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.PICK_SLIP_DATE' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.pickSlipDate}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.PICK_BATCH' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.pickBatch}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'MULTI_STOP.ORDER_DATE' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.orderDate}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Freight Terms</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.freightTerms}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Freight Method</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.freightMethods}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Account Manager</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.accountManager}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.status}}" disabled>
+          </div>
+          <div class="col-md-4 form-group"> <label>{{'MULTI_STOP.ASSIGNED_TO' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.assignedTo}}"
+              disabled>
+          </div>
+        </div>
+        <p-accordion>
+          <p-accordionTab header="Delivery Data">
+            <div class="row">
+              <div class="col-md-1 form-group">
+                <label>Line</label>
+              </div>
+              <div class="col-md-2 form-group">
+                <label>Part Number</label>
+              </div>
+              <div class="col-md-3 form-group">
+                <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+              </div>
+              <div class="col-md-1 form-group">
+                <label>Pick Qty</label>
+              </div>
+              <div class="col-md-2 form-group">
+                <label>Sub Inventory</label>
+              </div>
+              <div class="col-md-2 form-group">
+                <label>Locator</label>
+              </div>
+              <div class="col-md-1 form-group">
+                <label>PckdQty</label>
+              </div>
+            </div>
+            <div class="row" *ngFor="let ftar of selectedObj.deliveries; let i='index'">
+              <div class="col-md-1 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.line}}" id="fleetTypeId{{i}}" name="fleetTypeName" disabled>
+              </div>
+              <div class="col-md-2 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.partNumber}}" id="fleetTypeId{{i}}" name="fleetTypeName" disabled>
+              </div>
+              <div class="col-md-3 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.description}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+              <div class="col-md-1 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.pickQty}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+              <div class="col-md-2 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.subInventory}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+              <div class="col-md-2 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.Locator}}" (change)="clearmessage()" id="displayIconId{{i}}"
+                  name="displayIconName" disabled>
+              </div>
+              <div class="col-md-1 form-group">
+                <input type="text" class="form-control input-sm" value="{{ftar.pickedQty}}" (change)="clearmessage()" id="pickedQtyId{{i}}"
+                  name="displayIconName">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="CREATEDBY" [(ngModel)]="selectedObj.createdBy" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="CREATION_DATE" value="{{selectedObj.createdAt}}  {{userpreferedtimezone}}"
+                  disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="LAST_UPDATED_BY" [(ngModel)]="selectedObj.updatedBy" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="LAST_UPDATED_DATE" value="{{selectedObj.updatedAt}}  {{userpreferedtimezone}}"
+                  disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div *ngIf="updateaction == 'VIEW'" class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div *ngIf="updateaction == 'DELETE'" class="pull-right text-right">
+            <button class="btn btn-primary" (click)="deletePickTicket(selectedObj._id)">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div *ngIf="updateaction == 'CANCEL'" class="pull-right text-right">
+            <button class="btn btn-primary" (click)="cancelPickTicket(selectedObj._id)">{{'MULTI_STOP.CANCEL' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div *ngIf="updateaction == 'EDIT'" class="pull-right text-right">
+            <button class="btn btn-primary" (click)="editPickTicket(selectedObj)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

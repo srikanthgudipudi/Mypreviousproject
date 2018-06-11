@@ -1,0 +1,45 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+ -->
+<form #sendOtpForm="ngForm" name="form" novalidate>
+    <div bsModal #sendOtpModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" id="login_popup_close" class="close pull-right" (click)="sendOtpModal.hide(); clearmessage()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <img src="assets/img/logo.png" width="250" class="mb-1">
+                </div>
+                <div class="modal-body">
+                    <div class="popup-section-mobile">
+                        <form class="popup-form" action="#" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>{{ 'LOGIN.OTP_ENTER' | translate}}</label>
+                                    <input type="text" placeholder="Your OTP"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="answer1" id="smsotp" (keypress)="clearmessage()" [(ngModel)]='user.number' class="form-control" minlength="4" maxlength="4">
+                                    <span class="text-danger">{{otpvalidate | translate }}</span>
+                              </div>
+                                </div>
+                            <div class="col-md-12">
+                                <input type="submit" id="sendOtp_submit_button popup-terms" (click)="otpValueQues()" value="Submit" class="btn btn-block btn-primary popup-terms-conditions"
+                                    data-dismiss="modal">
+                            </div>
+                                    <div class="col-md-12 form-group">
+                                <div><a (click)="resendOtp()" class="pull-right ">{{ 'LOGIN.OTP_RESEND' | translate }}</a> </div>
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

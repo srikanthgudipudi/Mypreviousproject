@@ -1,0 +1,305 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideChildModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="updateaction == 'EDIT'" class="modal-body">
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="text-capitalize form-control input-sm" onkeypress='return event.charCode >= 33 && (event.charCode <= 126 && event.charCode != 34 )'
+              maxlength="15" id="" name="" [(ngModel)]="enterpriseName" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>
+              <span class="text-danger">*</span>{{'ENTERPRISE_SETTINGS.AVAILABLE_FLEET_COLOR' | translate}}</label>
+            <select id="" class="form-control input-sm" [(ngModel)]="availablefleetcolor" (click)="clearmessage()">
+              <option *ngFor="let clang of colorlist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>
+              <span class="text-danger">*</span>{{'ENTERPRISE_SETTINGS.RESERVED_FLEET_COLOR' | translate}}</label>
+            <select id="" class="form-control input-sm" [(ngModel)]="reservedfleetcolor" (click)="clearmessage()">
+              <option *ngFor="let clang of colorlist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>
+              <span class="text-danger">*</span>{{'ENTERPRISE_SETTINGS.INACTIVE_FLEET_COLOR' | translate}}</label>
+            <select id="" class="form-control input-sm" [(ngModel)]="inactivefleetcolor" (click)="clearmessage()">
+               <option *ngFor="let clang of colorlist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>
+              <span class="text-danger">*</span>{{'ENTERPRISE_SETTINGS.CHECKIN_FLEET_COLOR' | translate}}</label>
+            <select id="" class="form-control input-sm" [(ngModel)]="checkinfleetcolor" (click)="clearmessage()">
+              <option *ngFor="let clang of colorlist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+          </div>
+        </div>
+        <p-accordion>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_APP_TITLE' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="apptitleId" name="apptitleName" maxlength="10" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" [(ngModel)]="appTitle" value="{{singleenterpriseEditDetails?.settings.appTitle}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_PASSWORD_RESET' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxdpp1" name="inline-checkbox2" (click)="clearmessage()" [(ngModel)]="disablePasswordRes"
+                  value="true" class="regular-checkbox big-checkbox">
+                <label for="inline-checkboxdpp1"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_CAPTCHA' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxdep1" name="inline-checkbox1" (click)="clearmessage()" [(ngModel)]="disableCaptcha"
+                  value="true" class="regular-checkbox big-checkbox">
+                <label for="inline-checkboxdep1"></label>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_COMMON_NAME' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="fleetCommonFieldId" name="fleetCommonFieldName" maxlength="40"
+                  (click)="clearmessage()" onkeypress="return event.charCode != 34" [(ngModel)]="fleetCommonName" value="{{singleenterpriseEditDetails?.settings.fleetCommonName}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxActiveReservationsPerUserId" name="maxActiveReservationsPerUserName"
+                  maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" [(ngModel)]="maxActiveReservationsPerUser" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class=" form-control input-sm" id="advancedReservationWindowDaysId" name="advancedReservationWindowDaysName"
+                  maxlength="3" (click)="clearmessage()" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57)'
+                  [(ngModel)]="advancedReservationWindowInDays">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_POSSIBLE' | translate}}</label>
+                <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" [(ngModel)]="longTermReservationPossible"
+                  type="checkbox" (click)="clearmessage()">
+                <label for="inline-checkbox3"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" (click)="clearmessage()"
+                  [(ngModel)]="reservationCanBeBumped">
+                <label for="inline-checkbox2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input id="inline-checkbox4" class="regular-checkbox big-checkbox" (click)="clearmessage()" [(ngModel)]="sendReservationReminders"
+                  name="inline-checkbox4" type="checkbox">
+                <label for="inline-checkbox4"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" [(ngModel)]="maxReservationWindowInHrs"
+                  maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="reservationReminderWindowInMinsId" [(ngModel)]="reservationReminderWindowInMins"
+                  name="reservationReminderWindowInMinsName" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_FLEET_RESERVATION_AUTO_EXPIRES_IN_HOURS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expireId" name="expireName" maxlength="3" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57);clearmessage()'
+                  [(ngModel)]="expiryHours" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                  maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" [(ngModel)]="expirationGracePeriodInMins" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_INACTIVE_TIMEOUT_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="inactivetimeId" name="inactivetimeName" maxlength="3" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57);clearmessage()'
+                  [(ngModel)]="inactiveTimeOut" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="allowwaitlistId" name="allowwaitlistName" maxlength="3" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57);clearmessage()'
+                  [(ngModel)]="earlyCheckinWindowInMins" (click)="clearmessage()">
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div *ngIf="updateaction == 'VIEW'" class="modal-body">
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{selectedObj.enterpriseName}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_SETTINGS.AVAILABLE_FLEET_COLOR' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.fleetAvaliableColor}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_SETTINGS.RESERVED_FLEET_COLOR' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.fleetReservedColor}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_SETTINGS.INACTIVE_FLEET_COLOR' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.fleetInactiveColor}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_SETTINGS.CHECKIN_FLEET_COLOR' | translate}}</label>
+            <input id="" class="form-control input-sm" value="{{selectedObj.fleetCheckinColor}}" disabled>
+          </div>
+        </div>
+        <p-accordion>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_APP_TITLE' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="apptitleId" name="apptitleName" value="{{selectedObj.appTitle}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_PASSWORD_RESET' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxdpp2" name="inline-checkbox2" [(ngModel)]="enablePasswordReset" disabled value="true"
+                  class="regular-checkbox big-checkbox">
+                <label for="inline-checkboxdpp2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_CAPTCHA' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxdep1" name="inline-checkbox1" [(ngModel)]="enableCaptcha" disabled value="true"
+                  class="regular-checkbox big-checkbox">
+                <label for="inline-checkboxdep1"></label>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>
+                  {{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_COMMON_NAME' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="fleetCommonFieldId" name="fleetCommonFieldName" value="{{selectedObj.fleetCommonName}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxActiveReservationsPerUserId" name="maxActiveReservationsPerUserName"
+                  value="{{selectedObj.maxActiveReservationsPerUser}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class=" form-control input-sm" id="advancedReservationWindowDaysId" name="advancedReservationWindowDaysName"
+                  value="{{selectedObj.advancedReservationWindowInDays}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_POSSIBLE' | translate}}</label>
+                <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" value="{{selectedObj.longTermReservationPossible}}"
+                  type="checkbox" disabled>
+                <label for="inline-checkbox3"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" value="{{selectedObj.reservationCanBeBumped}}"
+                  disabled>
+                <label for="inline-checkbox2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input id="inline-checkbox4" class="regular-checkbox big-checkbox" value="{{selectedObj.sendReservationReminders}}" disabled
+                  disabled name="inline-checkbox4" type="checkbox">
+                <label for="inline-checkbox4"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" value="{{selectedObj.maxReservationWindowInHrs}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="reservationReminderWindowInMinsId" value="{{selectedObj.reservationReminderWindowInMins}}"
+                  name="reservationReminderWindowInMinsName" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_FLEET_RESERVATION_AUTO_EXPIRES_IN_HOURS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expireId" name="expireName" value="{{selectedObj.expiryHours}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                  value="{{selectedObj.expirationGracePeriodInMins}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_INACTIVE_TIMEOUT_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="inactivetimeId" name="inactivetimeName" disabled value="{{selectedObj.inactiveTimeOut}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  {{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="allowwaitlistId" name="allowwaitlistName" value="{{selectedObj.earlyCheckinWindowInMins}}"
+                  disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div *ngIf="updateaction == 'EDIT'" class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="editEnterpriseSettings()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div *ngIf="updateaction == 'VIEW'" class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

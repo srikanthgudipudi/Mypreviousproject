@@ -1,0 +1,43 @@
+<div id="allusers" class="tab-pane">
+    <div class="card">
+        <div class="card-header">
+            <div class="row no-gutter">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">Calendar</h5>
+                    <div class="cardicons-header pull-left">
+                        <!-- <a title="Month">
+                            <i class="fa fa-15x fa-calculator page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a title="Week">
+                            <i class="fa fa-15x fa-table page-title-icons" aria-hidden="true" ></i>
+                        </a>
+                        <a title="Day">
+                            <i class="fa fa-15x fa-sun-o page-title-icons" aria-hidden="true"></i>
+                        </a> -->
+                        <a title="List">
+                            <i class="fa fa-15x fa-list page-title-icons" aria-hidden="true" (click)="goToFleetreservations()"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- <div class="form-group mb0">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-primary btn-sm advanced-btn" >{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+                            <input type="text"  #input pInputText size="50" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}"
+                                class="form-control input-sm mb0">
+                            <span class="input-group-btn">
+                                <button type="button"  class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <p-schedule [events]="events"  (onViewRender)="loadEvents($event)" [defaultDate]="date" [header]="headerConfig" (onEventClick)="handleEventClick($event)" (onDayClick)="handleDayClick($event)"
+            [options]='options' defaultView="agendaDay" #fc></p-schedule>
+        </div>
+    </div>
+</div>

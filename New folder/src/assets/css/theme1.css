@@ -1,0 +1,148 @@
+/* theme1 plum pie*/
+
+.sidebar, .card-header,
+.app-footer,
+.ui-datatable .ui-datatable-thead tr th,
+.popupsection-title,
+.ui-accordion .ui-accordion-header,
+.sidebar ul.nav li.nav-item.nav-dropdown.open, .ui-picklist-caption, .event-fullcalendar, .navbar-top .nav-item, header ul.nav .dropdown-menu li, .login-body, .fc-day-header, .fc-axis.ui-widget-header, .fc-head-container.ui-widget-header, .fc-toolbar.fc-header-toolbar, .fc-day-header {
+    background: #72464F !important;
+}
+.sidebar .fc-toolbar.fc-header-toolbar{
+    border-top: 0px solid #d9d9d9;
+}
+.fc-toolbar.fc-header-toolbar{
+    border-top: 1px solid #d9d9d9;
+    color: #ffffff;
+}
+.app-body .sidebar ul.nav li.nav-item a.nav-link:hover {
+    background: #8e4f5c !important;
+}
+.app-body .sidebar ul.nav li.nav-item a.nav-link.active {
+    background: #8e4f5c !important;
+}
+.fc-event,
+.fc-event-dot{
+    background-color: #f1ba59 !important;
+    border-color: #ce9259 !important;
+    color: #ffffff !important;
+}
+.btn-primary {
+    background-color: #947557 !important;
+    border-color: #947557 !important
+}
+.custom-file-input::before{
+    background-color: #947557 !important
+}
+select{
+    background: url(../img/header-arrow-down-theme2.png) 101% no-repeat #f3f3f3 !important;
+}
+select.securityque{
+    background: url(../img/forgot-arrow-down-theme2.png) 101% no-repeat #f3f3f3 !important;
+}
+.ui-button {
+    background: #947557 !important;
+    border: 1px solid #947557;
+
+}
+.ui-widget-header .ui-button:enabled:hover,
+.ui-widget-header .ui-button:focus,
+.ui-widget-content .ui-button:enabled:hover,
+.ui-widget-content .ui-button:focus,
+.ui-button:enabled:hover,
+.ui-button:focus {
+    border: 1px solid #a27c56;
+    background: #a27c56;
+    outline: 0 none;
+    color: #ffffff;
+}
+.selectheader {
+    background: url(../img/header-arrow-down-theme2.png) 101% no-repeat #f3f3f3 !important;
+}
+ul.pagination li a.ui-paginator-page.ui-corner-all.page-link {  
+    background-color: #947557!important; 
+    color: #fff !important;
+}
+.page-link, .pagination-datatables li a, .pagination li a {
+    color: #72464F !important;
+}
+.ui-accordion .ui-accordion-header:not(.ui-state-active):not(.ui-state-disabled):hover {
+    background: #8e4f5c !important;
+    color: #ffffff;
+}
+.ui-state-highlight{
+    background: #8e4f5c !important;
+    color: #ffffff !important;
+    border-color: #8e4f5c !important;
+}
+.ui-datatable th.ui-sortable-column:not(.ui-state-active):hover {
+    background: #8e4f5c !important;
+    color: #FFF;
+}
+.superadmin-list .selectheader {
+    background-color: #72464F !important;
+}
+.sidebar ul.nav li.nav-item a.nav-link.active i {
+    color: #ffffff !important;
+}
+.btn-primary:hover {
+    background-color: #a27c56 !important;
+    border-color: #a27c56 !important;
+}
+.custom-file-input:hover::before {
+    color: #fff;
+    background: #a27c56 !important;
+    border-color: #a27c56 !important;
+}
+select option:hover {
+    box-shadow: 0 0 10px 100px #a27c56 inset !important;
+}
+
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-active,
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-highlight {
+    background-color: #a27c56;
+    color: #fff; 
+}
+option:hover, select option:checked:after {
+    background: #a27c56 !important; 
+    color: #fff; 
+    box-shadow: inset 20px 20px #a27c56  !important;
+} 
+ul.list-inline a.user-name{
+    background: #c1687a;
+}
+.notifications{   
+    background: #ce9259;
+}
+header.navbar .nav-item .nav-link.active i{
+    color: #c1687a;
+}
+header ul.nav .dropdown-menu li:hover, header ul.nav .dropdown-menu li:hover a i {
+    color: #fff !important;
+    background: #c1687a !important
+}
+.fc-day-header, .ui-button.ui-state-default{
+    color: #ffffff !important;
+}
+.uploadjsbtn .input-file-trigger { 
+    background-color: #a27c56 !important;
+    border-color: #a27c56 !important;
+}
+.uploadjsbtn .input-file-trigger:hover { 
+    background-color: #a27c56 !important;
+    border-color: #a27c56 !important;
+}
+.user-roles-action-list{
+    background: #72464F;
+}
+.user-roles-action-list li a:hover{
+    background: #8e4f5c;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background-color: #72464F !important;
+    border-color: #8e4f5c !important;
+}
+.sidebar-nav::-webkit-scrollbar-track{
+    background-color: #8e4f5c !important;
+    border-color: #72464F !important;
+}

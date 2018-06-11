@@ -1,0 +1,262 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div id="main" class="">
+  <div class="card">
+    <div class="card-header">
+      <div class="row no-gutter">
+        <div class="col-md-9">
+          <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_FUNFACTS' | translate}}</h5>
+          <div class="cardicons-header pull-left">
+            <a *ngIf="addststus === 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}"
+              (click)="singleFunfacts('CREATE',allfunfacts)">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="addststus === 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="singleFunfacts('CREATE',allfunfacts)"></i>
+            </a>
+            <a *ngIf="importstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}"
+              (click)="importPopup()">
+              <i class="fa fa-15x fa-download page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="importstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-download page-title-icons" aria-hidden="true" (click)="importPopup()"></i>
+            </a>
+            <a *ngIf="exportstatus === 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+              (click)="exportData(searchstring)">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="exportstatus === 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group mb0">
+            <div class="input-group">
+              <button type="button" (click)="advancedModal()" class="btn btn-primary btn-sm advanced-btn">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+              <input type="text" id="input1-group2" #input [(ngModel)]="searchstring" (keypress)="handleKeyPress($event)" name="input1-group2"
+                class="form-control input-sm mb0" placeholder="Search Text">
+              <span class="input-group-btn">
+                <button type="button" (click)="getFunfactsSeachList(searchstring)" class="btn btn-primary btn-sm">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-block">
+      <p-dataTable [value]="funfactsDetails" styleClass="funfacts-list table" [rows]="rowsPerPage" [paginator]="true" [pageLinks]="2"
+        sortMode="multiple" [responsive]="true" expandableRows="true" [stacked]="stacked">
+        <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true" styleClass="enterprise-name"></p-column>
+        <p-column field="funfact" header="{{'FUNFACTS.FUN_FACT' | translate}}" [sortable]="true"></p-column>
+        <p-column field="displayStartDateTime" header="{{'COMMON_FIELDS.START_DATE' | translate}}" [sortable]="true" styleClass="startdate">
+          <template let-user="rowData" pTemplate="body">
+            <span>
+              {{user.displayStartDateTime}} {{userpreferedtimezone}}
+            </span>
+          </template>
+        </p-column>
+        <p-column field="displayEndDateTime" header="{{'COMMON_FIELDS.END_DATE' | translate}}" [sortable]="true" styleClass="enddate">
+          <template let-user="rowData" pTemplate="body">
+            <span>
+              {{user.displayEndDateTime}} {{userpreferedtimezone}}
+            </span>
+          </template>
+        </p-column>
+        <p-column field="duration" header="{{'COMMON_FIELDS.DURATION' | translate}}" [sortable]="true" styleClass="duration">
+          <template let-user="rowData" pTemplate="body">
+            <div class="text-right">{{user.duration}}</div>
+          </template>
+        </p-column>
+        <p-column field="isEnabled" header="{{'COMMON_FIELDS.ENABLED' | translate}}" [sortable]="true" styleClass="text-capitalize enabled"></p-column>
+        <p-column field="actions" header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-three-col">
+          <template let-allfunfacts="rowData" pTemplate="body">
+            <a *ngIf="viewstatus === 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+              (click)="singleFunfacts('VIEW',allfunfacts)">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="viewstatus === 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="singleFunfacts('VIEW',allfunfacts)"></i>
+            </a>
+            <a *ngIf="editstatus === 'true' && allfunfacts.recordstatus === 'active'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}"
+              (click)="singleFunfacts('EDIT',allfunfacts)">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="editstatus === 'true' && allfunfacts.recordstatus === 'inactive'" class="not-active" data-toggle="tooltip" data-placement="top"
+              title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="singleFunfacts('EDIT',allfunfacts)"></i>
+            </a>
+            <a *ngIf="editstatus === 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="singleFunfacts('EDIT',allfunfacts)"></i>
+            </a>
+            <a *ngIf="deletestatus === 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+              (click)="singleFunfacts('DELETE',allfunfacts)">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="deletestatus === 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="singleFunfacts('DELETE',allfunfacts)"></i>
+            </a>
+          </template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
+<div bsModal #myModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvanceModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideAdvanceModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="text-capitalize form-control input-sm"
+              id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseName" onkeypress="return event.charCode != 34">
+            <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+              id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label>{{'FUNFACTS.FUN_FACT' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" class="text-capitalize form-control input-sm" id="imagename" name="imagename" onkeypress="return event.charCode != 34"
+              [(ngModel)]="funfact" value="" (keypress)="clearmessages()">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label>{{'COMMON_FIELDS.START_DATE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="startdate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+              [showIcon]="true" [showTime]="true" (onSelect)="clearmessages();"></p-calendar>
+            <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessages();" class="form-control input-sm duration-list">
+              <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label>{{'COMMON_FIELDS.END_DATE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="enddate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+              [showIcon]="true" [showTime]="true" (onSelect)="clearmessages();"></p-calendar>
+            <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessages()" class="form-control input-sm duration-list">
+              <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <label class="checkbox-inline" for="">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                <input id="inline-checkbox1" name="inline-checkbox1" type="checkbox" value="" [(ngModel)]="enabled" class="regular-checkbox big-checkbox">
+                <label for="inline-checkbox1"></label>
+              </label>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="text-danger text-center">{{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button type="button" class="btn btn-primary" (click)="advanceSearch()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="clearAdvanced()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="hideAdvanceModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+<div bsModal #funfactImportModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideImportModal()"
+  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideImportModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/oracle_logo.png';"
+              height="30" class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="col-md-4 form-group">
+            <input type="file" id="file-input" [(ngModel)]="csvFile" accept='.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="custom-file-input'
+              class="custom-file-input" name="file-input" (change)="csvUploaded($event)">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6 pull-left fleetftsub">
+            {{'COMMON_FIELDS.PLEASE_DOWNLOAD' | translate}}
+            <a href="assets/import_templates/Srisys-Pigeon-ImportTemplate-FunFacts.xlsx" download="Srisys-Pigeon-ImportTemplate-FunFacts.xlsx">{{'COMMON_FIELDS.TEMPLATE' | translate}}</a>
+          </div>
+        </div>
+      </div>
+      <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button type="button" class="btn btn-primary" (click)="importList()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="hideImportModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-funfact-popup (uploaded)="Allfunfactslist($event)"></app-funfact-popup>

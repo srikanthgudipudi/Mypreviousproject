@@ -1,0 +1,73 @@
+{
+  "data": [
+    {
+      "fleetId": 1,
+      "enterprisesname": "Oracle",
+      "parentfleetName": "Hyderabad",
+      "fleetName":"Building1",
+      "type": "ttt",
+      "taggable": "Yes",
+      "bookable": "No",
+      "enabled": "Yes"
+    },
+    {
+      "fleetId": 2,
+      "enterprisesname": "Oracle",
+      "parentfleetName": "Hyderabad",
+      "fleetName": "Building2",
+      "type": "ttt",
+      "taggable": "Yes",
+      "bookable": "No",
+      "enabled": "Yes"
+    },
+    {
+      "fleetId": 3,
+      "enterprisesname": "Oracle",
+      "parentfleetName": "Hyderabad",
+      "fleetName": "Building3",
+      "type": "ttt",
+      "taggable": "Yes",
+      "bookable": "No",
+      "enabled": "Yes"
+    },
+    {
+      "fleetId": 4,
+      "enterprisesname": "Oracle",
+      "parentfleetName": "Hyderabad",
+      "fleetName": "Building4",
+      "type": "ttt",
+      "taggable": "Yes",
+      "bookable": "No",
+      "enabled": "Yes"
+    },
+    {
+      "fleetId": 5,
+      "enterprisesname": "Oracle",
+      "parentfleetName": "Hyderabad",
+       "fleetName": "Building5",
+      "type": "ttt",
+      "taggable": "Yes",
+      "bookable": "No",
+      "enabled": "Yes"
+    },
+    {
+      "fleetId": 6,
+      "enterprisesname": "Oracle",
+      "parentfleetName": "Hyderabad",
+      "fleetName": "Building6",
+      "type": "ttt",
+      "taggable": "Yes",
+      "bookable": "No",
+      "enabled": "Yes"
+    },
+    {
+      "fleetId": 7,
+      "enterprisesname": "Oracle",
+      "parentfleetName": "Hyderabad",
+      "fleetName": "Building7",
+      "type": "ttt",
+      "taggable": "Yes",
+      "bookable": "No",
+      "enabled": "Yes"
+    } ]
+}

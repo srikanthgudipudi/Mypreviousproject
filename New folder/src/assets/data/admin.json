@@ -1,0 +1,256 @@
+{
+  "data": [
+    {
+ 
+      "username": "tradent1",
+      "email": "kiran@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L3 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     
+      "username": "tradent-S",
+      "email": "rakeye@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L3 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     
+      "username": "tradent-A",
+      "email": "Rome@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L3 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+    
+     "username": "tradent1",
+      "email": "balu@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L3 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     
+     "username": "tradent-1",
+      "email": "rocket@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L3 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+    
+     "username": "tradent1",
+      "email": "joy@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L3 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 0,
+      "tfavorites": 10,
+      "tcomments": 5
+    },
+    {
+    
+      "username": "tradent1",
+      "email": "haney@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L3 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     
+     "username": "tradent1-J",
+      "email": "joxe@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "Sub admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":0,
+      "tshares": 25,
+      "tfavorites": 50,
+      "tcomments": 0
+    },
+    {
+     
+     "username": "tradent1-T",
+      "email": "triesh@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "Analytics admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 5,
+      "tfavorites": 10,
+      "tcomments": 5
+    },
+    {
+     "username": "tradent1",
+      "email": "kiran@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "Analytics admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     "username": "tradent1",
+      "email": "kiran@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "Analytics admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     "username": "tradent1",
+      "email": "kiran@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "Analytics admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+   "username": "tradent1",
+      "email": "kiran@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "Analytics admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+    
+     "username": "tradent1",
+      "email": "kiran@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "Analytics admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+      
+     "username": "tradent1",
+      "email": "ricky@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L1 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+   "username": "tradentE",
+      "email": "Sunil@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L1 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     "username": "tradentD",
+      "email": "Rock@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L1 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     "username": "tradentC",
+      "email": "Miller@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L1 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     "username": "tradentB",
+      "email": "Jhon@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L1 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    },
+    {
+     
+      "username": "tradentA",
+      "email": "Ravi@srisys.com",
+      "description": "Movie chicken fight",
+      "role": "L2 admin",
+      "action": "",
+      "country":"India",
+      "totalfollows":10,
+      "tshares": 20,
+      "tfavorites": 50,
+      "tcomments": 20
+    }
+  ]
+}

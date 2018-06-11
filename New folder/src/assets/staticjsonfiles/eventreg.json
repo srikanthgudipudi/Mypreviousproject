@@ -1,0 +1,68 @@
+{
+  "data": [
+   {
+	"_id" : "1",
+	"enterpriseId" : "1",
+	"fleetAssetId" : "usa",
+	"userId" : "testuser1",
+	"eventId" : "_id",
+	"seatNumber" : 0,
+	"waitingList" : 13,
+	"notes" : "notes",
+	"isEnabled" : true,
+	"isDeleted" : false,
+	"createdBy" : "SD",
+	"createdAt" : "ISODate(2017-07-10T07:33:55.191-04:00)",
+	"updatedBy" : "",
+	"updatedAt" : ""
+},
+ {
+	"_id" : "1",
+	"enterpriseId" : "2",
+	"fleetAssetId" : "India",
+	"userId" : "testuser1",
+	"eventId" : "_id",
+	"seatNumber" : 0,
+	"waitingList" : 13,
+	"notes" : "notes",
+	"isEnabled" : true,
+	"isDeleted" : false,
+	"createdBy" : "SD",
+	"createdAt" : "ISODate(2017-07-10T07:33:55.191-04:00)",
+	"updatedBy" : "",
+	"updatedAt" : ""
+},
+ {
+	"_id" : "1",
+	"enterpriseId" : "3",
+	"fleetAssetId" : "India",
+	"userId" : "testuser1",
+	"eventId" : "_id",
+	"seatNumber" : 0,
+	"waitingList" : 13,
+	"notes" : "notes",
+	"isEnabled" : true,
+	"isDeleted" : false,
+	"createdBy" : "SD",
+	"createdAt" : "ISODate(2017-07-10T07:33:55.191-04:00)",
+	"updatedBy" : "",
+	"updatedAt" : ""
+},
+ {
+	"_id" : "1",
+	"enterpriseId" : "4",
+	"fleetAssetId" : "India",
+	"userId" : "testuser1",
+	"eventId" : "_id",
+	"seatNumber" : 0,
+	"waitingList" : 13,
+	"notes" : "notes",
+	"isEnabled" : true,
+	"isDeleted" : false,
+	"createdBy" : "SD",
+	"createdAt" : "ISODate(2017-07-10T07:33:55.191-04:00)",
+	"updatedBy" : "",
+	"updatedAt" : ""
+}
+ ]
+}

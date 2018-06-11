@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "enterpriseName": "Google",
+      "enterpriseType": "DAILY",
+      "description": "Google Inc",
+      "country": "USA",
+      "state": "California",
+      "city": "Mountain View",
+      "enabled": "Yes"
+    },
+    {
+      "enterpriseName": "Oracle",
+      "enterpriseType": "DAILY",
+      "description": "Oracle Corporation",
+      "country": "USA",
+      "state": "California",
+      "city": "Redwood City",
+      "enabled": "Yes"
+    },
+    {
+      "enterpriseName": "Sun",
+      "enterpriseType": "DAILY",
+      "description": "Sun Microsystems",
+      "country": "USA",
+      "state": "California",
+      "city": "Santa Clara",
+      "enabled": "Yes"
+    }
+  ]
+}

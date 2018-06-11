@@ -1,0 +1,293 @@
+<!-- 
+  Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+-->
+<div bsModal #lgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="closePopupModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="closePopupModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pageName | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete'">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="enterprisename" name="enterprisename" value="{{fleetAttributeData.enterprise.enterpriseName}}"
+              disabled>
+              <input type="hidden" name="enterpriseid" class="form-control" id="enterpriseid" value="{{fleetAttributeData.enterprise.enterpriseId}}">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="fleettype" name="fleettype" value="{{fleetAttributeData.fleetType}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_NAME' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="attributename" name="attributename" value="{{fleetAttributeData.attributeName}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_TYPE' | translate}}</label>
+            <input id="attributetype" class="form-control input-sm" name="attributetype" value="{{fleetAttributeData.attributeType}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group" *ngIf="[fleetAttributeData.attributeType] == 'List Field'">
+            <label>{{'LOOKUPS.LOOKUP_TYPE' | translate}}</label>
+            <input id="lookuptype" class="form-control input-sm" name="lookuptype" value="{{fleetAttributeData.lookupType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.DISPLAY_SEQUENCE' | translate}}</label>
+            <input id="sequencenumber" class="form-control input-sm" name="sequencenumber" value="{{fleetAttributeData.sequenceOrder}}"
+              disabled>
+          </div>
+          <div class="col-md-12 form-group">
+            <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea id="attributedescription" name="attributedescription" (keypress)="clearmessage()" rows="2" class="form-control input-sm"
+              value="{{fleetAttributeData.attributeDescription}}" disabled></textarea>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">        
+            <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+            <input id="inline-checkbox1" name="enabled" type="checkbox" value="{{fleetAttributeData.isEnabled}}" [(ngModel)]="fleetAttributeData.isEnabled"
+              disabled class="regular-checkbox big-checkbox">
+              <label for="inline-checkbox1"></label>
+              </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">        
+            <label>{{'FLEET_TYPE_ATTRIBUTES.IS_MANDATORY' | translate}}</label>
+            <input id="inline-checkbox2" name="mandatory" type="checkbox" value="{{fleetAttributeData.isMandatory}}" [(ngModel)]="fleetAttributeData.isMandatory"
+              disabled class="regular-checkbox big-checkbox">
+              <label for="inline-checkbox2"></label>
+              </label>
+          </div>
+          <div class="col-md-4 form-group" *ngIf="fleetAttributeData.attributeType ==='Text Field'">
+            <label><span class="text-danger" ></span>{{'FLEET_TYPE_ATTRIBUTES.DEFAULT_VALUE' | translate}}</label>
+            <input type="text" (keypress)="clearmessage()" class="form-control input-sm" id="attributesdefaultValue" name="attributesdefaultValue"
+              [(ngModel)]="fleetAttributeData.defaultValue" disabled>
+          </div>
+          <div class="col-md-4 form-group" *ngIf="fleetAttributeData.attributeType === 'List Field'">
+            <label><span class="text-danger" ></span>{{'FLEET_TYPE_ATTRIBUTES.DEFAULT_VALUE' | translate}}</label>
+            <select id="defaultvalueselect" name="defaultvalueselect" [(ngModel)]="fleetAttributeData.defaultValue" class="form-control input-sm"
+              size="1" (change)="clearmessage()" disabled>
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of lookupnamelist; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}" [selected]="clang.lookupName === fleetAttributeData.defaultValue">{{clang.lookupName}}</option>
+              </select>
+          </div>
+        </div>
+        <div class="row" *ngIf="[actionName] == 'Edit'">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="enterprisename" name="enterprisename" value="{{fleetAttributeData.enterprise.enterpriseName}}"
+              disabled>
+              <input type="hidden" class="form-control" id="enterpriseid" name="enterpriseid">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="fleettype" name="fleettype" value="{{fleetType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger" >*</span>{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_NAME' | translate}}</label>
+            <input type="text" class="form-control input-sm text-capitalize" (keypress)="clearmessage()" id="attributename" name="attributename"
+              onkeypress="return event.charCode != 34" [(ngModel)]="attributeName" value="{{fleetAttributeData.attributeName}}">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_TYPE' | translate}}</label>
+            <input id="attributetype" class="form-control input-sm" name="attributetype" value="{{attributeType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group" *ngIf="[fleetAttributeData.attributeType] == 'List Field'">
+            <label>{{'LOOKUPS.LOOKUP_TYPE' | translate}}</label>
+            <input id="lookuptype" class="form-control input-sm" name="lookuptype" value="{{lookupType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.DISPLAY_SEQUENCE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="sequencenumber" name="sequencenumber" [(ngModel)]="sequenceOrder">
+          </div>
+          <div class="col-md-12 form-group">
+            <label><span class="text-danger">*</span>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea id="attributedescription" name="attributedescription" (keypress)="clearmessage()" rows="2" class="form-control input-sm"
+              maxlength="200" onkeypress="return event.charCode != 34" [(ngModel)]="attributeDescription" value="{{fleetAttributeData.attributeDescription}}"></textarea>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">        
+            <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+            <input id="enabled" name="enabled" type="checkbox" [(ngModel)]="attributeEnable" class="regular-checkbox big-checkbox">
+
+            <label for="enabled"></label>
+            </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">        
+              <label>{{'FLEET_TYPE_ATTRIBUTES.IS_MANDATORY' | translate}}</label>
+            <input id="mandatory" name="mandatory" type="checkbox" value="{{fleetAttributeData.isMandatory}}" [(ngModel)]="attributeMandatory"
+              class="regular-checkbox big-checkbox" (click)="editcheckbox()">
+              <label for="mandatory"></label>
+              </label>
+          </div>
+          <div class="col-md-4 form-group" *ngIf="fleetAttributeData.attributeType ==='Text Field'">
+            <label><span class="text-danger" *ngIf="attributeMandatory">*</span>{{'FLEET_TYPE_ATTRIBUTES.DEFAULT_VALUE' | translate}}</label>
+            <input type="text" (keypress)="clearmessage()" class="form-control input-sm" id="attributesdefaultValue" name="attributesdefaultValue"
+              onkeypress="return event.charCode != 34" [(ngModel)]="defaultValue">
+          </div>
+          <div class="col-md-4 form-group" *ngIf="fleetAttributeData.attributeType ==='List Field'">
+            <label><span class="text-danger" *ngIf="attributeMandatory">*</span>{{'FLEET_TYPE_ATTRIBUTES.DEFAULT_VALUE' | translate}}</label>
+            <select id="defaultvalueselect" name="defaultvalueselect" [(ngModel)]="defaultValue" class="form-control input-sm" size="1"
+              (change)="clearmessage()">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of lookupnamelist; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}" [selected]="clang.lookupName === fleetAttributeData.defaultValue">{{clang.lookupName}}</option>
+              </select>
+          </div>
+        </div>
+        <div class="row" *ngIf="[actionName] == 'Create'">
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger" >*</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <select *ngIf="[enterprisesSize] == 'false'" id="enterprise" (change)="selectedEnterprise($event.target.value); clearmessage()"
+              name="enterprise" class="form-control input-sm" size="1">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of enterpriselist; let i='index'" value="{{clang._id+'~'+clang.enterpriseName+'~'+clang.enterpriseIconFilePath+'~'+clang.enterpriseIcon}}"
+                id="clang{{i}}">{{clang.enterpriseName}}</option>
+                </select>
+                <input *ngIf="[enterprisesSize] == 'true'" disabled type="text" [(ngModel)]="enterprisesName" class="form-control input-sm"
+                  id="enterprise" name="enterprise">
+          </div>
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger" >*</span>{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+            <select id="fleetType" (change)="selectedFleettype($event.target.value); clearmessage()" name="fleetType" class="form-control input-sm"
+              size="1">
+              <option value="undefined">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of fleettypelist; let i='index'" value="{{clang.fleetTypeName}}" id="clang{{i}}">{{clang.fleetTypeName}}</option>
+              </select>
+          </div>
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger" >*</span>{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_NAME' | translate}}</label>
+            <input type="text" (keypress)="clearmessage()" class="form-control input-sm text-capitalize" id="attributename" name="attributename"
+              onkeypress='return event.charCode != 34' [(ngModel)]="attributename" value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger" >*</span>{{'FLEET_TYPE_ATTRIBUTES.ATTRIBUTE_TYPE' | translate}}</label>
+            <select id="attributetype" (change)="selectedattributetype($event.target.value); clearmessage()" name="attributetype" class="form-control input-sm"
+              size="1">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of attributeTypelist; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+              </select>
+          </div>
+          <div class="col-md-4 form-group" *ngIf="[fleetattributetype]=='List Field'">
+            <label><span class="text-danger" >*</span>{{'LOOKUPS.LOOKUP_TYPE' | translate}}</label>
+            <select id="lookuptype" (change)="selectedLookuptype($event.target.value); clearmessage()" name="lookuptype" class="form-control input-sm"
+              size="1">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of lookuptypelist; let i='index'" value="{{clang}}" id="clang{{i}}">{{clang}}</option>
+              </select>
+          </div>
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger" ></span>{{'COMMON_FIELDS.DISPLAY_SEQUENCE' | translate}}</label>
+            <input type="text" (keypress)="clearmessage()" class="form-control input-sm" id="attributessequenceorder" name="attributessequenceorder"
+              [(ngModel)]="attributessequenceorder" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+              value="">
+          </div>
+          <div class="col-md-12 form-group">
+            <label><span class="text-danger">*</span>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea id="attributedescription" name="attributedescription" (keypress)="clearmessage()" onkeypress='return event.charCode != 34'
+              rows="2" class="form-control input-sm" maxlength="200" [(ngModel)]="attributedescription"></textarea>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">        
+            <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+            <input id="inline-checkbox12" name="inline-checkbox1" [(ngModel)]="enabled" type="checkbox" class="regular-checkbox big-checkbox">
+
+            <label for="inline-checkbox12"></label>
+            </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">        
+              <label>{{'FLEET_TYPE_ATTRIBUTES.IS_MANDATORY' | translate}}</label>
+            <input id="inline-checkbox21" name="inline-checkbox2" [(ngModel)]="mandatory" type="checkbox" class="regular-checkbox big-checkbox"
+              (click)="editcheckbox()">
+              <label for="inline-checkbox21"></label>
+              </label>
+          </div>
+          <div class="col-md-4 form-group" *ngIf="[fleetattributetype]=='Text Field'">
+            <label><span class="text-danger" *ngIf="mandatory">*</span>{{'FLEET_TYPE_ATTRIBUTES.DEFAULT_VALUE' | translate}}</label>
+            <input type="text" (keypress)="clearmessage()" class="form-control input-sm" id="attributesdefaultValue" name="attributesdefaultValue"
+              [(ngModel)]="defaultValue" onkeypress='return event.charCode != 34'>
+          </div>
+          <div class="col-md-4 form-group" *ngIf="[fleetattributetype]=='List Field'">
+            <label><span class="text-danger" *ngIf="mandatory">*</span>{{'FLEET_TYPE_ATTRIBUTES.DEFAULT_VALUE' | translate}}</label>
+            <select id="defaultvalueselect" name="defaultvalueselect" [(ngModel)]="defaultValue" class="form-control input-sm" size="1"
+              (change)="clearmessage()">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of lookupnamelist; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+              </select>
+          </div>
+        </div>
+        <p-accordion *ngIf="[actionName] != 'Create'">
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Edit'">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdby" name="createdby" value="{{fleetAttributeData.createdBy}}"
+                  disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdat" name="createdat" value="{{createdAt}}" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="updatedby" name="updatedby" value="{{fleetAttributeData.updatedBy}}"
+                  disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="updatedat" name="updatedat" value="{{updatedAt}}" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div class="text-danger text-center">{{error | translate}}</div>
+      <div class="text-danger text-center">{{defaultValueerror | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionName] == 'Create'">
+            <button class="btn btn-primary" (click)="createFleetAttribute()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionName] == 'Edit'">
+            <button class="btn btn-primary" (click)="updateFleetAttribute()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionName] == 'View'">
+            <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionName] == 'Delete'">
+            <button class="btn btn-primary" (click)="deleteFleetAttribute()">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

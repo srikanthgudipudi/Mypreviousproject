@@ -1,0 +1,359 @@
+
+ @include media-breakpoint-down(md) {
+    //
+    //   body {
+    //     padding: 0 !important;
+    //     margin: 0 !important;
+    //   }
+    //
+    ul.superadmin-list{
+        margin-bottom: 0px !important;
+    }
+    .app-body
+    {
+        margin-top: 61px !important;
+    }
+      header.navbar {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
+        height:auto;
+    
+    //     .navbar-toggler {
+    //       position: absolute;
+    //       top: 0;
+    //       left: 0;
+    //       width: 70px;
+    //       height: inherit;
+    //     }
+    //
+    //     .navbar-toggler {
+    //       @if (lightness( $navbar-brand-bg ) > 40) {
+    //         color: $navbar-color;
+    //       } @else {
+    //         color: #fff;
+    //       }
+         }
+    //
+        .navbar-brand {
+        //   width: 100% !important;
+        //   margin: 0 auto !important;
+            margin-left: 30px !important;
+            border-bottom: 0px !important;
+            
+        }
+    // 
+    //     .navbar-nav {
+    //       position: absolute;
+    //       top: 0;
+    //       right: 15px;
+    //       height: inherit;
+    //     }
+    //   }
+    //
+    //   .sidebar {
+    //     left: -$mobile-sidebar-width !important;
+    //     width: $mobile-sidebar-width !important;
+    //
+    //     ul.nav {
+    //       width: $mobile-sidebar-width !important;
+    //     }
+    //
+    //     .sidebar-footer {
+    //       margin-left: -$mobile-sidebar-width;
+    //     }
+    //   }
+    //
+    //   .breadcrumb-menu {
+    //     display: none;
+    //   }
+    //
+    //   .main {
+    //     width: 100% !important;
+    //     padding: 0 !important;
+    //     padding-top: $navbar-height !important;
+    //     margin: 0 !important;
+    //     overflow: hidden;
+    //   }
+    //
+    //   .aside-menu {
+    //     right: -$aside-menu-width !important;
+    //   }
+    //
+    //   .footer {
+    //     display: none;
+    //   }
+    //
+    //   html {
+    //     max-width: 100%;
+    //     overflow-x: hidden;
+    //   }
+    //
+    //   body.mobile-open {
+    //     max-width: 100%;
+    //     overflow-x: hidden;
+    //     .sidebar {
+    //       left: 0 !important;
+    //     }
+    //
+    //     .main {
+    //       margin-left: $mobile-sidebar-width !important;
+    //     }
+    //   }
+     }
+     @media (min-width: 1200px){
+         .dahsboard label.col-md-3{
+             padding-left: 0px !important;
+             padding-right: 0px !important;
+             max-width: 24%;
+         }
+         .fc-scroller.fc-time-grid-container{
+             overflow-y: hidden !important;
+        }
+    }
+     @media (max-width: 767px){
+        ul.list-inline a.user-name{
+            width: 50%;
+        }
+        .form-group.mb0{
+            margin-left: 10px;
+            float: left;
+        }
+        .ui-datatable table{
+            table-layout: auto;
+        }
+        .ui-datatable .ui-datatable-thead>tr>th{
+            white-space: normal;
+        }
+        .action-col{
+            width: auto;
+        }
+        .notifications{
+            width: 50%;
+            text-align: left;
+        }
+        .funfacts-list td:nth-child(3), .funfacts-list td:nth-child(4), .funfacts-list td:nth-child(5){
+            white-space: normal;
+        }
+        .eventregistrations td:nth-child(6), .eventregistrations td:nth-child(7), .eventregistrations td:nth-child(8){
+            white-space: normal;
+        }
+        .action-five-col, .action-four-col , .action-three-col {
+            white-space: normal;
+        }
+        .fleetreservations td:nth-child(5),
+        .fleetreservations td:nth-child(6),
+        .fleetreservations td:nth-child(7),
+        .fleetreservations td:nth-child(8) {
+            white-space: normal;
+        }
+        .eventslist td:nth-child(4),
+        .eventslist td:nth-child(5),
+        .eventslist td:nth-child(6) {
+            white-space: normal;
+        }
+        .notificationslist td:nth-child(5) {
+            white-space: normal;
+        }
+        .callhistorylist td:nth-child(7),
+        .callhistorylist td:nth-child(8) ,
+        .callhistorylist td:nth-child(9)  {
+         white-space: normal;
+        }
+       .advertisementslist td:nth-child(5),
+       .callhistorylist td:nth-child(6) {
+       white-space: normal;
+        }
+        .importslist td:nth-child(5) {
+        white-space: normal;
+        }
+        .loginlist td:nth-child(8),
+        .loginlist td:nth-child(9) {
+        white-space: normal;
+        }
+        .startdate,
+        .enddate,
+        .createddate,
+        .logintime,
+        .logouttime,
+        .duration, 
+        .status, 
+        .enabled ,
+        .mandatory,
+        .invoicedate,
+        .paiddate,
+        .feedbackdate,
+        .mapenterprise,
+        .mobileno,
+        .contractdate,
+        .messagehistorydate,
+        .user-name,
+        .enterprise-name,
+        .type{
+         white-space: normal;
+        }
+        .alleventsDetails td:nth-child(4),
+        .alleventsDetails td:nth-child(5),
+        .alleventsDetails td:nth-child(6){
+        white-space: normal;
+        }
+        .mobile-ml{
+            margin-left: auto !important;
+            float: left;
+        }
+     }
+     
+     @media (min-width: 320px) and (max-width: 768px)
+      
+      {
+    header.navbar
+    {
+    height: 61px !important;
+    
+    }
+    .app-body
+    {
+        margin-top: 61px !important;
+    }
+    .ui-datatable .ui-sortable-column-icon{
+    margin-left: 0px;
+    }
+    .fa-fw{
+        width: 8px !important;
+    }
+      }
+      @media (max-width: 425px){
+        // .modal-content .row .col-md-12 .pull-right, .modal-content .row .col-md-12 .pull-left{
+        //     height: auto;
+        //     width: 40%;
+        // }
+        .notifications{
+          float: left;
+      }
+      ul.list-inline a.user-name{
+          width: 99%;
+      }
+      .enterprise-icon{
+        height: auto;
+    }
+    .empty-label{
+        height: auto;
+    }
+    //   .modal-content select.duration-list{
+    //       width: 100%;
+    //   }
+    }
+    @media (max-width: 1200px){
+        .ui-datatable .ui-datatable-thead>tr>th{
+            white-space: normal;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1200px){
+        .dahsboard label.col-md-3 {
+                max-width: 33% !important;
+        }
+        }
+    @media (min-width: 767px) and (max-width: 991px){
+            .modal-content select.duration-list {
+                margin-left: 0px !important;
+               }
+    }
+        @media  (min-width: 540px) and (max-width: 768px) {
+        .dahsboard label.col-md-3 {
+                max-width: 48% !important;
+        }
+        }
+    @media (min-width: 768px) and (max-width: 1024px){
+        // .navbar .navbar-top li.dropdown a.dropdown-toggle::after {
+        //     position: relative;
+        //     top: -4px;
+        // }
+        app-header .col-md-10 {
+            max-width: 100% !important;
+       }
+        .form-group.mb0 input.form-control{
+            width: 100% !important;
+        }
+         .form-group.mb0 select.dashboard-select-box{
+            width: 100% !important;
+        }
+        .ui-datatable table{
+            table-layout: auto;
+        }
+        .ui-datatable .ui-datatable-thead>tr>th{
+            white-space: normal;
+        }
+        .action-col{
+            width: auto;
+        }
+        .funfacts-list td:nth-child(3), .funfacts-list td:nth-child(4), .funfacts-list td:nth-child(5){
+            white-space: normal;
+        }
+        .eventregistrations td:nth-child(6), .eventregistrations td:nth-child(7), .eventregistrations td:nth-child(8){
+            white-space: normal;
+        }
+        .mobile-ml{
+            margin-left: auto !important;
+        }
+    }
+    @media (min-width: 450px){
+    header.navbar {
+    position: relative;
+    height: $navbar-height;
+    padding: 0;
+    background-color: $navbar-bg;
+    @include borders($navbar-border);
+    flex-direction: row;
+    }
+    }
+    @media (max-width: 560px){
+        td.duration  span.ui-column-title {   
+        padding: .4em;
+        min-width: 30%;
+        display: inline-block; }
+        td.duration .text-right { text-align: left !important; display: inline-block; }
+        }
+    @media (max-width: 450px){
+        .form-group.mb0 {
+            margin-left: 10px; 
+        }
+        header.navbar .navbar-brand {
+        padding: 0.77rem 0rem;
+        display: block;
+        }
+        .hidden-sm-up.col-sm-12{
+            position: static !important;
+        }
+        .app-body{
+            margin-top: 125px !important;
+        }
+        ul.list-inline.superadmin-list{
+            margin-bottom: 0px !important;
+            
+            width: 85% !important;
+            float: left !important;
+            margin: 0px !important;
+            display: inline-block !important;
+        }
+        .user-avatar.ml-auto{
+            width: 14% !important;
+            float: left !important;
+            margin: 0px !important;
+            display: inline-block !important;
+        }
+        .app-header.navbar {
+        display: inline-block !important; 
+        }
+        ul.list-inline a.user-name{
+            width: 50%;
+        }
+        .notifications{
+            width: 50%;
+            float: right;
+        }
+        .user-avatar-icon{
+            float: right;
+            margin-right: 5px;
+        }
+        }

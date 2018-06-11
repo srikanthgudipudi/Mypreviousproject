@@ -1,0 +1,126 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-header">
+                   <strong> Social Fields to intigrate</strong>
+                </div>
+                <div class="card-block">
+                    <form action="" method="post" id="Social_fields_form" enctype="multipart/form-data" class="form-horizontal ">
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">First Name</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="fn-radio1">
+                                    <input type="radio" id="fn-radio1" name="fn" value="fn1" (click)="clearmessage()"> Enable
+                                </label>
+                                <label class="radio-inline" for="fn-radio2">
+                                    <input type="radio" id="fn-radio2" name="fn" value="fn2" (click)="clearmessage()"> Disable
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">last Name</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="ln-radio1">
+                                    <input type="radio" id="ln-radio1" name="ln" value="ln1" (click)="clearmessage()"> Enable
+                                </label>
+                                <label class="radio-inline" for="ln-radio2">
+                                    <input type="radio" id="ln-radio2" name="ln" value="ln2" (click)="clearmessage()"> Disable
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Profile Pic</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="pp-radio1">
+                                    <input type="radio" id="pp-radio1" name="pp" value="option1" (click)="clearmessage()"> Enable
+                                </label>
+                                <label class="radio-inline" for="pp-radio2">
+                                    <input type="radio" id="pp-radio2" name="pp" value="option2" (click)="clearmessage()"> Disable
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Email</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="el-radio1">
+                                    <input type="radio" id="el-radio1" name="el" value="option1" (click)="clearmessage()"> Enable
+                                </label>
+                                <label class="radio-inline" for="el-radio2">
+                                    <input type="radio" id="el-radio2" name="el" value="option2" (click)="clearmessage()"> Disable
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                    <!--/.row-->
+                </div>
+                <div class="card-footer">
+                    <p class="text-danger">{{errors}}</p>
+                    <button type="submit" class="btn btn-sm btn-primary" (click)="addSocialFields()"><i class="fa fa fa-check"></i> Save</button>
+                    <button type="reset" class="btn btn-sm btn-danger" (click)="resetSocilaFields()"><i class="fa fa-ban"></i> Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-header">
+                   <strong> Social Login Providers</strong>
+                </div>
+                <div class="card-block">
+                    <form action="" method="post" enctype="multipart/form-data" id="Social_provider_form" class="form-horizontal ">
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Facebook</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="fb1">
+                                    <input type="radio" id="fb1" name="fb" value="fb1" (click)="clearmessage()"> Enable
+                                </label>
+                                <label class="radio-inline" for="fb2">
+                                    <input type="radio" id="fb2" name="fb" value="fb2" (click)="clearmessage()"> Disable
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Twitter</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="tw1">
+                                    <input type="radio" id="tw1" name="tw" value="tw1" (click)="clearmessage()"> Enable
+                                </label>
+                                <label class="radio-inline" for="tw2">
+                                    <input type="radio" id="tw2" name="tw" value="tw2" (click)="clearmessage()"> Disable
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Google</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="goog1">
+                                    <input type="radio" id="goog1" name="goog" value="goog1" (click)="clearmessage()"> Enable
+                                </label>
+                                <label class="radio-inline" for="goog2">
+                                    <input type="radio" id="goog2" name="goog" value="goog2" (click)="clearmessage()"> Disable
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">LinkedIn</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="li1">
+                                    <input type="radio" id="li1" name="li" value="li1" (click)="clearmessage()"> Enable
+                                </label>
+                                <label class="radio-inline" for="li2">
+                                    <input type="radio" id="li2" name="li" value="li2" (click)="clearmessage()"> Disable
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                    <!--/.row-->
+                </div>
+                <div class="card-footer">
+                    <p class="text-danger">{{errors1}}</p>
+                    <button type="submit" class="btn btn-sm btn-primary" (click)="addSocialLogin()"><i class="fa fa fa-check"></i> Save</button>
+                    <button type="reset" class="btn btn-sm btn-danger" (click)="resetSocilaProviders()"><i class="fa fa-ban"></i> Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

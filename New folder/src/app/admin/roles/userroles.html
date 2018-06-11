@@ -1,0 +1,1651 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com> <http://www.srisys.com>
+ -->
+<div class="tab-pane" id="new">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_ROLES' | translate}}</h5>
+                    <div class="roles-header pull-left">
+                        <select id="selectrole" [ngModel]="NAME" (ngModelChange)="onChange($event)" name="selectrole" class="form-control input-sm mb0"
+                            size="1">
+                            <option value="undefined">{{'USER_ROLES.SELECT_ROLE' | translate}}</option>
+                            <option *ngFor="let roles of rolesList" value="{{roles._id}}">{{roles.roleDisplayName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        <div class="card-block user-roles">
+            <div class="row">
+                <div class=" hidden-md-up col-md-2 float-right">
+                    <div>
+                        <ul class="list-inline user-roles-action-list">
+                            <li>
+                                <a data-toggle="modal" (click)="showMymodalModal();">{{'COMMON_PAGE_TITLES.CREATE_ROLE' | translate}}</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" (click)="showSmallModal()">{{'COMMON_PAGE_TITLES.DELETE_ROLE' | translate}}</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" (click)="updatedrolespopup();">{{'COMMON_PAGE_TITLES.EDIT_ROLE' | translate}}</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" (click)="showmodel();">{{'COMMON_PAGE_TITLES.RENAME_ROLE' | translate}}</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a data-toggle="" (click)="usersdetails()">{{'COMMON_PAGE_TITLES.LIST_USERS' | translate}}</a>
+                            </li>
+                        </ul>
+                        <div class="text-danger text-center">{{delerroruser | translate}}</div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="text-left">
+                                <input type="checkbox" [(ngModel)]="allAdvertisements" (change)="advertisements()">
+                                <strong> {{'COMMON_PAGE_TITLES.LIST_ADVERTISEMENTS' | translate}}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option2" (change)="advertisementsCheck()" [(ngModel)]="advertisements_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="advertisementsCheck()" [(ngModel)]="advertisements_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option3" (change)="advertisementsCheck()" [(ngModel)]="advertisements_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="advertisementsCheck()" [(ngModel)]="advertisements_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="advertisementsCheck()" [(ngModel)]="advertisements_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="advertisementsCheck()" [(ngModel)]="advertisements_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="text-left">
+                                <input type="checkbox" [(ngModel)]="allbilpayments" (change)="billpaymentsCheck()">
+                                <strong> {{'COMMON_PAGE_TITLES.LIST_BILL_PAYMENTS_HISTORY' | translate}}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option2" (change)="billpaymentsreCheck()" [(ngModel)]="billpayment_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="billpaymentsreCheck()" [(ngModel)]="billpayment_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option3" (change)="billpaymentsreCheck()" [(ngModel)]="billpayment_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="billpaymentsreCheck()" [(ngModel)]="billpayment_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="billpaymentsreCheck()" [(ngModel)]="billpayment_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="billpaymentsreCheck()" [(ngModel)]="billpayment_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="text-left">
+                                <input type="checkbox" [(ngModel)]="callhistory" (change)="callhistoryCheck()">
+                                <strong> {{'COMMON_PAGE_TITLES.LIST_CALL_HISTORY' | translate}}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="callhistoryreCheck()" [(ngModel)]="callhistory_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="callhistoryreCheck()" [(ngModel)]="callhistory_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="callhistoryreCheck()" [(ngModel)]="callhistory_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                            </label>
+                            <label class="checkbox-inline2">
+                                <input type="checkbox" value="option1" (change)="callhistoryreCheck()" [(ngModel)]="callhistory_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="hidden-sm-down col-md-2 float-right">
+                    <div>
+                        <ul class="list-inline user-roles-action-list">
+                            <li>
+                                <a data-toggle="modal" (click)="showMymodalModal();">{{'COMMON_PAGE_TITLES.CREATE_ROLE' | translate}}</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" (click)="showSmallModal()">{{'COMMON_PAGE_TITLES.DELETE_ROLE' | translate}}</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" (click)="updatedrolespopup();">{{'COMMON_PAGE_TITLES.EDIT_ROLE' | translate}}</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" (click)="showmodel();">{{'COMMON_PAGE_TITLES.RENAME_ROLE' | translate}}</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a data-toggle="" (click)="usersdetails()">{{'COMMON_PAGE_TITLES.LIST_USERS' | translate}}</a>
+                            </li>
+                        </ul>
+                        <div class="text-danger text-center">{{delerroruser | translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allenterpriseContractDetails" (change)="enterpriseContractDetailsCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_ENTERPRISE_CONTRACT_DETAILS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="enterpriseContractDetailsreCheck()" [(ngModel)]="enterpriseContractDetails_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseContractDetailsreCheck()" [(ngModel)]="enterpriseContractDetails_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="enterpriseContractDetailsreCheck()" [(ngModel)]="enterpriseContractDetails_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseContractDetailsreCheck()" [(ngModel)]="enterpriseContractDetails_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseContractDetailsreCheck()" [(ngModel)]="enterpriseContractDetails_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseContractDetailsreCheck()" [(ngModel)]="enterpriseContractDetails_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="alldisplaymap" (change)="displaymappingCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_DISPAY_TO_MAP_SETTINGS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="displaymappingreCheck()" [(ngModel)]="displaymap_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="displaymappingreCheck()" [(ngModel)]="displaymap_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="displaymappingreCheck()" [(ngModel)]="displaymap_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="displaymappingreCheck()" [(ngModel)]="displaymap_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="enterpriseResources" (change)="enterpriseResourcesCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_ENTERPRISE_RESOURCES' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_blockright">{{'USER_ROLES.RIGHTS_BLOCK' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_importright">{{'USER_ROLES.RIGHTS_IMPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_locateright">{{'USER_ROLES.RIGHTS_LOCATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_unblockright">{{'USER_ROLES.RIGHTS_UNBLOCK' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterpriseResourcesreCheck()" [(ngModel)]="enterprise_resources_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="enterprises" (change)="enterpriseCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_ENTERPRISES' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="enterprisereCheck()" [(ngModel)]="enterprise_activateright">{{'USER_ROLES.RIGHTS_ACTIVATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="enterprisereCheck()" [(ngModel)]="enterprise_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="enterprisereCheck()" [(ngModel)]="enterprise_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterprisereCheck()" [(ngModel)]="enterprise_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterprisereCheck()" [(ngModel)]="enterprise_inactivateright">{{'USER_ROLES.RIGHTS_INACTIVATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterprisereCheck()" [(ngModel)]="enterprise_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterprisereCheck()" [(ngModel)]="enterprise_locateright">{{'USER_ROLES.RIGHTS_LOCATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="enterprisereCheck()" [(ngModel)]="enterprise_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allregistrations" (change)="registrationsCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_EVENT_REGISTRATIONS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="registrationsreCheck()" [(ngModel)]="registrations_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="registrationsreCheck()" [(ngModel)]="registrations_checkinright">{{'USER_ROLES.RIGHTS_CHECKIN' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="registrationsreCheck()" [(ngModel)]="registrations_checkoutright">{{'USER_ROLES.RIGHTS_CHECKOUT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="registrationsreCheck()" [(ngModel)]="registrations_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="registrationsreCheck()" [(ngModel)]="registrations_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="registrationsreCheck()" [(ngModel)]="registrations_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="registrationsreCheck()" [(ngModel)]="registrations_guidedright">{{'USER_ROLES.RIGHTS_GUIDED' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="registrationsreCheck()" [(ngModel)]="registrations_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="registrationsreCheck()" [(ngModel)]="registrations_locateright">{{'USER_ROLES.RIGHTS_LOCATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="registrationsreCheck()" [(ngModel)]="registrations_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allevents" (change)="eventsCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_EVENTS' | translate}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="eventsreCheck()" [(ngModel)]="events_cancelright">{{'USER_ROLES.RIGHTS_CANCEL' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="eventsreCheck()" [(ngModel)]="events_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="eventsreCheck()" [(ngModel)]="events_checkinright">{{'USER_ROLES.RIGHTS_CHECKIN' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="eventsreCheck()" [(ngModel)]="events_checkoutright">{{'USER_ROLES.RIGHTS_CHECKOUT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="eventsreCheck()" [(ngModel)]="events_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="eventsreCheck()" [(ngModel)]="events_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="eventsreCheck()" [(ngModel)]="events_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="eventsreCheck()" [(ngModel)]="events_extendright">{{'USER_ROLES.RIGHTS_EXTEND' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="eventsreCheck()" [(ngModel)]="events_guidedright">{{'USER_ROLES.RIGHTS_GUIDED' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="eventsreCheck()" [(ngModel)]="events_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="eventsreCheck()" [(ngModel)]="events_locateright">{{'USER_ROLES.RIGHTS_LOCATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="eventsreCheck()" [(ngModel)]="events_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allfeedback" (change)="feedbackCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_FEEDBACK' | translate}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="feedbackreCheck()" [(ngModel)]="feedback_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="feedbackreCheck()" [(ngModel)]="feedback_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="feedbackreCheck()" [(ngModel)]="feedback_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="feedbackreCheck()" [(ngModel)]="feedback_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="feedbackreCheck()" [(ngModel)]="feedback_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="feedbackreCheck()" [(ngModel)]="feedback_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allreserve" (change)="reserveCheck()">
+                                        <strong> {{fleetCommonName}}{{'COMMON_PAGE_TITLES.LIST_FLEET_RESERVATIONS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="reservesreCheck()" [(ngModel)]="reserve_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="reservesreCheck()" [(ngModel)]="reserve_cancelright">{{'USER_ROLES.RIGHTS_CANCEL' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="reservesreCheck()" [(ngModel)]="reserve_checkinright">{{'USER_ROLES.RIGHTS_CHECKIN' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="reservesreCheck()" [(ngModel)]="reserve_checkoutright">{{'USER_ROLES.RIGHTS_CHECKOUT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="reservesreCheck()" [(ngModel)]="reserve_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="reservesreCheck()" [(ngModel)]="reserve_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="reservesreCheck()" [(ngModel)]="reserve_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="reservesreCheck()" [(ngModel)]="reserve_extendright">{{'USER_ROLES.RIGHTS_EXTEND' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="reservesreCheck()" [(ngModel)]="reserve_guidedright">{{'USER_ROLES.RIGHTS_GUIDED' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="reservesreCheck()" [(ngModel)]="reserve_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="reservesreCheck()" [(ngModel)]="reserve_locateright">{{'USER_ROLES.RIGHTS_LOCATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="reservesreCheck()" [(ngModel)]="reserve_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allfleetTypeAttributes" (change)="fleetTypeAttributesCheck()">
+                                        <strong> {{fleetCommonName}}{{'COMMON_PAGE_TITLES.LIST_FLEET_TYPE_ATTRIBUTES' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="fleetTypeAttributesreCheck()" [(ngModel)]="fleet_type_attributes_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetTypeAttributesreCheck()" [(ngModel)]="fleet_type_attributes_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="fleetTypeAttributesreCheck()" [(ngModel)]="fleet_type_attributes_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetTypeAttributesreCheck()" [(ngModel)]="fleet_type_attributes_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetTypeAttributesreCheck()" [(ngModel)]="fleet_type_attributes_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetTypeAttributesreCheck()" [(ngModel)]="fleet_type_attributes_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allfleetTypes" (change)="fleetTypesCheck()">
+                                        <strong> {{fleetCommonName}}{{'COMMON_PAGE_TITLES.LIST_FLEET_TYPES' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="fleetTypesreCheck()" [(ngModel)]="fleet_types_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetTypesreCheck()" [(ngModel)]="fleet_types_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="fleetTypesreCheck()" [(ngModel)]="fleet_types_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetTypesreCheck()" [(ngModel)]="fleet_types_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetTypesreCheck()" [(ngModel)]="fleet_types_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetTypesreCheck()" [(ngModel)]="fleet_types_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allfleets" (change)="flletsCheck()">
+                                        <strong> {{fleetsCommonName}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="fleetsreCheck()" [(ngModel)]="fleet_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetsreCheck()" [(ngModel)]="fleet_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="fleetsreCheck()" [(ngModel)]="fleet_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetsreCheck()" [(ngModel)]="fleet_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetsreCheck()" [(ngModel)]="fleet_importright">{{'USER_ROLES.RIGHTS_IMPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetsreCheck()" [(ngModel)]="fleet_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetsreCheck()" [(ngModel)]="fleet_locateright">{{'USER_ROLES.RIGHTS_LOCATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="fleetsreCheck()" [(ngModel)]="fleet_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allfunfacts" (change)="funfactsCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_FUNFACTS' | translate}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="funfactsreCheck()" [(ngModel)]="funfacts_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="funfactsreCheck()" [(ngModel)]="funfacts_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="funfactsreCheck()" [(ngModel)]="funfacts_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="funfactsreCheck()" [(ngModel)]="funfacts_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="funfactsreCheck()" [(ngModel)]="funfacts_importright">{{'USER_ROLES.RIGHTS_IMPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="funfactsreCheck()" [(ngModel)]="funfacts_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="funfactsreCheck()" [(ngModel)]="funfacts_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <!--help role rights -->
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allhelp" (change)="helpCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_HELP' | translate}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="helpreCheck()" [(ngModel)]="help_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="helpreCheck()" [(ngModel)]="help_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="helpreCheck()" [(ngModel)]="help_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="helpreCheck()" [(ngModel)]="help_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="helpreCheck()" [(ngModel)]="help_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="helpreCheck()" [(ngModel)]="help_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allimportHistory" (change)="importhistory()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_IMPORT_HISTORY' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="importHistoryCheck()" [(ngModel)]="importHistory_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="importHistoryCheck()" [(ngModel)]="importHistory_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="importHistoryCheck()" [(ngModel)]="importHistory_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="importHistoryCheck()" [(ngModel)]="importHistory_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allhistory" (change)="historyCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_LOGIN_HISTORY' | translate}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="historysreCheck" [(ngModel)]="loghistory_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="historysreCheck" [(ngModel)]="loghistory_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="historysreCheck" [(ngModel)]="loghistory_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="historysreCheck" [(ngModel)]="loghistory_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="alllookups" (change)="lookupsCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_LOOKUPS' | translate}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="lookupsreCheck()" [(ngModel)]="lookups_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="lookupsreCheck()" [(ngModel)]="lookups_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="lookupsreCheck()" [(ngModel)]="lookups_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="lookupsreCheck()" [(ngModel)]="lookups_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="lookupsreCheck()" [(ngModel)]="lookups_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="lookupsreCheck()" [(ngModel)]="lookups_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="messagehistory" (change)="messageCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_MESSAGE_HISTORY' | translate}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="messagereCheck()" [(ngModel)]="message_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="messagereCheck()" [(ngModel)]="message_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="messagereCheck()" [(ngModel)]="message_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="messagereCheck()" [(ngModel)]="message_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="messagereCheck()" [(ngModel)]="message_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allNotifications" (change)="notifications()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_NOTIFICATIONS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="notificationsCheck()" [(ngModel)]="notifications_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="notificationsCheck()" [(ngModel)]="notifications_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="notificationsCheck()" [(ngModel)]="notifications_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="notificationsCheck()" [(ngModel)]="notifications_readright">{{'USER_ROLES.RIGHTS_READ' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="notificationsCheck()" [(ngModel)]="notifications_unreadright">{{'USER_ROLES.RIGHTS_UNREAD' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="notificationsCheck()" [(ngModel)]="notifctions_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allPickTickets" (change)="pickTickets()">
+                                        <strong> {{'COMMON_PAGE_TITLES.MULTI_STOP_LOCATOR' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="pickTicketsCheck()" [(ngModel)]="pickTickets_assignright">{{'USER_ROLES.RIGHTS_ASSIGN' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="pickTicketsCheck()" [(ngModel)]="pickTickets_cancelright">{{'USER_ROLES.RIGHTS_CANCEL' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="pickTicketsCheck()" [(ngModel)]="pickTickets_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="pickTicketsCheck()" [(ngModel)]="pickTickets_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="pickTicketsCheck()" [(ngModel)]="pickTickets_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="pickTicketsCheck()" [(ngModel)]="pickTickets_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="pickTicketsCheck()" [(ngModel)]="pickTickets_locateright">{{'USER_ROLES.RIGHTS_LOCATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="pickTicketsCheck()" [(ngModel)]="pickTickets_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="rolerightCheck" (change)="rolerightsCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_ROLES' | translate}} </strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="rolerightsreCheck()" [(ngModel)]="rolerights_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="rolerightsreCheck()" [(ngModel)]="rolerights_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="rolerightsreCheck()" [(ngModel)]="rolerights_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="rolerightsreCheck()" [(ngModel)]="rolerights_renameright">{{'USER_ROLES.RIGHTS_RENAME' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="rolerightsreCheck()" [(ngModel)]="rolerights_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allStaticContents" (change)="staticContents()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_STATIC_CONTENT' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="staticContentsCheck()" [(ngModel)]="staticContents_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="staticContentsCheck()" [(ngModel)]="staticContents_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="staticContentsCheck()" [(ngModel)]="staticContents_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="staticContentsCheck()" [(ngModel)]="staticContents_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="staticContentsCheck()" [(ngModel)]="staticContents_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="staticContentsCheck()" [(ngModel)]="staticContents_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allUniversalImages" (change)="universalImages()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_UNIVERSAL_IMAGES' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="universalImagesCheck()" [(ngModel)]="universalImages_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="universalImagesCheck()" [(ngModel)]="universalImages_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="universalImagesCheck()" [(ngModel)]="universalImages_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="universalImagesCheck()" [(ngModel)]="universalImages_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="universalImagesCheck()" [(ngModel)]="universalImages_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="universalImagesCheck()" [(ngModel)]="universalImages_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="alluserscheck" (change)="usersCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_USERS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="usersreCheck()" [(ngModel)]="users_blockright">{{'USER_ROLES.RIGHTS_BLOCK' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="usersreCheck()" [(ngModel)]="users_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="usersreCheck()" [(ngModel)]="users_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="usersreCheck()" [(ngModel)]="users_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="usersreCheck()" [(ngModel)]="users_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="usersreCheck()" [(ngModel)]="users_importright">{{'USER_ROLES.RIGHTS_IMPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="usersreCheck()" [(ngModel)]="users_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="usersreCheck()" [(ngModel)]="users_locateright">{{'USER_ROLES.RIGHTS_LOCATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="usersreCheck()" [(ngModel)]="users_unblockright">{{'USER_ROLES.RIGHTS_UNBLOCK' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="usersreCheck()" [(ngModel)]="users_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="divider"></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="dashboard" (change)="dashboardCheck()">
+                                        <strong> {{'COMMON_PAGE_TITLES.DASHBOARD' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group dahsboard">
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="enterpriseResourcesAllRights_viewright">{{'DASHBOARD.ENTERPRISE_RESOURCES_TOTAL_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="enterpriseResourcesTotalActive_viewright">{{'DASHBOARD.ENTERPRISE_RESOURCES_ACTIVE_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="enterpriseResourcesTotalInactive_viewright">{{'DASHBOARD.ENTERPRISE_RESOURCES_INACTIVE_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="eventRegistrationsAll_viewright">{{'DASHBOARD.EVENT_REGISTRATIONS_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="eventRegistrationsAveragePerEvent_viewright">{{'DASHBOARD.EVENT_REGISTRATIONS_PER_EVENT_AVERAGES' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option2" (change)="dashboardreCheck()" [(ngModel)]="eventRegistrationsAveragePerFleet_viewright">{{'DASHBOARD.EVENT_REGISTRATIONS_PER_FLEET_AVERAGES' | translate}}{{fleetCommonName}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option2" (change)="dashboardreCheck()" [(ngModel)]="eventsAveragePerFleet_viewright">{{'DASHBOARD.EVENTS_AVERAGES' | translate}}{{fleetCommonName}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="eventsAll_viewright">{{'DASHBOARD.EVENTS_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetsAll_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEETS_TOTAL_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetHoursAverageReservedPerFleet_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEET_HOURS_RESERVED_AVERAGES' | translate}}{{fleetCommonName}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetHoursTotalReservable_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEET_HOURS_RESERVABLE_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetHoursTotalReserved_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEET_HOURS_RESERVED_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetReservationsAll_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEET_RESERVATIONS_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetReservationsAveragePerFleet_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEET_RESERVATIONS_AVERAGES' | translate}}{{fleetCommonName}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetsTotalActive_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEETS_ACTIVE_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetsTotalInactive_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEETS_INACTIVE_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetsTotalNonTransactable_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEETS_NONTRANSACTABLE_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetsTotalTransactable_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEETS_TRANSACTABLE_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="fleetUsage_viewright">{{fleetCommonName}}{{'DASHBOARD.FLEET_USAGE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="pieChartsByCountry_viewright">{{'DASHBOARD.PIE_CHARTS_BY_COUNTRY' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="userActivity_viewright">{{'DASHBOARD.USER_ACTIVITY' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="usersAll_viewright">{{'DASHBOARD.USERS_TOTAL_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="userHoursActualAveragePerUser_viewright">{{'DASHBOARD.USER_HOURS_ACTUAL_AVERAGES' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="userHoursTotalActual_viewright">{{'DASHBOARD.USER_HOURS_ACTUAL_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="userHoursTotalPotential_viewright">{{'DASHBOARD.USER_HOURS_POTENTIAL_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="usersTotalActive_viewright">{{'DASHBOARD.USERS_ACTIVE_COUNTS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline col-md-3 p0">
+                                        <input type="checkbox" value="option1" (change)="dashboardreCheck()" [(ngModel)]="usersTotalInactive_viewright">{{'DASHBOARD.USERS_INACTIVE_COUNTS' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="divider"></div>
+                                    <div class="text-left">
+                                        <strong> {{'COMMON_PAGE_TITLES.AURORA' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allApplications" (change)="applications()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_APPLICATIONS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="applicationsCheck()" [(ngModel)]="applications_activateright">{{'USER_ROLES.RIGHTS_ACTIVATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="applicationsCheck()" [(ngModel)]="applications_analyticsright">{{'USER_ROLES.RIGHTS_ANALYTICS' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="applicationsCheck()" [(ngModel)]="applications_cloneright">{{'USER_ROLES.RIGHTS_CLONE' | translate}}
+                                    </label>   
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="applicationsCheck()" [(ngModel)]="applications_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="applicationsCheck()" [(ngModel)]="applications_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="applicationsCheck()" [(ngModel)]="applications_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="applicationsCheck()" [(ngModel)]="applications_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="applicationsCheck()" [(ngModel)]="applications_implementright">{{'USER_ROLES.RIGHTS_IMPLEMENT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="applicationsCheck()" [(ngModel)]="applications_inactivateright">{{'USER_ROLES.RIGHTS_INACTIVATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="applicationsCheck()" [(ngModel)]="applications_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="applicationsCheck()" [(ngModel)]="applications_previewright">{{'USER_ROLES.RIGHTS_PREVIEW' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="applicationsCheck()" [(ngModel)]="applications_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allAppTypeAttributes" (change)="appTypeAttributes()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_APP_TYPE_ATTRIBUTES' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="appTypeAttributesCheck()" [(ngModel)]="appTypeAttributes_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="appTypeAttributesCheck()" [(ngModel)]="appTypeAttributes_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="appTypeAttributesCheck()" [(ngModel)]="appTypeAttributes_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="appTypeAttributesCheck()" [(ngModel)]="appTypeAttributes_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="appTypeAttributesCheck()" [(ngModel)]="appTypeAttributes_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="appTypeAttributesCheck()" [(ngModel)]="appTypeAttributes_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allAudiences" (change)="audiences()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_AUDIENCES' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="audiencesCheck()" [(ngModel)]="audiences_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="audiencesCheck()" [(ngModel)]="audiences_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="audiencesCheck()" [(ngModel)]="audiences_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="audiencesCheck()" [(ngModel)]="audiences_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allAuditTrail" (change)="auditTrail()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_AUDIT_TRAIL' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="auditTrailCheck()" [(ngModel)]="auditTrail_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="auditTrailCheck()" [(ngModel)]="auditTrail_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="auditTrailCheck()" [(ngModel)]="auditTrail_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allDomains" (change)="domains()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_DOMAINS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="domainsCheck()" [(ngModel)]="domains_activateright">{{'USER_ROLES.RIGHTS_ACTIVATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="domainsCheck()" [(ngModel)]="domains_addtoplanright">{{'USER_ROLES.RIGHTS_ADD_TO_PLAN' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="domainsCheck()" [(ngModel)]="domains_analyticsright">{{'USER_ROLES.RIGHTS_ANALYTICS' | translate}}
+                                    </label>   
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="domainsCheck()" [(ngModel)]="domains_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="domainsCheck()" [(ngModel)]="domains_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="domainsCheck()" [(ngModel)]="domains_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="domainsCheck()" [(ngModel)]="domains_inactivateright">{{'USER_ROLES.RIGHTS_INACTIVATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="domainsCheck()" [(ngModel)]="domains_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="domainsCheck()" [(ngModel)]="domains_removefromplanright">{{'USER_ROLES.RIGHTS_REMOVE_FROM_PLAN' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allEmailTemplates" (change)="emailTemplates()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_EMAIL_TEMPLATES' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_activateright">{{'USER_ROLES.RIGHTS_ACTIVATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_analyticsright">{{'USER_ROLES.RIGHTS_ANALYTICS' | translate}}
+                                    </label>   
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_inactivateright">{{'USER_ROLES.RIGHTS_INACTIVATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="emailTemplatesCheck()" [(ngModel)]="emailTemplates_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="text-left">
+                                        <input type="checkbox" [(ngModel)]="allPlans" (change)="plans()">
+                                        <strong> {{'COMMON_PAGE_TITLES.LIST_PLANS' | translate}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="plansCheck()" [(ngModel)]="plans_analyticsright">{{'USER_ROLES.RIGHTS_ANALYTICS' | translate}}
+                                    </label>   
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option2" (change)="plansCheck()" [(ngModel)]="plans_addright">{{'USER_ROLES.RIGHTS_CREATE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="plansCheck()" [(ngModel)]="plans_deleteright">{{'USER_ROLES.RIGHTS_DELETE' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option3" (change)="plansCheck()" [(ngModel)]="plans_editright">{{'USER_ROLES.RIGHTS_EDIT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="plansCheck()" [(ngModel)]="plans_exportright">{{'USER_ROLES.RIGHTS_EXPORT' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="plansCheck()" [(ngModel)]="plans_listright">{{'USER_ROLES.RIGHTS_LIST' | translate}}
+                                    </label>
+                                    <label class="checkbox-inline2">
+                                        <input type="checkbox" value="option1" (change)="plansCheck()" [(ngModel)]="plans_viewright">{{'USER_ROLES.RIGHTS_VIEW' | translate}}
+                                    </label>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" (keyup.Esc)="addclosehideMymodalModal()"
+                aria-labelledby="myModalLabel" [config]="{backdrop: 'static'}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" (click)="addclosehideMymodalModal()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <app-logoheader></app-logoheader>
+                                    <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                        class="pull-right">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.CREATE_ROLE' | translate}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="roleid">
+                                        <span class="text-danger">*</span>{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="roleid" id="userrolename" [(ngModel)]="userrolename" class="text-capitalize form-control input-sm" (keypress)="clearMessages()"
+                                    />
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">
+                                        <span class="text-danger">*</span>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" class="text-capitalize form-control input-sm" [(ngModel)]="DISPLAY_NAME" (keypress)="clearMessages()"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label text-capitalize">
+                                    <label for="copy">{{'USER_ROLES.MAKE_COPY' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <select class="form-control input-sm" [ngModel]="ROLE_ID" (ngModelChange)="onAddChange($event)" id="copy">
+
+                                        <option value="0">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}} </option>
+                                        <option *ngFor="let roles of rolesList" value="{{roles._id}}">{{roles.roleDisplayName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-danger text-center">{{addroleerror | translate}}</div>
+                        <!--<div class="text-danger text-center">{{errordisplayname | translate}}</div>
+                <div class="text-danger text-center">{{errorrolename | translate}}</div>-->
+                        <div class="modal-footer">
+                            <div class="col-md-12 p0">
+                                <div class="pull-left">
+                                    <app-powered></app-powered>
+                                </div>
+                                <div class="pull-right text-right">
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-primary" (click)="addRoles()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                                        <button type="button" class="btn btn-primary" (click)="addclosehideMymodalModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal add role-->
+            <div bsModal #largeModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="closerenamepopup()" tabindex="-1"
+                role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" (click)="closerenamepopup()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <app-logoheader></app-logoheader>
+                                    <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                        class="pull-right">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.RENAME_ROLE' | translate}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="roleid">{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="roleid" [(ngModel)]="userrolename" class="text-capitalize form-control input-sm" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" [(ngModel)]="DISPLAY_NAME_VALUE" class="text-capitalize form-control input-sm" (keypress)="clearMessages()"
+                                        disabled />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">
+                                        <span class="text-danger">*</span>{{'COMMON_FIELDS.DESCRIPTION_NEW' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" [(ngModel)]="DISPLAY_NAME" class="text-capitalize form-control input-sm" (keypress)="clearMessages()"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{'USER_ROLES.VALID_CHANGES' | translate}}</p>
+                        </div>
+                        <div class="text-danger text-center">{{renameerror | translate}}</div>
+                        <div class="modal-footer">
+                            <div class="col-md-12 p0">
+                                <div class="pull-left">
+                                    <app-powered></app-powered>
+                                </div>
+                                <div class="pull-right text-right">
+                                    <button type="button" class="btn btn-primary" (click)="renameRole()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                                    <button type="button" class="btn btn-primary" (click)="closerenamepopup()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal Rename -->
+            <div bsModal #smallModal="bs-modal" class="modal fade" tabindex="-1" [config]="{backdrop: 'static'}" (keyup.Esc)="hideSmallModal()"
+                role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" (click)="hideSmallModal()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <app-logoheader></app-logoheader>
+                                    <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                        class="pull-right">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.DELETE_ROLE' | translate}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="roleid">{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input id="deleterole_id" [ngModel]="userrolename" (change)="clearMessages()" class="text-capitalize form-control input-sm"
+                                        disabled/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" [(ngModel)]="DISPLAY_NAME" class="text-capitalize form-control input-sm" disabled (keypress)="clearMessages()"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{'USER_ROLES.VALID_CHANGES' | translate}}</p>
+                        </div>
+                        <div class="text-danger text-center">{{delerror | translate}}</div>
+                        <div class="modal-footer">
+                            <div class="col-md-12 p0">
+                                <div class="pull-left">
+                                    <app-powered></app-powered>
+                                </div>
+                                <div class="pull-right text-right">
+                                    <button type="button" class="btn btn-primary" (click)="deleteRole()">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+                                    <button type="button" class="btn btn-primary" (click)="hideSmallModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal Delete ROle -->
+            <div bsModal #infoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <app-logoheader></app-logoheader>
+                                    <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                        class="pull-right">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.EDIT_ROLE' | translate}}</h5>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="roleid">{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input id="deleterole_id" [ngModel]="userrolename" (change)="clearMessages()" class="text-capitalize form-control input-sm"
+                                        disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" [(ngModel)]="DISPLAY_NAME" class="text-capitalize form-control input-sm" (keypress)="clearMessages()"
+                                        disabled/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{'USER_ROLES.VALID_CHANGES' | translate}}</p>
+                        </div>
+                        <div class="text-danger text-center">{{ updateerror | translate}}</div>
+                        <div class="modal-footer">
+                            <div class="col-md-12 p0">
+                                <div class="pull-left">
+                                    <app-powered></app-powered>
+                                </div>
+                                <div class="pull-right text-right">
+                                    <button type="button" class="btn btn-primary" (click)="updateUserRoles()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                                    <button type="button" class="btn btn-primary" (click)="infoModal.hide()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+            <div bsModal #infoupdateModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" (click)="infoupdateModal.hide()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <app-logoheader></app-logoheader>
+                                    <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                        class="pull-right">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.EDIT_ROLE' | translate}}</h5>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="roleid">{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input id="deleterole_id" (change)="clearMessages()" class="text-capitalize form-control input-sm" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" class="text-capitalize form-control input-sm" (keypress)="clearMessages()" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-danger text-center">{{renameerror | translate}}</p>
+                        </div>
+                        <!--<div class="text-danger text-center">{{ updateerror | translate}}</div>-->
+                        <div class="modal-footer">
+                            <div class="col-md-12 p0">
+                                <div class="pull-left">
+                                    <app-powered></app-powered>
+                                </div>
+                                <div class="pull-right text-right">
+                                    <button type="button" class="btn btn-primary" (click)="infoupdateModal.hide()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                                    <!--<button type="button" class="btn btn-primary btn-sm" (click)="updateUserRoles()">{{'USER_ROLES.SAVE_CHANGES' | translate}}</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div bsModal #infodeleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" (click)="infodeleteModal.hide()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <app-logoheader></app-logoheader>
+                                    <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                        class="pull-right">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.DELETE_ROLE' | translate}}</h5>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="roleid">{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input id="deleterole_id" (change)="clearMessages()" class="text-capitalize form-control input-sm" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" class="text-capitalize form-control input-sm" (keypress)="clearMessages()" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-danger text-center">{{delerror | translate}}</p>
+                        </div>
+
+                        <!--<div class="text-danger text-center">{{ updateerror | translate}}</div>-->
+                        <div class="modal-footer">
+                            <div class="col-md-12 p0">
+                                <div class="pull-left">
+                                    <app-powered></app-powered>
+                                </div>
+                                <div class="pull-right text-right">
+                                    <button type="button" class="btn btn-primary" (click)="infodeleteModal.hide()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                                    <!--<button type="button" class="btn btn-primary btn-sm" (click)="updateUserRoles()">{{'USER_ROLES.SAVE_CHANGES' | translate}}</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div bsModal #inforenameModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" (click)="inforenameModal.hide()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <app-logoheader></app-logoheader>
+                                    <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                        class="pull-right">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.RENAME_ROLE' | translate}}</h5>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="roleid">{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input id="deleterole_id" (change)="clearMessages()" class="text-capitalize form-control input-sm" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" class="text-capitalize form-control input-sm" (keypress)="clearMessages()" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 form-control-label">
+                                    <label for="rolename">
+                                        <span class="text-danger">*</span>{{'COMMON_FIELDS.DESCRIPTION_NEW' | translate}}</label>
+                                </div>
+                                <div class=" col-md-8">
+                                    <input name="rolename" [(ngModel)]="DISPLAY_NAME" class="text-capitalize form-control input-sm" (keypress)="clearMessages()"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-danger text-center">{{renameerror | translate}}</p>
+                        </div>
+
+                        <!--<div class="text-danger text-center">{{ updateerror | translate}}</div>-->
+                        <div class="modal-footer">
+                            <div class="col-md-12 p0">
+                                <div class="pull-left">
+                                    <app-powered></app-powered>
+                                </div>
+                                <div class="pull-right text-right">
+                                    <button type="button" class="btn btn-primary" (click)="inforenameModal.hide()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                                    <!--<button type="button" class="btn btn-primary btn-sm" (click)="updateUserRoles()">{{'USER_ROLES.SAVE_CHANGES' | translate}}</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

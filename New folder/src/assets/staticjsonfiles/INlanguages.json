@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "English",
+      "code": "en",
+      "defaultlanguage": "true"
+    },
+    {
+      "id": 2,
+      "name": "हिंदी",
+      "code": "hy",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 3,
+      "name": "ਪੰਜਾਬੀ ",
+      "code": "pa",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 4,
+      "name": " తెలుగు",
+      "code": "te",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 5,
+      "name": "मराठी",
+      "code": "mr",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 6,
+      "name": "தமிழ்",
+      "code": "ta",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 7,
+      "name": "عربية",
+      "code": "ur",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 8,
+      "name": "اردو",
+      "code": "ar",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 9,
+      "name": "Español",
+      "code": "es",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 10,
+      "name": "Čeština",
+      "code": "cz",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 11,
+      "name": "Svenska",
+      "code": "sv",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 12,
+      "name": "Ελληνικά",
+      "code": "el",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 13,
+      "name": "français",
+      "code": "fr",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 14,
+      "name": "Русский",
+      "code": "ru",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 15,
+      "name": "한국어",
+      "code": "ko",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 16,
+      "name": "Português",
+      "code": "pt",
+      "defaultlanguage": "false"
+    },
+    
+    {
+      "id": 17,
+      "name": "Deutsch",
+      "code": "de",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 18,
+      "name": "日本語",
+      "code": "ja",
+      "defaultlanguage": "false"
+    }
+  ]
+}

@@ -1,0 +1,562 @@
+<!--Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 Srisys Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com-->
+<div bsModal #billHistoryModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideChildModal()"
+  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <!-- Header-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate }} </h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <!-- Header-->
+        <!-- create event popup   -->
+        <div *ngIf="[actionName] == 'Create'">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>
+                <span class="text-danger">&#42;</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+              <select id="enterpriseName" (change)="getEnterpriseDetails($event.target.value); clearmessage()" name="enterpriseName" class="form-control input-sm"
+                size="1">
+                <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                <option *ngFor="let clang of enterprisesNames; let i='index'" value="{{clang._id}}${{clang.enterpriseName}}${{clang.enterpriseIconFilePath}}${{clang.enterpriseIcon}}"
+                  id="clang{{i}}">{{clang.enterpriseName}}</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>
+                  <span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.INVOICE_NUMBER' | translate}}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" (keypress)="clearmessage()" class="text-capitalize form-control input-sm" id="invoiceNumber" name="invoiceNumber"
+                value="" [(ngModel)]="invoiceNumber" maxlength="15">
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>
+                  <span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.INVOICE_DATE' | translate}}</label>
+              </div>
+              <div class="clearfix"></div>
+              <p-calendar readonlyInput="readonlyInput" inputStyleClass="timezone-calendar calendar" [(minDate)]="minDate" [(ngModel)]="Invoicedate"
+                dateFormat="yy-mm-dd" [showIcon]="true" [showTime]="true" (onSelect)="clearmessage(); InvoiceDateChange(Invoicedate)"></p-calendar>
+              <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessage()" class="form-control input-sm duration-list">
+                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                  id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>
+                <span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.PERIOD_TYPE' | translate}}</label>
+              <select id="" class="form-control input-sm" (change)="getPeriodTypeValue($event.target.value);clearmessage()" (change)="clearmessage()">
+                <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                <option *ngFor="let clang of periodtypes; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>
+                  <span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.PERIOD_START_DATE' | translate }}</label>
+              </div>
+              <div class="clearfix"></div>
+              <p-calendar readonlyInput="readonlyInput" inputStyleClass="timezone-calendar calendar" (onSelect)="clearmessage(); startDateChange(startdate)"
+                [(minDate)]="minDate" [(ngModel)]="startdate" dateFormat="yy-mm-dd" [showIcon]="true" [showTime]="true"></p-calendar>
+              <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessage()" class="form-control input-sm duration-list">
+                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                  id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>
+                  <span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.PERIOD_END_DATE' | translate }}</label>
+              </div>
+              <div class="clearfix"></div>
+              <p-calendar readonlyInput="readonlyInput" inputStyleClass="timezone-calendar calendar" (onSelect)="clearmessage(); endDateChange(enddate)"
+                [(minDate)]="minDate" [(maxDate)]="maxDate" [(ngModel)]="enddate" dateFormat="yy-mm-dd" [showIcon]="true" [showTime]="true"></p-calendar>
+              <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessage()" class="form-control input-sm duration-list">
+                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                  id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>
+                  <span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.AMOUNT_DUE' | translate }}</label>
+              </div>
+              <input type="text" (keypress)="clearmessage()" class="text-capitalize form-control input-sm" id="amountDue" name="amountDue"
+                onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                value="" [(ngModel)]="amountDue" maxlength="10">
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                <span class="text-danger">*</span>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+              <select id="" class="form-control input-sm" (click)="clearmessage()" (change)="ChangeStatus($event.target.value)">
+                <option *ngFor="let clang of statuslist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.NOTES' | translate }}</label>
+              <input type="text" id="notes1" name="notes1" [(ngModel)]="notes" onkeypress="return event.charCode != 34" (keypress)="clearmessage()"
+                class="form-control input-sm" maxlength="40">
+            </div>
+          </div>
+        </div>
+
+        <!--create event popup ending  -->
+
+        <!--View and Delete Events -->
+        <div *ngIf="[actionName] =='View' || [actionName] =='Delete'">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.ENTERPRISE' | translate }}</label>
+              <div class="input-group">
+                <div class="input-group-mobile">
+                  <input type="text" class="text-capitalize form-control input-sm" id="advid" name="advname" value="{{billpayRec.enterprise.enterpriseName}}"
+                    disabled>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>
+                  <span class="text-danger"></span>{{'BILL_PAYMENT_HISTORY.INVOICE_NUMBER' | translate }}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" class="text-capitalize form-control input-sm" id="invoiceNumber" name="invoiceNumber" value="{{billpayRec.invoiceNumber}}"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.INVOICE_DATE' | translate }}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" class="text-capitalize form-control input-sm" id="advid" name="advname" value="{{invoicedate}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'BILL_PAYMENT_HISTORY.PERIOD_TYPE' | translate }}</label>
+              <div class="input-group">
+                <div class="input-group-mobile">
+                  <input type="text" class="text-capitalize form-control input-sm" id="advid" name="advname" value="{{billpayRec.billPeriodType}}"
+                    disabled>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.PERIOD_START_DATE' | translate }}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" class="text-capitalize form-control input-sm" id="advid" name="advname" value="{{startdate}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.PERIOD_END_DATE' | translate }}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" class="text-capitalize form-control input-sm" id="advid" name="advname" value="{{enddate}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.AMOUNT_DUE' | translate }}</label>
+              </div>
+              <input type="text" class="text-capitalize form-control input-sm" id="advid" name="advname" value="{{amountDue}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+              <input type="text" class="text-capitalize form-control input-sm" id="invoiceNumber" name="invoiceNumber" value="{{billpayRec.billPaymentStatus}}"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+              <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{billpayRec.notes}}" disabled>
+            </div>
+
+          </div>
+          <p-accordion>
+            <p-accordionTab header="{{'BILL_PAYMENT_HISTORY.BILLPAYMENT_DETAILS' |translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>{{'BILL_PAYMENT_HISTORY.AMOUNT_PAID' | translate }}</label>
+                  </div>
+                  <input type="text" class="text-capitalize form-control input-sm" id="amountPaid" name="amountPaid" value="{{updateamountPaid}}"
+                    disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>{{'BILL_PAYMENT_HISTORY.PAID_DATE' | translate }}</label>
+                  </div>
+                  <div class="clearfix"></div>
+                  <input type="text" class="text-capitalize form-control input-sm" id="advid" name="advname" value="{{paiddate}}" disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.CREDIT_CARD_TYPE' | translate}}</label>
+                  <input type="text" class="form-control input-sm" name="enterprise_card_num_name" id="enterprise_card_num_id" value="{{updatecreditCardType}}"
+                    disabled>
+
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.CREDIT_CARD_NUM' | translate}}</label>
+                  <input type="text" class="form-control input-sm" name="enterprise_card_num_name" value="{{cardnumber}}" id="enterprise_card_num_id"
+                    disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>{{'ENTERPRISES.CREDIT_CARD_EXPIRY_DATE' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm" name="enterprise_card_num_name" value="{{expiryDate}}" id="enterprise_card_num_id"
+                    disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.NAME_ON_CREDIT_CARD' | translate}}</label>
+                  <input type="text" class="form-control input-sm" name="username" id="" value="{{updatenameOnCreditCard}}" disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'BILL_PAYMENT_HISTORY.CVVNUMBER' | translate}}</label>
+                  <input type="text" class="form-control input-sm" name="username" id="" value="{{cvvnumber}}" disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'BILL_PAYMENT_HISTORY.PAID_BY_AUTHENTICATION_NUM' | translate }}</label>
+                  <input type="text" class="form-control input-sm" id="paidByCreditCartAuthorizationNumber" name="paidByCreditCartAuthorizationNumber"
+                    value="{{authorizationNumber}}" disabled>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                  <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{addressLine1}}" disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                  <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{addressLine2}}" disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                  <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{city}}" disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                  <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{country}}" disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                  <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{updatestate}}" disabled>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="" name="" value="{{updateZIP}}" disabled>
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="" [(ngModel)]="billpayRec.createdBy" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{createdAt}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="" [(ngModel)]="billpayRec.updatedBy" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{updatedAt}}" disabled>
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+
+        </div>
+        <!--View and Delete  -->
+
+        <!--Edit popup-->
+        <div *ngIf="[actionName] == 'Edit'">
+          <div class="row">
+
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+              <input type="text" id="createdId" class="form-control input-sm" name="username" disabled [(ngModel)]="updateenterpriseName">
+              <input type="text" id="createdId" class="form-control input-sm" name="username" hidden [(ngModel)]="updateenterpriseId">
+
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.INVOICE_NUMBER' | translate }}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" class="text-capitalize form-control input-sm" id="invoiceNumber" name="invoiceNumber" value="" [(ngModel)]="updateinvoiceNumber"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.INVOICE_DATE' | translate}}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{invoicedate1}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'BILL_PAYMENT_HISTORY.PERIOD_TYPE' | translate }}</label>
+              <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="" [(ngModel)]="updatebillPeriodType"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.PERIOD_START_DATE' | translate}}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{startdate1}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.PERIOD_END_DATE' | translate}}</label>
+              </div>
+              <div class="clearfix"></div>
+              <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="{{enddate1}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'BILL_PAYMENT_HISTORY.AMOUNT_DUE' | translate}}</label>
+              </div>
+              <input type="text" class="text-capitalize form-control input-sm" id="amountDue" name="amountDue" value="" [(ngModel)]="updateamountDue"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+              <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="" [(ngModel)]="updatebillPaymentStatus"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+              <input type="text" class="text-capitalize form-control input-sm" id="" name="" value="" [(ngModel)]="updatenotes" disabled>
+            </div>
+          </div>
+          <p-accordion>
+            <p-accordionTab header="{{'BILL_PAYMENT_HISTORY.BILLPAYMENT_DETAILS' |translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.AMOUNT_PAID' | translate}}</label>
+                  </div>
+                  <input type="text" (keypress)="clearmessage()" class="text-capitalize form-control input-sm" id="amountPaid" name="amountPaid"
+                    onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    value="" [(ngModel)]="updateamountPaid">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>{{'BILL_PAYMENT_HISTORY.PAID_DATE' | translate}}</label>
+                  </div>
+                  <div class="clearfix"></div>
+                  <p-calendar readonlyInput="readonlyInput" [(ngModel)]="paiddate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                    [showIcon]="true" [showTime]="true" (onSelect)="clearmessage();"></p-calendar>
+                  <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessage();" class="form-control input-sm duration-list">
+                    <option *ngFor="let clang of timeZone; let i='index'" [selected]="userpreferedtimezone == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                      id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_TYPE' | translate}}</label>
+                  <select id="" class="form-control input-sm" [(ngModel)]="updatecreditCardType" (click)="clearmessage()" (change)="clearmessage()">
+                    <option value=''>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                    <option *ngFor="let clang of cardTypes; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_NUM' | translate}}</label>
+                  <input type="text" class="form-control input-sm" name="enterprise_card_num_name" [(ngModel)]="updatecreditCardNumber" maxlength="19"
+                    (keypress)="hyphen_generateCardNumber(updatecreditCardNumber);clearmessage()" id="enterprise_card_num_id"
+                    onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_EXPIRY_DATE' | translate}}</label>
+                  </div>
+                  <select class="form-control input-sm duration-list" (change)="getMonth($event.target.value);clearmessage()" name='' id=''>
+                    <option value="">{{'ENTERPRISES.DEFAULT_MONTH' |translate}}</option>
+                    <option value='01' [selected]="cardTypeMonthValue === '01'">01</option>
+                    <option value='02' [selected]="cardTypeMonthValue === '02'">02</option>
+                    <option value='03' [selected]="cardTypeMonthValue === '03'">03</option>
+                    <option value='04' [selected]="cardTypeMonthValue === '04'">04</option>
+                    <option value='05' [selected]="cardTypeMonthValue === '05'">05</option>
+                    <option value='06' [selected]="cardTypeMonthValue === '06'">06</option>
+                    <option value='07' [selected]="cardTypeMonthValue === '07'">07</option>
+                    <option value='08' [selected]="cardTypeMonthValue === '08'">08</option>
+                    <option value='09' [selected]="cardTypeMonthValue === '09'">09</option>
+                    <option value='10' [selected]="cardTypeMonthValue === '10'">10</option>
+                    <option value='11' [selected]="cardTypeMonthValue === '11'">11</option>
+                    <option value='12' [selected]="cardTypeMonthValue === '12'">12</option>
+                  </select>
+                  <select class="form-control input-sm duration-list" (change)="getYear($event.target.value);clearmessage()" name='' id=''>
+                    <option value=''>{{'ENTERPRISES.DEFAULT_YEAR' | translate}}</option>
+                    <option *ngFor="let year of yearArray; let i='index'" value="{{year}}" [selected]="cardTypeYearValue == year">{{yearArray[i]}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.NAME_ON_CREDIT_CARD' | translate}}</label>
+                  <input type="text" class="form-control input-sm" name="username" [(ngModel)]="updatenameOnCreditCard" (keypress)="clearmessage()">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.CVVNUMBER' | translate}}</label>
+                  <input type="text" class="form-control input-sm" name="username" maxlength="3" value="" [(ngModel)]="cvvnumber" (keypress)="clearmessage()"
+                    onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>{{'BILL_PAYMENT_HISTORY.PAID_BY_AUTHENTICATION_NUM' | translate}}</label>
+                  </div>
+                  <div class="clearfix"></div>
+                  <input type="text" (keypress)="clearmessage()" class="text-capitalize form-control input-sm" id="paidByCreditCartAuthorizationNumber"
+                    onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    value="" [(ngModel)]="authorizationNumber" name="paidByCreditCartAuthorizationNumber">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                  <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="addressLine1" value="">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                  <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="addressLine2" value="">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                  <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="city" value="">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                  <select id="" class="form-control input-sm" [(ngModel)]="country" (change)="changeCountry($event.target.value);clearmessage()"
+                    (change)="clearmessage()">
+                    <option *ngFor="let clang of countries; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                  <select id="" class="form-control input-sm" [(ngModel)]="updatestate" (click)="clearmessage()" (change)="clearmessage()">
+                    <option value=''>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                    <option *ngFor="let clang of states; let i='index'" value="{{clang}}" id="profilePage_timezone_select_option_{{i}}">{{clang}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="updateZIP" onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    value="">
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="" [(ngModel)]="billpayRec.createdBy" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{createdAt}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="" [(ngModel)]="billpayRec.updatedBy" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{updatedAt}}" disabled>
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+
+        <!--Edit popup ending  -->
+
+      </div>
+      <div *ngIf="actionName =='Create'" class="text-danger text-center">{{error | translate}}</div>
+      <div *ngIf="actionName =='Edit'" class="text-danger text-center">{{error | translate}}</div>
+      <div *ngIf="actionName =='View'" class="text-danger text-center">{{error | translate}}</div>
+      <div *ngIf="actionName =='Delete'" class="text-danger text-center">{{error | translate}}</div>
+      <div class="modal-footer" *ngIf="actionName =='Edit'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary" (click)="editBillhistory(billpayRec)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="actionName =='Create'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary" (click)="createBillhistory(createobj)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="actionName =='View'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="actionName =='Delete'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary" (click)="deleteBillhistory(billpayRec._id)">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,332 @@
+@charset "UTF-8";
+/* standarded classes starts */
+@font-face {
+  font-family: "fleet-icons";
+  src:url("fleet-icons.eot");
+  src:url("fleet-icons.eot?#iefix") format("embedded-opentype"),
+    url("fleet-icons.woff") format("woff"),
+    url("fleet-icons.ttf") format("truetype"),
+    url("fleet-icons.svg#fleet-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:after {
+  font-family: "fleet-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="asset-icon-"]:before,
+[class*=" asset-icon-"]:before,
+[class^="asset-icon-"]:after,
+[class*=" asset-icon-"]:after {
+  font-family: "fleet-icons" !important;
+  font-size: 20px;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position:relative;
+  left:0;
+  top:3px;
+  display:inline;
+}
+
+[class^="asset-icon-"]:before,
+[class*=" asset-icon-"]:before
+{
+	content: "\56";
+  color:#FFF;
+  position: absolute;
+
+}
+/* standarded classes ends */
+
+/* Css content maping starts */
+
+
+.asset-icon-a:after {
+  content: "\61";
+}
+.asset-icon-b:after {
+  content: "\62";
+}
+.asset-icon-c:after {
+  content: "\63";
+}
+.asset-icon-d:after {
+  content: "\64";
+}
+.asset-icon-e:after {
+  content: "\65";
+}
+.asset-icon-f:after {
+  content: "\66";
+}
+.asset-icon-g:after {
+  content: "\67";
+}
+.asset-icon-h:after {
+  content: "\68";
+}
+.asset-icon-i:after {
+  content: "\69";
+}
+.asset-icon-j:after {
+  content: "\6a";
+}
+.asset-icon-k:after {
+  content: "\6b";
+}
+.asset-icon-l:after {
+  content: "\6c";
+}
+.asset-icon-m:after {
+  content: "\6d";
+}
+.asset-icon-n:after {
+  content: "\6e";
+}
+.asset-icon-o:after {
+  content: "\6f";
+}
+.asset-icon-p:after {
+  content: "\70";
+}
+.asset-icon-q:after {
+  content: "\71";
+}
+.asset-icon-r:after {
+  content: "\72";
+}
+.asset-icon-s:after {
+  content: "\73";
+}
+.asset-icon-t:after {
+  content: "\74";
+}
+.asset-icon-u:after {
+  content: "\75";
+}
+.asset-icon-v:after {
+  content: "\76";
+}
+.asset-icon-w:after {
+  content: "\77";
+}
+.asset-icon-x:after {
+  content: "\78";
+}
+.asset-icon-y:after {
+  content: "\79";
+}
+.asset-icon-z:after {
+  content: "\7a";
+}
+.asset-icon-dining:after {
+  content: "\41";
+}
+.asset-icon-drawingroom:after {
+  content: "\42";
+}
+.asset-icon-spl-fireextinguisher:after {
+  content: "\43";
+}
+.asset-icon-spl-fireexit:after {
+  content: "\44";
+}
+.asset-icon-spl-firstaid:after {
+  content: "\45";
+}
+.asset-icon-hall:after {
+  content: "\46";
+}
+.asset-icon-kitchen:after {
+  content: "\47";
+}
+.asset-icon-spl-restroom-female:after {
+  content: "\48";
+}
+.asset-icon-spl-restroom-male:after {
+  content: "\49";
+}
+.asset-icon-spl-safespot:after {
+  content: "\4a";
+}
+.asset-icon-seat:after {
+  content: "\4b";
+}
+.asset-icon-storeroom:after {
+  content: "\4c";
+}
+.asset-icon-staircase:after {
+  content: "\4d";
+}
+.asset-icon-waitingroom:after {
+  content: "\4e";
+}
+.asset-icon-phone:after {
+  content: "\4f";
+}
+.asset-icon-plus:after {
+  content: "\50";
+}
+.asset-icon-sign-in:after {
+  content: "\51";
+}
+.asset-icon-sign-out:after {
+  content: "\52";
+}
+.asset-icon-cancel:after {
+  content: "\53";
+}
+.asset-icon-extend:after {
+  content: "\54";
+}
+.asset-icon-registered:after {
+  content: "\55";
+}
+.asset-icon-marker:after {
+  content: "\56";
+}
+.asset-icon-envelope:after {
+  content: "\57";
+}
+.asset-icon-marker-black::before{
+  /* content: '' */
+  font-size: 30px;
+  position: absolute;
+}
+.asset-icon-marker-black:after {
+  content: "\56";
+  font-size: 30px;
+  /* margin-left: -30px !important; */
+  position: relative;
+  
+}
+[class^="asset-icon-"]:after,
+[class*=" asset-icon-"]:after {
+/* margin-left:-20px; */
+position: relative;
+
+}
+[class^="asset-icon-spl-"]:before,
+[class*=" asset-icon-spl-"]:before
+{
+content:''
+}
+[class^="asset-icon-spl-"]:after,
+[class*=" asset-icon-spl-"]:after
+{
+  font-size: 17px;
+  color: #FF0700;
+  margin-left: 0px;
+}
+
+.bgcolor::before
+{
+  /* Need to remove this color pass color dynamic*/
+  color:#FF0700;
+  content: "\56";
+  font-size: 30px;
+}
+.bgcolor::after
+{
+  font-size: 30px;
+  /* margin-left: -31px !important; */
+}
+
+/* remove before icon */
+.asset-icon-hall:before, 
+.asset-icon-envelope:before, 
+.asset-icon-registered:before, 
+.asset-icon-cancel:before, 
+.asset-icon-extend:before, 
+.asset-icon-registered:before, 
+.asset-icon-sign-out:before, 
+.asset-icon-sign-in:before, 
+.asset-icon-phone:before,
+.asset-icon-envelope:before,
+.asset-icon-phone:before,
+.asset-icon-plus:before
+{
+  content:" ";
+}
+@media only screen and (min-width : 320px) and (max-width : 1024px) {
+#extend, #message, #call, #checkout, #checkin, #cancel, #reservefleet, #eventReg {
+  margin-right: 10px;
+}
+}
+/*180307 shravani*/
+.spinnerloadingbackground {
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  /* background: #ccc; */
+  top: 0px;
+  left: 0px;
+  position: absolute;
+}
+.rotate{
+  animation-timing-function: linear;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: rotate;
+  border: 5px dotted green;
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  display: block;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.solid{
+  border-style: solid;
+}
+.dotted{
+  border-style: dotted;
+}
+.dashed{
+  border-style: dashed;
+}
+.double{
+  border-style: double;
+}
+.groove{
+  border-style: groove;
+}
+.ridge{
+  border-style: ridge;
+}
+.inset{
+  border-style: inset;
+}
+.outset{
+  border-style: outset;
+}
+.colored{
+  border-color: red orange green blue;
+}

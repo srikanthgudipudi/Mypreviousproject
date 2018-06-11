@@ -1,0 +1,1856 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideChildModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div *ngIf="[action]=='View' || [action] == 'Inactivate' || [action] == 'Activate'" class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{APIendpoint}}{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="enterpriseId" name="enterpriseName" disabled value="{{enterpriseobj?.enterpriseName}}">
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input">{{'ENTERPRISES.WEBSITE' | translate}}</label><br>
+                  <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj?.meta.websiteURL}}">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input">{{'ENTERPRISES.EIN' | translate}}</label><br>
+                  <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj?.EIN}}">
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+                <input type="text" class="form-control input-sm" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.isEnabled">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 img-block">
+            <div class="row img-block-content">
+              <div class="col-md-12 img-block-column">
+                <label class="form-control-label">{{'ENTERPRISES.ENTERPRISE_IMAGE' | translate}}</label>
+                <img alt="" class="" id="profilepageprofilePicimg" [src]="imgSrc" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 form-group">
+            <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea id="commentId" name="commentName" (keypress)="clearmessage()" disabled [(ngModel)]="comment" rows="2" class="form-control input-sm"
+              maxlength="200"></textarea>
+          </div>
+
+          <div class="col-md-4 uploadjsbtn">
+            <div class="input-group"><label>{{enterpriseIcon}}</label></div>
+            <div class="input-file-container">
+              <input class="input-file" id="file-input" type="file" (change)="imageUploaded($event)" [(ngModel)]="imgfile" accept='image/*|video/*'
+                disabled>
+                <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+            </div>
+          </div>
+
+          <div *ngIf="retext == false && updateaction == 'ACTIVE'" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{oldreasonInactive}}" disabled>
+          </div>
+          <div *ngIf="retext == false && updateaction == 'ACTIVE'" class="col-md-4 form-group">
+            <span class="text-danger">*</span>
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <select id="theme" (change)="getreason($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+              <option value=''>Select</option>
+              <option *ngFor="let clang of reasons; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+              </select>
+          </div>
+          <!--ACTIVE REASON END-->
+
+          <!--INACTIVE REASON-->
+
+          <div *ngIf="retext == false && updateaction == 'INACTIVE'" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{oldreasonActive}}" disabled>
+          </div>
+          <div *ngIf="retext == false && updateaction == 'INACTIVE'" class="col-md-4 form-group">
+            <span class="text-danger">*</span>
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <select id="theme" (change)="getreason($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+              <option value=''>Select</option>
+              <option *ngFor="let clang of reasons; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+              </select>
+          </div>
+          <!--INACTIVE REASON END-->
+
+          <div *ngIf="retext == true" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonActivate}}" disabled>
+          </div>
+
+          <div *ngIf="retext == true" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonInactivate}}" disabled>
+          </div>
+
+        </div>
+        <p-accordion>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <div class="input-group-mobile">
+                    <input type="text" class="form-control input-sm country-code" value="{{this.worknumber}}" disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="emailId" name="emailName" disabled value="{{enterpriseobj?.contactDetails.email}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID_ADMIN' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="adminemailId" name="adminemailName" disabled value="{{enterpriseobj?.settings.adminEmail}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="addressline1Id" name="addressline1Name" disabled value="{{enterpriseobj?.address.addressLine1}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="addressline2Id" name="addressline2Name" disabled value="{{enterpriseobj?.address.addressLine2}}">
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="cityId" name="cityName" disabled value="{{enterpriseobj?.address.city}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="countryId" name="countryName" disabled value="{{enterpriseobj?.address.country}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="stateId" name="stateName" disabled value="{{enterpriseobj?.address.state}}">
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="zipId" name="zipName" disabled value="{{enterpriseobj?.address.ZIP}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="latitudeId" name="latitudeName" disabled value="{{enterpriseobj?.address.geoCoordinates[0]}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="longitudeId" name="logitudeName" disabled value="{{enterpriseobj?.address.geoCoordinates[1]}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_APP_TITLE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="apptitleId" name="apptitleName" disabled value="{{enterpriseobj?.settings.appTitle}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_PASSWORD_RESET' | translate}}</label>
+                <input type="checkbox" id="disablepasswordId1" name="disablepasswordName" (click)="clearmessage()" disabled [(ngModel)]="enabledPassReset"
+                  class="regular-checkbox big-checkbox">
+                  <label for="disablepasswordId1"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_CAPTCHA' | translate}}</label>
+                <input type="checkbox" id="discaptchaId1" name="discaptchaName" (click)="clearmessage()" disabled [(ngModel)]="enabledCaptcha"
+                  class="regular-checkbox big-checkbox">
+                  <label for="discaptchaId1"></label>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_COMMON_NAME' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="fleetCommonFieldId" name="fleetCommonFieldName" disabled value="{{enterpriseobj?.settings.fleetCommonName}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.settings.maxActiveReservationsPerUser}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class=" form-control input-sm" id="advancedReservationWindowDaysId" name="advancedReservationWindowDaysName"
+                  disabled value="{{enterpriseobj?.settings.advancedReservationWindowInDays}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_POSSIBLE' | translate}}</label>
+                <input type="checkbox" id="possible" name="reservePossible" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.settings.longTermReservationPossible"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="possible"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input type="checkbox" id="bumped" name="reservationCanBeBumped" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.settings.reservationCanBeBumped"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="bumped"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input type="checkbox" id="remainders" name="reserveRemainder" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.settings.sendReservationReminders"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="remainders"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.settings.maxReservationWindowInHrs}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.settings.reservationReminderWindowInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_RESERVATION_AUTO_EXPIRES_IN_HOURS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expireId" name="expireName" disabled value="{{enterpriseobj?.settings.fleetExpiryHours}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.settings.expirationGracePeriodInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_INACTIVE_TIMEOUT_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="inactivetimeId" name="inactivetimeName" disabled value="{{enterpriseobj?.settings.inactivityTimeoutInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="allowwaitlistId" name="allowwaitlistName" disabled value="{{enterpriseobj?.settings.earlyCheckinWindowInMins}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'SSOBLOCK.SSO_DETAILS' | translate}}">
+
+            <div class="col-md-4 form-group">
+              <label>{{'ENTERPRISES.SSO_ENABLED' | translate}}</label>
+              <input type="checkbox" id="inline-checkboxsso12" name="inline-checkbox1" (click)="clearmessage()" [(ngModel)]="enterpriseobj.singleSignOn.ssoEnabled"
+                value="true" class="regular-checkbox big-checkbox" disabled>
+                <label for="inline-checkboxsso12"></label>
+            </div>
+            <div class="row" *ngIf="viewssoEnabled == true">
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOALIAS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoAlias}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOHOST' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoHost}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOPORT' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoPort}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOLDAPS' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxsso13" disabled name="inline-checkbox2" [(ngModel)]="enterpriseobj.singleSignOn.ssoLDAPS"
+                  (click)="clearmessage()" value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxsso13"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOACCOUNT' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoAccount}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOPASSWORD' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoPassword}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOBASEDN' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoBaseDN}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOLDAPFilter' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoLDAPFilter}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_TIMEOUT_INSECONDS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoTimeoutInSeconds}}" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_FLYUSER_CREATION' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxsso14" name="inline-checkbox4" (click)="clearmessage()" [(ngModel)]="enterpriseobj.singleSignOn.ssoOnTheFlyUserCreation"
+                  value="true" class="regular-checkbox big-checkbox" disabled>
+                  <label for="inline-checkboxsso14"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_LOGIN_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoLoginAttribute}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_FIRSTNAME_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoFirstnameAttribute}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_LASTNAME_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoLastnameAttribute}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_EMAIL_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoEmailAttribute}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SSO_LOGINURL' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoLoginUrl}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SSO_LOGOUTURL' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  value="{{enterpriseobj.singleSignOn.ssoLogoutUrl}}" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="timezoneId" name="timezoneName" disabled value="{{enterpriseobj?.preferences.defaultTimezone}}">
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input">{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                  <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj?.preferences.defaultTheme}}">
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj?.preferences.defaultLanguage}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj?.preferences.defaultCurrency}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj?.preferences.currencyFormat}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj?.preferences.dateFormat}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" disabled value="{{enterpriseobj?.preferences.rowsPerPage}}">
+              </div>
+            </div>
+          </p-accordionTab>
+
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.BILL_TO_DETAILS' |translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" value="{{enterpriseobj.billToDetails.addressLine1}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.billToDetails.addressLine2}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.billToDetails.city}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <input type="text" id="" class="form-control input-sm" value="{{enterpriseobj.billToDetails.country}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <input type="text" id="" class="form-control input-sm" value="{{enterpriseobj.billToDetails.state}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.billToDetails.ZIP}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.CREDIT_CARD_TYPE' | translate}}</label>
+                <input id="" class="form-control input-sm" value="{{enterpriseobj.billToDetails.creditCardType}}" name="" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.CREDIT_CARD_NUM' | translate}}</label>
+                <input type="text" class="form-control input-sm" name="" value="{{cardnumber}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.NAME_ON_CREDIT_CARD' | translate}}</label>
+                <input type="text" class="form-control input-sm" name="username" value="{{enterpriseobj.billToDetails.nameOnCreditCard}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <div class="input-group">
+                  <label>{{'ENTERPRISES.CREDIT_CARD_EXPIRY_DATE' | translate}}</label>
+                </div>
+                <input class="form-control input-sm duration-list" name="" id="" value="{{enterpriseobj.billToDetails.creditCardExpiryDate}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <div class="input-group">
+                  <label>{{'BILL_PAYMENT_HISTORY.CVVNUMBER' | translate}}</label>
+                </div>
+                <input class="form-control input-sm duration-list" name="" id="" value="{{enterpriseobj.billToDetails.cvvNumber}}" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{enterpriseobj?.createdBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{createAt}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{enterpriseobj?.updatedBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{updateAt}}">
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div class="modal-footer" *ngIf="[action]=='View'">
+        <div class="col-md-12 p0">
+          <div class="pull-left fleetftsub">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin pull-right" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="[action]=='Activate'" id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer" *ngIf="[action]=='Activate'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="activateEnterprise(enterpriseobj.enterpriseName, enterpriseobj._id)">{{'COMMON_BUTTONS.BUTTON_ACTIVATE' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div id="login_popup_error" *ngIf="[action]=='Inactivate'" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer" *ngIf="[action]=='Inactivate'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="inactivateEnterprise(enterpriseobj.enterpriseName, enterpriseobj._id)">{{'COMMON_BUTTONS.BUTTON_INACTIVATE' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="action=='Create'" class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-12">
+            <app-logoheader></app-logoheader>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="username" name="username" maxlength="15" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" [(ngModel)]="singleentAdd.enterpriseName" value="{{userAccount}}">
+                  <input type="hidden" name="enterpriseId" class="form-control" id="enterpriseId" value="{{enterpriseid}}">
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input"><span class="text-danger">*</span>{{'ENTERPRISES.WEBSITE' | translate}}</label><br>
+                  <input type="text" class="form-control input-sm" maxlength="40" id="username" name="username" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="singleentAdd.webSite" value="{{userAccount}}">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input"><span class="text-danger">*</span>{{'ENTERPRISES.EIN' | translate}}</label><br>
+                  <input type="text" class="form-control input-sm" maxlength="9" id="username" name="username" (click)="clearmessage()" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57)'
+                    [(ngModel)]="singleentAdd.ein" value="{{userAccount}}">
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">
+              {{'COMMON_FIELDS.STATUS' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.isEnabled" (click)="clearmessage()">
+              <option *ngFor="let clang of statuslist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option> 
+            </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 img-block">
+            <div class="row img-block-content">
+              <div class="col-md-12 img-block-column">
+                <label class="form-control-label"><span class="text-danger">*</span>{{'ENTERPRISES.ENTERPRISE_IMAGE' | translate}}</label>
+                <img alt="" class="" id="profilepageprofilePicimg" [src]="imgSrc" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 form-group">
+            <label><span class="text-danger">*</span>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea id="commentId" name="commentName" (keypress)="clearmessage()" onkeypress="return event.charCode != 34" [(ngModel)]="singleentAdd.description"
+              (click)="clearmessage()" rows="2" class="form-control input-sm" maxlength="200"></textarea>
+          </div>
+          <div class="col-md-4 form-group uploadjsbtn">
+            <div class="input-group"><label>&nbsp;</label></div>
+            <div class="input-file-container">
+              <input class="input-file" id="file-input" type="file" [(ngModel)]="imgfile" name="file-input" (change)="clearmessage()" (change)="imageUploaded($event)">
+              <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+            </div>
+            <div class="file-return" id="enterpriseimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+
+          </div>
+        </div>
+        <p-accordion>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>
+                      <span class="text-danger">*</span>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <div class="input-group-mobile">
+                    <select [(ngModel)]="singleentAdd.workNumberCountrycode" class="form-control input-sm country-code" name="select" value="Country Code">
+                          <option *ngFor="let clang of countryCodes; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                        </select>
+                    <input type="text" class="form-control input-sm mob-num" id="enterprise_create_mobile_id" name="enterprise_create_mobile_name"
+                      (click)="clearmessage()" (keypress)='hyphen_generate(singleentAdd.mobile);clearmessage();' name="mobile"
+                      onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                      maxlength="12" [(ngModel)]="singleentAdd.mobile" value="" />
+                    <input type="text" class="form-control input-sm ext-num" maxlength="5" [(ngModel)]="singleentAdd.workNumberExtn" onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                      <span class="text-danger">*</span>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.email" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                      <span class="text-danger">*</span>{{'COMMON_FIELDS.EMAIL_ID_ADMIN' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.adminEmail" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.addressLine1" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.addressLine2" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.city" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.country" (change)="getCountryStates1($event.target.value);clearmessage()"
+                  (change)="clearmessage()">
+                  <option *ngFor="let clang of countries; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                  </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.state" (click)="clearmessage()" (change)="clearmessage()">
+             <option value='' >{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option> 
+<option *ngFor="let clang of states; let i='index'" value="{{clang}}"  id="profilePage_timezone_select_option_{{i}}">{{clang}}</option>
+            </select>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.zip" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" maxlength="18" id="username" name="username" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.latitude" value="{{userAccount}}">
+                  <input type="hidden" name="enterpriseId" class="form-control" id="enterpriseId" value="{{enterpriseid}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" maxlength="18" id="username" name="username" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.longitude" value="{{userAccount}}">
+                  <input type="hidden" name="enterpriseId" class="form-control" id="enterpriseId" value="{{enterpriseid}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_APP_TITLE' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="10" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.appTitle" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_PASSWORD_RESET' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxdpp" name="inline-checkbox1" (click)="clearmessage()" [(ngModel)]="singleentAdd.disablePasswordRes"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxdpp"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_CAPTCHA' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxdep" name="inline-checkbox2" (click)="clearmessage()" [(ngModel)]="singleentAdd.disableCaptcha"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxdep"></label>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_COMMON_NAME' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.fleetCommonName" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" [(ngModel)]="singleentAdd.maxActiveReservationsPerUser" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class=" form-control input-sm" id="" name="" maxlength="3" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57)'
+                  [(ngModel)]="singleentAdd.advancedReservationWindowInDays" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_POSSIBLE' | translate}}</label>
+                <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" type="checkbox" [(ngModel)]="singleentAdd.longTermReservationPossible"
+                  (click)="clearmessage()">
+                  <label for="inline-checkbox3"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" [(ngModel)]="singleentAdd.reservationCanBeBumped"
+                  (click)="clearmessage()">
+                  <label for="inline-checkbox2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input id="inline-checkbox4" class="regular-checkbox big-checkbox" name="inline-checkbox4" type="checkbox" [(ngModel)]="singleentAdd.sendReservationReminders"
+                  (click)="clearmessage()">
+                  <label for="inline-checkbox4"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" [(ngModel)]="singleentAdd.maxReservationWindowInHrs" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" [(ngModel)]="singleentAdd.reservationReminderWindowInMins" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_RESERVATION_AUTO_EXPIRES_IN_HOURS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="3" (click)="clearmessage()" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57)'
+                  [(ngModel)]="singleentAdd.expiryHours" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" [(ngModel)]="singleentAdd.expirationGracePeriodInMins" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_INACTIVE_TIMEOUT_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="3" (click)="clearmessage()" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57)'
+                  [(ngModel)]="singleentAdd.inactiveTimeOut" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="3" (click)="clearmessage()" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57)'
+                  [(ngModel)]="singleentAdd.earlyCheckinWindowInMins" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'SSOBLOCK.SSO_DETAILS' | translate}}">
+            <div class="col-md-4 form-group">
+              <label>{{'ENTERPRISES.SSO_ENABLED' | translate}}</label>
+              <input type="checkbox" id="inline-checkboxsso" name="inline-checkbox1" (click)="clearmessage()" [(ngModel)]="singleentAdd.sso"
+                value="true" class="regular-checkbox big-checkbox">
+                <label for="inline-checkboxsso"></label>
+            </div>
+            <div class="row" *ngIf="singleentAdd.sso == true">
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOALIAS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.ssoalias" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOHOST' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssohost" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOPORT' | translate}}</label>
+                <input type="text" [(ngModel)]="singleentAdd.ssoport" class="text-capitalize form-control input-sm" id="" name="" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="" maxlength="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOLDAPS' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxsso13" name="inline-checkbox2" [(ngModel)]="singleentAdd.ssoldaps" (click)="clearmessage()"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxsso13"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOACCOUNT' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" [(ngModel)]="singleentAdd.ssoaccount" name="" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOPASSWORD' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssopswd" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOBASEDN' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssobase" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOLDAPFilter' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssoldapfilter" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_TIMEOUT_INSECONDS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssotimeout" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="" maxlength="6" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_FLYUSER_CREATION' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxsso14" name="inline-checkbox4" (click)="clearmessage()" [(ngModel)]="singleentAdd.flyuser"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxsso14"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_LOGIN_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssologinattribute" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_FIRSTNAME_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssofirstattribute" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_LASTNAME_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssolastattribute" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_EMAIL_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssoemailattribute" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SSO_LOGINURL' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssoLoginUrl" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SSO_LOGOUTURL' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentAdd.ssoLogoutUrl" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.timeZone" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of timeZone; let i='index'" value="{{clang.lookupName+' - '+clang.description}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}} - {{clang.description}}</option> 
+            </select>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input"><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                  <select class="form-control input-sm" [(ngModel)]="singleentAdd.theme">
+                <option *ngFor="let clang of theme; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+              </select>
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.language" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of language; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.currency" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of currency; let i='index'" value="{{clang.lookupName+' - '+clang.description}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.defaultcurrformat" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of currencyformat; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.dateformat" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of dateformat; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                <select id="rowsperpage" (change)="changerowsperpage($event.target.value); clearmessage()" name="rowsperpage" class="form-control input-sm"
+                  size="1" [(ngModel)]="perpagecount">
+                  <option *ngFor="let clang of rowsPerpage; let i='index'" value="{{clang.description}}" id="clang{{i}}">{{clang.description}}</option>
+                  </select>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.BILL_TO_DETAILS' |translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.addressLine1" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.addressLine2" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.city" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.country" (change)="getCountryStates1($event.target.value);clearmessage()"
+                  (change)="clearmessage()">
+                  <option *ngFor="let clang of countries; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                  </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.state" (click)="clearmessage()" (change)="clearmessage()">
+             <option value='' >{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option> 
+<option *ngFor="let clang of states; let i='index'" value="{{clang}}"  id="profilePage_timezone_select_option_{{i}}">{{clang}}</option>
+            </select>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentAdd.zip" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_TYPE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentAdd.creditCardType" (click)="clearmessage()" (change)="clearmessage()">
+             <option value='' >{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option> 
+<option *ngFor="let clang of cardTypes; let i='index'" value="{{clang.lookupName}}"  id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_NUM' | translate}}</label>
+                <input type="text" class="form-control input-sm" name="enterprise_create_num_name" [(ngModel)]="singleentAdd.creditCardNumber"
+                  maxlength="19" onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  (keypress)=" hyphen_generateCardNumber(singleentAdd.creditCardNumber); clearmessage()" id="enterprise_create_num_id"
+                  value="{{singleentAdd.creditCardNumber}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'ENTERPRISES.NAME_ON_CREDIT_CARD' | translate}}</label>
+                <input type="text" class="form-control input-sm" name="username" [(ngModel)]="singleentAdd.nameOnCreditCard">
+              </div>
+              <div class="col-md-4 form-group">
+                <div class="input-group">
+                  <label><span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_EXPIRY_DATE' | translate}}</label>
+                </div>
+                <select class="form-control input-sm duration-list" (change)="getMonth($event.target.value);clearmessage()" name='' id=''>
+                  <option value=''>{{'ENTERPRISES.DEFAULT_MONTH' |translate}}</option>
+                  <option value='01'>01</option>
+                  <option value='02'>02</option>
+                  <option value='03'>03</option>
+                  <option value='04'>04</option>
+                  <option value='05'>05</option>
+                  <option value='06'>06</option>
+                  <option value='07'>07</option>
+                  <option value='08'>08</option>
+                  <option value='09'>09</option>
+                  <option value='10'>10</option>
+                  <option value='11'>11</option>
+                  <option value='12'>12</option>
+              </select>
+                <select class="form-control input-sm duration-list" (change)="getYear($event.target.value);clearmessage()" name='' id=''>
+                  <option value=''>{{'ENTERPRISES.DEFAULT_YEAR' | translate}}</option>
+                   <option *ngFor="let year of yearArray; let i='index'" value="{{year}}" >{{yearArray[i]}}</option>
+              </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.CVVNUMBER' | translate}}</label>
+                <input type="text" class="form-control input-sm" name="username" maxlength="3" value="" [(ngModel)]="cvvnumber" (keypress)="clearmessage()"
+                  onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="addEnterprise()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="action=='Delete'" class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{APIendpoint}}{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="enterpriseId" name="enterpriseName" disabled value="{{enterpriseobj.enterpriseName}}">
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input">{{'ENTERPRISES.WEBSITE' | translate}}</label><br>
+                  <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj.meta.websiteURL}}">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input">{{'ENTERPRISES.EIN' | translate}}</label><br>
+                  <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj.EIN}}">
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+                <input type="text" class="form-control input-sm" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.isEnabled">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 img-block">
+            <div class="row img-block-content">
+              <div class="col-md-12 img-block-column">
+                <label class="form-control-label">{{'ENTERPRISES.ENTERPRISE_IMAGE' | translate}}</label>
+                <img alt="" class="" id="enterprisePicimg" src="{{imgSrc}}" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 form-group">
+            <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea id="commentId" name="commentName" (keypress)="clearmessage()" disabled [(ngModel)]="comment" rows="2" class="form-control input-sm"
+              maxlength="200"></textarea>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonValue}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonValue}}" disabled>
+          </div>
+        </div>
+        <p-accordion>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <div class="input-group-mobile">
+                    <input type="text" class="form-control input-sm country-code" value="{{this.worknumber}}" disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="emailId" name="emailName" disabled value="{{enterpriseobj?.contactDetails.email}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID_ADMIN' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="adminemailId" name="adminemailName" disabled value="{{enterpriseobj.settings.adminEmail}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="addressline1Id" name="addressline1Name" disabled value="{{enterpriseobj.address.addressLine1}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="addressline2Id" name="addressline2Name" disabled value="{{enterpriseobj.address.addressLine2}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="cityId" name="cityName" disabled value="{{enterpriseobj.address.city}}">
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="stateId" name="stateName" disabled value="{{enterpriseobj.address.state}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="countryId" name="countryName" disabled value="{{enterpriseobj.address.country}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="zipId" name="zipName" disabled value="{{enterpriseobj.address.ZIP}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="emailId" name="emailName" disabled value="{{enterpriseobj.contactDetails.email}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="latitudeId" name="latitudeName" disabled value="{{enterpriseobj.address.geoCoordinates[1]}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="longitudeId" name="logitudeName" disabled value="{{enterpriseobj.address.geoCoordinates[0]}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <div class="input-group-mobile">
+                    <select class="form-control input-sm country-code" value="Country Code" selected>
+                          <option selected>Country Code</option>
+                          <option>Option1</option>
+                          <option>Option2</option>
+                          <option>Option3</option>
+                          </select>
+
+                    <input type="text" class="form-control input-sm mob-num" id="mobileId" name="mobileName" disabled value="{{enterpriseobj.contactDetails.workNumber}}"
+                    />
+                    <input type="text" class="form-control input-sm ext-num" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_APP_TITLE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="apptitleId" name="apptitleName" disabled value="{{enterpriseobj.settings.appTitle}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_PASSWORD_RESET' | translate}}</label>
+                <input type="checkbox" id="disablepasswordId" name="disablepasswordName" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.settings.enablePasswordReset"
+                  value="true">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_CAPTCHA' | translate}}</label>
+                <input type="checkbox" id="discaptchaId" name="discaptchaName" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.settings.enableCaptcha"
+                  value="true">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_COMMON_NAME' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="fleetCommonFieldId" name="fleetCommonFieldName" disabled value="{{enterpriseobj?.settings.fleetCommonName}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.settings.maxActiveReservationsPerUser}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class=" form-control input-sm" id="" name="" disabled value="{{enterpriseobj?.settings.advancedReservationWindowInDays}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_POSSIBLE' | translate}}</label>
+                <input type="checkbox" id="" name="" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.settings.longTermReservationPossible"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="possible"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input type="checkbox" id="" name="" (click)="clearmessage()" disabled [(ngModel)]="enterpriseobj.settings.reservationCanBeBumped"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="bumped"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input type="checkbox" id="remainders" name="reserveRemainder" disabled [(ngModel)]="enterpriseobj.settings.sendReservationReminders"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="remainders"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.settings.maxReservationWindowInHrs}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.settings.reservationReminderWindowInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_RESERVATION_AUTO_EXPIRES_IN_HOURS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expireId" name="expireName" disabled value="{{enterpriseobj.settings.fleetExpiryHours}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{enterpriseobj.settings.expirationGracePeriodInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_INACTIVE_TIMEOUT_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="inactivetimeId" name="inactivetimeName" disabled value="{{enterpriseobj.settings.inactivityTimeoutInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="allowwaitlistId" name="allowwaitlistName" disabled value="{{enterpriseobj.settings.earlyCheckinWindowInMins}}">
+              </div>
+            </div>
+          </p-accordionTab>
+
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="timezoneId" name="timezoneName" disabled value="{{enterpriseobj.preferences.defaultTimezone}}">
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input">{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                  <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj.preferences.defaultTheme}}">
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj.preferences.defaultLanguage}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj.preferences.defaultCurrency}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj.preferences.currencyFormat}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                <input type="text" class="form-control input-sm" disabled id="enterpriseId" name="enterpriseName" value="{{enterpriseobj.preferences.dateFormat}}">
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" disabled value="{{enterpriseobj.preferences.rowsPerPage}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{enterpriseobj.createdBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{createAt}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{enterpriseobj.updatedBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{updateAt}}">
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="deleteEnterprise(enterpriseobj._id)">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="action=='Edit'" class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{APIendpoint}}{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" onkeypress='return event.charCode >= 33 && (event.charCode <= 126 && event.charCode != 34 )'
+                  maxlength="15" id="enterpriseId" (click)="clearmessage()" name="enterpriseName" [(ngModel)]="singleentEdit.enterpriseName"
+                  disabled value="{{singleenterpriseEditDetails?.enterpriseName}}">
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input"><span class="text-danger">*</span>{{'ENTERPRISES.WEBSITE' | translate}}</label><br>
+                  <input type="text" class="form-control input-sm" id="enterpriseId" maxlength="40" name="enterpriseName" (click)="clearmessage()"
+                    onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.webSite" value="{{singleenterpriseEditDetails?.homePageUrl}}">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input"><span class="text-danger">*</span>{{'ENTERPRISES.EIN' | translate}}</label><br>
+                  <input type="text" class="form-control input-sm" maxlength="9" id="username" name="username" (click)="clearmessage()" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57)'
+                    [(ngModel)]="singleentEdit.ein" value="{{singleenterpriseEditDetails?.EIN}}">
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+                <input type="text" class="form-control input-sm" name="inline" (click)="clearmessage()" [(ngModel)]="singleentEdit.isEnabled"
+                  disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 img-block">
+            <div class="row img-block-content">
+              <div class="col-md-12 img-block-column">
+                <label class="form-control-label">{{'ENTERPRISES.ENTERPRISE_IMAGE' | translate}}</label>
+                <img alt="" class="" id="profilepageprofilePicimg" [src]="imgSrc" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 form-group">
+            <label><span class="text-danger">*</span>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea id="commentId" name="commentName" (keypress)="clearmessage()" onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.description"
+              rows="2" class="form-control input-sm" maxlength="200"></textarea>
+          </div>
+          <div class="col-md-4 form-group uploadjsbtn">
+            <div class="input-group"><label>{{enterpriseIcon}}</label></div>
+            <div class="input-file-container">
+              <input class="input-file" id="file-input" type="file" (change)="imageUploaded($event)" [(ngModel)]="imgfile" accept='image/*|video/*'>
+              <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+            </div>
+            <div class="file-return" id="editenterpriseimg"></div>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonActivate}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonInactivate}}" disabled>
+          </div>
+        </div>
+        <p-accordion>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>
+                      <span class="text-danger">*</span>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <div class="input-group-mobile">
+                    <select class="form-control input-sm country-code" [(ngModel)]="singleentEdit.workNumberCountrycode">
+                          <option *ngFor="let clang of countryCodes; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                        </select>
+
+                    <input type="text" class="form-control input-sm mob-num" id="enterprise_edit_mobile_id" name="enterprise_edit_mobile_name"
+                      maxlength="12" (keypress)="hyphen_generateEdit(singleentEdit.mobile);" (click)="clearmessage()" [(ngModel)]="singleentEdit.mobile"
+                      value="{{singleenterpriseEditDetails?.contactDetails.mobile}}" />
+                    <input type="text" class="form-control input-sm ext-num" maxlength="5" [(ngModel)]="singleentEdit.workNumberExtn" />
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                      <span class="text-danger">*</span>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="emailId" name="emailName" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentEdit.email" value="{{singleenterpriseEditDetails?.contactDetails.email}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                      <span class="text-danger">*</span>{{'COMMON_FIELDS.EMAIL_ID_ADMIN' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="adminemailId" name="adminemailName" maxlength="40" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.adminEmail" value="{{singleenterpriseEditDetails?.settings.adminEmail}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="addressline1Id" name="addressline1Name" maxlength="40"
+                  (click)="clearmessage()" onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.addressLine1"
+                  value="{{singleenterpriseEditDetails?.address.addressLine1}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="addressline2Id" name="addressline2Name" maxlength="40"
+                  (click)="clearmessage()" onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.addressLine2"
+                  value="{{singleenterpriseEditDetails?.address.addressLine2}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="cityId" name="cityName" maxlength="15" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentEdit.city" (click)="clearmessage()" value="{{singleenterpriseEditDetails?.address.city}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentEdit.country" (change)="getCountryStatesEdit($event.target.value);clearmessage()"
+                  (change)="clearmessage()">
+                  <option *ngFor="let clang of countries; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                  </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentEdit.state" (click)="clearmessage()" (change)="clearmessage()">
+              <option value='' >{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option> 
+              <option *ngFor="let clang of states; let i='index'" value="{{clang}}" id="profilePage_timezone_select_option_{{i}}">{{clang}}</option>
+            </select>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="zipId" name="zipName" maxlength="15" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentEdit.zip" (click)="clearmessage()" value="{{singleenterpriseEditDetails?.address.zip}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="latitudeId" name="latitudeName" maxlength="18" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.latitude" value="{{singleenterpriseEditDetails?.address.geoCoordinates[1]}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="longitudeId" name="logitudeName" maxlength="18" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.longitude" value="{{singleenterpriseEditDetails?.address.geoCoordinates[0]}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_APP_TITLE' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="apptitleId" name="apptitleName" maxlength="10" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.appTitle" value="{{singleenterpriseEditDetails?.settings.appTitle}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_PASSWORD_RESET' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxdpp1" name="inline-checkbox2" (click)="clearmessage()" [(ngModel)]="singleentEdit.disablePasswordRes"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxdpp1"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ENABLE_CAPTCHA' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxdep1" name="inline-checkbox1" (click)="clearmessage()" [(ngModel)]="singleentEdit.disableCaptcha"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxdep1"></label>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_COMMON_NAME' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="fleetCommonFieldId" name="fleetCommonFieldName" maxlength="40"
+                  (click)="clearmessage()" onkeypress="return event.charCode != 34" [(ngModel)]="singleentEdit.fleetCommonName"
+                  value="{{singleenterpriseEditDetails?.settings.fleetCommonName}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxActiveReservationsPerUserId" name="maxActiveReservationsPerUserName"
+                  maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" [(ngModel)]="singleentEdit.maxActiveReservationsPerUser" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class=" form-control input-sm" id="advancedReservationWindowDaysId" name="advancedReservationWindowDaysName"
+                  maxlength="3" (click)="clearmessage()" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57)'
+                  [(ngModel)]="singleentEdit.advancedReservationWindowInDays">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_POSSIBLE' | translate}}</label>
+                <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" [(ngModel)]="singleentEdit.longTermReservationPossible"
+                  type="checkbox" (click)="clearmessage()">
+                  <label for="inline-checkbox3"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" (click)="clearmessage()"
+                  [(ngModel)]="singleentEdit.reservationCanBeBumped">
+                  <label for="inline-checkbox2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input id="inline-checkbox4" class="regular-checkbox big-checkbox" (click)="clearmessage()" [(ngModel)]="singleentEdit.sendReservationReminders"
+                  name="inline-checkbox4" type="checkbox">
+                  <label for="inline-checkbox4"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" [(ngModel)]="singleentEdit.maxReservationWindowInHrs"
+                  maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="reservationReminderWindowInMinsId" [(ngModel)]="singleentEdit.reservationReminderWindowInMins"
+                  name="reservationReminderWindowInMinsName" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{fleetCommonName}}{{'ENTERPRISES.SETTINGS_FLEET_RESERVATION_AUTO_EXPIRES_IN_HOURS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expireId" name="expireName" maxlength="3" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57);clearmessage()'
+                  [(ngModel)]="singleentEdit.expiryHours" value="{{singleenterpriseEditDetails?.settings.fleetExpiryHours}}"
+                  (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                  maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  value="" [(ngModel)]="singleentEdit.expirationGracePeriodInMins" (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_INACTIVE_TIMEOUT_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="inactivetimeId" name="inactivetimeName" maxlength="3" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57);clearmessage()'
+                  [(ngModel)]="singleentEdit.inactiveTimeOut" value="{{singleenterpriseEditDetails?.settings.inactivityTimeoutInMins}}"
+                  (click)="clearmessage()">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                    <span class="text-danger">*</span>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="allowwaitlistId" name="allowwaitlistName" maxlength="3" onkeypress='return event.charCode < 31 || (event.charCode >= 48 && event.charCode <= 57);clearmessage()'
+                  [(ngModel)]="singleentEdit.earlyCheckinWindowInMins" value="{{singleenterpriseEditDetails?.settings.earlyCheckinWindowInMins}}"
+                  (click)="clearmessage()">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'SSOBLOCK.SSO_DETAILS' | translate}}">
+            <div class="col-md-4 form-group">
+              <label>{{'ENTERPRISES.SSO_ENABLED' | translate}}</label>
+              <input type="checkbox" id="inline-checkboxssoedit" name="inline-checkbox1" (click)="clearmessage()" [(ngModel)]="singleentEdit.sso"
+                value="true" class="regular-checkbox big-checkbox">
+                <label for="inline-checkboxssoedit"></label>
+            </div>
+            <div class="row" *ngIf="singleentEdit.sso == true">
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOALIAS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="singleentEdit.ssoAlias">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOHOST' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoHost" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOPORT' | translate}}</label>
+                <input type="text" [(ngModel)]="singleentEdit.ssoPort" class="text-capitalize form-control input-sm" id="" name="" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="" maxlength="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOLDAPS' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxsso13" name="inline-checkbox2" [(ngModel)]="singleentEdit.ssoLDAPS" (click)="clearmessage()"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxsso13"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOACCOUNT' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" [(ngModel)]="singleentEdit.ssoAccount" name="" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOPASSWORD' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoPassword" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOBASEDN' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoBaseDN" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSOLDAPFilter' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoLDAPFilter"
+                  (click)="clearmessage()" onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_TIMEOUT_INSECONDS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoTimeoutInSeconds"
+                  (click)="clearmessage()" onkeypress="return event.charCode != 34" maxlength="6" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_FLYUSER_CREATION' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxsso14" name="inline-checkbox4" (click)="clearmessage()" [(ngModel)]="singleentEdit.ssoOnTheFlyUserCreation"
+                  value="true" class="regular-checkbox big-checkbox">
+                  <label for="inline-checkboxsso14"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_LOGIN_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoLoginAttribute" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_FIRSTNAME_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoFirstnameAttribute" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_LASTNAME_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoLastnameAttribute" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'SSOBLOCK.SSO_EMAIL_ATTRIBUTE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoEmailAttribute" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SSO_LOGINURL' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoLoginUrl" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SSO_LOGOUTURL' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" [(ngModel)]="singleentEdit.ssoLogoutUrl" (click)="clearmessage()"
+                  onkeypress="return event.charCode != 34" value="">
+                  <input type="hidden" name="" class="form-control" id="" value="">
+              </div>
+            </div>
+          </p-accordionTab>
+
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentEdit.timeZone" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of timeZone; let i='index'" value="{{clang.lookupName+' - '+clang.description}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}} - {{clang.description}}</option> 
+            </select>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="file-input"><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                  <select class="form-control input-sm" [(ngModel)]="singleentEdit.theme">
+                <option value='Select'>Select</option>
+                <option *ngFor="let clang of theme; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+              </select>
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentEdit.language" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of language; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentEdit.currency" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of currency; let i='index'" value="{{clang.lookupName+' - '+clang.description}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentEdit.defaultcurrformat" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of currencyformat; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="singleentEdit.dateformat" (click)="clearmessage()" (change)="clearmessage()">
+              <option *ngFor="let clang of dateformat; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                <select id="rowsperpage" (change)="getupdatedrowsperpage($event.target.value); clearmessage()" name="rowsperpage" class="form-control input-sm"
+                  size="1" [(ngModel)]="singleentEdit.rowsperpage">
+                  <option *ngFor="let clang of rowsPerpage; let i='index'" value="{{clang.description}}" id="clang{{i}}">{{clang.description}}</option>
+                  </select>
+              </div>
+            </div>
+          </p-accordionTab>
+
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.BILL_TO_DETAILS' |translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="addressLine1" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="40" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="addressLine2" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="city" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger" >*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="country" (change)="getCountryStates1($event.target.value);clearmessage()"
+                  (change)="clearmessage()">
+                  <option *ngFor="let clang of countries; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                  </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="state" (click)="clearmessage()" (change)="clearmessage()">
+             <option value='' >{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option> 
+<option *ngFor="let clang of states; let i='index'" value="{{clang}}"  id="profilePage_timezone_select_option_{{i}}">{{clang}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="zip" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_TYPE' | translate}}</label>
+                <select id="" class="form-control input-sm" [(ngModel)]="creditCardType" (click)="clearmessage()" (change)="clearmessage()">
+             <option value='' >{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option> 
+<option *ngFor="let clang of cardTypes; let i='index'" value="{{clang.lookupName}}"  id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_NUM' | translate}}</label>
+                <input type="text" class="form-control input-sm" name="enterprise_card_num_name" [(ngModel)]="creditCardNumber" maxlength="19"
+                  onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  (keypress)="hyphen_generateCardNumberEdit(creditCardNumber);clearmessage()" id="enterprise_card_num_id">
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'ENTERPRISES.NAME_ON_CREDIT_CARD' | translate}}</label>
+                <input (click)= "clearmessage()" type="text" class="form-control input-sm" name="username" [(ngModel)]="nameOnCreditCard">
+              </div>
+              <div class="col-md-4 form-group">
+                <div class="input-group">
+                  <label><span class="text-danger">*</span>{{'ENTERPRISES.CREDIT_CARD_EXPIRY_DATE' | translate}}</label>
+                </div>
+                <select class="form-control input-sm duration-list" (change)="getMonth($event.target.value);clearmessage()" name='' id=''>
+                  <option value="">{{'ENTERPRISES.DEFAULT_MONTH' |translate}}</option>
+                  <option value='01' [selected] ="cardTypeMonthValue === '01'">01</option>
+                  <option value='02' [selected] ="cardTypeMonthValue === '02'">02</option>
+                  <option value='03' [selected] ="cardTypeMonthValue === '03'">03</option>
+                  <option value='04' [selected] ="cardTypeMonthValue === '04'">04</option>
+                  <option value='05' [selected] ="cardTypeMonthValue === '05'">05</option>
+                  <option value='06' [selected] ="cardTypeMonthValue === '06'">06</option>
+                  <option value='07' [selected] ="cardTypeMonthValue === '07'">07</option>
+                  <option value='08' [selected] ="cardTypeMonthValue === '08'">08</option>
+                  <option value='09' [selected] ="cardTypeMonthValue === '09'">09</option>
+                  <option value='10' [selected] ="cardTypeMonthValue === '10'">10</option>
+                  <option value='11' [selected] ="cardTypeMonthValue === '11'">11</option>
+                  <option value='12' [selected] ="cardTypeMonthValue === '12'">12</option>
+              </select>
+                <select class="form-control input-sm duration-list" (change)="getYear($event.target.value);clearmessage()" name='' id=''>
+                  <option value=''>{{'ENTERPRISES.DEFAULT_YEAR' | translate}}</option>
+                  <option *ngFor="let year of yearArray; let i='index'" value="{{year}}" [selected]="cardTypeYearValue == year" >{{yearArray[i]}}</option>
+              </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label><span class="text-danger">*</span>{{'BILL_PAYMENT_HISTORY.CVVNUMBER' | translate}}</label>
+                <input type="text" class="form-control input-sm" name="username" maxlength="3" value="" [(ngModel)]="cvvnumber" (keypress)="clearmessage()"
+                  onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{singleenterpriseEditDetails?.createdBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{createAt}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{singleenterpriseEditDetails?.updatedBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdId" name="createdName" disabled value="{{updateAt}}">
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="editEnterprise(singleenterpriseEditDetails._id)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

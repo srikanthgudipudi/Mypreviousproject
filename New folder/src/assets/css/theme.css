@@ -1,0 +1,245 @@
+/* gunmetal */
+.custom-file-input::before {
+    background-color: #2399e5; 
+}
+select {
+background: url(../img/header-arrow-down.png) 101% no-repeat #f3f3f3 !important;
+}
+select.securityque {
+    background: url(../img/forgot-arrow-down.png) 101% no-repeat #f3f3f3 !important;
+    }
+fc-event,
+.fc-event-dot{
+    border: 1px solid #2399e5;
+    background: #2399e5;
+    color: #ffffff !important;
+}
+.ui-button {
+border: 1px solid #2399e5;
+background: #2399e5;
+}
+.ui-widget-header .ui-button:enabled:hover,
+.ui-widget-header .ui-button:focus,
+.ui-widget-content .ui-button:enabled:hover,
+.ui-widget-content .ui-button:focus,
+.ui-button:enabled:hover,
+.ui-button:focus {
+border: 1px solid #1f89ce;
+background: #1f89ce;
+outline: 0 none;
+color: #ffffff;
+}
+.ui-widget-header .ui-button:enabled:active,
+.ui-widget-content .ui-button:enabled:active,
+.ui-button:enabled:active {
+border: 1px solid #156090;
+background: #186ba0;
+color: #ffffff;
+}
+/* Checkbox and Radio */
+.ui-chkbox-box.ui-state-active,
+.ui-radiobutton-box.ui-state-active {
+border: 1px solid #156090;
+background: #186ba0;
+color: #FFFFFF;
+}
+.ui-chkbox-box.ui-state-focus,
+.ui-radiobutton-box.ui-state-focus {
+-moz-box-shadow: 0px 0px 5px #1f89ce;
+-webkit-box-shadow: 0px 0px 5px #1f89ce;
+box-shadow: 0px 0px 5px #1f89ce;
+}
+.ui-chkbox-box.ui-state-focus.ui-state-active {
+background: #186ba0;
+}
+.ui-inputtext.ui-state-focus,
+.ui-inputtext:focus {
+-moz-box-shadow: 0px 0px 5px #1f89ce;
+-webkit-box-shadow: 0px 0px 5px #1f89ce;
+box-shadow: 0px 0px 5px #1f89ce;
+}
+/* InputSwitch */
+.ui-inputswitch-on {
+background: #186ba0 !important;
+color: #ffffff !important;
+}
+.ui-paginator .ui-paginator-page.ui-state-active {
+background: #20a8d8;
+color: #ffffff;
+border-color: #20a8d8;
+}
+.ui-datatable tbody>tr.ui-widget-content.ui-state-highlight {
+background-color: #186ba0;
+color: #FFFFFF;
+}
+.ui-togglebutton.ui-button.ui-state-focus {
+-moz-box-shadow: 0px 0px 5px #1f89ce;
+-webkit-box-shadow: 0px 0px 5px #1f89ce;
+box-shadow: 0px 0px 5px #1f89ce;
+background: #ffffff;
+}
+.ui-togglebutton.ui-button.ui-state-active,
+.ui-selectbutton .ui-button.ui-state-active {
+border: 1px solid #156090;
+background: #186ba0;
+color: #FFFFFF;
+}
+.ui-multiselect .ui-multiselect-label {
+background-color: #ffffff;
+}
+ul.pagination li a.ui-paginator-page.ui-corner-all.page-link {  
+background-color: #1985ac !important;    color: #fff !important;
+}
+.ui-slider .ui-slider-range {
+background: #14a4ff;
+}
+.ui-progressbar .ui-progressbar-value {
+border: 1px solid #3f94e9;
+background: #8ec5fc;
+}
+.ui-widget-header .ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-state-highlight {
+border-color: #156090;
+background: #186ba0;
+color: #FFFFFF;
+}
+
+header.navbar .nav-item .nav-link.active i{
+color: #2399e5;
+}
+header ul.nav .dropdown-menu li:hover, header ul.nav .dropdown-menu li:hover a i {
+color: #fff !important;
+background: #2399e5 !important;
+}
+b.notification-msg {
+color: #0075b4;
+}
+.user-roles-action-list li a:hover{
+background: #2399e5 !important;
+}
+.custom-file-input:active::before {
+    color: #fff;
+   background: #177dbe;
+border-color: #1577b5;
+} 
+.custom-file-input:hover::before {
+color: #fff;
+background: #177dbe;
+border-color: #1577b5;
+}
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-active {
+background-color: #186ba0;
+color: #ffffff;
+}
+/* Spinner */
+.ui-spinner:not(.ui-state-disabled) .ui-spinner-button:enabled:hover {
+border: 1px solid #1f89ce;
+background: #1f89ce;
+outline: 0 none;
+color: #ffffff;
+}
+.ui-spinner:not(.ui-state-disabled) .ui-spinner-button:enabled:active {
+border: 1px solid #156090;
+background: #186ba0;
+color: #ffffff;
+}
+/* PanelMenu */
+.ui-panelmenu .ui-panelmenu-header.ui-state-active,
+.ui-panelmenu .ui-panelmenu-header.ui-state-active a {
+border-color: #156090;
+background: #186ba0;
+color: #FFFFFF;
+}
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-highlight {
+background-color: #186ba0;
+color: #fff; 
+}
+.selectheader {
+background: url(../img/header-arrow-down.png) 101% no-repeat #f3f3f3 !important;
+}
+ul.list-inline a.user-name {
+background: #00b545;
+}
+.notifications{   
+background: #ff6d00;
+}
+header.navbar .nav-item .nav-link.active i{
+color: #2399e5;
+}
+header ul.nav .dropdown-menu li{
+    background-color: #3a4e56 !important;
+    color: #ffffff !important;
+    border-radius: 3px;
+}
+header ul.nav .dropdown-menu li:hover, header ul.nav .dropdown-menu li:hover a i {
+color: #fff !important;
+background: #2399e5 !important;
+border-radius: 3px;
+}
+.sidebar .fc-toolbar.fc-header-toolbar{
+    border-top: 0px solid #d9d9d9;
+}
+.fc-toolbar.fc-header-toolbar{
+    border-top: 1px solid #d9d9d9;
+}
+.fc-toolbar.fc-header-toolbar, .fc-day-header{
+    background: #3a4e56 !important;
+    color: #ffffff;
+}
+.fc-day-header{
+    color: #ffffff !important;
+}
+.ui-button.ui-state-default {
+    color: #fff !important;
+    background: #2399e5 !important;
+    }
+.uploadjsbtn .input-file-trigger { 
+        background: #2399e5;
+}
+.uploadjsbtn .input-file-trigger:hover { 
+        background: #1577b5;
+}
+.user-roles-action-list{
+           background: #304047;
+}
+.fc-axis.ui-widget-header, .fc-head-container.ui-widget-header{
+        background: #304047;
+}
+.white_content {
+    display: none;
+    position: absolute;
+    top: -25%;
+    left: 25%;
+    width: 50%;
+    /* height: 80%; */
+    text-align: center;
+    padding: 16px;
+    border: 1px solid black;
+    background-color: white;
+    z-index: 1002;
+    overflow: auto;
+  }
+ .white_content   button.close {
+    position: absolute;
+    top: 4px !important;
+    color: #000;
+}
+.white_content-view  button.close {
+    position: absolute;
+    top: 4px !important;
+    color: #000;
+}
+.white_content-view{
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    width: 50%;
+    text-align: center;
+    padding: 16px;
+    border: 1px solid black;
+    background-color: white;
+    z-index: 1002;
+    overflow: auto;
+}

@@ -1,0 +1,165 @@
+
+/* theme4 fren green */
+
+.sidebar, .card-header,
+.app-footer,
+.ui-datatable .ui-datatable-thead tr th,
+.popupsection-title,
+.ui-accordion .ui-accordion-header,
+.sidebar ul.nav li.nav-item.nav-dropdown.open, .ui-picklist-caption, .event-fullcalendar, .navbar-top .nav-item, header ul.nav .dropdown-menu li, .login-body, .fc-day-header, .fc-axis.ui-widget-header, .fc-head-container.ui-widget-header, .fc-toolbar.fc-header-toolbar, .fc-day-header {
+    background: #42493F !important;
+}
+.sidebar .fc-toolbar.fc-header-toolbar{
+    border-top: 0px solid #d9d9d9;
+}
+.fc-toolbar.fc-header-toolbar{
+    border-top: 1px solid #d9d9d9;
+    color: #ffffff;
+}
+.page-link, .pagination-datatables li a, .pagination li a {
+    color: #7c8444 !important;
+}
+.superadmin-list .selectheader {
+    background-color: #5c6559 !important;
+}
+.fc-event,
+.fc-event-dot{
+    background-color: #a8b35a !important;
+    border-color: #a8b35a !important;
+    color: #ffffff !important;
+}
+.btn-primary {
+    background-color: #7c8444 !important;
+    border-color: #7c8444 !important;
+}
+.custom-file-input::before{
+    background-color: #7c8444 !important;
+}
+select{
+    background: url(../img/header-arrow-down-theme4.png) 101% no-repeat #f3f3f3 !important;
+}
+select.securityque{
+    background: url(../img/forgot-arrow-down-theme4.png) 101% no-repeat #f3f3f3 !important;
+}
+.ui-button {
+    background: #7c8444;
+    color: #fff;
+    border: 1px solid #7c8444;
+}
+
+.selectheader {
+    line-height: 15px !important;
+    border: 1px solid #cecece;
+    /* border-radius: 3px; */
+    color: #585858;
+    font-weight: 400;
+    font-size: 12px !important;
+    height: 28px;
+    line-height: 24px !important;
+    margin-left: 0;
+    width: 200px!important;
+    background: url(../img/header-arrow-down-theme4.png) 101% no-repeat #f3f3f3 !important;
+    border-radius: 3px !important;
+}
+ul.pagination li a.ui-paginator-page.ui-corner-all.page-link {  
+    background-color: #7c8444 !important; 
+    color: #fff !important;
+}
+
+.sidebar ul.nav li.nav-item a.nav-link.active i {
+    color: #ffffff !important;
+}
+
+.custom-file-input:hover::before {
+    color: #fff;
+    background: #8b963d !important;
+    border-color: #8b963d !important;
+}
+
+
+/* hover colors */
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-active,
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-highlight {
+    background-color: #5c6559;
+    color: #ffffff;
+}
+.ui-accordion .ui-accordion-header:not(.ui-state-active):not(.ui-state-disabled):hover {
+    background: #5c6559 !important;
+    color: #ffffff;
+}
+.ui-state-highlight{
+    background: #5c6559 !important;
+    color: #ffffff !important;
+    border-color: #5c6559 !important;
+}
+.app-body .sidebar ul.nav li.nav-item a.nav-link:hover {
+    background: #5c6559 !important;
+}
+.app-body .sidebar ul.nav li.nav-item a.nav-link.active {
+    background: #5c6559 !important;
+}
+.ui-datatable th.ui-sortable-column:not(.ui-state-active):hover {
+    background: #5c6559 !important;
+    color: #FFF;
+}
+
+/* */
+.btn-primary:hover {
+    background-color: #8b963d !important;
+    border-color: #8b963d !important;
+}
+.ui-widget-header .ui-button:enabled:hover,
+.ui-widget-header .ui-button:focus,
+.ui-widget-content .ui-button:enabled:hover,
+.ui-widget-content .ui-button:focus,
+.ui-button:enabled:hover,
+.ui-button:focus {
+    border: 1px solid #8b963d;
+    background: #8b963d;
+    outline: 0 none;
+    color: #ffffff;
+}
+ul.list-inline a.user-name{
+    background: #90968e;
+}
+.notifications{   
+    background: #a8b35a;
+}
+header.navbar .nav-item .nav-link.active i{
+    color: #a8b35a;
+}
+header ul.nav .dropdown-menu li:hover, header ul.nav .dropdown-menu li:hover a i {
+    color: #fff !important;
+    background: #a8b35a !important
+}
+.fc-day-header, .ui-button.ui-state-default{
+    color: #ffffff !important;
+}
+.fc-event,
+.fc-event-dot{
+    background-color: #a8b35a !important;
+    border-color: #a8b35a !important;
+    color: #ffffff !important;
+}
+.uploadjsbtn .input-file-trigger { 
+    background-color: #7c8444 !important;
+    border-color: #7c8444 !important;
+}
+.uploadjsbtn .input-file-trigger:hover { 
+    background-color: #8b963d !important;
+    border-color: #8b963d !important;
+}
+.user-roles-action-list{
+    background: #42493F;
+}
+.user-roles-action-list li a:hover {
+    background: #5c6559;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background-color: #42493F !important;
+    border-color: #5c6559 !important;
+}
+.sidebar-nav::-webkit-scrollbar-track{
+    background-color: #5c6559 !important;
+    border-color: #42493F !important;
+}

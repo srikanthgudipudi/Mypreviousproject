@@ -1,0 +1,83 @@
+{
+  "data": [
+{
+     "_id" : "NumberInt(1)",
+    "createdAt" : "ISODate(2017-07-12T11:06:00.116-04:00)",
+    "createdBy" : "Admin",
+    "description" : "Advertise1",
+    "enterpriseId" : 1,
+    "isDeleted" : "false",
+    "isEnabled" : "false",
+    "lookupName" : "ADVERTISE1",
+    "lookupTypeName" : "ADVERTISE_TYPES",
+    "modifiedAt" : "ISODate(2017-07-12T11:06:14.581-04:00)",
+    "modifiedBy" : "Admin"
+},
+{
+        "_id" : "NumberInt(1)",
+    "createdAt" : "ISODate(2017-07-12T11:06:00.116-04:00)",
+    "createdBy" : "Admin",
+    "description" : "Advertise1",
+    "enterpriseId" : 2,
+    "isDeleted" : "false",
+    "isEnabled" : "false",
+    "lookupName" : "ADVERTISE1",
+    "lookupTypeName" : "ADVERTISE_TYPES",
+    "modifiedAt" : "ISODate(2017-07-12T11:06:14.581-04:00)",
+    "modifiedBy" : "Admin"
+},
+
+{
+        "_id" : "NumberInt(1)",
+    "createdAt" : "ISODate(2017-07-12T11:06:00.116-04:00)",
+    "createdBy" : "Admin",
+    "description" : "Advertise1",
+    "enterpriseId" : 3,
+    "isDeleted" : "false",
+    "isEnabled" : "false",
+    "lookupName" : "ADVERTISE1",
+    "lookupTypeName" : "ADVERTISE_TYPES",
+    "modifiedAt" : "ISODate(2017-07-12T11:06:14.581-04:00)",
+    "modifiedBy" : "Admin"
+},
+{
+    "_id" : "NumberInt(1)",
+    "createdAt" : "ISODate(2017-07-12T11:06:00.116-04:00)",
+    "createdBy" : "Admin",
+    "description" : "Advertise1",
+    "enterpriseId" : 4,
+    "isDeleted" : "false",
+    "isEnabled" : "false",
+    "lookupName" : "ADVERTISE1",
+    "lookupTypeName" : "ADVERTISE_TYPES",
+    "modifiedAt" : "ISODate(2017-07-12T11:06:14.581-04:00)",
+    "modifiedBy" : "Admin"
+},
+{
+        "_id" : "NumberInt(1)",
+    "createdAt" : "ISODate(2017-07-12T11:06:00.116-04:00)",
+    "createdBy" : "Admin",
+    "description" : "Advertise1",
+    "enterpriseId" : 5,
+    "isDeleted" : "false",
+    "isEnabled" : "false",
+    "lookupName" : "ADVERTISE1",
+    "lookupTypeName" : "ADVERTISE_TYPES",
+    "modifiedAt" : "ISODate(2017-07-12T11:06:14.581-04:00)",
+    "modifiedBy" : "Admin"
+},
+{
+        "_id" : "NumberInt(1)",
+    "createdAt" : "ISODate(2017-07-12T11:06:00.116-04:00)",
+    "createdBy" : "Admin",
+    "description" : "Advertise1",
+    "enterpriseId" : 6,
+    "isDeleted" : "false",
+    "isEnabled" : "false",
+    "lookupName" : "ADVERTISE1",
+    "lookupTypeName" : "ADVERTISE_TYPES",
+    "modifiedAt" : "ISODate(2017-07-12T11:06:14.581-04:00)",
+    "modifiedBy" : "Admin"
+}
+ ]
+}

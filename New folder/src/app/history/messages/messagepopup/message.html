@@ -1,0 +1,254 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div bsModal #lgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideuimageModal()" tabindex="-1"
+    role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- header starts -->
+            <div class="modal-header">
+                <button type="button" class="close" (click)="hideuimageModal()" aria-label="Close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-logoheader></app-logoheader>
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                            class="pull-right">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="popupsection-title">{{pagename | translate }}</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- header ends -->
+
+            <!-- body starts -->
+            <div class="modal-body">
+                <div class="clearfix"></div>
+                <div *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Read'">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="enterpriseName" name="enterpriseName" value="{{selectedObj.enterprise.enterpriseName}}"
+                                        disabled>
+                                        <input type="hidden" name="enterpriseId" class="form-control" id="enterpriseId" value="{{selectedObj.enterprise.enterpriseId}}">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'MESSAGE_HISTORY.MESSAGE_TYPE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="imageName" name="imageName" value="{{selectedObj.messageType}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'MESSAGE_HISTORY.MESSAGE_FROM' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="imagedesc" name="imagedesc" value="{{selectedObj.messageFrom.userName}}"
+                                        disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'MESSAGE_HISTORY.MESSAGE_TO' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="imagedesc" name="imagedesc" value="{{selectedObj.messageTo.userAccount}}"
+                                        disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 img-block" *ngIf="selectedObj.messageType != 'Text' ">
+                            <div class="row img-block-content">
+                                <div class="col-md-12 img-block-column">
+                                    <label class="form-control-label">{{selectedObj.messageType}}</label>
+                                    <img alt="" class="" id="profilepageprofilePicimg" src="{{apiEndPoint}}/{{filepath}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                            <label>{{'MESSAGE_HISTORY.MESSAGE' | translate}}</label>
+                            <input type="text" class="form-control input-sm" id="imagedesc" name="imagedesc" value="{{selectedObj.message}}" disabled>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{'MESSAGE_HISTORY.MESSAGE_DATE' | translate}}</label>
+                            <input type="text" class="form-control input-sm" id="imagedesc" name="imagedesc" value="{{msgdate}}" disabled>
+                        </div>
+                        <div *ngIf="[actionName] == 'View'">
+                            <div class="col-md-4 form-group">
+                                <div class="input-group">
+                                    <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+                                </div>
+
+                                <span class="fa-stack message-stack fa-lg" *ngIf="selectedObj.messageStatus === 'Read'">
+                                    <i class="fa fa-check check-font fa-stack-1x enterpriseinactive"></i>
+                                    <i class="fa fa-check check-font check-position fa-stack-2x enterpriseinactive"></i>
+                                </span>
+                                <span class="fa-stack message-stack fa-lg" *ngIf="selectedObj.messageStatus === 'Received'">
+                                    <i class="fa fa-check check-font fa-stack-1x cancle-action"></i>
+                                    <i class="fa fa-check check-font check-position fa-stack-2x cancle-action"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div *ngIf="[actionName] == 'Delete' || [actionName] == 'Read'">
+                            <div class="col-md-4 form-group">
+                                <div class="input-group">
+                                    <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+                                </div>
+
+                                <span class="fa-stack message-stack fa-lg" *ngIf="selectedObj.messageStatus === 'Read'">
+                                    <i class="fa fa-check check-font fa-stack-1x enterpriseinactive"></i>
+                                    <i class="fa fa-check check-font check-position fa-stack-2x enterpriseinactive"></i>
+                                </span>
+                                <span class="fa-stack message-stack fa-lg" *ngIf="selectedObj.messageStatus === 'Received'">
+                                    <i class="fa fa-check check-font fa-stack-1x cancle-action"></i>
+                                    <i class="fa fa-check check-font check-position fa-stack-2x cancle-action"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p-accordion>
+                        <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="createdBy" name="createdBy" value="{{selectedObj?.createdBy}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="createdAt" name="createdAt" value="{{createdAt}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="updatedBy" name="updatedBy" value="{{selectedObj?.updatedBy}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="updatedAt" name="updatedAt" value="{{updatedAt}}" disabled>
+                                </div>
+                            </div>
+                        </p-accordionTab>
+                    </p-accordion>
+                </div>
+
+                <div class="row" *ngIf="[actionName] == 'Create'">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <label>
+                                    <span class="text-danger">*</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                                <div *ngIf="messageUser == false">
+                                    <select *ngIf="[enterprisesSize] == 'false'" id="enterpriseId" (change)="getEnterpriseName($event.target.value); clearmessage()"
+                                        name="enterprise" class="form-control input-sm" size="1">
+                                        <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                        <option *ngFor="let clang of enterprisesNames;" value="{{clang._id+'~'+clang.enterpriseName+'~'+clang.enterpriseIconFilePath+'~'+clang.enterpriseIcon}}">{{clang.enterpriseName}}</option>
+                                        </select>
+                                        <input *ngIf="[enterprisesSize] == 'true'" type="text" [(ngModel)]="enterprisename" class="form-control input-sm" id="enterpriseId"
+                                            name="enterprise" disabled>
+                                </div>
+                                <div *ngIf="messageUser == true">
+                                    <input type="text" value="{{enterprisename}}" class="form-control input-sm" id="" name="" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>
+                                    <span class="text-danger">*</span>{{'MESSAGE_HISTORY.MESSAGE_FROM' | translate}}</label>
+                                <input type="text" (keypress)="clearmessage()" class="form-control input-sm" id="imagedesc" name="imagedesc" value="{{firstname}} {{lastname}}"
+                                    disabled>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>
+                                    <span class="text-danger">*</span>{{'MESSAGE_HISTORY.MESSAGE_TO' | translate}}</label>
+                                <div *ngIf="messageUser == false">
+                                    <select id="userRoles" (change)="getResourcesData($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                                        size="1">
+                                        <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                        <option *ngFor="let clang of selectedUserAccountTo; let i='index'" value="{{clang._id +'$'+clang.userAccount+'$'+clang.enterpriseResourceObj.firstName+'$'+clang.enterpriseResourceObj.lastName+'$'+clang.isGroup}}"
+                                            id="clang{{i}}">{{clang.enterpriseResourceObj.firstName}} {{clang.enterpriseResourceObj.lastName}}</option>
+                                            </select>
+                                </div>
+                                <div *ngIf="messageUser == true">
+                                    <input type="text" class="form-control input-sm" id="" name="" value="{{tousername}}" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>
+                                    <span class="text-danger">*</span>{{'MESSAGE_HISTORY.MESSAGE_TYPE' | translate}}</label>
+                                <select id="enterpriseId" (change)="messagetypeChange($event.target.value); clearmessage()" name="messagetype" class="form-control input-sm"
+                                    size="1">
+                                    <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                    <option *ngFor="let clang of msgtypes; let i='index'" value="{{clang.description}}" id="clang{{i}}">{{clang.description}}</option>
+                                    </select>
+                            </div>
+                            <div class="col-md-8 form-group" *ngIf="messagetype == 'Text' && messagetype != undefined ">
+                                <label>
+                                    <span class="text-danger">*</span>{{'MESSAGE_HISTORY.MESSAGE' | translate}}</label>
+                                <textarea id="commentId" name="commentName" rows="2" class="form-control input-sm" maxlength="200" onkeypress="return event.charCode != 34;"
+                                    (keypress)="clearmessage()" [(ngModel)]="message"></textarea>
+                            </div>
+                            <div class="col-md-4 form-group uploadjsbtn" *ngIf="messagetype != 'Text' && messagetype == undefined ">
+                                <div class="input-group">
+                                    <label>&nbsp;</label>
+                                </div>
+                                <div class="input-file-container">
+                                    <inputclass="input-file" id="file-input" type="file" [(ngModel)]="file" (change)="clearmessage()" accept='image/*|video/*|audio/*'
+                                        name="file-input" (change)="imageUploaded($event)">
+                                        <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                                </div>
+                                <div class="file-return" id="createmhistoryimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                            </div>
+                            <div class="col-md-4 form-group uploadjsbtn" *ngIf="messagetype == 'Audio' || messagetype == 'Video' || messagetype == 'Image'">
+                                <div class="input-group">
+                                    <label>&nbsp;</label>
+                                </div>
+                                <div class="input-file-container">
+                                    <input class="input-file" id="file-input" type="file" [(ngModel)]="file" (change)="clearmessage()" accept='image/*|video/*|audio/*'
+                                        name="file-input" (change)="imageUploaded($event)">
+                                        <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                                </div>
+                                <div class="file-return" id="createmhistoryimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- body ends -->
+
+            <!-- error message -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="text-danger">{{error | translate}}</div>
+                </div>
+            </div>
+
+            <!-- footer starts -->
+            <div class="modal-footer">
+                <div class="col-md-12 p0 fleetft">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'Create'">
+                        <button class="btn btn-primary" (click)="createMessage()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button class="btn btn-primary" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'View'">
+                        <button class="btn btn-primary pull-right" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'Read'">
+                        <button class="btn btn-primary" (click)="readMessage()">{{'COMMON_BUTTONS.BUTTON_READ' | translate}}</button>
+                        <button class="btn btn-primary" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'Delete'">
+                        <button class="btn btn-primary" (click)="deleteMessage()">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+                        <button class="btn btn-primary" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <!-- footer ends -->
+        </div>
+    </div>
+    </div>

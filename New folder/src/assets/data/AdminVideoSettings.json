@@ -1,0 +1,23 @@
+{
+  "data": [{
+      "videoSettingId": "f1c47a70-2a82-11e7-aaf5-95f42525a5d7",
+      "minLength": "7",
+      "maxLength": "8",
+      "videoSize": "4",
+      "originalVideoRetention": "56",
+      "uploadVideosLimitPerMonth": "89",
+      "commentsMin": "5",
+      "commentsMax": "865",
+      "videoSharesPerDay": "89",
+      "numVideosToSharePerDay": "56",
+      "flagLimit": "56",
+      "videoCommentsPerDay": "6",
+      "numVideosToCommentPerDay": "123",
+      "videoViewsPerHour": "8",
+      "numVideosToViewPerHour": "856",
+      "votesPerDay": "5",
+      "voteTypes": "Percentage (%)",
+      "createdBy": "testuser",
+      "createdAt": "2017-04-26 18:49:14"
+  }]
+}

@@ -1,0 +1,94 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+ -->
+<div class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card-group mb-0">
+                    <div class="card p-2 login-card">
+                        <div class="card-block">
+                            <div class="text-center">
+                                <img src="assets/img/logo.png" width="250" class="mb-1">
+                            </div>
+                            <h4>{{'LOGIN.PASSWORD_FORGOT' |  translate}}</h4>
+                            <p class="text-muted">{{'LOGIN.PASSWORD_RESET' |  translate}}</p>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="radio">
+                                        <label for="radio1">
+                                        <input type="radio" id="email" value="email" Checked (click)="radioemailcheck()" name="radios"> {{ 'COMMON_FIELDS.EMAIL_ID' | translate}}
+                                    </label>
+                                    </div>                                       
+                                 </div>
+                                <div class="radio2" id="emailids">
+                                      <div class="radio2" id="mobilenumber" *ngIf="[emaildispaly]=='true'">
+                                    <input type="text" name="userLogin" (keypress)="clearmessage()" name="formgroup" id="userLogin" [(ngModel)]="forgot.userLogin"
+                                            class="form-control" placeholder="{{ 'LOGIN.ENTER_YOUR_EMAIL_ID' | translate}}">
+                                </div>
+                         <span class="text-danger">{{failMsg | translate}}</span>
+                                    <span class="text-danger">{{emailError | translate }}</span>
+                                    <span class="text-danger">{{mailErrorMsg | translate }}</span>
+                                    <span class="text-danger">{{holdMsg | translate }}</span>
+                                    <span class="text-danger">{{cancelledMsg | translate }}</span>
+                                    <span class="text-danger">{{invalidMsg | translate }}</span>
+                                    <span class="text-danger">{{inactiveMsg | translate }}</span>
+                                </div>  
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="radio">
+                                        <label for="radio1">
+                                <input type="radio" name="radios" id="phone" value="phonenumber" (click)="radiophnumbercheck()"> {{ 'COMMON_FIELDS.MOBILE_NUMBER' | translate}}</label>
+                                    </div></div>
+                                     <div class="radio2" id="mobilenumber" *ngIf="[mobiledisplay]=='true'">
+                                          <input type="text" id="mobile" class="form-control"(keydown)="clearmessage()" [(ngModel)]='forgot.phonenumber' (keypress)="hyphen_generate(); clearmessage()" name="formgroup"
+                                             name="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                             placeholder="{{ 'LOGIN.ENTER_YOUR_MOBILENO' | translate}}" maxlength="12">
+                                             </div>    
+                                             <span class="text-danger">{{phneerror | translate }}</span>
+                                            <span class="text-danger">{{phneerror1 | translate }}</span>
+                                            <span class="text-danger">{{phneerror2 | translate }}</span>
+                                            <span class="text-danger">{{phneerror3 | translate }}</span>                            
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="radio">
+                                     <label for="radio2">
+                                    <input type="radio" name="radios" value="other" [routerLink]="['/pages/securityq']"> {{ 'COMMON_BLOCK_TITLES.SECURITY_QUESTIONS' | translate}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+        
+                            <p class="login-link popup-sectionchild" *ngIf="[emailtome]=='true'">{{ 'LOGIN.EMAIL_WILL_SEND' | translate}}</p>
+                        <input *ngIf="[sendotp]=='false'" type="submit" id="forgot_popup_button" value="{{ 'LOGIN.EMAIL_ME' | translate}}" (click)="getForgotPassword()"
+                            class="lwa-button-remember btn btn-block btn-primary" data-dismiss="modal">
+                         <p class="login-link" *ngIf="[sendotp]=='true'">{{ 'LOGIN.OTP_WILL_SEND' | translate}}</p> 
+
+                        <input *ngIf="[sendotp]=='true'" type="submit" id="forgot_popupPhone_button" value="{{ 'LOGIN.OTP_SEND' | translate}}" (click)="getForgotPassword()"
+                            class="lwa-button-remember btn btn-block btn-primary" data-dismiss="modal">
+                        <input type="hidden" name="login-with-ajax" value="remember">
+                        <!-- <input type="submit" id="forgot_popupPhone_button" value="Submit" (click)="getForgotPassword()"
+                            class="lwa-button-remember btn btn-block btn-primary" data-dismiss="modal"> -->
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-footer">
+                        &copy; 2017 <a href="#">{{'FOOTER.APP_TITLE' | translate}}</a>
+                        <!-- <span class="float-right"> <app-powered></app-powered> </span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+<app-otp-popup></app-otp-popup>

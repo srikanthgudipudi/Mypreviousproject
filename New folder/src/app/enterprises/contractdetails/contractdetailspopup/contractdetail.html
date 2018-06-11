@@ -1,0 +1,240 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hidechildModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hidechildModal()" aria-label="Close" data-dismiss="modal">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate }}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="[actionName] == 'Create'">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label><span class="text-danger">&#42;</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+              </div>
+              <div *ngIf="[enterprizesSize] == 'false'">
+                <select id="enterpriseName" (change)="getEnterpriseResources($event.target.value); clearmessage()" name="enterpriseName"
+                  class="form-control input-sm" size="1">
+                  <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of enterprizesNames; let i='index'" value="{{clang._id}}${{clang.enterpriseName}}${{clang.enterpriseIconFilePath}}${{clang.enterpriseIcon}}"
+                    id="clang{{i}}">{{clang.enterpriseName}}</option>
+                    </select>
+              </div>
+              <div *ngIf="[enterprizesSize] == 'true'">
+                <input type="text" class="form-control input-sm" (keypress)="clearmessage()" [(ngModel)]="enterprizeName" id="enterpriseId"
+                  name="enterprisename" disabled value="{{enterprizesName}}">
+              </div>
+            </div>
+
+            <!-- <div class="col-md-4 form-group">
+              <label><span class="text-danger">&#42;</span>{{'COMMON_FIELDS.CONTRACT_NUMBER' | translate}}</label>
+              <input type="text" class="form-control input-sm" (keypress)="clearmessage()" [(ngModel)]="contractNumber" maxlength="20">
+            </div> -->
+            <div class="col-md-4 form-group">
+              <label><span class="text-danger">&#42;</span>{{'COMMON_FIELDS.CONTRACT_TYPE' | translate}}</label>
+              <select class="form-control input-sm" (change)="getContract($event.target.value); clearmessage()">
+                  <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let types of contractTypes; let i='index'" value="{{types.lookupName}}">{{types.lookupName}}</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label><span class="text-danger">&#42;</span>{{'COMMON_FIELDS.LICENSING_MODE' | translate}}</label>
+              <select class="form-control input-sm" (change)="getLicensing($event.target.value); clearmessage()">
+                <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                <option *ngFor="let mode of licensingMode; let i='index'" value="{{mode.lookupName}}">{{mode.lookupName}}</option>
+            </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'COMMON_FIELDS.CONTRACT_START_DATE' | translate}}</label>
+              </div>
+              <div class="clearfix"></div>
+              <p-calendar readonlyInput="readonlyInput" inputStyleClass="timezone-calendar calendar" [(ngModel)]="startdate" dateFormat="yy-mm-dd"
+                [showIcon]="true" (onSelect)="clearmessage()"></p-calendar>
+              <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessage()" class="form-control input-sm duration-list">
+                      <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName"
+                        value="{{clang.lookupName}}${{clang.description}}" id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                    </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <label>{{'COMMON_FIELDS.CONTRACT_END_DATE' | translate}}</label>
+              </div>
+              <div class="clearfix"></div>
+              <p-calendar readonlyInput="readonlyInput" [(minDate)]="currentDate" inputStyleClass="timezone-calendar calendar" [(ngModel)]="enddate"
+                dateFormat="yy-mm-dd" [showIcon]="true" [(maxDate)]="maxDate" (onSelect)="clearmessage()"></p-calendar>
+              <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessage()" class="form-control input-sm duration-list">
+                       <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName"
+                        value="{{clang.lookupName}}${{clang.description}}" id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                  </select>
+            </div>
+
+
+            <div class="col-md-4 form-group">
+              <label><span class="text-danger">&#42;</span>{{'COMMON_FIELDS.PAYMENT_TERMS' | translate}}</label>
+              <select class="form-control input-sm" (change)="getPaymet($event.target.value); clearmessage()">
+                <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let terms of paymentTerms; let i='index'" value="{{terms.lookupName}}">{{terms.lookupName}}</option>
+            </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label><span class="text-danger">&#42;</span>{{'COMMON_FIELDS.PERIOD_AMOUNT' | translate}}</label>
+              <input type="text" class="form-control input-sm" (keypress)="clearmessage()" [(ngModel)]="periodAmount" maxlength="10">
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">        
+            <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+              <input id="inline-checkbox3" name="inline-checkbox3" type="checkbox" [(ngModel)]="enabled" class="regular-checkbox big-checkbox">
+              <label for="inline-checkbox3"></label>
+              </label>
+            </div>
+            <div class="col-md-12 form-group">
+              <div class="input-group">
+                <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+              </div>
+              <textarea id="commentId" name="commentName" onkeypress="return event.charCode != 34" [(ngModel)]="notes" (keypress)="clearmessage()"
+                class="text-capitalize form-control input-sm" maxlength="200"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="[actionName] == 'View' || [actionName]=='Delete' || [actionName] == 'Edit'">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+              <input type="text" class="form-control input-sm text-capitalize" disabled value="{{contractDetails.enterprise.enterpriseName}}">
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.CONTRACT_NUMBER' | translate}}</label>
+              <input type="text" class="form-control input-sm" disabled value="{{contractDetails.contractNumber}}">
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.CONTRACT_TYPE' | translate}}</label>
+              <input type="text" class="form-control input-sm" disabled value="{{contractDetails.contractType}}">
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.CONTRACT_START_DATE' | translate}}</label>
+              <input type="text" class="form-control input-sm" disabled value="{{startdate}}">
+            </div>
+            <div class="col-md-4 form-group" *ngIf="[actionName] == 'View' || [actionName]=='Delete'">
+              <label>{{'COMMON_FIELDS.CONTRACT_END_DATE' | translate}}</label>
+              <input type="text" class="form-control input-sm" disabled value="{{enddate}}">
+            </div>
+            <div class="col-md-4 form-group" *ngIf="[actionName] == 'Edit'">
+              <div class="input-group">
+                <label>{{'COMMON_FIELDS.CONTRACT_END_DATE' | translate}}</label>
+              </div>
+              <div class="clearfix"></div>
+              <p-calendar readonlyInput="readonlyInput" (click)="clearmessage()" inputStyleClass="timezone-calendar calendar" [(ngModel)]="enddate"
+                dateFormat="yy-mm-dd" [showIcon]="true"></p-calendar>
+              <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessage()" class="form-control input-sm duration-list"
+                disabled>
+                           <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName"
+                            value="{{clang.lookupName}}${{clang.description}}" id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                      </select>
+            </div>
+
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.LICENSING_MODE' | translate}}</label>
+              <input type="text" class="form-control input-sm" disabled value="{{contractDetails.licensingMode}}">
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.PAYMENT_TERMS' | translate}}</label>
+              <input type="text" class="form-control input-sm" disabled value="{{contractDetails.paymentTerms}}">
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.PERIOD_AMOUNT' | translate}}</label>
+              <input type="text" class="form-control input-sm" disabled value="{{contractDetails.contractPeriodAmount}}">
+            </div>
+            <div class="col-md-4 form-group" *ngIf="[actionName] == 'View' || [actionName]=='Delete'">
+              <label class="checkbox-inline" for="inline-checkbox1">        
+                <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+              <input id="inline-checkbox1" name="inline-checkbox1" type="checkbox" [(ngModel)]="contractDetails.isEnabled" disabled class="regular-checkbox big-checkbox">
+              <label for="inline-checkbox1"></label>
+              </label>
+            </div>
+            <div class="col-md-4 form-group" *ngIf="[actionName] == 'Edit'">
+              <label class="checkbox-inline" for="inline-checkbox1">        
+                  <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+              <input id="inline-checkbox2" name="inline-checkbox2" type="checkbox" [(ngModel)]="isEnabled" class="regular-checkbox big-checkbox">
+              <label for="inline-checkbox2"></label>
+              </label>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+              <input type="text" class="form-control input-sm" disabled value="{{contractDetails.notes}}">
+            </div>
+          </div>
+          <p-accordion>
+            <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="createdBy" name="createdBy" value="{{contractDetails?.createdBy}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="createdAt" name="createdAt" value="{{createAt}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="updatedBy" name="updatedBy" value="{{contractDetails?.updatedBy}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="updatedAt" name="updatedAt" value="{{updateAt}}" disabled>
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionName] == 'Create'">
+            <button class="btn btn-primary" (click)="createContractDetail()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hidechildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionName] == 'Edit'">
+            <button class="btn btn-primary" (click)="updateContractDetail()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hidechildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionName] == 'View'">
+            <button class="btn btn-primary pull-right" (click)="hidechildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionName] == 'Delete'">
+            <button class="btn btn-primary" (click)="deleteContractDetail()">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary" (click)="hidechildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4992 @@
+{
+    "type": "FeatureCollection",
+    "generator": "JOSM",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959948,-41.1818446 ]
+        },
+        "properties": {
+        "fleetid":"C1",
+        "fleetname":"Megan Black",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Megan",
+        "lastname":"Black",
+        "fromdate":"Mar 12,1913",
+        "todate":"Mar 04,1946",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599468,-41.18185355 ]
+        },
+        "properties": {
+        "fleetid":"C2",
+        "fleetname":"Melanie Blake",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Melanie",
+        "lastname":"Blake",
+        "fromdate":"Apr 10,1907",
+        "todate":"Apr 04,1931",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599466,-41.18186175 ]
+        },
+        "properties": {
+        "fleetid":"C3",
+        "fleetname":"Michelle Bond",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Michelle",
+        "lastname":"Bond",
+        "fromdate":"May 31,1901",
+        "todate":"May 15,1967",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599463,-41.18187046 ]
+        },
+        "properties": {
+        "fleetid":"C4",
+        "fleetname":"Molly Bower",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Molly",
+        "lastname":"Bower",
+        "fromdate":"Jul 24,1966",
+        "todate":"Jul 18,1989",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599476,-41.18187866 ]
+        },
+        "properties": {
+        "fleetid":"C5",
+        "fleetname":"Natalie Brown",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Natalie",
+        "lastname":"Brown",
+        "fromdate":"Aug 14,1984",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599472,-41.18188655 ]
+        },
+        "properties": {
+        "fleetid":"C6",
+        "fleetname":"Nicola Buckland",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Nicola",
+        "lastname":"Buckland",
+        "fromdate":"Jun 04,1951",
+        "todate":"May 19,2015",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599475,-41.18189531 ]
+        },
+        "properties": {
+        "fleetid":"C7",
+        "fleetname":"Olivia Burgess",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Olivia",
+        "lastname":"Burgess",
+        "fromdate":"Feb 11,1941",
+        "todate":"Jan 28,1998",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599475,-41.1819027 ]
+        },
+        "properties": {
+        "fleetid":"C8",
+        "fleetname":"Penelope Butler",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Penelope",
+        "lastname":"Butler",
+        "fromdate":"Nov 13,1974",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599475,-41.18191178 ]
+        },
+        "properties": {
+        "fleetid":"C9",
+        "fleetname":"Pippa Cameron",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Pippa",
+        "lastname":"Cameron",
+        "fromdate":"Dec 01,1973",
+        "todate":"Nov 21,2015",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605973,-41.1822554 ]
+        },
+        "properties": {
+        "fleetid":"P001",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605973,-41.18223016 ]
+        },
+        "properties": {
+        "fleetid":"P002",
+        "fleetname":"Rebecca Carr",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Rebecca",
+        "lastname":"Carr",
+        "fromdate":"May 28,2010",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605946,-41.1822019 ]
+        },
+        "properties": {
+        "fleetid":"P003",
+        "fleetname":"Rose Chapman",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Rose",
+        "lastname":"Chapman",
+        "fromdate":"Aug 28,1979",
+        "todate":"Aug 24,1993",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605502,-41.18220569 ]
+        },
+        "properties": {
+        "fleetid":"P004",
+        "fleetname":"Ruth Churchill",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Ruth",
+        "lastname":"Churchill",
+        "fromdate":"Dec 03,1907",
+        "todate":"Nov 16,1975",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605195,-41.1822453 ]
+        },
+        "properties": {
+        "fleetid":"P005",
+        "fleetname":"Sally Clark",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Sally",
+        "lastname":"Clark",
+        "fromdate":"Jun 02,1958",
+        "todate":"May 22,2002",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605235,-41.18220594 ]
+        },
+        "properties": {
+        "fleetid":"P006",
+        "fleetname":"Samantha Clarkson",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Samantha",
+        "lastname":"Clarkson",
+        "fromdate":"Oct 04,1954",
+        "todate":"Sep 25,1989",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9604954,-41.18222613 ]
+        },
+        "properties": {
+        "fleetid":"P007",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9604793,-41.18219282 ]
+        },
+        "properties": {
+        "fleetid":"P008",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960431,-41.18218777 ]
+        },
+        "properties": {
+        "fleetid":"P009",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9604035,-41.18220392 ]
+        },
+        "properties": {
+        "fleetid":"P010",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9604008,-41.18219105 ]
+        },
+        "properties": {
+        "fleetid":"P011",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603886,-41.18226966 ]
+        },
+        "properties": {
+        "fleetid":"P012",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603884,-41.18224909 ]
+        },
+        "properties": {
+        "fleetid":"P013",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960369,-41.18221149 ]
+        },
+        "properties": {
+        "fleetid":"P014",
+        "fleetname":"Una Dyer",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Una",
+        "lastname":"Dyer",
+        "fromdate":"Jul 19,1930",
+        "todate":"Jun 30,2005",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.96037,-41.18220216 ]
+        },
+        "properties": {
+        "fleetid":"P015",
+        "fleetname":"Vanessa Edmunds",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Vanessa",
+        "lastname":"Edmunds",
+        "fromdate":"Aug 15,1935",
+        "todate":"Aug 04,1978",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603683,-41.18219206 ]
+        },
+        "properties": {
+        "fleetid":"P016",
+        "fleetname":"Victoria Ellison",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Victoria",
+        "lastname":"Ellison",
+        "fromdate":"Mar 24,1934",
+        "todate":"Mar 15,1968",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603646,-41.18218222 ]
+        },
+        "properties": {
+        "fleetid":"P017",
+        "fleetname":"Virginia Ferguson",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Virginia",
+        "lastname":"Ferguson",
+        "fromdate":"Jan 20,1936",
+        "todate":"Jan 05,1994",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960367,-41.18217188 ]
+        },
+        "properties": {
+        "fleetid":"P018",
+        "fleetname":"Wanda Fisher",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Wanda",
+        "lastname":"Fisher",
+        "fromdate":"Mar 05,1900",
+        "todate":"Feb 21,1951",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960368,-41.18216279 ]
+        },
+        "properties": {
+        "fleetid":"P019",
+        "fleetname":"Wendy Forsyth",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Wendy",
+        "lastname":"Forsyth",
+        "fromdate":"Dec 31,1988",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603207,-41.18220796 ]
+        },
+        "properties": {
+        "fleetid":"P020",
+        "fleetname":"Yvonne Fraser",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Yvonne",
+        "lastname":"Fraser",
+        "fromdate":"Sep 27,1922",
+        "todate":"Sep 23,1936",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603204,-41.18218727 ]
+        },
+        "properties": {
+        "fleetid":"P021",
+        "fleetname":"Zoe Gibson",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Zoe",
+        "lastname":"Gibson",
+        "fromdate":"Jul 29,1984",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602838,-41.18225868 ]
+        },
+        "properties": {
+        "fleetid":"P022",
+        "fleetname":"Adam Gill",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Adam",
+        "lastname":"Gill",
+        "fromdate":"Jun 12,1920",
+        "todate":"May 28,1982",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602815,-41.18223698 ]
+        },
+        "properties": {
+        "fleetid":"P023",
+        "fleetname":"Adrian Glover",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Adrian",
+        "lastname":"Glover",
+        "fromdate":"Jul 05,2002",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605681,-41.18206514 ]
+        },
+        "properties": {
+        "fleetid":"P024",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605676,-41.1820529 ]
+        },
+        "properties": {
+        "fleetid":"P025",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605676,-41.18203902 ]
+        },
+        "properties": {
+        "fleetid":"P026",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605676,-41.1820206 ]
+        },
+        "properties": {
+        "fleetid":"P027",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960518,-41.18206299 ]
+        },
+        "properties": {
+        "fleetid":"P028",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605187,-41.18203599 ]
+        },
+        "properties": {
+        "fleetid":"P029",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9605194,-41.18201126 ]
+        },
+        "properties": {
+        "fleetid":"P030",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9604422,-41.18205694 ]
+        },
+        "properties": {
+        "fleetid":"P031",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9604426,-41.18203019 ]
+        },
+        "properties": {
+        "fleetid":"P032",
+        "fleetname":"Brandon Hemmings",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Brandon",
+        "lastname":"Hemmings",
+        "fromdate":"Apr 27,1959",
+        "todate":"Apr 17,1996",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9604419,-41.18199587 ]
+        },
+        "properties": {
+        "fleetid":"P033",
+        "fleetname":"Brian Henderson",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Brian",
+        "lastname":"Henderson",
+        "fromdate":"Aug 22,2010",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9604042,-41.18205959 ]
+        },
+        "properties": {
+        "fleetid":"P034",
+        "fleetname":"Cameron Hill",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Cameron",
+        "lastname":"Hill",
+        "fromdate":"May 11,1939",
+        "todate":"Apr 27,1995",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603725,-41.1820211 ]
+        },
+        "properties": {
+        "fleetid":"P035",
+        "fleetname":"Carl Hodges",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Carl",
+        "lastname":"Hodges",
+        "fromdate":"Jun 17,1927",
+        "todate":"Jun 04,1978",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603735,-41.18198603 ]
+        },
+        "properties": {
+        "fleetid":"P036",
+        "fleetname":"Charles Howard",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Charles",
+        "lastname":"Howard",
+        "fromdate":"Aug 16,1975",
+        "todate":"Aug 08,2004",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603742,-41.18195777 ]
+        },
+        "properties": {
+        "fleetid":"P037",
+        "fleetname":"Christian Hudson",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Christian",
+        "lastname":"Hudson",
+        "fromdate":"May 29,1983",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603197,-41.18206009 ]
+        },
+        "properties": {
+        "fleetid":"P038",
+        "fleetname":"Christopher Hughes",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Christopher",
+        "lastname":"Hughes",
+        "fromdate":"Feb 09,1931",
+        "todate":"Feb 03,1953",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603209,-41.18200697 ]
+        },
+        "properties": {
+        "fleetid":"P039",
+        "fleetname":"Colin Hunter",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Colin",
+        "lastname":"Hunter",
+        "fromdate":"Oct 01,1952",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603212,-41.1819825 ]
+        },
+        "properties": {
+        "fleetid":"P040",
+        "fleetname":"Connor Ince",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Connor",
+        "lastname":"Ince",
+        "fromdate":"Feb 19,1912",
+        "todate":"Feb 09,1949",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9603209,-41.18195979 ]
+        },
+        "properties": {
+        "fleetid":"P041",
+        "fleetname":"Dan Jackson",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Dan",
+        "lastname":"Jackson",
+        "fromdate":"Mar 23,1991",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602825,-41.18200773 ]
+        },
+        "properties": {
+        "fleetid":"P042",
+        "fleetname":"David James",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"David",
+        "lastname":"James",
+        "fromdate":"May 15,1948",
+        "todate":"Apr 30,2010",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602828,-41.18198325 ]
+        },
+        "properties": {
+        "fleetid":"P043",
+        "fleetname":"Dominic Johnston",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Dominic",
+        "lastname":"Johnston",
+        "fromdate":"Apr 19,1920",
+        "todate":"Apr 16,1935",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602825,-41.18196054 ]
+        },
+        "properties": {
+        "fleetid":"P044",
+        "fleetname":"Dylan Jones",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Dylan",
+        "lastname":"Jones",
+        "fromdate":"Dec 11,1947",
+        "todate":"Nov 23,2016",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960256,-41.1819584 ]
+        },
+        "properties": {
+        "fleetid":"P045",
+        "fleetname":"Edward Kelly",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Edward",
+        "lastname":"Kelly",
+        "fromdate":"Jul 02,1969",
+        "todate":"Jun 25,1996",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960201,-41.18198508 ]
+        },
+        "properties": {
+        "fleetid":"P046",
+        "fleetname":"Eric Kerr",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Eric",
+        "lastname":"Kerr",
+        "fromdate":"Oct 14,1953",
+        "todate":"Oct 01,2004",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602019,-41.18199398 ]
+        },
+        "properties": {
+        "fleetid":"P047",
+        "fleetname":"Evan King",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Evan",
+        "lastname":"King",
+        "fromdate":"Jan 12,2009",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602013,-41.18200281 ]
+        },
+        "properties": {
+        "fleetid":"P048",
+        "fleetname":"Frank Knox",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Frank",
+        "lastname":"Knox",
+        "fromdate":"Oct 19,2006",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602016,-41.18201139 ]
+        },
+        "properties": {
+        "fleetid":"P049",
+        "fleetname":"Gavin Loranget",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Gavin",
+        "lastname":"Loranget",
+        "fromdate":"Dec 03,1906",
+        "todate":"Nov 19,1961",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602018,-41.18201997 ]
+        },
+        "properties": {
+        "fleetid":"P050",
+        "fleetname":"Gordon Langdon",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Gordon",
+        "lastname":"Langdon",
+        "fromdate":"Dec 16,1942",
+        "todate":"Dec 13,1955",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602006,-41.18202893 ]
+        },
+        "properties": {
+        "fleetid":"P051",
+        "fleetname":"Harry Lawrence",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Harry",
+        "lastname":"Lawrence",
+        "fromdate":"Jun 06,1919",
+        "todate":"May 28,1953",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602014,-41.18203889 ]
+        },
+        "properties": {
+        "fleetid":"P052",
+        "fleetname":"Ian Lee",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Ian",
+        "lastname":"Lee",
+        "fromdate":"Dec 26,1959",
+        "todate":"Dec 12,2015",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602008,-41.18204735 ]
+        },
+        "properties": {
+        "fleetid":"P053",
+        "fleetname":"Isaac Lewis",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Isaac",
+        "lastname":"Lewis",
+        "fromdate":"Mar 08,1947",
+        "todate":"Feb 27,1984",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602001,-41.18205555 ]
+        },
+        "properties": {
+        "fleetid":"P054",
+        "fleetname":"Jack Lyman",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Jack",
+        "lastname":"Lyman",
+        "fromdate":"Oct 09,1926",
+        "todate":"Oct 02,1955",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602005,-41.18206432 ]
+        },
+        "properties": {
+        "fleetid":"P055",
+        "fleetname":"Jacob MacDonald",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Jacob",
+        "lastname":"MacDonald",
+        "fromdate":"Apr 09,1966",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602006,-41.18207271 ]
+        },
+        "properties": {
+        "fleetid":"P056",
+        "fleetname":"Jake Mackay",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Jake",
+        "lastname":"Mackay",
+        "fromdate":"Oct 21,1991",
+        "todate":"Oct 16,2010",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602007,-41.1820816 ]
+        },
+        "properties": {
+        "fleetid":"P057",
+        "fleetname":"James Mackenzie",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"James",
+        "lastname":"Mackenzie",
+        "fromdate":"Aug 24,1960",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602007,-41.18209069 ]
+        },
+        "properties": {
+        "fleetid":"P058",
+        "fleetname":"Jason MacLeod",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Jason",
+        "lastname":"MacLeod",
+        "fromdate":"Sep 21,1966",
+        "todate":"Sep 12,2003",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602077,-41.18215093 ]
+        },
+        "properties": {
+        "fleetid":"P059",
+        "fleetname":"Joe Manning",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Joe",
+        "lastname":"Manning",
+        "fromdate":"Jul 15,1904",
+        "todate":"Jun 27,1978",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602077,-41.18216102 ]
+        },
+        "properties": {
+        "fleetid":"P060",
+        "fleetname":"John Marshall",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"John",
+        "lastname":"Marshall",
+        "fromdate":"Nov 03,1963",
+        "todate":"Oct 22,2010",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602104,-41.18217263 ]
+        },
+        "properties": {
+        "fleetid":"P061",
+        "fleetname":"Jonathan Martin",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Jonathan",
+        "lastname":"Martin",
+        "fromdate":"Mar 02,1915",
+        "todate":"Feb 21,1952",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602091,-41.18218323 ]
+        },
+        "properties": {
+        "fleetid":"P062",
+        "fleetname":"Joseph Mathis",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Joseph",
+        "lastname":"Mathis",
+        "fromdate":"May 13,1931",
+        "todate":"May 08,1948",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602117,-41.18219484 ]
+        },
+        "properties": {
+        "fleetid":"P063",
+        "fleetname":"Joshua May",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Joshua",
+        "lastname":"May",
+        "fromdate":"Apr 30,1913",
+        "todate":"Apr 22,1947",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602104,-41.18220594 ]
+        },
+        "properties": {
+        "fleetid":"P064",
+        "fleetname":"Julian McDonald",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Julian",
+        "lastname":"McDonald",
+        "fromdate":"Jul 31,1937",
+        "todate":"Jul 26,1958",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602104,-41.18221704 ]
+        },
+        "properties": {
+        "fleetid":"P065",
+        "fleetname":"Justin McLean",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Justin",
+        "lastname":"McLean",
+        "fromdate":"Jun 08,1913",
+        "todate":"May 27,1963",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602084,-41.18222915 ]
+        },
+        "properties": {
+        "fleetid":"P066",
+        "fleetname":"Keith McGrath",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Keith",
+        "lastname":"McGrath",
+        "fromdate":"May 16,2012",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602084,-41.18223925 ]
+        },
+        "properties": {
+        "fleetid":"P067",
+        "fleetname":"Kevin Metcalfe",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Kevin",
+        "lastname":"Metcalfe",
+        "fromdate":"Jan 12,2006",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960208,-41.1822506 ]
+        },
+        "properties": {
+        "fleetid":"P068",
+        "fleetname":"Leonard Miller",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Leonard",
+        "lastname":"Miller",
+        "fromdate":"Apr 27,1993",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602091,-41.18226095 ]
+        },
+        "properties": {
+        "fleetid":"P069",
+        "fleetname":"Liam Mills",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Liam",
+        "lastname":"Mills",
+        "fromdate":"Oct 23,2009",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9602077,-41.18227306 ]
+        },
+        "properties": {
+        "fleetid":"P070",
+        "fleetname":"Lucas Mitchell",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Lucas",
+        "lastname":"Mitchell",
+        "fromdate":"Jul 22,1905",
+        "todate":"Jul 15,1935",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601527,-41.18198357 ]
+        },
+        "properties": {
+        "fleetid":"P071",
+        "fleetname":"Luke Morgan",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Luke",
+        "lastname":"Morgan",
+        "fromdate":"Mar 22,1959",
+        "todate":"Mar 16,1980",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601537,-41.18199246 ]
+        },
+        "properties": {
+        "fleetid":"P072",
+        "fleetname":"Matt Morrison",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Matt",
+        "lastname":"Morrison",
+        "fromdate":"Nov 29,1942",
+        "todate":"Nov 11,2013",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960153,-41.1820013 ]
+        },
+        "properties": {
+        "fleetid":"P073",
+        "fleetname":"Max Murray",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Max",
+        "lastname":"Murray",
+        "fromdate":"Apr 07,1913",
+        "todate":"Mar 21,1980",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601533,-41.18200988 ]
+        },
+        "properties": {
+        "fleetid":"P074",
+        "fleetname":"Michael Nash",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Michael",
+        "lastname":"Nash",
+        "fromdate":"Oct 18,1954",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601535,-41.18201845 ]
+        },
+        "properties": {
+        "fleetid":"P075",
+        "fleetname":"Nathan Newman",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Nathan",
+        "lastname":"Newman",
+        "fromdate":"Jan 10,1971",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601523,-41.18202741 ]
+        },
+        "properties": {
+        "fleetid":"P076",
+        "fleetname":"Neil Nolan",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Neil",
+        "lastname":"Nolan",
+        "fromdate":"May 19,1967",
+        "todate":"May 06,2016",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601531,-41.18203738 ]
+        },
+        "properties": {
+        "fleetid":"P077",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601525,-41.18204583 ]
+        },
+        "properties": {
+        "fleetid":"P078",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601518,-41.18205403 ]
+        },
+        "properties": {
+        "fleetid":"P079",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601522,-41.1820628 ]
+        },
+        "properties": {
+        "fleetid":"P080",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601523,-41.18207119 ]
+        },
+        "properties": {
+        "fleetid":"P081",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601524,-41.18208009 ]
+        },
+        "properties": {
+        "fleetid":"P082",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601524,-41.18208917 ]
+        },
+        "properties": {
+        "fleetid":"P083",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601487,-41.18215093 ]
+        },
+        "properties": {
+        "fleetid":"P084",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601487,-41.18216102 ]
+        },
+        "properties": {
+        "fleetid":"P085",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601514,-41.18217314 ]
+        },
+        "properties": {
+        "fleetid":"P086",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.96015,-41.18218323 ]
+        },
+        "properties": {
+        "fleetid":"P087",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601507,-41.18219509 ]
+        },
+        "properties": {
+        "fleetid":"P088",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601504,-41.18220544 ]
+        },
+        "properties": {
+        "fleetid":"P089",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601507,-41.18221679 ]
+        },
+        "properties": {
+        "fleetid":"P090",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601511,-41.1822284 ]
+        },
+        "properties": {
+        "fleetid":"P091",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601524,-41.18223975 ]
+        },
+        "properties": {
+        "fleetid":"P092",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601527,-41.18225136 ]
+        },
+        "properties": {
+        "fleetid":"P093",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.96015,-41.18226095 ]
+        },
+        "properties": {
+        "fleetid":"P094",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9601487,-41.18227306 ]
+        },
+        "properties": {
+        "fleetid":"P095",
+        "fleetname":"Tim Reid",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Tim",
+        "lastname":"Reid",
+        "fromdate":"Dec 10,2001",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600937,-41.18198407 ]
+        },
+        "properties": {
+        "fleetid":"P096",
+        "fleetname":"Trevor Roberts",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Trevor",
+        "lastname":"Roberts",
+        "fromdate":"May 28,1923",
+        "todate":"May 12,1984",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600946,-41.18199297 ]
+        },
+        "properties": {
+        "fleetid":"P097",
+        "fleetname":"Victor Robertson",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Victor",
+        "lastname":"Robertson",
+        "fromdate":"Sep 26,1921",
+        "todate":"Sep 11,1980",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960094,-41.1820018 ]
+        },
+        "properties": {
+        "fleetid":"P098",
+        "fleetname":"Warren Ross",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Warren",
+        "lastname":"Ross",
+        "fromdate":"Jan 18,1916",
+        "todate":"Jan 02,1977",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600943,-41.18201038 ]
+        },
+        "properties": {
+        "fleetid":"P099",
+        "fleetname":"William Russell",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"William",
+        "lastname":"Russell",
+        "fromdate":"Feb 24,1959",
+        "todate":"Feb 14,1997",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600945,-41.18201896 ]
+        },
+        "properties": {
+        "fleetid":"P100",
+        "fleetname":"Abigail Rutherford",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Abigail",
+        "lastname":"Rutherford",
+        "fromdate":"Apr 17,1957",
+        "todate":"Apr 04,2010",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600933,-41.18202792 ]
+        },
+        "properties": {
+        "fleetid":"P101",
+        "fleetname":"Alexandra Sanderson",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Alexandra",
+        "lastname":"Sanderson",
+        "fromdate":"May 14,1948",
+        "todate":"Apr 30,2004",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600931,-41.18203612 ]
+        },
+        "properties": {
+        "fleetid":"P102",
+        "fleetname":"Alison Scott",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Alison",
+        "lastname":"Scott",
+        "fromdate":"Mar 29,1974",
+        "todate":"Mar 19,2015",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600928,-41.18204482 ]
+        },
+        "properties": {
+        "fleetid":"P103",
+        "fleetname":"Amanda Sharp",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Amanda",
+        "lastname":"Sharp",
+        "fromdate":"Nov 19,1938",
+        "todate":"Nov 13,1961",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600928,-41.18205454 ]
+        },
+        "properties": {
+        "fleetid":"P104",
+        "fleetname":"Amelia Short",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Amelia",
+        "lastname":"Short",
+        "fromdate":"Sep 26,1952",
+        "todate":"Sep 19,1983",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600932,-41.18206331 ]
+        },
+        "properties": {
+        "fleetid":"P105",
+        "fleetname":"Amy Simpson",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Amy",
+        "lastname":"Simpson",
+        "fromdate":"Aug 05,1986",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600933,-41.1820717 ]
+        },
+        "properties": {
+        "fleetid":"P106",
+        "fleetname":"Andrea Skinner",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Andrea",
+        "lastname":"Skinner",
+        "fromdate":"Aug 31,1999",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600934,-41.18208059 ]
+        },
+        "properties": {
+        "fleetid":"P107",
+        "fleetname":"Angela Slater",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Angela",
+        "lastname":"Slater",
+        "fromdate":"Jul 12,1974",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600934,-41.18208968 ]
+        },
+        "properties": {
+        "fleetid":"P108",
+        "fleetname":"Anna Smith",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Anna",
+        "lastname":"Smith",
+        "fromdate":"Nov 09,1997",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600924,-41.18215194 ]
+        },
+        "properties": {
+        "fleetid":"P109",
+        "fleetname":"Anne Springer",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Anne",
+        "lastname":"Springer",
+        "fromdate":"Dec 10,1909",
+        "todate":"Nov 21,1984",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600924,-41.18216203 ]
+        },
+        "properties": {
+        "fleetid":"P110",
+        "fleetname":"Audrey Stewart",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Audrey",
+        "lastname":"Stewart",
+        "fromdate":"Mar 08,1981",
+        "todate":"Mar 02,2005",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600944,-41.18217263 ]
+        },
+        "properties": {
+        "fleetid":"P111",
+        "fleetname":"Ava Sutherland",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Ava",
+        "lastname":"Sutherland",
+        "fromdate":"Mar 31,2003",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600937,-41.18218424 ]
+        },
+        "properties": {
+        "fleetid":"P112",
+        "fleetname":"Bella Taylor",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Bella",
+        "lastname":"Taylor",
+        "fromdate":"Sep 04,2011",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960093,-41.18219585 ]
+        },
+        "properties": {
+        "fleetid":"P113",
+        "fleetname":"Bernadette Terry",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Bernadette",
+        "lastname":"Terry",
+        "fromdate":"May 22,1980",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960091,-41.18220644 ]
+        },
+        "properties": {
+        "fleetid":"P114",
+        "fleetname":"Carol Thomson",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Carol",
+        "lastname":"Thomson",
+        "fromdate":"Dec 01,1946",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960091,-41.18221654 ]
+        },
+        "properties": {
+        "fleetid":"P115",
+        "fleetname":"Caroline Tucker",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Caroline",
+        "lastname":"Tucker",
+        "fromdate":"Apr 16,2007",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600897,-41.18222865 ]
+        },
+        "properties": {
+        "fleetid":"P116",
+        "fleetname":"Carolyn Turner",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Carolyn",
+        "lastname":"Turner",
+        "fromdate":"Apr 29,1948",
+        "todate":"Apr 19,1990",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960093,-41.18223975 ]
+        },
+        "properties": {
+        "fleetid":"P117",
+        "fleetname":"Chloe Underwood",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Chloe",
+        "lastname":"Underwood",
+        "fromdate":"Sep 24,1991",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960093,-41.18225086 ]
+        },
+        "properties": {
+        "fleetid":"P118",
+        "fleetname":"Claire Vance",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Claire",
+        "lastname":"Vance",
+        "fromdate":"Jun 03,1933",
+        "todate":"May 16,2004",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600937,-41.18226196 ]
+        },
+        "properties": {
+        "fleetid":"P119",
+        "fleetname":"Deirdre Vaughan",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Deirdre",
+        "lastname":"Vaughan",
+        "fromdate":"Mar 29,1942",
+        "todate":"Mar 18,1987",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600924,-41.18227407 ]
+        },
+        "properties": {
+        "fleetid":"P120",
+        "fleetname":"Diana Walker",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Diana",
+        "lastname":"Walker",
+        "fromdate":"Jan 12,1970",
+        "todate":"Jan 07,1989",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600327,-41.18198357 ]
+        },
+        "properties": {
+        "fleetid":"P121",
+        "fleetname":"Diane Wallace",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Diane",
+        "lastname":"Wallace",
+        "fromdate":"Mar 23,2002",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600336,-41.18199246 ]
+        },
+        "properties": {
+        "fleetid":"P122",
+        "fleetname":"Donna Walsh",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Donna",
+        "lastname":"Walsh",
+        "fromdate":"Sep 22,1991",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960033,-41.1820013 ]
+        },
+        "properties": {
+        "fleetid":"P123",
+        "fleetname":"Dorothy Watson",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Dorothy",
+        "lastname":"Watson",
+        "fromdate":"Aug 05,1999",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600333,-41.18200988 ]
+        },
+        "properties": {
+        "fleetid":"P124",
+        "fleetname":"Elizabeth Welch",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Elizabeth",
+        "lastname":"Welch",
+        "fromdate":"Nov 10,1914",
+        "todate":"Nov 07,1925",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600335,-41.18201845 ]
+        },
+        "properties": {
+        "fleetid":"P125",
+        "fleetname":"Ella White",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Ella",
+        "lastname":"White",
+        "fromdate":"Nov 29,1919",
+        "todate":"Nov 10,1992",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600323,-41.18202741 ]
+        },
+        "properties": {
+        "fleetid":"P126",
+        "fleetname":"Emily Wilkins",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Emily",
+        "lastname":"Wilkins",
+        "fromdate":"Mar 31,1960",
+        "todate":"Mar 27,1978",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600321,-41.18203561 ]
+        },
+        "properties": {
+        "fleetid":"P127",
+        "fleetname":"Emma Wilson",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Emma",
+        "lastname":"Wilson",
+        "fromdate":"Jan 20,2010",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600318,-41.18204432 ]
+        },
+        "properties": {
+        "fleetid":"P128",
+        "fleetname":"Faith Wright",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Faith",
+        "lastname":"Wright",
+        "fromdate":"Aug 12,1916",
+        "todate":"Aug 02,1956",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600318,-41.18205403 ]
+        },
+        "properties": {
+        "fleetid":"P129",
+        "fleetname":"Felicity Young",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Felicity",
+        "lastname":"Young",
+        "fromdate":"Sep 14,1978",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600322,-41.1820628 ]
+        },
+        "properties": {
+        "fleetid":"P130",
+        "fleetname":"Fiona Abraham",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Fiona",
+        "lastname":"Abraham",
+        "fromdate":"Nov 21,1954",
+        "todate":"Nov 15,1979",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600323,-41.18207119 ]
+        },
+        "properties": {
+        "fleetid":"P131",
+        "fleetname":"Gabrielle Allan",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Gabrielle",
+        "lastname":"Allan",
+        "fromdate":"Sep 22,1979",
+        "todate":"Sep 16,2002",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600324,-41.18208009 ]
+        },
+        "properties": {
+        "fleetid":"P132",
+        "fleetname":"Grace Alsop",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Grace",
+        "lastname":"Alsop",
+        "fromdate":"Aug 03,1910",
+        "todate":"Jul 22,1957",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600324,-41.18208917 ]
+        },
+        "properties": {
+        "fleetid":"P133",
+        "fleetname":"Hannah Anderson",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Hannah",
+        "lastname":"Anderson",
+        "fromdate":"Jul 12,1960",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600361,-41.18214992 ]
+        },
+        "properties": {
+        "fleetid":"P133A",
+        "fleetname":"Heather Arnold",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Heather",
+        "lastname":"Arnold",
+        "fromdate":"Feb 04,1961",
+        "todate":"Jan 29,1988",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600361,-41.18216001 ]
+        },
+        "properties": {
+        "fleetid":"P134",
+        "fleetname":"Irene Avery",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Irene",
+        "lastname":"Avery",
+        "fromdate":"Mar 25,1921",
+        "todate":"Mar 16,1958",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600307,-41.18217339 ]
+        },
+        "properties": {
+        "fleetid":"P135",
+        "fleetname":"Jan Bailey",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Jan",
+        "lastname":"Bailey",
+        "fromdate":"Dec 30,1965",
+        "todate":"Dec 24,1989",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600307,-41.18218373 ]
+        },
+        "properties": {
+        "fleetid":"P136",
+        "fleetname":"Jane Baker",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Jane",
+        "lastname":"Baker",
+        "fromdate":"Feb 04,1987",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960031,-41.18219458 ]
+        },
+        "properties": {
+        "fleetid":"P137",
+        "fleetname":"Jasmine Ball",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Jasmine",
+        "lastname":"Ball",
+        "fromdate":"Aug 28,1922",
+        "todate":"Aug 23,1942",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960031,-41.18220594 ]
+        },
+        "properties": {
+        "fleetid":"P138",
+        "fleetname":"Jennifer Bell",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Jennifer",
+        "lastname":"Bell",
+        "fromdate":"Sep 13,1975",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960032,-41.18221729 ]
+        },
+        "properties": {
+        "fleetid":"P139",
+        "fleetname":"Jessica Berry",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Jessica",
+        "lastname":"Berry",
+        "fromdate":"Dec 19,1930",
+        "todate":"Dec 10,1964",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600297,-41.1822284 ]
+        },
+        "properties": {
+        "fleetid":"P140",
+        "fleetname":"Joan Black",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Joan",
+        "lastname":"Black",
+        "fromdate":"Feb 22,1957",
+        "todate":"Feb 16,1982",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600304,-41.18223925 ]
+        },
+        "properties": {
+        "fleetid":"P141",
+        "fleetname":"Joanne Blake",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Joanne",
+        "lastname":"Blake",
+        "fromdate":"Apr 14,1920",
+        "todate":"Mar 29,1985",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.960031,-41.18225161 ]
+        },
+        "properties": {
+        "fleetid":"P142",
+        "fleetname":"Julia Bond",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Julia",
+        "lastname":"Bond",
+        "fromdate":"Jul 23,1968",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600317,-41.18226196 ]
+        },
+        "properties": {
+        "fleetid":"P143",
+        "fleetname":"Karen Bower",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Karen",
+        "lastname":"Bower",
+        "fromdate":"Nov 13,1997",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9600317,-41.18227306 ]
+        },
+        "properties": {
+        "fleetid":"P144",
+        "fleetname":"Katherine Brown",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Katherine",
+        "lastname":"Brown",
+        "fromdate":"Apr 30,1942",
+        "todate":"Apr 25,1960",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.95998,-41.18193222 ]
+        },
+        "properties": {
+        "fleetid":"P145",
+        "fleetname":"Kimberly Buckland",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Kimberly",
+        "lastname":"Buckland",
+        "fromdate":"Nov 14,2004",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599793,-41.18194105 ]
+        },
+        "properties": {
+        "fleetid":"P146",
+        "fleetname":"Kylie Burgess",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Kylie",
+        "lastname":"Burgess",
+        "fromdate":"Apr 28,2009",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599796,-41.18194963 ]
+        },
+        "properties": {
+        "fleetid":"P147",
+        "fleetname":"Lauren Butler",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Lauren",
+        "lastname":"Butler",
+        "fromdate":"Oct 25,1948",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599798,-41.18195821 ]
+        },
+        "properties": {
+        "fleetid":"P148",
+        "fleetname":"Leah Cameron",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Leah",
+        "lastname":"Cameron",
+        "fromdate":"Jun 09,1936",
+        "todate":"May 23,2004",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599786,-41.18196717 ]
+        },
+        "properties": {
+        "fleetid":"P149",
+        "fleetname":"Lillian Campbell",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Lillian",
+        "lastname":"Campbell",
+        "fromdate":"Dec 26,2002",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599785,-41.18197537 ]
+        },
+        "properties": {
+        "fleetid":"P150",
+        "fleetname":"Lily Carr",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Lily",
+        "lastname":"Carr",
+        "fromdate":"Apr 21,1914",
+        "todate":"Apr 17,1929",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599781,-41.18198407 ]
+        },
+        "properties": {
+        "fleetid":"P151",
+        "fleetname":"Lisa Chapman",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Lisa",
+        "lastname":"Chapman",
+        "fromdate":"Sep 18,1949",
+        "todate":"Sep 05,2002",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599791,-41.18199297 ]
+        },
+        "properties": {
+        "fleetid":"P152",
+        "fleetname":"Madeleine Churchill",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Madeleine",
+        "lastname":"Churchill",
+        "fromdate":"Oct 18,1927",
+        "todate":"Oct 05,1978",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599784,-41.1820018 ]
+        },
+        "properties": {
+        "fleetid":"P153",
+        "fleetname":"Maria Clark",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Maria",
+        "lastname":"Clark",
+        "fromdate":"Mar 03,1992",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599787,-41.18201038 ]
+        },
+        "properties": {
+        "fleetid":"P154",
+        "fleetname":"Mary Clarkson",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Mary",
+        "lastname":"Clarkson",
+        "fromdate":"Jun 22,1975",
+        "todate":"Jun 17,1994",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599789,-41.18201896 ]
+        },
+        "properties": {
+        "fleetid":"P155",
+        "fleetname":"Megan Coleman",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Megan",
+        "lastname":"Coleman",
+        "fromdate":"Jul 06,2006",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599777,-41.18202792 ]
+        },
+        "properties": {
+        "fleetid":"P156",
+        "fleetname":"Melanie Cornish",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Melanie",
+        "lastname":"Cornish",
+        "fromdate":"Jun 06,1970",
+        "todate":"Jun 01,1991",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599775,-41.18203612 ]
+        },
+        "properties": {
+        "fleetid":"P157",
+        "fleetname":"Michelle Davidson",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Michelle",
+        "lastname":"Davidson",
+        "fromdate":"Sep 06,1916",
+        "todate":"Aug 28,1954",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599772,-41.18204482 ]
+        },
+        "properties": {
+        "fleetid":"P158",
+        "fleetname":"Molly Davies",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Molly",
+        "lastname":"Davies",
+        "fromdate":"Jan 02,1964",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599772,-41.18205454 ]
+        },
+        "properties": {
+        "fleetid":"P159",
+        "fleetname":"Natalie Dickens",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Natalie",
+        "lastname":"Dickens",
+        "fromdate":"Aug 29,1940",
+        "todate":"Aug 12,2009",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599776,-41.18206331 ]
+        },
+        "properties": {
+        "fleetid":"P160",
+        "fleetname":"Nicola Dowd",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Nicola",
+        "lastname":"Dowd",
+        "fromdate":"Nov 18,1933",
+        "todate":"Nov 01,2003",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599777,-41.1820717 ]
+        },
+        "properties": {
+        "fleetid":"P161",
+        "fleetname":"Olivia Duncan",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Olivia",
+        "lastname":"Duncan",
+        "fromdate":"May 08,1974",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599778,-41.18208059 ]
+        },
+        "properties": {
+        "fleetid":"P162",
+        "fleetname":"Penelope Dyer",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Penelope",
+        "lastname":"Dyer",
+        "fromdate":"Mar 27,1958",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599778,-41.18208968 ]
+        },
+        "properties": {
+        "fleetid":"P163",
+        "fleetname":"Pippa Edmunds",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Pippa",
+        "lastname":"Edmunds",
+        "fromdate":"Mar 09,1936",
+        "todate":"Feb 24,1992",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599777,-41.18215144 ]
+        },
+        "properties": {
+        "fleetid":"P164",
+        "fleetname":"Rachel Ellison",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Rachel",
+        "lastname":"Ellison",
+        "fromdate":"Nov 23,1903",
+        "todate":"Nov 20,1914",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599777,-41.18216153 ]
+        },
+        "properties": {
+        "fleetid":"P165",
+        "fleetname":"Rebecca Ferguson",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Rebecca",
+        "lastname":"Ferguson",
+        "fromdate":"Sep 07,1902",
+        "todate":"Aug 30,1932",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599791,-41.18217364 ]
+        },
+        "properties": {
+        "fleetid":"P166",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599791,-41.18218373 ]
+        },
+        "properties": {
+        "fleetid":"P167",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599764,-41.18219471 ]
+        },
+        "properties": {
+        "fleetid":"P168",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599764,-41.18220594 ]
+        },
+        "properties": {
+        "fleetid":"P169",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599764,-41.18221755 ]
+        },
+        "properties": {
+        "fleetid":"P170",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959975,-41.18222815 ]
+        },
+        "properties": {
+        "fleetid":"P171",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599762,-41.1822395 ]
+        },
+        "properties": {
+        "fleetid":"P172",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599772,-41.18224972 ]
+        },
+        "properties": {
+        "fleetid":"P173",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599791,-41.18226145 ]
+        },
+        "properties": {
+        "fleetid":"P174",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599777,-41.18227357 ]
+        },
+        "properties": {
+        "fleetid":"P175",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959924,-41.18195802 ]
+        },
+        "properties": {
+        "fleetid":"P176",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599229,-41.18196698 ]
+        },
+        "properties": {
+        "fleetid":"P177",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599227,-41.18197518 ]
+        },
+        "properties": {
+        "fleetid":"P178",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599224,-41.18198389 ]
+        },
+        "properties": {
+        "fleetid":"P179",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599233,-41.18199278 ]
+        },
+        "properties": {
+        "fleetid":"P180",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599226,-41.18200161 ]
+        },
+        "properties": {
+        "fleetid":"P181",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599229,-41.18201019 ]
+        },
+        "properties": {
+        "fleetid":"P182",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599231,-41.18201877 ]
+        },
+        "properties": {
+        "fleetid":"P183",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599219,-41.18203101 ]
+        },
+        "properties": {
+        "fleetid":"P184",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599214,-41.18204463 ]
+        },
+        "properties": {
+        "fleetid":"P185",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599214,-41.18205435 ]
+        },
+        "properties": {
+        "fleetid":"P186",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599218,-41.18206312 ]
+        },
+        "properties": {
+        "fleetid":"P187",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599219,-41.18207151 ]
+        },
+        "properties": {
+        "fleetid":"P188",
+        "fleetname":"",
+        "image":"",
+        "firstname":"",
+        "lastname":"",
+        "fromdate":"",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"green"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959922,-41.1820804 ]
+        },
+        "properties": {
+        "fleetid":"P189",
+        "fleetname":"Andrew Jackson",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Andrew",
+        "lastname":"Jackson",
+        "fromdate":"Oct 26,1920",
+        "todate":"Oct 06,2000",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959922,-41.18208949 ]
+        },
+        "properties": {
+        "fleetid":"P190",
+        "fleetname":"Anthony James",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Anthony",
+        "lastname":"James",
+        "fromdate":"Nov 02,1928",
+        "todate":"Oct 15,2000",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599156,-41.18215147 ]
+        },
+        "properties": {
+        "fleetid":"P191",
+        "fleetname":"Austin Johnston",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Austin",
+        "lastname":"Johnston",
+        "fromdate":"Sep 20,1922",
+        "todate":"Sep 08,1971",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599162,-41.18216257 ]
+        },
+        "properties": {
+        "fleetid":"P192",
+        "fleetname":"Benjamin Jones",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Benjamin",
+        "lastname":"Jones",
+        "fromdate":"Nov 12,1990",
+        "todate":"Nov 09,2001",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599152,-41.18217317 ]
+        },
+        "properties": {
+        "fleetid":"P193",
+        "fleetname":"Blake Kelly",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Blake",
+        "lastname":"Kelly",
+        "fromdate":"Nov 28,1905",
+        "todate":"Nov 18,1947",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599146,-41.1821844 ]
+        },
+        "properties": {
+        "fleetid":"P194",
+        "fleetname":"Boris Kerr",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Boris",
+        "lastname":"Kerr",
+        "fromdate":"Nov 13,1930",
+        "todate":"Nov 02,1975",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599141,-41.18219613 ]
+        },
+        "properties": {
+        "fleetid":"P195",
+        "fleetname":"Brandon King",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Brandon",
+        "lastname":"King",
+        "fromdate":"Nov 20,1912",
+        "todate":"Nov 10,1954",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599142,-41.18220736 ]
+        },
+        "properties": {
+        "fleetid":"P196",
+        "fleetname":"Brian Knox",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Brian",
+        "lastname":"Knox",
+        "fromdate":"Jul 17,2007",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599146,-41.18221834 ]
+        },
+        "properties": {
+        "fleetid":"P197",
+        "fleetname":"Cameron Loranget",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Cameron",
+        "lastname":"Loranget",
+        "fromdate":"Jun 20,1908",
+        "todate":"Jun 01,1985",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599159,-41.18223007 ]
+        },
+        "properties": {
+        "fleetid":"P198",
+        "fleetname":"Carl Langdon",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Carl",
+        "lastname":"Langdon",
+        "fromdate":"Oct 18,1963",
+        "todate":"Oct 14,1976",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959915,-41.1822396 ]
+        },
+        "properties": {
+        "fleetid":"P199",
+        "fleetname":"Charles Lawrence",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Charles",
+        "lastname":"Lawrence",
+        "fromdate":"Dec 14,1957",
+        "todate":"Dec 10,1972",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599151,-41.18225164 ]
+        },
+        "properties": {
+        "fleetid":"P200",
+        "fleetname":"Christian Lee",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Christian",
+        "lastname":"Lee",
+        "fromdate":"Sep 28,1932",
+        "todate":"Sep 12,1999",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9599145,-41.18226104 ]
+        },
+        "properties": {
+        "fleetid":"P201",
+        "fleetname":"Christopher Lewis",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Christopher",
+        "lastname":"Lewis",
+        "fromdate":"Jun 07,1933",
+        "todate":"May 24,1990",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959916,-41.1822748 ]
+        },
+        "properties": {
+        "fleetid":"P201A",
+        "fleetname":"Colin Lyman",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Colin",
+        "lastname":"Lyman",
+        "fromdate":"Apr 08,1972",
+        "todate":"Apr 03,1995",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598711,-41.18193115 ]
+        },
+        "properties": {
+        "fleetid":"P202",
+        "fleetname":"Connor MacDonald",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Connor",
+        "lastname":"MacDonald",
+        "fromdate":"Jan 16,1986",
+        "todate":"Jan 13,1997",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598698,-41.18193973 ]
+        },
+        "properties": {
+        "fleetid":"P203",
+        "fleetname":"Dan Mackay",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Dan",
+        "lastname":"Mackay",
+        "fromdate":"Jul 14,1947",
+        "todate":"Jun 27,2012",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598701,-41.18194881 ]
+        },
+        "properties": {
+        "fleetid":"P205",
+        "fleetname":"David Mackenzie",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"David",
+        "lastname":"Mackenzie",
+        "fromdate":"Jun 16,1984",
+        "todate":"Jun 10,2009",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598706,-41.18195764 ]
+        },
+        "properties": {
+        "fleetid":"P206",
+        "fleetname":"Dominic MacLeod",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Dominic",
+        "lastname":"MacLeod",
+        "fromdate":"Dec 22,1940",
+        "todate":"Dec 19,1952",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598701,-41.1819666 ]
+        },
+        "properties": {
+        "fleetid":"P207",
+        "fleetname":"Dylan Manning",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Dylan",
+        "lastname":"Manning",
+        "fromdate":"Aug 11,1960",
+        "todate":"Aug 04,1991",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959871,-41.1819748 ]
+        },
+        "properties": {
+        "fleetid":"P208",
+        "fleetname":"Edward Marshall",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Edward",
+        "lastname":"Marshall",
+        "fromdate":"Nov 28,1966",
+        "todate":"Nov 24,1980",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598713,-41.18198325 ]
+        },
+        "properties": {
+        "fleetid":"P209",
+        "fleetname":"Eric Martin",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Eric",
+        "lastname":"Martin",
+        "fromdate":"Aug 18,1974",
+        "todate":"Aug 13,1993",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598716,-41.18199265 ]
+        },
+        "properties": {
+        "fleetid":"P210",
+        "fleetname":"Evan Mathis",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Evan",
+        "lastname":"Mathis",
+        "fromdate":"Mar 26,1952",
+        "todate":"Mar 16,1994",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598719,-41.18200174 ]
+        },
+        "properties": {
+        "fleetid":"P211",
+        "fleetname":"Frank May",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Frank",
+        "lastname":"May",
+        "fromdate":"Oct 26,1919",
+        "todate":"Oct 09,1984",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598712,-41.18200956 ]
+        },
+        "properties": {
+        "fleetid":"P212",
+        "fleetname":"Gavin McDonald",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Gavin",
+        "lastname":"McDonald",
+        "fromdate":"Oct 21,1946",
+        "todate":"Oct 16,1965",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598709,-41.18201877 ]
+        },
+        "properties": {
+        "fleetid":"P213",
+        "fleetname":"Gordon McLean",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Gordon",
+        "lastname":"McLean",
+        "fromdate":"Feb 14,2012",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598704,-41.18202773 ]
+        },
+        "properties": {
+        "fleetid":"P214",
+        "fleetname":"Harry McGrath",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Harry",
+        "lastname":"McGrath",
+        "fromdate":"Mar 04,1958",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598706,-41.18203643 ]
+        },
+        "properties": {
+        "fleetid":"P215",
+        "fleetname":"Ian Metcalfe",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Ian",
+        "lastname":"Metcalfe",
+        "fromdate":"Mar 22,1995",
+        "todate":"Mar 16,2016",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598709,-41.18204463 ]
+        },
+        "properties": {
+        "fleetid":"P216",
+        "fleetname":"Isaac Miller",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Isaac",
+        "lastname":"Miller",
+        "fromdate":"Jul 13,1935",
+        "todate":"Jul 01,1981",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598709,-41.18205384 ]
+        },
+        "properties": {
+        "fleetid":"P217",
+        "fleetname":"Jack Mills",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Jack",
+        "lastname":"Mills",
+        "fromdate":"Aug 01,1935",
+        "todate":"Jul 24,1966",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.95987,-41.18206337 ]
+        },
+        "properties": {
+        "fleetid":"P218",
+        "fleetname":"Jacob Mitchell",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Jacob",
+        "lastname":"Mitchell",
+        "fromdate":"May 05,1954",
+        "todate":"Apr 29,1979",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.95987,-41.18207113 ]
+        },
+        "properties": {
+        "fleetid":"P219",
+        "fleetname":"Jake Morgan",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Jake",
+        "lastname":"Morgan",
+        "fromdate":"Oct 29,1918",
+        "todate":"Oct 15,1973",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598695,-41.18208053 ]
+        },
+        "properties": {
+        "fleetid":"P220",
+        "fleetname":"James Morrison",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"James",
+        "lastname":"Morrison",
+        "fromdate":"Jun 18,2003",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.95987,-41.18208898 ]
+        },
+        "properties": {
+        "fleetid":"P221",
+        "fleetname":"Jason Murray",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Jason",
+        "lastname":"Murray",
+        "fromdate":"Apr 18,2010",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598718,-41.1822231 ]
+        },
+        "properties": {
+        "fleetid":"P222",
+        "fleetname":"Joe Nash",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Joe",
+        "lastname":"Nash",
+        "fromdate":"Oct 04,1948",
+        "todate":"Sep 26,1983",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598664,-41.18227003 ]
+        },
+        "properties": {
+        "fleetid":"P223",
+        "fleetname":"John Newman",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"John",
+        "lastname":"Newman",
+        "fromdate":"Mar 17,1919",
+        "todate":"Mar 09,1949",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598237,-41.18202218 ]
+        },
+        "properties": {
+        "fleetid":"P224",
+        "fleetname":"Jonathan Nolan",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Jonathan",
+        "lastname":"Nolan",
+        "fromdate":"Apr 09,1937",
+        "todate":"Mar 25,1998",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598252,-41.18205435 ]
+        },
+        "properties": {
+        "fleetid":"P225",
+        "fleetname":"Joseph North",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Joseph",
+        "lastname":"North",
+        "fromdate":"Nov 24,1933",
+        "todate":"Nov 06,2005",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598254,-41.18207403 ]
+        },
+        "properties": {
+        "fleetid":"P226",
+        "fleetname":"Joshua Ogden",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Joshua",
+        "lastname":"Ogden",
+        "fromdate":"Apr 04,1901",
+        "todate":"Mar 28,1930",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598243,-41.18208709 ]
+        },
+        "properties": {
+        "fleetid":"P227",
+        "fleetname":"Julian Oliver",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Julian",
+        "lastname":"Oliver",
+        "fromdate":"Nov 12,1917",
+        "todate":"Nov 08,1934",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598302,-41.18216708 ]
+        },
+        "properties": {
+        "fleetid":"P228",
+        "fleetname":"Justin Paige",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Justin",
+        "lastname":"Paige",
+        "fromdate":"Oct 09,1996",
+        "todate":"Oct 06,2010",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598315,-41.18220544 ]
+        },
+        "properties": {
+        "fleetid":"P229",
+        "fleetname":"Keith Parr",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Keith",
+        "lastname":"Parr",
+        "fromdate":"Apr 16,1976",
+        "todate":"Apr 09,2005",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9598268,-41.18222007 ]
+        },
+        "properties": {
+        "fleetid":"P230",
+        "fleetname":"Kevin Parsons",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Kevin",
+        "lastname":"Parsons",
+        "fromdate":"Apr 15,1930",
+        "todate":"Mar 27,2007",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597861,-41.18200707 ]
+        },
+        "properties": {
+        "fleetid":"P230",
+        "fleetname":"Leonard Paterson",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Leonard",
+        "lastname":"Paterson",
+        "fromdate":"Sep 19,1997",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597855,-41.18201729 ]
+        },
+        "properties": {
+        "fleetid":"P231",
+        "fleetname":"Liam Payne",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Liam",
+        "lastname":"Payne",
+        "fromdate":"Mar 21,1966",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597865,-41.18202915 ]
+        },
+        "properties": {
+        "fleetid":"P232",
+        "fleetname":"Lucas Peake",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Lucas",
+        "lastname":"Peake",
+        "fromdate":"Oct 19,1913",
+        "todate":"Oct 15,1931",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597867,-41.18204082 ]
+        },
+        "properties": {
+        "fleetid":"P233",
+        "fleetname":"Luke Peters",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Luke",
+        "lastname":"Peters",
+        "fromdate":"Aug 24,1997",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597863,-41.18205123 ]
+        },
+        "properties": {
+        "fleetid":"P234",
+        "fleetname":"Matt Piper",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Matt",
+        "lastname":"Piper",
+        "fromdate":"Oct 25,1916",
+        "todate":"Oct 10,1976",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597861,-41.18206252 ]
+        },
+        "properties": {
+        "fleetid":"P236",
+        "fleetname":"Max Poole",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Max",
+        "lastname":"Poole",
+        "fromdate":"Nov 19,1905",
+        "todate":"Oct 31,1983",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597871,-41.18207687 ]
+        },
+        "properties": {
+        "fleetid":"P237",
+        "fleetname":"Michael Powell",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Michael",
+        "lastname":"Powell",
+        "fromdate":"Aug 18,1937",
+        "todate":"Jul 31,2011",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597886,-41.18216405 ]
+        },
+        "properties": {
+        "fleetid":"P238",
+        "fleetname":"Nathan Pullman",
+        "image":"assets/img/profilepic/10.gif",
+        "firstname":"Nathan",
+        "lastname":"Pullman",
+        "fromdate":"Nov 07,1997",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597933,-41.1822554 ]
+        },
+        "properties": {
+        "fleetid":"P239",
+        "fleetname":"Neil Quinn",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Neil",
+        "lastname":"Quinn",
+        "fromdate":"Feb 09,1932",
+        "todate":"Jan 24,1996",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597419,-41.1820118 ]
+        },
+        "properties": {
+        "fleetid":"P240",
+        "fleetname":"Nicholas Rampling",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Nicholas",
+        "lastname":"Rampling",
+        "fromdate":"Sep 09,1957",
+        "todate":"Sep 05,1973",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597429,-41.18202139 ]
+        },
+        "properties": {
+        "fleetid":"P241",
+        "fleetname":"Oliver Randall",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Oliver",
+        "lastname":"Randall",
+        "fromdate":"Dec 28,1970",
+        "todate":"Dec 20,2003",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597431,-41.18203028 ]
+        },
+        "properties": {
+        "fleetid":"P242",
+        "fleetname":"Owen Rees",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Owen",
+        "lastname":"Rees",
+        "fromdate":"Jun 22,1995",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597416,-41.18204006 ]
+        },
+        "properties": {
+        "fleetid":"P243",
+        "fleetname":"Paul Reid",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Paul",
+        "lastname":"Reid",
+        "fromdate":"Sep 24,1963",
+        "todate":"Sep 14,2003",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959743,-41.1820487 ]
+        },
+        "properties": {
+        "fleetid":"P244",
+        "fleetname":"Peter Roberts",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Peter",
+        "lastname":"Roberts",
+        "fromdate":"Feb 20,1948",
+        "todate":"Feb 16,1963",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597426,-41.18206157 ]
+        },
+        "properties": {
+        "fleetid":"P245",
+        "fleetname":"Phil Robertson",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Phil",
+        "lastname":"Robertson",
+        "fromdate":"Mar 15,2009",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959728,-41.18209125 ]
+        },
+        "properties": {
+        "fleetid":"P246",
+        "fleetname":"Piers Ross",
+        "image":"assets/img/profilepic/4.gif",
+        "firstname":"Piers",
+        "lastname":"Ross",
+        "fromdate":"Dec 06,1945",
+        "todate":"Nov 21,2006",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597263,-41.18215951 ]
+        },
+        "properties": {
+        "fleetid":"P247",
+        "fleetname":"Richard Russell",
+        "image":"assets/img/profilepic/6.gif",
+        "firstname":"Richard",
+        "lastname":"Russell",
+        "fromdate":"Mar 18,1903",
+        "todate":"Mar 15,1915",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597584,-41.18218979 ]
+        },
+        "properties": {
+        "fleetid":"P248",
+        "fleetname":"Robert Rutherford",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Robert",
+        "lastname":"Rutherford",
+        "fromdate":"Dec 03,1930",
+        "todate":"Nov 30,1942",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597289,-41.18225338 ]
+        },
+        "properties": {
+        "fleetid":"P249",
+        "fleetname":"Ryan Sanderson",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Ryan",
+        "lastname":"Sanderson",
+        "fromdate":"Jun 27,1971",
+        "todate":"Jun 23,1986",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596925,-41.18202483 ]
+        },
+        "properties": {
+        "fleetid":"P250",
+        "fleetname":"Sam Scott",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Sam",
+        "lastname":"Scott",
+        "fromdate":"May 16,1994",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959691,-41.18203757 ]
+        },
+        "properties": {
+        "fleetid":"P251",
+        "fleetname":"Sean Sharp",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Sean",
+        "lastname":"Sharp",
+        "fromdate":"May 24,2000",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596919,-41.18205227 ]
+        },
+        "properties": {
+        "fleetid":"P252",
+        "fleetname":"Sebastian Short",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Sebastian",
+        "lastname":"Short",
+        "fromdate":"Apr 18,1901",
+        "todate":"Mar 30,1976",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.959693,-41.18206596 ]
+        },
+        "properties": {
+        "fleetid":"P253",
+        "fleetname":"Simon Simpson",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Simon",
+        "lastname":"Simpson",
+        "fromdate":"Oct 06,1973",
+        "todate":"Oct 04,1983",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9597001,-41.18215749 ]
+        },
+        "properties": {
+        "fleetid":"P254",
+        "fleetname":"Stephen Skinner",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Stephen",
+        "lastname":"Skinner",
+        "fromdate":"Jun 01,2000",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596934,-41.18223673 ]
+        },
+        "properties": {
+        "fleetid":"P255",
+        "fleetname":"Steven Slater",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Steven",
+        "lastname":"Slater",
+        "fromdate":"Mar 14,1918",
+        "todate":"Feb 27,1978",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596927,-41.18224783 ]
+        },
+        "properties": {
+        "fleetid":"P256",
+        "fleetname":"Stewart Smith",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Stewart",
+        "lastname":"Smith",
+        "fromdate":"Feb 06,1931",
+        "todate":"Jan 26,1976",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596924,-41.1822689 ]
+        },
+        "properties": {
+        "fleetid":"P257",
+        "fleetname":"Thomas Springer",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Thomas",
+        "lastname":"Springer",
+        "fromdate":"Sep 21,1964",
+        "todate":"Sep 11,2007",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596478,-41.18207372 ]
+        },
+        "properties": {
+        "fleetid":"P258",
+        "fleetname":"Tim Stewart",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Tim",
+        "lastname":"Stewart",
+        "fromdate":"Sep 26,1952",
+        "todate":"Sep 13,2004",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596548,-41.18218613 ]
+        },
+        "properties": {
+        "fleetid":"P259",
+        "fleetname":"Trevor Sutherland",
+        "image":"assets/img/profilepic/9.gif",
+        "firstname":"Trevor",
+        "lastname":"Sutherland",
+        "fromdate":"Aug 11,1909",
+        "todate":"Jul 24,1982",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596565,-41.18226852 ]
+        },
+        "properties": {
+        "fleetid":"P260",
+        "fleetname":"Victor Taylor",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Victor",
+        "lastname":"Taylor",
+        "fromdate":"Jun 15,1941",
+        "todate":"May 29,2009",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596141,-41.18217774 ]
+        },
+        "properties": {
+        "fleetid":"P261",
+        "fleetname":"Warren Terry",
+        "image":"assets/img/profilepic/5.gif",
+        "firstname":"Warren",
+        "lastname":"Terry",
+        "fromdate":"Feb 25,1990",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596181,-41.18223124 ]
+        },
+        "properties": {
+        "fleetid":"P262",
+        "fleetname":"William Thomson",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"William",
+        "lastname":"Thomson",
+        "fromdate":"Mar 10,2007",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9596131,-41.18225887 ]
+        },
+        "properties": {
+        "fleetid":"P263",
+        "fleetname":"Walker Tucker",
+        "image":"assets/img/profilepic/8.gif",
+        "firstname":"Walker",
+        "lastname":"Tucker",
+        "fromdate":"Nov 23,1963",
+        "todate":"Nov 16,1989",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9595704,-41.18218702 ]
+        },
+        "properties": {
+        "fleetid":"P264",
+        "fleetname":"Wallace Turner",
+        "image":"assets/img/profilepic/3.gif",
+        "firstname":"Wallace",
+        "lastname":"Turner",
+        "fromdate":"Jul 28,1919",
+        "todate":"Jul 22,1942",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9595794,-41.18225464 ]
+        },
+        "properties": {
+        "fleetid":"P265",
+        "fleetname":"Walsh Underwood",
+        "image":"assets/img/profilepic/2.gif",
+        "firstname":"Walsh",
+        "lastname":"Underwood",
+        "fromdate":"Oct 14,1923",
+        "todate":"Oct 10,1936",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9595435,-41.18223723 ]
+        },
+        "properties": {
+        "fleetid":"P266",
+        "fleetname":"Watson Vance",
+        "image":"assets/img/profilepic/7.gif",
+        "firstname":"Watson",
+        "lastname":"Vance",
+        "fromdate":"Jun 04,1930",
+        "todate":"May 31,1944",
+        "iconname":"",
+        "iconcolor":"red"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+           "type": "Point",
+           "coordinates":  [ 174.9595402,-41.18227281 ]
+        },
+        "properties": {
+        "fleetid":"P267",
+        "fleetname":"Welch Vaughan",
+        "image":"assets/img/profilepic/1.gif",
+        "firstname":"Welch",
+        "lastname":"Vaughan",
+        "fromdate":"Jul 21,1995",
+        "todate":"",
+        "iconname":"",
+        "iconcolor":"orange"
+        }
+      }
+    ]
+  }

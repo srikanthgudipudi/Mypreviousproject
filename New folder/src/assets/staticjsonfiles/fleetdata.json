@@ -1,0 +1,195 @@
+{
+    "statusCode": "1001",
+    "message": "General Success",
+    "result": {
+        "_id": 70,
+        "createdAt": "2016-01-01T00:00:00.000Z",
+        "createdBy": "superadmin",
+        "fleetCode": "F00S046",
+        "fleetImageFilePath": "assets/fleets/6",
+        "fleetName": "F00S046",
+        "fleetType": "L90-Seat",
+        "floorPlanFleetObj": 6,
+        "isEnabled": "Active",
+        "notes": "",
+        "reasonActivate": "",
+        "reasonInactivate": "",
+        "updatedAt": "2016-01-01T00:00:00.000Z",
+        "updatedBy": "superadmin",
+        "isDeleted": false,
+        "isTransactable": true,
+        "settings": {
+            "reservationCanBeBumped": false,
+            "maxReservationWindowInHrs": 10,
+            "longTermReservationEligible": false,
+            "expirationGracePeriodInMins": 15,
+            "earlyCheckinWindowInMins": 15,
+            "configurable": false,
+            "checkinRequired": true,
+            "advancedReservationWindowInDays": 5
+        },
+        "visuals": [],
+        "attributes": [
+            {
+                "attribute": {
+                    "_id": 13,
+                    "attributeName": "Wheeled?"
+                },
+                "attributeValue": "false"
+            },
+            {
+                "attribute": {
+                    "_id": 14,
+                    "attributeName": "Ergonomic?"
+                },
+                "attributeValue": "true"
+            },
+            {
+                "attribute": {
+                    "_id": 15,
+                    "attributeName": "With Hand Rests?"
+                },
+                "attributeValue": "true"
+            },
+            {
+                "attribute": {
+                    "_id": 16,
+                    "attributeName": "High Back?"
+                },
+                "attributeValue": "false"
+            }
+        ],
+        "preferences": {
+            "rowsPerPage": 25,
+            "defaultTheme": "Dark-Sea-Green",
+            "dateFormat": "MMM D, YY",
+            "currencyFormat": "#,###.##",
+            "defaultCurrency": "USD - United States Dollar",
+            "defaultTimezone": "IST - Indian Standard Time (UTC+05:30)",
+            "defaultLanguage": "English (EN)"
+        },
+        "contactDetails": {
+            "workNumberCountrycode": "+91 - India",
+            "workNumber": "707-506-2833",
+            "workNumberExtn": null,
+            "email": "info@vedicsys.com"
+        },
+        "address": {
+            "addressLine1": "4-1-17, Street 11",
+            "addressLine2": "Snehapuri Colony, Nacharam",
+            "city": "Hyderabad",
+            "state": "Telangana",
+            "country": "India",
+            "ZIP": "500076",
+            "geoCoordinates": [
+                "+17.4227368257379",
+                "+78.5448152013123"
+            ]
+        },
+        "floorPlanDetails": {
+            "floorPlanAvailable": true,
+            "floorEntryCoordinates": [
+                "+17.42277849195138",
+                "+78.54506582021713"
+            ],
+            "floorNorthEastCoordinates": [
+                "+17.422721710736894",
+                "+78.5447789914906"
+            ],
+            "floorSouthEastCoordinates": [
+                "",
+                ""
+            ],
+            "floorSouthWestCoordinates": [
+                "+17.422726669097184",
+                "+78.54502994567157"
+            ],
+            "floorNorthWestCoordinates": [
+                "+17.42284598959744",
+                "+78.54490756988527"
+            ],
+            "floorPlanJSONFileName": "vedicsnehapurif0paths.json",
+            "floorPlanImageFileName": "vedic-snehapuri-f00.png"
+        },
+        "fleetImageFileName": "vedicsys.jpg",
+        "path": "VI0001 => VT0001 => VH0001 => VSC001 => SCB001 => SFG001 => SH1001",
+        "enterprise": {
+            "enterpriseId": 1,
+            "enterpriseName": "Vedic Systems"
+        },
+        "type": "Feature",
+        "fleetId": 70,
+        "eventId": "",
+        "fleetReservationId": "",
+        "fleetReservationStatus": "",
+        "eventStatus": "",
+        "fleetStatus": "Active",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                "78.5448152013123",
+                "17.4227368257379"
+            ]
+        },
+        "features": [
+            {
+                "type": "Feature",
+                "fleetId": 169,
+                "eventId": "",
+                "fleetReservationId": "",
+                "fleetReservationUserId": "",
+                "reservedResourceId": "",
+                "fleetReservationStatus": "",
+                "eventStatus": "",
+                "fleetStatus": "Active",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        "78.5449180000000",
+                        "17.4227340000000"
+                    ]
+                },
+                "properties": {
+                    "level": "SCB Floor Ground",
+                    "fleetid": "FEF001",
+                    "fleetname": "Fire Exit Fleet, Hyderabad",
+                    "enterpriseid": 1,
+                    "geometry/type": "Point",
+                    "special": "true",
+                    "fleetType": "Fireexit",
+                    "iconcolor": "Grey",
+                    "iconname": "Fireexit"
+                }
+            },
+            {
+                "type": "Feature",
+                "fleetId": 170,
+                "eventId": "",
+                "fleetReservationId": "",
+                "fleetReservationUserId": "",
+                "reservedResourceId": "",
+                "fleetReservationStatus": "",
+                "eventStatus": "",
+                "fleetStatus": "Active",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        "78.5449416004121",
+                        "17.4227252295732"
+                    ]
+                },
+                "properties": {
+                    "level": "SCB Floor Ground",
+                    "fleetid": "F00002",
+                    "fleetname": "Fireexit, Hyderabad",
+                    "enterpriseid": 1,
+                    "geometry/type": "Point",
+                    "special": "true",
+                    "fleetType": "Fireexit",
+                    "iconcolor": "Green",
+                    "iconname": "Fireexit"
+                }
+            }
+        ]
+    }
+}

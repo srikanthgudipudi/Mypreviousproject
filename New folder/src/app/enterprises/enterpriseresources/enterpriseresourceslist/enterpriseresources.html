@@ -1,0 +1,384 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div id="allusers" class="tab-pane">
+    <div class="card">
+        <div class="card-header">
+            <div class="row no-gutter">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_ENTERPRISE_RESOURCES' | translate}}</h5>
+                    <div class="cardicons-header pull-left">
+                        <a *ngIf="addstatus == 'true'" data-toggle="tooltip" data-placement="top" (click)="viewResource('Create','')" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="addstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="viewResource('Create','')"></i>
+                        </a>
+                        <a *ngIf="importstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}"
+                            (click)="importPopup()">
+                            <i class="fa fa-15x fa-download page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="importstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-download page-title-icons" aria-hidden="true" (click)="importPopup()"></i>
+                        </a>
+                        <a *ngIf="exportstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+                            (click)="exportData(searchstring)">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="exportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+                        </a>
+                        <a *ngIf="locatestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="enterpriselocate('locate')"></i>
+                        </a>
+                        <a *ngIf="locatestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="enterpriselocate('locate')"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group mb0">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-primary btn-sm advanced-btn" (click)="openAdvanceModal()">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+                            <input type="text" #input [(ngModel)]="searchstring" (keypress)="handleKeyPress($event)" pInputText size="50" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}"
+                                class="form-control input-sm mb0">
+                            <span class="input-group-btn">
+                                <button type="button" (click)="getAllResourcesSearch(searchstring)" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <p-dataTable [responsive]="true" [stacked]="stacked" [value]="allResources" [rows]="rowsPerPage" [paginator]="true" [pageLinks]="2"
+                expandableRows="true" sortMode="multiple">
+                <!-- <!-- <p-column expander="true" header="#"></p-column> -->-->
+                <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column field="firstName" styleClass="text-capitalize" header="{{'COMMON_FIELDS.FIRST_NAME' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column field="lastName" styleClass="text-capitalize" header="{{'COMMON_FIELDS.LAST_NAME' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column *ngIf="userRole == 'Enterprise End User'" field="designation" styleClass="text-capitalize" header="{{'ENTERPRISE_RESOURCES.DESIGNATION' | translate}}"
+                    [sortable]="true">
+                </p-column>
+                <p-column *ngIf="userRole == 'Enterprise End User'" field="department" styleClass="text-capitalize" header="{{'ENTERPRISE_RESOURCES.DEPARTMENT' | translate}}"
+                    [sortable]="true">
+                </p-column>
+                <p-column field="contactDetails.email" header="{{'COMMON_FIELDS.EMAIL_ID' | translate}}" [sortable]="true"></p-column>
+                <p-column field="contactDetails.mobileNumber" header="{{'COMMON_FIELDS.MOBILE_NUMBER' | translate}}" [sortable]="true" styleClass="mobileno">
+                    <template let-user="rowData" pTemplate="body">
+                        {{user.mobilecode}}
+                    </template>
+                </p-column>
+                <p-column *ngIf="userRole != 'Enterprise End User'" field="userAccount" header="{{'COMMON_FIELDS.USER_NAME' | translate}}"
+                    [sortable]="true" styleClass="user-name"></p-column>
+                <p-column field="isEnabled" header="{{'COMMON_FIELDS.STATUS' | translate}}" [sortable]="true" styleClass="text-capitalize status"></p-column>
+                <p-column styleClass="action-five-col" header="{{'COMMON_FIELDS.ACTIONS' | translate}}">
+                    <ng-template let-user="rowData" pTemplate="body">
+                        <!--<a href="#" (click)="stopVideo(car);" data-toggle="tooltip" data-placement="top" title="Block"><i class="fa fa-15x fa-times cancle-action text-danger"></i></a>-->
+                        <span *ngIf="userRole != 'Enterprise End User' || (userRole == 'Enterprise End User' && userAccount == user.userAccount)">
+                            <a *ngIf="viewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+                                (click)="viewResource('View',user)">
+                                <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                            </a>
+                            <a *ngIf="viewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="viewResource('View',user)"></i>
+                            </a>
+                            <a *ngIf="editstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}"
+                                (click)="viewResource('Edit',user)">
+                                <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+                            </a>
+                            <a *ngIf="editstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="viewResource('Edit',user)"></i>
+                            </a>
+                            <a *ngIf="[user.isEnabled] == 'Active' && [blockstatus] == 'true'" data-toggle="tooltip" class="" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_BLOCK_ACTION' | translate}}"
+                                (click)="viewResource('Block',user)">
+                                <i class="fa fa-15x fa-user-secret enterpriseinactive"></i>
+                            </a>
+                            <a *ngIf="[user.isEnabled] == 'Blocked' && [unblockstatus] == 'true'" data-toggle="tooltip" class="" data-placement="top"
+                                title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_UNBLOCK_ACTION' | translate}}" (click)="viewResource('Unblock',user)">
+                                <i class="fa fa-15x fa-user-secret enterpriseactive"></i>
+                            </a>
+                            <a *ngIf="blockstatus == 'false' || unblockstatus == 'false'" class="not-active" data-toggle="tooltip" class="" data-placement="top"
+                                title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_BLOCK_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-user-secret enterpriseinactive" (click)="viewResource('Block',user)"></i>
+                            </a>
+                            <a *ngIf="deletestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+                                (click)="viewResource('Delete',user)">
+                                <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+                            </a>
+                            <a *ngIf="deletestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+                                (click)="viewResource('Delete',user)">
+                                <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+                            </a>
+                            <a *ngIf="locatestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singleenterpriselocate('locate', user)"></i>
+                            </a>
+                            <a *ngIf="locatestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singleenterpriselocate('locate', user)"></i>
+                            </a>
+                        </span>
+                        <span *ngIf="userRole == 'Enterprise End User' && userAccount != user.userAccount">
+                            <a *ngIf="viewstatus == 'true' || viewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                            </a>
+                            <a *ngIf="editstatus == 'true' || editstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+                            </a>
+                            <a *ngIf="[user.isEnabled] == 'Active' && [blockstatus] == 'true'" class="not-active" data-toggle="tooltip" data-placement="top"
+                                title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_BLOCK_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-user-secret enterpriseinactive"></i>
+                            </a>
+                            <a *ngIf="[user.isEnabled] == 'Blocked' && [unblockstatus] == 'true'" class="not-active" data-toggle="tooltip" data-placement="top"
+                                title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_UNBLOCK_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-user-secret enterpriseactive"></i>
+                            </a>
+                            <a *ngIf="[blockstatus] == 'false' || [unblockstatus] == 'false'" class="not-active" data-toggle="tooltip" data-placement="top"
+                                title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_UNBLOCK_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-user-secret enterpriseactive"></i>
+                            </a>
+                            <a *ngIf="deletestatus == 'true' || deletestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top"
+                                title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+                            </a>
+                            <a *ngIf="locatestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true"></i>
+                            </a>
+                            <a *ngIf="locatestatus == 'true'"  data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singleenterpriselocate('locate', user)"></i>
+                            </a>
+                        </span>
+                        <a data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CALL_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-phone call-history" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="userAccount == user.userAccount" data-toggle="tooltip" class="not-active" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_MESSAGE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-comments-o message-history" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="userAccount != user.userAccount" data-toggle="tooltip" data-placement="top" (click)="showmessage(user.firstName+' '+user.lastName, user.userAccount, user._id, user.enterprise.enterpriseName, user.enterprise.enterpriseId._id)"
+                            title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_MESSAGE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-comments-o message-history" aria-hidden="true"></i>
+                        </a>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+</div>
+<app-entdetails-popup></app-entdetails-popup>
+
+<div bsModal #mgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvanceModal()" tabindex="-1"
+    role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="hideAdvanceModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                            class="pull-right">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="text-capitalize form-control input-sm"
+                            id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseName">
+                        <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+                            id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_FIELDS.FIRST_NAME' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="text-capitalize form-control input-sm" id="firstName" name="firstName" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="firstName" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_FIELDS.LAST_NAME' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="text-capitalize form-control input-sm" id="lastName" name="lastName" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="lastName" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="email" name="email" onkeypress="return event.charCode != 34" [(ngModel)]="emailValue"
+                            value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_FIELDS.MOBILE_NUMBER' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="text-capitalize form-control input-sm mob-num" (keypress)="hyphen_generate_mobile(mobileNumber);"
+                            minlength="10" maxlength="12" id="mobileNumberId" name="mobileNumber" onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                            [(ngModel)]="mobileNumber" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_FIELDS.USER_NAME' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="userName" name="userName" onkeypress="return event.charCode != 34" [(ngModel)]="userName"
+                            value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label for="">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <select id="status" (change)="getUserStatus($event.target.value);" name="select" class="form-control input-sm" size="1" [(ngModel)]="statusValue">
+                            <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                            <!--<option *ngFor="let clang of status; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>-->
+                            <option *ngFor="let clang of status; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'ENTERPRISE_RESOURCES.DESIGNATION' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="designation" name="designation" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="designation" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'ENTERPRISE_RESOURCES.DEPARTMENT' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="department" name="department" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="department" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="city" name="city" onkeypress="return event.charCode != 34" [(ngModel)]="city"
+                            value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="state" name="state" onkeypress="return event.charCode != 34" [(ngModel)]="state"
+                            value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label for="">{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <select id="status" name="select" class="form-control input-sm" size="1" [(ngModel)]="country">
+                            <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                            <option *ngFor="let clang of countries;" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+            <div class="modal-footer">
+                <div class="col-md-12 p0">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <div class="pull-right text-right">
+                        <button type="button" class="btn btn-primary" (click)="AdvanceSearch()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button type="button" class="btn btn-primary" (click)="clear()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+                        <button type="button" class="btn btn-primary" (click)="hideAdvanceModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<div bsModal #resourceImportModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideImportModal()"
+    tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="hideImportModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/oracle_logo.png';"
+                            height="30" class="pull-right">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="popupsection-title">{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-md-4 form-group">
+                        <input type="file" id="file-input" [(ngModel)]="csvFile" accept='.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="custom-file-input'
+                            class="custom-file-input" name="file-input" (change)="csvUploaded($event)">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6 pull-left fleetftsub">
+                        {{'COMMON_FIELDS.PLEASE_DOWNLOAD' | translate}}
+                        <a href="assets/import_templates/Srisys-Pigeon-ImportTemplate-EnterpriseResources.xlsx" download="Srisys-Pigeon-ImportTemplate-EnterpriseResources.xlsx">{{'COMMON_FIELDS.TEMPLATE' | translate}}</a>
+                    </div>
+                </div>
+            </div>
+            <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+            <div class="modal-footer">
+                <div class="col-md-12 p0">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <div class="pull-right text-right">
+                        <button type="button" class="btn btn-primary" (click)="importEnterpriseResourcesList()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button type="button" class="btn btn-primary" (click)="hideImportModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>

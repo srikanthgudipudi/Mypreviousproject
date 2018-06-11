@@ -1,0 +1,233 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div id="allusers" class="tab-pane">
+    <div class="card">
+        <div class="card-header">
+            <div class="row no-gutter">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_ADVERTISEMENTS' | translate}}</h5>
+                    <div class="cardicons-header pull-left">
+                        <a *ngIf="addstatus == 'true'" data-toggle="tooltip" data-placement="top" (click)="singleAdvertisement('Create','')" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="addstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="singleAdvertisement('Create','')"></i>
+                        </a>
+                        <a *ngIf="exportstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+                            (click)="exportData(searchstring)">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="exportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group mb0">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-primary btn-sm advanced-btn" (click)="showAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+                            <input type="text" [(ngModel)]="searchstring" #input (keypress)="handleKeyPress($event)" pInputText size="50" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}"
+                                class="form-control input-sm mb0">
+                            <span class="input-group-btn">
+                                <button type="button" (click)="advertisementSearch(searchstring)" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <p-dataTable [responsive]="true" [stacked]="stacked" styleClass="advertisementslist table" [value]="advertisements" [rows]="rowsPerPage"
+                [paginator]="true" [pageLinks]="2" expandableRows="true" sortMode="multiple">
+                <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column field="advertisementName" styleClass="text-capitalize" header="{{'ADVERTISEMENTS.AD_NAME' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column field="advertisementType" header="{{'ADVERTISEMENTS.AD_TYPE' | translate}}" [sortable]="true" styleClass="type">
+                </p-column>
+                <p-column field="advertisementSequence" header="{{'COMMON_FIELDS.DISPLAY_SEQUENCE' | translate}}" [sortable]="true" styleClass="startdate">
+                    <template let-user="rowData" pTemplate="body">
+                        <div class="text-right">{{user.advertisementSequence}}</div>
+                    </template>
+                </p-column>
+                <p-column field="startDatetime " header="{{'COMMON_FIELDS.START_DATE' | translate}}" [sortable]="true" styleClass="startdate">
+                    <template let-user="rowData" pTemplate="body">
+                        <span>
+                            {{user.startDatetime}} {{userpreferedtimezone}}
+                        </span>
+                    </template>
+                </p-column>
+                <p-column field="endDatetime" header="{{'COMMON_FIELDS.END_DATE' | translate}}" [sortable]="true" styleClass="enddate">
+                    <template let-user="rowData" pTemplate="body">
+                        <span>
+                            {{user.endDatetime}} {{userpreferedtimezone}}
+                        </span>
+                    </template>
+                </p-column>
+                <p-column field="duration" header="{{'COMMON_FIELDS.DURATION' | translate}}" [sortable]="true" styleClass="duration">
+                    <template let-user="rowData" pTemplate="body">
+                        <div class="text-right">{{user.duration}}</div>
+                    </template>
+                </p-column>
+                <p-column field="isEnabled" header="{{'COMMON_FIELDS.ENABLED' | translate}}" [sortable]="true" styleClass="text-capitalize enabled"></p-column>
+                <p-column header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-three-col">
+                    <ng-template let-user="rowData" pTemplate="body">
+                        <a *ngIf="viewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+                            (click)="viewImage('View',user)">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="viewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="viewImage('View',user)"></i>
+                        </a>
+                        <a *ngIf="editstatus == 'true' && user.recordstatus == 'active'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="viewImage('Edit',user)"></i>
+                        </a>
+                        <a *ngIf="editstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="viewImage('Edit',user)"></i>
+                        </a>
+                        <a *ngIf="editstatus == 'true' && user.recordstatus == 'inactive'" class="not-active" data-toggle="tooltip" data-placement="top"
+                            title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="viewImage('Edit',user)"></i>
+                        </a>
+                        <a *ngIf="deletestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+                            (click)="viewImage('Delete',user)">
+                            <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="deletestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="viewImage('Delete',user)"></i>
+                        </a>
+                    </ng-template>
+                </p-column>
+                <template let-user pTemplate="rowexpansion">
+                    <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding-left:4%">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-9">
+                                <div class="ui-grid ui-grid-responsive ui-grid-pad">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </p-dataTable>
+        </div>
+    </div>
+</div>
+<div bsModal #advancedModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="closeAdvanced()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                            class="pull-right">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-md-4 form-control-label">
+                        <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-8">
+                        <input type="text" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="text-capitalize form-control input-sm"
+                            id="enterpriseName" name="enterpriseName" [(ngModel)]="advancedEnterprise" onkeypress="return event.charCode != 34">
+                        <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+                            id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 form-control-label">
+                        <label for="">{{'ADVERTISEMENTS.AD_NAME' | translate}}</label>
+                    </div>
+                    <div class=" col-md-8">
+                        <input name="" [(ngModel)]="advancedAdvertisementName" class="text-capitalize form-control input-sm" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 form-control-label">
+                        <label for="">{{'ADVERTISEMENTS.AD_TYPE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-8">
+                        <select id="advtype" name="advtypename" class="form-control input-sm" size="1" [(ngModel)]="advancedAdvertisementType">
+                            <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                            <option *ngFor="let clang of advertisetypes;" value="{{clang.description}}">{{clang.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 form-control-label">
+                        <label>{{'COMMON_FIELDS.START_DATE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-8">
+                        <p-calendar readonlyInput="readonlyInput" [(ngModel)]="advancestartdate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                            [showIcon]="true" [showTime]="true"></p-calendar>
+                        <select id="Timezone" (change)="getTimezones($event.target.value)" class="form-control input-sm duration-list">
+                            <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 form-control-label">
+                        <label>{{'COMMON_FIELDS.END_DATE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-8">
+                        <p-calendar readonlyInput="readonlyInput" (select)="advanceEndDateChange()" [(ngModel)]="advanceenddate" inputStyleClass="timezone-calendar calendar"
+                            dateFormat="yy-mm-dd" [showIcon]="true" [showTime]="true"></p-calendar>
+                        <select id="Timezone" (change)="getTimezones($event.target.value)" class="form-control input-sm duration-list">
+                            <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 form-control-label">
+                        <label for="">{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+                    </div>
+                    <div class=" col-md-8">
+                        <label class="checkbox-inline" for="">
+                            <label class="checkbox-inline" for="inline-checkbox1">
+                                <input id="inline-checkbox1" name="inline-checkbox1" type="checkbox" [(ngModel)]="advancedIsEnabled" value="" class="regular-checkbox big-checkbox">
+                                <label for="inline-checkbox1"></label>
+                            </label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+
+            <div class="modal-footer">
+                <div class="col-md-12 p0">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <div class="pull-right text-right">
+                        <button type="button" (click)="advanceSearch()" class="btn btn-primary">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button type="button" (click)="clearAdvanced()" class="btn btn-primary">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+                        <button type="button" (click)="closeAdvanced()" class="btn btn-primary">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<app-advertisement-popup (updatedList)="emitChanges($event)"></app-advertisement-popup>

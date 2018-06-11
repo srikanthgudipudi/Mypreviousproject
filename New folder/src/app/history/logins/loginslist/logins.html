@@ -1,0 +1,202 @@
+<div id="allusers" class="tab-pane">
+    <div class="card">
+        <div class="card-header">
+            <div class="row no-gutter">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_LOGIN_HISTORY' | translate}}</h5>
+                    <div class="cardicons-header pull-left">
+                        <a *ngIf="loginhistoryexportstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+                            (click)="exportData(searchString)">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="loginhistoryexportstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchString)"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group mb0">
+                        <div class="input-group">
+                            <button type="button" (click)="advancedLoginhistorysearch()" class="btn btn-primary btn-sm advanced-btn">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+                            <input type="text" [(ngModel)]="searchString" #input (keypress)="handleKeyPress($event)" pInputText size="50" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}"
+                                class="form-control input-sm mb0">
+                            <span class="input-group-btn">
+                                <button type="button" (click)="getLoginHistorySearchList(searchString)" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <p-dataTable [responsive]="true" [stacked]="stacked" styleClass="table loginlist" [value]="historyDetails" [rows]="rowsPerPage"
+                [paginator]="true" [pageLinks]="2" expandableRows="true" sortMode="multiple">
+                <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true"></p-column>
+                <p-column field="userAccount" header="{{'COMMON_FIELDS.USER_NAME' | translate}}" [sortable]="true"></p-column>
+                <p-column field="deviceType" header="{{'LOGIN_HISTORY.DEVICE_TYPE' | translate}}" [sortable]="true"></p-column>
+                <p-column field="deviceAddress" header="{{'LOGIN_HISTORY.DEVICE_ADDRESS' | translate}}" [sortable]="true"></p-column>
+                <p-column field="ipAddress" header="{{'LOGIN_HISTORY.IP_ADDRESS' | translate}}" [sortable]="true"></p-column>
+                <p-column field="browserName" header="{{'LOGIN_HISTORY.BROWSER_NAME' | translate}}" [sortable]="true"></p-column>
+                <p-column field="browserVersion" header="{{'LOGIN_HISTORY.BROWSER_VERSION' | translate}}" [sortable]="true"></p-column>
+                <p-column field="logintime" header="{{'LOGIN_HISTORY.LOGINTIME' | translate}}" [sortable]="true" styleClass="logintime"></p-column>
+                <p-column field="logouttime" header="{{'LOGIN_HISTORY.LOGOUTTIME' | translate}}" [sortable]="true" styleClass="logouttime"></p-column>
+                <p-column header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-col-two-icons">
+                    <ng-template let-loginhistory="rowData" pTemplate="body">
+                        <a *ngIf="loginhistoryviewstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+                            (click)="singleLoginHistoryDetails('VIEW', loginhistory)">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="loginhistoryviewstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="singleLoginHistoryDetails('VIEW', loginhistory)"></i>
+                        </a>
+                        <a *ngIf="loginhistorydeletedstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+                            (click)="singleLoginHistoryDetails('DELETE', loginhistory)">
+                            <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="loginhistorydeletedstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="singleLoginHistoryDetails('DELETE', loginhistory)"></i>
+                        </a>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+
+    <div bsModal #advancedModel="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="hideAdvancedModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+                            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                class="pull-right">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="roleid">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <input type="text" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="text-capitalize form-control input-sm"
+                                id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseName" onkeypress="return event.charCode != 34">
+                            <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+                                id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="roleid">{{'COMMON_FIELDS.USER_NAME' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <input type="text" class="form-control input-sm" [(ngModel)]="userAccount" (click)="clearmessage()"
+                                onkeypress="return event.charCode != 34" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="roleid">{{'LOGIN_HISTORY.DEVICE_TYPE' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <input type="text" class="form-control input-sm" [(ngModel)]="deviceType" (click)="clearmessage()"
+                                onkeypress="return event.charCode != 34" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="roleid">{{'LOGIN_HISTORY.OS' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <input type="text" class="form-control input-sm" [(ngModel)]="OS" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="roleid">{{'LOGIN_HISTORY.IP_ADDRESS' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <input type="text" class="form-control input-sm" [(ngModel)]="ipAddress" (click)="clearmessage()"
+                                onkeypress="return event.charCode != 34" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="roleid">{{'LOGIN_HISTORY.BROWSER_NAME' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <input type="text" class="form-control input-sm" [(ngModel)]="browserName" (click)="clearmessage()"
+                                onkeypress="return event.charCode != 34" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="roleid">{{'LOGIN_HISTORY.BROWSER_VERSION' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <input type="text" class="form-control input-sm" [(ngModel)]="browserVersion" (click)="clearmessage()"
+                                onkeypress="return event.charCode != 34" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="">{{'LOGIN_HISTORY.LOGINTIME' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="startdate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                                [showIcon]="true" [showTime]="true" (onSelect)="clearmessage();"></p-calendar>
+                            <select id="Timezone" (change)="onchangeTimezones($event.target.value);" class="form-control input-sm duration-list">
+                                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                    id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="">{{'LOGIN_HISTORY.LOGOUTTIME' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="enddate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                                [showIcon]="true" [showTime]="true" (onSelect)="clearmessage();"></p-calendar>
+                            <select id="Timezone" (change)="onchangeTimezones($event.target.value);" class="form-control input-sm duration-list">
+                                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                    id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="text-danger text-center">{{ updateerror | translate}}</div>-->
+                <div class="modal-footer">
+                    <div class="col-md-12 p0">
+                        <div class="pull-left">
+                            <app-powered></app-powered>
+                        </div>
+                        <div class="pull-right text-right">
+                            <button type="button" class="btn btn-primary" (click)="advancedLoginhistory()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                            <button type="button" class="btn btn-primary" (click)="clearAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+                            <button type="button" class="btn btn-primary" (click)="hideAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                            <!--<button type="button" class="btn btn-primary btn-sm" (click)="updateUserRoles()">{{'USER_ROLES.SAVE_CHANGES' | translate}}</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loginhistory-popup (deleted)="delete($event)"></app-loginhistory-popup>

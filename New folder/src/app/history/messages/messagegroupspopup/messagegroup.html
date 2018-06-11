@@ -1,0 +1,278 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div bsModal #lgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideuimageModal()" tabindex="-1"
+    role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="hideuimageModal()" aria-label="Close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-logoheader></app-logoheader>
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                            class="pull-right">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="popupsection-title">{{pagename | translate }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix"></div>
+                <div *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Block' || [actionName] == 'Unblock'">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="enterpriseName" name="enterpriseName" value="{{selectedObj.enterprise.enterpriseName}}"
+                                        disabled>
+                                    <input type="hidden" name="enterpriseId" class="form-control" id="enterpriseId" value="{{selectedObj.enterprise.enterpriseId}}">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>
+                                        <span class="text-danger">*</span>Group Name</label>
+                                    <input type="text" (keypress)="clearmessage()" class="form-control input-sm" id="groupName" name="groupName" [(ngModel)]="selectedObj.groupName"
+                                        disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{'COMMON_FIELDS.STATUS' | translate }}</label>
+                            <input type="text" id="groupStatus" name="groupStatus" [(ngModel)]="selectedObj.groupStatus" class="form-control input-sm"
+                                disabled>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{'MESSAGE_HISTORY.MESSAGE_DATE' | translate}}</label>
+                            <input type="text" class="form-control input-sm" id="imagedesc" name="imagedesc" value="{{msgdate}}" disabled>
+                        </div>
+                        <div class="col-md-12 picklist-view">
+                            <p-pickList [source]="selectedEditUsers" [target]="selectedEditAdmin" sourceHeader="{{'MESSAGE_HISTORY.AVAILABLE_USERS' | translate}}"
+                                targetHeader="{{'MESSAGE_GROUP.SELECTED_ADMIN_USERS' | translate}}" [responsive]="true" [showSourceControls]="false"
+                                [showTargetControls]="false">
+                                <ng-template let-car pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <div>{{car.user.userName}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-pickList>
+                            <p-pickList [source]="selectedEditUsers" [target]="selectedEditNonAdmin" sourceHeader="{{'MESSAGE_HISTORY.AVAILABLE_USERS' | translate}}"
+                                targetHeader="{{'MESSAGE_HISTORY.SELECTED_USERS' | translate}}" [responsive]="true" [showSourceControls]="false"
+                                [showTargetControls]="false">
+                                <ng-template let-car pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <div>{{car.user.userName}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-pickList>
+                        </div>
+                    </div>
+                    <p-accordion>
+                        <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="createdBy" name="createdBy" value="{{selectedObj?.createdBy}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="createdAt" name="createdAt" value="{{createdAt}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="updatedBy" name="updatedBy" value="{{selectedObj?.updatedBy}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="updatedAt" name="updatedAt" value="{{updatedAt}}" disabled>
+                                </div>
+                            </div>
+                        </p-accordionTab>
+                    </p-accordion>
+                </div>
+                <div class="row" *ngIf="[actionName] == 'CreateMessageGroup'">
+                    <div class="col-md-4 form-group">
+                        <label>
+                            <span class="text-danger">*</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                        <select *ngIf="[enterprisesSize] == 'false'" id="enterpriseId" (change)="getEnterpriseName($event.target.value); clearmessage()"
+                            name="enterprise" class="form-control input-sm" size="1">
+                            <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                            <option *ngFor="let clang of enterprisesNames;" value="{{clang._id+'~'+clang.enterpriseName+'~'+clang.enterpriseIconFilePath+'~'+clang.enterpriseIcon}}">{{clang.enterpriseName}}</option>
+                        </select>
+                        <input *ngIf="[enterprisesSize] == 'true'" type="text" [(ngModel)]="enterprisename" class="form-control input-sm" id="enterpriseId"
+                            name="enterprise" disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>
+                            <span class="text-danger">*</span>Group Name</label>
+                        <input type="text" (keypress)="clearmessage()" class="form-control input-sm" id="groupName" name="groupName" [(ngModel)]="groupData.groupName">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'COMMON_FIELDS.STATUS' | translate }}</label>
+                        <input type="text" id="groupStatus" name="groupStatus" [(ngModel)]="groupData.groupStatus" class="form-control input-sm"
+                            disabled>
+                    </div>
+                    <div class="col-md-12">
+                        <p-pickList [source]="usersList" [target]="selectedAdmin" sourceHeader="{{'MESSAGE_HISTORY.AVAILABLE_USERS' | translate}}"
+                            targetHeader="{{'MESSAGE_GROUP.SELECTED_ADMIN_USERS' | translate}}" [responsive]="true" [showSourceControls]="false"
+                            [showTargetControls]="false" (onMoveToTarget)="clearMessageTarget($event)">
+                            <ng-template let-car pTemplate="item">
+                                <div class="ui-helper-clearfix">
+                                    <div>{{car.enterpriseResourceObj.firstName}} {{car.enterpriseResourceObj.lastName}}</div>
+                                </div>
+                            </ng-template>
+                        </p-pickList>
+                        <p-pickList [source]="usersList" [target]="selectedUsers" sourceHeader="{{'MESSAGE_HISTORY.AVAILABLE_USERS' | translate}}"
+                            targetHeader="{{'MESSAGE_HISTORY.SELECTED_USERS' | translate}}" [responsive]="true" [showSourceControls]="false"
+                            [showTargetControls]="false">
+                            <ng-template let-car pTemplate="item">
+                                <div class="ui-helper-clearfix">
+                                    <div>{{car.enterpriseResourceObj.firstName}} {{car.enterpriseResourceObj.lastName}}</div>
+                                </div>
+                            </ng-template>
+                        </p-pickList>
+                    </div>
+                </div>
+                <div *ngIf="[actionName] == 'Edit'">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="enterpriseName" name="enterpriseName" value="{{selectedObj.enterprise.enterpriseName}}"
+                                        disabled>
+                                    <input type="hidden" name="enterpriseId" class="form-control" id="enterpriseId" value="{{selectedObj.enterprise.enterpriseId}}">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>
+                                        <span class="text-danger">*</span>Group Name</label>
+                                    <input type="text" (keypress)="clearmessage()" class="form-control input-sm" id="groupName" name="groupName" [(ngModel)]="selectedObj.groupName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{'COMMON_FIELDS.STATUS' | translate }}</label>
+                            <input type="text" id="groupStatus" name="groupStatus" [(ngModel)]="selectedObj.groupStatus" class="form-control input-sm"
+                                disabled>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{'MESSAGE_HISTORY.MESSAGE_DATE' | translate}}</label>
+                            <input type="text" class="form-control input-sm" id="imagedesc" name="imagedesc" value="{{msgdate}}" disabled>
+                        </div>
+                        <div *ngIf="[statusCondtion] == 'Active'" class="col-md-12">
+                            <p-pickList [source]="selectedEditUsers" [target]="selectedEditAdmin" sourceHeader="{{'MESSAGE_HISTORY.AVAILABLE_USERS' | translate}}"
+                                targetHeader="{{'MESSAGE_GROUP.SELECTED_ADMIN_USERS' | translate}}" [responsive]="true" [showSourceControls]="false"
+                                [showTargetControls]="false" (onMoveToTarget)="clearMessageTarget($event)">
+                                <ng-template let-car pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <div>{{car.user.userName}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-pickList>
+                            <p-pickList [source]="selectedEditUsers" [target]="selectedEditNonAdmin" sourceHeader="{{'MESSAGE_HISTORY.AVAILABLE_USERS' | translate}}"
+                                targetHeader="{{'MESSAGE_HISTORY.SELECTED_USERS' | translate}}" [responsive]="true" [showSourceControls]="false"
+                                [showTargetControls]="false">
+                                <ng-template let-car pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <div>{{car.user.userName}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-pickList>
+                        </div>
+                        <div *ngIf="[statusCondtion] == 'Closed'" class="col-md-12 picklist-view">
+                            <p-pickList [source]="selectedEditUsers" [target]="selectedEditAdmin" sourceHeader="{{'MESSAGE_HISTORY.AVAILABLE_USERS' | translate}}"
+                                targetHeader="{{'MESSAGE_GROUP.SELECTED_ADMIN_USERS' | translate}}" [responsive]="true" [showSourceControls]="false"
+                                [showTargetControls]="false" (onMoveToTarget)="clearMessageTarget($event)">
+                                <ng-template let-car pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <div>{{car.user.userName}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-pickList>
+                            <p-pickList [source]="selectedEditUsers" [target]="selectedEditNonAdmin" sourceHeader="{{'MESSAGE_HISTORY.AVAILABLE_USERS' | translate}}"
+                                targetHeader="{{'MESSAGE_HISTORY.SELECTED_USERS' | translate}}" [responsive]="true" [showSourceControls]="false"
+                                [showTargetControls]="false">
+                                <ng-template let-car pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <div>{{car.user.userName}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-pickList>
+                        </div>
+                    </div>
+                    <p-accordion>
+                        <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="createdBy" name="createdBy" value="{{selectedObj?.createdBy}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="createdAt" name="createdAt" value="{{createdAt}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="updatedBy" name="updatedBy" value="{{selectedObj?.updatedBy}}" disabled>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                                    <input type="text" class="form-control input-sm" id="updatedAt" name="updatedAt" value="{{updatedAt}}" disabled>
+                                </div>
+                            </div>
+                        </p-accordionTab>
+                    </p-accordion>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+                <div class="col-md-12 p0 fleetft">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <!--<div class="pull-right text-right" *ngIf="[actionName] == 'Create'">
+                        <button class="btn btn-primary" (click)="createMessage()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button class="btn btn-primary" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>-->
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'View'">
+                        <button class="btn btn-primary pull-right" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <!--<div class="pull-right text-right" *ngIf="[actionName] == 'Read'">
+                        <button class="btn btn-primary" (click)="readMessage()">{{'COMMON_BUTTONS.BUTTON_READ' | translate}}</button>
+                        <button class="btn btn-primary" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>-->
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'Delete'">
+                        <button class="btn btn-primary" (click)="deleteGroupMessage()">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+                        <button class="btn btn-primary" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'CreateMessageGroup'">
+                        <button class="btn btn-primary" (click)="createMessageGroup(groupData)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button class="btn btn-primary" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'Edit'">
+                        <button class="btn btn-primary" (click)="editMessageGroup(groupEditData)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button class="btn btn-primary" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'Block'">
+                        <button class="btn btn-primary bottomargin" (click)="blockGroupMessage()">{{'COMMON_BUTTONS.BUTTON_BLOCK' | translate}}</button>
+                        <button class="btn btn-primary bottomargin" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionName] == 'Unblock'">
+                        <button class="btn btn-primary bottomargin" (click)="unblockGroupMessage()">{{'COMMON_BUTTONS.BUTTON_UNBLOCK' | translate}}</button>
+                        <button class="btn btn-primary bottomargin" (click)="hideuimageModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

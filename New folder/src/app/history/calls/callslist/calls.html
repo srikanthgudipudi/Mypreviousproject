@@ -1,0 +1,237 @@
+<div id="allusers" class="tab-pane">
+    <div class="card">
+        <!-- header starts -->
+        <div class="card-header">
+            <div class="row no-gutter">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_CALL_HISTORY' | translate}}</h5>
+                    <div class="cardicons-header pull-left">
+                        <!-- export action -->
+                        <a *ngIf="callhistoryexportstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+                            (click)="exportData(searchstring)">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="callhistoryexportstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+                        </a>
+                        <!-- locate action -->
+                        <a data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="locates('locate')"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- search and advance search -->
+                <div class="col-md-3">
+                    <div class="form-group mb0">
+                        <div class="input-group">
+                            <button type="button" (click)="advancedSearch()" class="btn btn-primary btn-sm advanced-btn">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+                            <input type="text" [(ngModel)]="searchstring" #input (keypress)="handleKeyPress($event)" pInputText size="50" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}"
+                                class="form-control input-sm mb0">
+                            <span class="input-group-btn">
+                                <button type="button" (click)="getCallHistorySearchList(searchstring)" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header ends -->
+        <div class="card-block">
+            <p-dataTable [responsive]="true" [stacked]="stacked" styleClass="table callhistorylist" [value]="historyDetails" [rows]="10"
+                [paginator]="true" [pageLinks]="2" expandableRows="true" sortMode="multiple">
+                <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true"></p-column>
+                <p-column field="callType" header="{{'CALL_HISTORY.CALLTYPE' | translate}}" [sortable]="true"></p-column>
+                <p-column field="callFrom.userName" header="{{'CALL_HISTORY.USERNAME' | translate}}" [sortable]="true"></p-column>
+                <p-column field="callFrom.mobileNumber" header="{{'CALL_HISTORY.MOBILENUMBER' | translate}}" [sortable]="true">
+                    <template let-callHistory="rowData" pTemplate="body">
+                        {{callHistory.fromMobileNo}}
+                    </template>
+                </p-column>
+                <p-column field="callTo.userName" header="{{'CALL_HISTORY.TOUSERNAME' | translate}}" [sortable]="true"></p-column>
+                <p-column field="callTo.mobileNumber" header="{{'CALL_HISTORY.TOMOBILENUMBER' | translate}}" [sortable]="true">
+                    <template let-callHistory="rowData" pTemplate="body">
+                        {{callHistory.toMobileNo}}
+                    </template>
+                </p-column>
+                <p-column field="callStartDate" header="{{'COMMON_FIELDS.START_DATE' | translate}}" [sortable]="true" styleClass="startdate">
+                    <template let-callHistory="rowData" pTemplate="body">
+                        <span>{{callHistory.callStartDate}} {{userpreferedtimezone}}</span>
+                    </template>
+                </p-column>
+                <p-column field="callEndDate" header="{{'COMMON_FIELDS.END_DATE' | translate}}" [sortable]="true" styleClass="enddate">
+                    <template let-callHistory="rowData" pTemplate="body">
+                        <span>{{callHistory.callEndDate}} {{userpreferedtimezone}}</span>
+                    </template>
+                </p-column>
+                <p-column field="callDuration" header="{{'COMMON_FIELDS.DURATION' | translate}}" [sortable]="true" styleClass="duration">
+                    <template let-callHistory="rowData" pTemplate="body">
+                        <div class="text-right">{{callHistory.callDuration}}</div>
+                    </template>
+                </p-column>
+                <p-column header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-three-col">
+                    <ng-template let-callHistory="rowData" pTemplate="body">
+                        <!-- view action -->
+                        <a *ngIf="callhistoryviewstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+                            (click)="singleLoginHistoryDetails('VIEW', callHistory)">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="callhistoryviewstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="singleLoginHistoryDetails('VIEW', callHistory)"></i>
+                        </a>
+                        <!-- delete action -->
+                        <a *ngIf="callhistorydeletestatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+                            (click)="singleLoginHistoryDetails('DELETE', callHistory)">
+                            <i class="fa fa-15x fa-trash text-danger" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="callhistorydeletestatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-trash text-danger" aria-hidden="true" (click)="singleLoginHistoryDetails('DELETE', callHistory)"></i>
+                        </a>
+                        <!-- single locate action -->
+                        <a data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singlelocate('locate', callHistory)"></i>
+                        </a>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+</div>
+
+<!-- advance search popup starts -->
+<div bsModal #callsAdvSearchModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideCallHistoryModal()"
+    tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <!-- header starts -->
+            <div class="modal-header">
+                <button type="button" class="close" (click)="hideCallHistoryModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                            class="pull-right">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- header ends -->
+
+            <!-- body starts -->
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input name="" *ngIf="[userroles] == 'Super Admin' || [userroles] == 'Sub Admin'|| [userroles] == 'Tech Help'" class="form-control input-sm"
+                            [(ngModel)]="enterpriseNames" onkeypress="return event.charCode != 34" />
+                        <input type="text" *ngIf="[userroles] != 'Super Admin' && [userroles] != 'Sub Admin'&& [userroles] != 'Tech Help'" class="text-capitalize form-control input-sm"
+                            id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label for="">{{'CALL_HISTORY.CALLTYPE' | translate}}</label>
+                    </div>
+                    <div class="col-md-7">
+                        <select id="status" (change)="getCallTypes($event.target.value);" name="select" class="form-control input-sm" size="1">
+                            <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                            <option *ngFor="let clang of callTypeList; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'CALL_HISTORY.USERNAME' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="userNameId" name="userNameName" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="userNameValue" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'CALL_HISTORY.MOBILENUMBER' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm resource-mob-num" id="from_mobile_id" name="mobile_name" [(ngModel)]="fromUserMobileValue"
+                            (keypress)='hyphen_generate_mobile(fromUserMobileValue, "from_mobile_id")' name="mobile" onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                            minlength="10" maxlength="12" value="" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'CALL_HISTORY.TOUSERNAME' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="toUserNameId" name="ToUserNameName" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="toUserNameValue" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'CALL_HISTORY.TOMOBILENUMBER' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm resource-mob-num" id="to_mobile_id" name="mobile_name" [(ngModel)]="toUserMobileValue"
+                            (keypress)='hyphen_generate_mobile(toUserMobileValue, "to_mobile_id");' name="mobile" onkeypress="var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                            minlength="10" maxlength="12" value="" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_FIELDS.START_DATE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <p-calendar readonlyInput="readonlyInput" [(ngModel)]="startDate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                            [showIcon]="true" [showTime]="true"></p-calendar>
+                        <select id="Timezone" (change)="changeTimezones($event.target.value)" class="form-control input-sm duration-list">
+                            <option *ngFor="let clang of timeZones; let i='index'" [selected]="timeZoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'COMMON_FIELDS.END_DATE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <p-calendar readonlyInput="readonlyInput" [(ngModel)]="endDate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                            [showIcon]="true" [showTime]="true"></p-calendar>
+                        <select id="Timezone" (change)="changeTimezones($event.target.value)" class="form-control input-sm duration-list">
+                            <option *ngFor="let clang of timeZones; let i='index'" [selected]="timeZoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- body ends -->
+
+            <!-- footer starts -->
+            <div class="modal-footer">
+                <div class="col-md-12 p0">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <div class="pull-right text-right">
+                        <button type="button" class="btn btn-primary" (click)="advance()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button type="button" class="btn btn-primary" (click)="clearAdvanced()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+                        <button type="button" class="btn btn-primary" (click)="hideCallHistoryModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <!-- footer ends -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- advance search popup ends -->
+<app-callhistory-popup (deleted)="delete($event)"></app-callhistory-popup>

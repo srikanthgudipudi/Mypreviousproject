@@ -1,0 +1,1085 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+ -->
+<div bsModal #lgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideUserModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideUserModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pageName | translate }}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Block' || [actionName] == 'Unblock'">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="enterpriseName" name="enterpriseName" value="{{selectedUserObj.EnterpriseResources.enterprise.enterpriseName}}"
+                  disabled>
+                <input type="hidden" name="enterpriseId" class="form-control" id="enterpriseId" value="{{selectedUserObj.EnterpriseResources.enterprise.enterpriseId}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.USER_NAME' | translate}}</label>
+                <input id="useraccount" class="form-control input-sm" name="useraccount" value="{{selectedUserObj.userAccount}}" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                <input id="userrole" class="form-control input-sm" name="userrole" value="{{selectedUserObj.userRole}}" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'ENTERPRISE_RESOURCES.RESOURCE_TYPE' | translate}}</label>
+                <input id="usertype" class="form-control input-sm" name="usertype" value="{{selectedUserObj.EnterpriseResources.resourceType}}"
+                  disabled>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 img-block">
+            <div class="row img-block-content">
+              <div class="col-md-12 img-block-column">
+                <label form-control-label>{{'USERS.USER_IMAGE' | translate}}</label>
+                <img alt="" class="" id="profilepageprofilePicimg" src="{{imgSrc}}" height="77" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.FIRST_NAME' | translate}}</label>
+            <input type="text" class="form-control input-sm text-capitalize" id="firstName" name="firstName" value="{{selectedUserObj.EnterpriseResources.firstName}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.LAST_NAME' | translate}}</label>
+            <input type="text" class="text-capitalize form-control input-sm" id="lastname" name="lastname" value="{{selectedUserObj.EnterpriseResources.lastName}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group uploadjsbtn">
+            <div class="input-group">
+              <label>{{userIcon}}</label>
+            </div>
+            <div class="input-file-container">
+              <input class="input-file" id="file-input" type="file" (change)="imageUploaded($event)" [(ngModel)]="imgfile" accept='image/*|video/*'
+                disabled>
+              <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+            </div>
+          </div>
+
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.DEPARTMENT' | translate}}</label>
+            <input id="department" class="form-control input-sm" name="department" value="{{selectedUserObj.EnterpriseResources.department}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.DESIGNATION' | translate}}</label>
+            <input id="designation" class="text-capitalize form-control input-sm" name="designation" value="{{selectedUserObj.EnterpriseResources.designation}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.GENDER' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="gender" name="gender" [(ngModel)]="selectedUserObj.EnterpriseResources.gender"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.SSN' | translate}}</label>
+            <input id="ssn" class="form-control input-sm" name="ssn" value="{{selectedUserObj.userStatus}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <input id="inline-checkbox1" class="form-control input-sm" name="inline-checkbox1" value="{{selectedUserObj.isEnabled}}"
+              disabled>
+          </div>
+          <div *ngIf="retext == false" class="col-md-4 form-group">
+            <label *ngIf="actiontype == 'Unblock'">{{'COMMON_REASON_FIELDS.REASON_BLOCK_ACTION' | translate}}</label>
+            <label *ngIf="actiontype == 'Block'">{{'COMMON_REASON_FIELDS.REASON_UNBLOCK_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{oldreasonValue}}" disabled>
+          </div>
+          <div *ngIf="retext == false" class="col-md-4 form-group">
+            <span class="text-danger">*</span>
+            <label *ngIf="actiontype == 'Block'">{{'COMMON_REASON_FIELDS.REASON_BLOCK_ACTION' | translate}}</label>
+            <label *ngIf="actiontype == 'Unblock'">{{'COMMON_REASON_FIELDS.REASON_UNBLOCK_ACTION' | translate}}</label>
+            <select id="theme" (change)="getreason($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+              <option value=''>Select</option>
+              <option *ngFor="let clang of reasons; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+            </select>
+          </div>
+          <div *ngIf="retext == true" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_BLOCK_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonValue1}}" disabled>
+          </div>
+          <div *ngIf="retext == true" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_UNBLOCK_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonValue}}" disabled>
+          </div>
+        </div>
+        <div class="row" *ngIf="[actionName] == 'Edit'">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="enterpriseName" name="enterpriseName" value="{{selectedUserObj.EnterpriseResources.enterprise.enterpriseName}}"
+                  disabled>
+                <input type="hidden" name="enterpriseId" class="form-control" id="enterpriseId" [(ngModel)]="selectedUserObj.EnterpriseResources.enterprise.enterpriseId">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_FIELDS.USER_NAME' | translate}}</label>
+                <input id="useraccount" class="form-control input-sm" name="useraccount" [(ngModel)]="selectedUserObj.userAccount" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                <select *ngIf="selectedUserObj.enterprise.enterpriseId != 0 && logiUserEnId==0" id="role" (change)="getChangeuserRoles($event.target.value); clearmessage()"
+                  name="select" class="form-control input-sm" [(ngModel)]="selectedUserObj.userRole" size="1">
+                  <option *ngFor="let clang of usrRole; let i='index'" [selected]="selectedUserObj.userRole == clang.roleName" value="{{clang.roleName}}">{{clang.roleName}}</option>
+                </select>
+                <input *ngIf="selectedUserObj.enterprise.enterpriseId == 0 || logiUserEnId!=0" id="userRole" class="form-control input-sm"
+                  name="userRole" [(ngModel)]="selectedUserObj.userRole" disabled>
+              </div>
+
+              <div class="col-md-6 form-group">
+                <label>{{'ENTERPRISE_RESOURCES.RESOURCE_TYPE' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="selectedUserObj.EnterpriseResources.resourceType" class="form-control input-sm"
+                  id="userType" name="userType" value="selectedUserObj.EnterpriseResources.resourceType">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 img-block">
+            <div class="row img-block-content">
+              <div class="col-md-12 img-block-column">
+                <label form-control-label>{{'USERS.USER_IMAGE' | translate}}</label>
+                <img alt="" class="" id="profilepageprofilePicimg" [src]="imgSrc" height="77" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.FIRST_NAME' | translate}}</label>
+            <input type="text" class="text-capitalize form-control input-sm" id="firstName" name="firstName" [(ngModel)]="selectedUserObj.EnterpriseResources.firstName"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.LAST_NAME' | translate}}</label>
+            <input type="text" class="text-capitalize form-control input-sm" id="lastname" name="lastname" [(ngModel)]="selectedUserObj.EnterpriseResources.lastName"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group uploadjsbtn">
+            <div class="input-group">
+              <label>{{userIcon}}</label>
+            </div>
+            <div class="input-file-container">
+              <input class="input-file" id="file-input" type="file" [(ngModel)]="imgfile" (change)="clearmessage()" accept='image/*' name="file-input"
+                (change)="imageUploaded($event)">
+              <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+            </div>
+            <div class="file-return" id="edituserimg"></div>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.DEPARTMENT' | translate}}</label>
+            <input type="text" disabled class="form-control input-sm" id="department" name="department" [(ngModel)]="selectedUserObj.EnterpriseResources.department"
+              value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.DESIGNATION' | translate}}</label>
+            <input type="text" disabled class="text-capitalize form-control input-sm" id="designation" name="designation" [(ngModel)]="selectedUserObj.EnterpriseResources.designation"
+              value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.GENDER' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="gender" name="gender" [(ngModel)]="selectedUserObj.EnterpriseResources.gender"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.SSN' | translate}}</label>
+            <input id="ssn" class="form-control input-sm" name="ssn" value="{{selectedUserObj.userStatus}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <input id="inline-checkbox1" class="form-control input-sm" name="inline-checkbox1" value="{{selectedUserObj.isEnabled}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_BLOCK_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonValue1}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_UNBLOCK_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonValue}}" disabled>
+          </div>
+        </div>
+        <div class="row" *ngIf="[actionName] == 'Create'">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label *ngIf="[enterprisesSize] == 'false'">
+                  <span class="text-danger">*</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                <label *ngIf="[enterprisesSize] == 'true'">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                <select *ngIf="[enterprisesSize] == 'false'" id="userType" (change)="getEnterpriseResources($event.target.value); clearmessage()"
+                  name="select" class="form-control input-sm" size="1">
+                  <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of enterprisesNames; let i='index'" value="{{clang._id}}${{clang.enterpriseName}}${{clang.enterpriseIconFilePath}}${{clang.preferences.defaultLanguage}}${{clang.preferences.defaultCurrency}}${{clang.preferences.defaultTheme}}${{clang.preferences.defaultTimezone}}${{clang.preferences.dateFormat}}${{clang.preferences.currencyFormat}}${{clang.enterpriseIcon}}${{clang.settings.advancedReservationWindowInDays}}${{clang.settings.earlyCheckinWindowInMins}}$
+                  {{clang.settings.expirationGracePeriodInMins}}${{clang.settings.maxActiveReservationsPerUser}}${{clang.settings.maxReservationWindowInHrs}}${{clang.settings.reservationReminderWindowInMins}}$
+                  {{clang.settings.reservationCanBeBumped}}${{clang.settings.sendReservationReminders}}${{clang.settings.longTermReservationPossible}}"
+                    id="clang{{i}}">{{clang.enterpriseName}}</option>
+                </select>
+                <input *ngIf="[enterprisesSize] == 'true'" type="text" [(ngModel)]="enterprise" class="form-control input-sm" id="sample"
+                  name="" value="" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_PAGE_TITLES.LIST_ENTERPRISE_RESOURCES' | translate}}</label>
+                <select id="userRoles" (change)="getResourcesData($event.target.value); clearmessage()" name="select" class="text-capitalize form-control input-sm"
+                  size="1">
+                  <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of resourcesList; let i='index'" value="{{clang.Id}}" id="clang{{i}}">{{clang.firstName}} {{clang.lastName}}</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_FIELDS.USER_NAME' | translate}}</label>
+                <input type="text" onkeypress='return event.charCode > 32 && (event.charCode <= 126 && event.charCode != 34 )' (keypress)="clearmessage()"
+                  maxlength="10" [(ngModel)]="userName" class="form-control input-sm" id="" name="" value="" disabled >
+              </div>
+              <div class="col-md-6 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'USER_ROLES.ROLE_NAME' | translate}}</label>
+                <select id="userRoles" (change)="getChangeuserRoles($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                  size="1">
+                  <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of usrRole; let i='index'" value="{{clang.roleName}}" id="clang{{i}}">{{clang.roleDisplayName}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 img-block">
+            <div class="row img-block-content">
+              <div class="col-md-12 img-block-column">
+                <label form-control-label>
+                  <span class="text-danger">*</span>{{'USERS.USER_IMAGE' | translate}}</label>
+                <img alt="" class="" id="profilepageprofilePicimg" [src]="imgSrc" height="77" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.FIRST_NAME' | translate}}</label>
+            <input type="text" [(ngModel)]="firstName" disabled class="text-capitalize form-control input-sm" id="" name="" value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.LAST_NAME' | translate}}</label>
+            <input type="text" [(ngModel)]="lastName" disabled class="text-capitalize form-control input-sm" id="test" name="" value="">
+          </div>
+          <div class="col-md-4 form-group uploadjsbtn">
+            <div class="input-group">
+              <label>&nbsp;</label>
+            </div>
+            <div class="input-file-container">
+              <input class="input-file" id="file-input" type="file" [(ngModel)]="imgfile" (change)="clearmessage()" accept='image/*|video/*'
+                name="file-input" (change)="imageUploaded($event)">
+              <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+            </div>
+            <div class="file-return" id="createuserimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.RESOURCE_TYPE' | translate}}</label>
+            <input type="text" disabled [(ngModel)]="userType" class="form-control input-sm" id="" name="" value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.DEPARTMENT' | translate}}</label>
+            <input type="text" disabled class="form-control input-sm" id="department" name="department" [(ngModel)]="department" value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.DESIGNATION' | translate}}</label>
+            <input type="text" disabled class="text-capitalize form-control input-sm" id="designation" name="designation" [(ngModel)]="designation"
+              value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.GENDER' | translate}}</label>
+            <input type="text" disabled class="form-control input-sm" id="gender" name="gender" [(ngModel)]="gender" value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'ENTERPRISE_RESOURCES.SSN' | translate}}</label>
+            <input type="text" disabled class="form-control input-sm" id="ssn" name="ssn" [(ngModel)]="ssn" value="">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <select id="status" (change)="getUserStatus($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+              <option *ngFor="let clang of status; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+            </select>
+          </div>
+        </div>
+        <p-accordion>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+            <div class="row" *ngIf="[actionName] == 'Edit'">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.MOBILE_NUMBER' | translate}}</label>
+                <input type="text" [(ngModel)]="mobile" class="form-control input-sm" id="AddressLine2" name="AddressLine2" value="" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm mob-num" [(ngModel)]="worknumber" id="state" name="state" value="" disabled
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" [(ngModel)]="selectedUserObj.EnterpriseResources.contactDetails.email" class="form-control input-sm" id="AddressLine1"
+                  name="AddressLine1" value="" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID_SUPERVISOR' | translate}}</label>
+                <input type="text" [(ngModel)]="selectedUserObj.EnterpriseResources.supervisorEmail" class="form-control input-sm" id="AddressLine2"
+                  name="AddressLine2" value="" disabled>
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Block' || [actionName] == 'Unblock'">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.MOBILE_NUMBER' | translate}}</label>
+                <input type="text" [(ngModel)]="mobile" class="form-control input-sm" id="mobile" name="mobile" value="" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm mob-num" [(ngModel)]="worknumber" id="state" name="state" value="" disabled
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" [(ngModel)]="selectedUserObj.EnterpriseResources.contactDetails.email" class="form-control input-sm" id="AddressLine1"
+                  name="AddressLine1" value="" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID_SUPERVISOR' | translate}}</label>
+                <input type="text" [(ngModel)]="selectedUserObj.EnterpriseResources.supervisorEmail" class="form-control input-sm" id="AddressLine2"
+                  name="AddressLine2" value="" disabled>
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'Create'">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.MOBILE_NUMBER' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="mobile" class="form-control input-sm" id="AddressLine2" name="AddressLine2" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm " disabled [(ngModel)]="worknumber" id="state" name="state" value="" />
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="email" class="form-control input-sm" id="AddressLine1" name="AddressLine1" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID_SUPERVISOR' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="supervisoremail" class="form-control input-sm" id="AddressLine2" name="AddressLine2"
+                  value="">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+            <div class="row" *ngIf="[actionName] == 'Edit'">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="addressLine1" name="addressLine1" value="" [(ngModel)]="selectedUserObj.EnterpriseResources.address.addressLine1"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="addressLine2" name="addressLine2" value="" [(ngModel)]="selectedUserObj.EnterpriseResources.address.addressLine2"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="city" name="city" value="" [(ngModel)]="selectedUserObj.EnterpriseResources.address.city"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="country" name="country" value="{{selectedUserObj.EnterpriseResources.address.country}}"
+                  [(ngModel)]="selectedUserObj.EnterpriseResources.address.country" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="state" name="state" value="" [(ngModel)]="selectedUserObj.EnterpriseResources.address.state"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="Zip" name="Zip" value="{{selectedUserObj.EnterpriseResources.address.ZIP}}"
+                  [(ngModel)]="selectedUserObj.EnterpriseResources.address.ZIP" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                <input type="text" disabled class="form-control input-sm" id="Zip" name="Zip" value="{{selectedUserObj.EnterpriseResources.address.geoCoordinates[0]}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                <input type="text" disabled class="form-control input-sm" id="Zip" name="Zip" value="{{selectedUserObj.EnterpriseResources.address.geoCoordinates[1]}}">
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete'|| [actionName] == 'Block' || [actionName] == 'Unblock'">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="addressLine1" name="addressLine1" value="" [(ngModel)]="selectedUserObj.EnterpriseResources.address.addressLine1"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="addressLine2" name="addressLine2" value="" [(ngModel)]="selectedUserObj.EnterpriseResources.address.addressLine2"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="text-capitalize form-control input-sm" id="city" name="city" value="" [(ngModel)]="selectedUserObj.EnterpriseResources.address.city"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="country" name="country" value="{{selectedUserObj.EnterpriseResources.address.country}}"
+                  [(ngModel)]="selectedUserObj.EnterpriseResources.address.country" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="state" name="state" value="" [(ngModel)]="selectedUserObj.EnterpriseResources.address.state"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="Zip" name="Zip" value="{{selectedUserObj.EnterpriseResources.address.ZIP}}"
+                  [(ngModel)]="selectedUserObj.EnterpriseResources.address.ZIP" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                <input type="text" disabled class="form-control input-sm" id="Zip" name="Zip" value="{{selectedUserObj.EnterpriseResources.address.geoCoordinates[0]}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                <input type="text" disabled class="form-control input-sm" id="Zip" name="Zip" value="{{selectedUserObj.EnterpriseResources.address.geoCoordinates[1]}}">
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'Create'">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="addressList.addressLine1" class="text-capitalize form-control input-sm" id="AddressLine1"
+                  name="AddressLine1" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="addressList.addressLine2" class="text-capitalize form-control input-sm" id="AddressLine2"
+                  name="AddressLine2" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="addressList.city" class="text-capitalize form-control input-sm" id="city" name="city"
+                  value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="addressList.country" class="form-control input-sm" id="state" name="state" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="addressList.state" class="form-control input-sm" id="state" name="state" value="">
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" disabled [(ngModel)]="addressList.ZIP" class="form-control input-sm" id="Zip" name="Zip" value="">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                <input type="text" disabled class="form-control input-sm" id="Zip" name="Zip" value="{{latitude}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                <input type="text" disabled class="form-control input-sm" id="Zip" name="Zip" value="{{longitutude}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+            <div class="row" *ngIf="[actionName] == 'Edit'">
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxActiveReservationsPerUserNameId" name="maxActiveReservationsPerUserName"
+                  maxlength="3" [(ngModel)]="maxActiveReservationsPerUser" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="advancedReservationWindowInDaysId" name="advancedReservationWindowInDaysName"
+                  maxlength="3" [(ngModel)]="advancedReservationWindowInDays" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="earlyCheckinWindowInMinsId" name="earlyCheckinWindowInMinsName" maxlength="3"
+                  [(ngModel)]="earlyCheckinWindowInMins" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_ELIGIBLE' | translate}}</label>
+                <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" type="checkbox" [(ngModel)]="longTermReservationEligible">
+                <label for="inline-checkbox3"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input id="inline-checkbox5" class="regular-checkbox big-checkbox" name="inline-checkbox5" type="checkbox" [(ngModel)]="reservationCanBeBumped">
+                <label for="inline-checkbox5"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input id="inline-checkbox4" class="regular-checkbox big-checkbox" name="inline-checkbox4" type="checkbox" [(ngModel)]="sendReservationReminders">
+                <label for="inline-checkbox4"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" maxlength="3"
+                  [(ngModel)]="maxReservationWindowInHrs" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="reservationReminderWindowInMinsId" name="reservationReminderWindowInMinsName"
+                  maxlength="3" [(ngModel)]="reservationReminderWindowInMins" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                  maxlength="3" [(ngModel)]="expirationGracePeriodInMins" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CHECK_IN_REQUIRED' | translate}}</label>
+                <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" [(ngModel)]="checkinRequired">
+                <label for="inline-checkbox2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_RESERVE_ON_OTHERS_BEHALF' | translate}}</label>
+                <input id="inline-checkbox19" class="regular-checkbox big-checkbox" name="inline-checkbox19" type="checkbox" [(ngModel)]="toCreateEventOnOtherUser">
+                <label for="inline-checkbox19"></label>
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'Create'">
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxActiveReservationsPerUserNameId" name="maxActiveReservationsPerUserName"
+                  maxlength="3" [(ngModel)]="maxActiveReservationsPerUser" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="advancedReservationWindowInDaysId" name="advancedReservationWindowInDaysName"
+                  [(ngModel)]="advancedReservationWindowInDays" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="earlyCheckinWindowInMinsId" name="earlyCheckinWindowInMinsName" maxlength="3"
+                  [(ngModel)]="earlyCheckinWindowInMins" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_ELIGIBLE' | translate}}</label>
+                <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" type="checkbox" [(ngModel)]="longTermReservationPossible">
+                <label for="inline-checkbox3"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input id="inline-checkbox5" class="regular-checkbox big-checkbox" name="inline-checkbox5" type="checkbox" [(ngModel)]="reservationCanBeBumped">
+                <label for="inline-checkbox5"></label>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input id="inline-checkbox4" class="regular-checkbox big-checkbox" name="inline-checkbox4" type="checkbox" [(ngModel)]="sendReservationReminders">
+                <label for="inline-checkbox4"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" maxlength="3"
+                  [(ngModel)]="maxReservationWindowInHrs" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="reservationReminderWindowInMinsId" name="reservationReminderWindowInMinsName"
+                  maxlength="3" [(ngModel)]="reservationReminderWindowInMins" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                  maxlength="3" [(ngModel)]="expirationGracePeriodInMins" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CHECK_IN_REQUIRED' | translate}}</label>
+                <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" [(ngModel)]="checkinRequired">
+                <label for="inline-checkbox2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_RESERVE_ON_OTHERS_BEHALF' | translate}}</label>
+                <input id="inline-checkbox19" class="regular-checkbox big-checkbox" name="inline-checkbox19" type="checkbox" [(ngModel)]="toCreateEventOnOtherUser">
+                <label for="inline-checkbox19"></label>
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Block' || [actionName] == 'Unblock'">
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_LIMIT_ACTIVE_RESERVATIONS_PER_USER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{maxActiveReservationsPerUser}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{advancedReservationWindowInDays}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{earlyCheckinWindowInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_ELIGIBLE' | translate}}</label>
+                <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" type="checkbox" disabled [(ngModel)]="longTermReservationEligible">
+                <label for="inline-checkbox3"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input id="inline-checkbox5" class="regular-checkbox big-checkbox" name="inline-checkbox5" type="checkbox" disabled [(ngModel)]="reservationCanBeBumped">
+                <label for="inline-checkbox5"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_SEND_RESERVATION_REMINDERS' | translate}}</label>
+                <input id="inline-checkbox4" class="regular-checkbox big-checkbox" name="inline-checkbox4" type="checkbox" disabled [(ngModel)]="sendReservationReminders">
+                <label for="inline-checkbox4"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{maxReservationWindowInHrs}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_RESERVATION_REMINDER_WINDOW_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{reservationReminderWindowInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" disabled value="{{expirationGracePeriodInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CHECK_IN_REQUIRED' | translate}}</label>
+                <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" disabled [(ngModel)]="checkinRequired">
+                <label for="inline-checkbox2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_RESERVE_ON_OTHERS_BEHALF' | translate}}</label>
+                <input id="inline-checkbox19" class="regular-checkbox big-checkbox" name="inline-checkbox19" type="checkbox" disabled [(ngModel)]="toCreateEventOnOtherUser">
+                <label for="inline-checkbox19"></label>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'SYNC.CALENDAR_SYNC_SETTINGS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'SYNC.SYNC_ENABLE' | translate}}</label>
+                <input type="checkbox" id="inline-checkboxsso12" name="inline-checkbox1" (click)="clearmessage()" [(ngModel)]="syncEnabled"
+                  value="true" class="regular-checkbox big-checkbox">
+                <label for="inline-checkboxsso12"></label>
+              </div>
+              <div class="col-md-4 form-group" *ngIf="[actionName] == 'Edit' && syncEnabled == true || [actionName] == 'Create' && syncEnabled == true">
+                <label>{{'SYNC.SYNC_CALENDAR' | translate}}</label>
+                <select type="text" class="form-control input-sm" id="Timezone" (change)="onchangesocialnetwork($event.target.value); clearmessage()"
+                  name="timezone" [(ngModel)]="socialnw">
+                  <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let tzone of socialcalendar; let i='index'" value="{{tzone.description}}" id="profilePage_timezone_select_option_{{i}}">{{tzone.description}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group" *ngIf="[actionName] == 'Edit' && syncEnabled == true || [actionName] == 'Create' && syncEnabled == true">
+                <label>{{'SYNC.MAIL_EXTENSION' | translate}}</label>
+                <input type="text" value="" (click)="clearmessage()" class="form-control input-sm" id="" name="AddressLine1" [(ngModel)]="mail"
+                  onkeypress="return event.charCode != 34">
+              </div>
+
+              <div class="col-md-4 form-group" *ngIf="[actionName] == 'View' && syncEnabled == true || [actionName] == 'Delete' && syncEnabled == true || [actionName] == 'Block' && syncEnabled == true || [actionName] == 'Unblock' && [syncEnabled] == true">
+                <label>{{'SYNC.SYNC_CALENDAR' | translate}}</label>
+                <input type="text" value="" class="form-control input-sm" id="" name="AddressLine1" onkeypress="return event.charCode != 34"
+                  value="" [(ngModel)]="selectedUserObj.syncCalendar.calendarType" disabled>
+
+              </div>
+              <div class="col-md-4 form-group" *ngIf="[actionName] == 'View' && syncEnabled == true || [actionName] == 'Delete' && syncEnabled == true || [actionName] == 'Block' && syncEnabled == true || [actionName] == 'Unblock' && [syncEnabled] == true">
+                <label>{{'SYNC.MAIL_EXTENSION' | translate}}</label>
+                <input type="text" value="" class="form-control input-sm" id="" name="AddressLine1" [(ngModel)]="selectedUserObj.syncCalendar.mail"
+                  onkeypress="return event.charCode != 34" disabled>
+              </div>
+            </div>
+
+          </p-accordionTab>
+
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+            <div class="row" *ngIf="[actionName] == 'Edit'">
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                <select type="text" class="form-control input-sm" id="Timezone" (change)="getTimezones($event.target.value); clearmessage()"
+                  name="timezone">
+                  <option *ngFor="let tzone of timeZones; let i='index'" [selected]="selectedUserObj?.preferences?.defaultTimezone == tzone.lookupName+ ' - '+tzone.description"
+                    value="{{tzone.lookupName}} - {{tzone.description}}" id="profilePage_timezone_select_option_{{i}}">{{tzone.lookupName}} - {{tzone.description}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                <select type="text" class="form-control input-sm" id="dateFormat" (change)="gettheme($event.target.value); clearmessage()"
+                  name="dateFormat">
+                  <option *ngFor="let theme of themes; let i='index'" [selected]="selectedUserObj?.preferences?.defaultTheme == theme.lookupName"
+                    value="{{theme.lookupName}}" id="theme{{i}}">{{theme.lookupName}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                <select type="text" class="form-control input-sm" id="language" (change)="getLanguage($event.target.value); clearmessage()"
+                  name="language">
+                  <option *ngFor="let clang of languages; let i='index'" [selected]="selectedUserObj?.preferences?.defaultLanguage == clang.lookupName"
+                    value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                <select type="text" class="form-control input-sm" id="currency" (change)="getCurrency($event.target.value); clearmessage()"
+                  name="currencies">
+                  <option *ngFor="let curency of currencies; let i='index'" [selected]="selectedUserObj?.preferences?.defaultCurrency == curency.lookupName+ ' - ' + curency.description"
+                    value="{{curency.lookupName}} - {{curency.description}}" id="curency{{i}}">{{curency.lookupName}} - {{curency.description}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                <select type="text" class="form-control input-sm" id="currency" (change)="getCurrencyformat($event.target.value); clearmessage()"
+                  name="currencies">
+                  <option *ngFor="let clang of amountformats; let i='index'" [selected]="selectedUserObj?.preferences?.currencyFormat== clang.lookupName"
+                    value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                <select type="text" class="form-control input-sm" id="dateFormat" (change)="getDateFormat($event.target.value); clearmessage()"
+                  name="dateFormat">
+                  <option *ngFor="let dformat of datefomat; let i='index'" [selected]="selectedUserObj?.preferences?.dateFormat == dformat.lookupName"
+                    value="{{dformat.lookupName}}" id="dformat{{i}}">{{dformat.lookupName}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                <select id="rowsperpage" (change)="getupdatedrowsperpage($event.target.value); clearmessage()" name="rowsperpage" class="form-control input-sm"
+                  size="1" [(ngModel)]="updatedrowsperpage">
+                  <option *ngFor="let clang of rowsPerpage; let i='index'" value="{{clang.description}}" id="clang{{i}}">{{clang.description}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Block' || [actionName] == 'Unblock'">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="timezone" name="timezone" value="{{selectedUserObj?.preferences?.defaultTimezone}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="theme" name="theme" value="{{selectedUserObj?.preferences?.defaultTheme}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="lang" name="lang" value="{{selectedUserObj?.preferences?.defaultLanguage}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="currency" name="currency" value="{{selectedUserObj?.preferences?.defaultCurrency}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="currencyformat" name="currencyformat" value="{{selectedUserObj?.preferences?.currencyFormat}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="dateformat" name="dateformat" value="{{selectedUserObj?.preferences?.dateFormat}}"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" disabled value="{{selectedUserObj?.preferences.rowsPerPage}}">
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'Create'">
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                <select id="Timezone" (change)="getTimezones($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                  size="1">
+                  <option *ngFor="let clang of timeZones; let i='index'" [selected]="defaultTimezone == clang.lookupName+ ' - '+clang.description"
+                    value="{{clang.lookupName}} - {{clang.description}}" id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                <select id="theme" (change)="gettheme($event.target.value); clearmessage()" name="select" class="form-control input-sm" size="1">
+                  <option *ngFor="let clang of themes; let i='index'" [selected]="defaultTheme == clang.lookupName" value="{{clang.lookupName}}"
+                    id="clang{{i}}">{{clang.lookupName}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                <select id="Language" (change)="getLanguage($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                  size="1">
+                  <option *ngFor="let clang of languages; let i='index'" [selected]="defaultLanguage == clang.lookupName" value="{{clang.lookupName}}"
+                    id="clang{{i}}">{{clang.lookupName}}</option>
+                </select>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                <select id="Currency" (change)="getCurrency($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                  size="1">
+                  <option *ngFor="let clang of currencies; let i='index'" [selected]="defaultCurrency == clang.lookupName+ ' - '+clang.description"
+                    value="{{clang.lookupName}} - {{clang.description}}" id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                <select id="CurrencyFormat" (change)="getCurrencyformat($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                  size="1">
+                  <option *ngFor="let clang of amountformats; let i='index'" [selected]="currencyFormat == clang.lookupName" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                <select id="DateFormat" (change)="getDateFormat($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                  size="1"> -->
+                  <option *ngFor="let clang of datefomat; let i='index'" [selected]="dateFormat == clang.lookupName" value="{{clang.lookupName}}"
+                    id="clang{{i}}">{{clang.lookupName}}</option>
+                </select>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                <select id="rowsperpage" (change)="changerowsperpage($event.target.value); clearmessage()" name="rowsperpage" class="form-control input-sm"
+                  size="1" [(ngModel)]="perpagecount">
+                  <option *ngFor="let clang of rowsPerpage; let i='index'" value="{{clang.description}}" id="clang{{i}}">{{clang.description}}</option>
+                </select>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab *ngIf="[securityQuestionsTab] == 'true' && [actionName] != 'Create'" header="{{'COMMON_BLOCK_TITLES.SECURITY_QUESTIONS' | translate}}">
+            <div class="row" *ngIf="[actionName] == 'Edit'">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_1' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion1}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="answer" name="answer" value="" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="answer1">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_2' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion2}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="answer" name="answer" value="" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="answer2">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_3' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion3}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="answer" name="answer" value="" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="answer3">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_4' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion4}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="answer" name="answer" value="" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="answer4">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_5' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion5}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>
+                  <span class="text-danger">*</span>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="answer" name="answer" value="" onkeypress="return event.charCode != 34"
+                  [(ngModel)]="answer5">
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Block' || [actionName] == 'Unblock'">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_1' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion1}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="answer" name="answer" value="" [(ngModel)]="answer1">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_2' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion2}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="answer" name="answer" value="" [(ngModel)]="answer2">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_3' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion3}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="answer" name="answer" value="" [(ngModel)]="answer3">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_4' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion4}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="answer" name="answer" value="" [(ngModel)]="answer4">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.QUESTION_5' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="question" name="question" value="{{securityQuestion5}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_SECURITY_QUESTIONS_BLOCK.ANSWER' | translate}}</label>
+                <input disabled type="text" class="form-control input-sm" id="answer" name="answer" value="" [(ngModel)]="answer5">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab *ngIf="[actionName] != 'Create'" header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row" *ngIf="[actionName] == 'Edit'">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdby" name="createdby" value="" [(ngModel)]="selectedUserObj.createdBy"
+                  disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="craetiondate" name="craetiondate" value="{{createAt}}" [(ngModel)]="createAt"
+                  disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="lastupdatedby" name="lastupdatedby" value="{{selectedUserObj.updatedBy}}"
+                  [(ngModel)]="selectedUserObj.updatedBy" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="lastupdateddate" name="lastupdateddate" value="" [(ngModel)]="updateAt"
+                  disabled>
+              </div>
+            </div>
+            <div class="row" *ngIf="[actionName] == 'View' || [actionName] == 'Delete' || [actionName] == 'Block' || [actionName] == 'Unblock'">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="createdby" name="createdby" value="" [(ngModel)]="selectedUserObj.createdBy"
+                  disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="craetiondate" name="craetiondate" value="" [(ngModel)]="createAt" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="lastupdatedby" name="lastupdatedby" value="{{selectedUserObj.updatedBy}}"
+                  [(ngModel)]="selectedUserObj.updatedBy" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="lastupdateddate" name="lastupdateddate" value="" [(ngModel)]="updateAt"
+                  disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer" *ngIf="[actionName] == 'Create'|| [actionName] == 'Edit'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="createUser()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideUserModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="[actionName] == 'View'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="hideUserModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="[actionName] == 'Block'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="blockUser()">{{'COMMON_BUTTONS.BUTTON_BLOCK' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideUserModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="[actionName] == 'Unblock'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="unblockUser()">{{'COMMON_BUTTONS.BUTTON_UNBLOCK' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideUserModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="[actionName] == 'Delete'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="deleteUser()">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideUserModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

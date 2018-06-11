@@ -1,0 +1,39 @@
+.dragclass div,
+.gu-mirror {
+/*  margin: 10px; */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 0.4s ease-in-out;
+}
+.dragclass div {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.dragclass >.row
+{
+   border: 1px dashed #e7eaec;
+    margin: 2px 2px;
+}
+.gu-mirror {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+.dragclass .ex-moved {
+  background-color: #e74c3c;
+}
+.dragclass.ex-over {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.handle {
+  padding: 0 5px;
+  margin-right: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: move;
+}
+nested-repeat-example .dragclass span {
+  display: block;
+  padding: 8px;
+}

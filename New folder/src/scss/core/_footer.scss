@@ -1,0 +1,12 @@
+.app-footer {
+  // min-height: $footer-height;
+  padding: 0 $spacer-x;
+  line-height: $footer-height;
+  color: $footer-color;
+  background: $sidebar-nav-link-active-bg;
+  // background: $footer-bg;
+  @include borders($footer-borders);
+}
+.app-footer a{
+  color: #f7d6b5;
+}

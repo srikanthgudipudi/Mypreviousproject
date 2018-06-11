@@ -1,0 +1,181 @@
+<!-- 
+  Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+-->
+<div id="main" class="">
+  <div class="card">
+    <!-- header -->
+    <div class="card-header">
+      <div class="row no-gutter">
+        <div class="col-md-9">
+          <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_LOOKUPS' | translate}}</h5>
+          <div class="cardicons-header pull-left">
+            <!-- create action -->
+            <a *ngIf="lookupaddstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}"
+              (click)="singleLookups('CREATE',alllookups)">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="lookupaddstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="singleLookups('CREATE',alllookups)"></i>
+            </a>
+            <!-- export action -->
+            <a *ngIf="lookupexportstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+              (click)="exportData(searchstring)">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="lookupexportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group mb0">
+            <div class="input-group">
+              <button type="button" (click)="getadvancedsearch()" class="btn btn-primary btn-sm advanced-btn">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+              <input type="text" id="input1-group2" [(ngModel)]="searchstring" #input (keypress)="handleKeyPress($event)" name="input1-group2"
+                class="form-control input-sm mb0" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}">
+              <span class="input-group-btn">
+                <button type="button" (click)="getalllookupsSeachList(searchstring)" class="btn btn-primary btn-sm">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-block">
+      <p-dataTable [value]="alllookupsDetails" styleClass="table" [rows]="rowsPerPage" [paginator]="true" [pageLinks]="2" sortMode="multiple"
+        [responsive]="true" expandableRows="true" [stacked]="stacked">
+        <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="lookupTypeName" header="{{'LOOKUPS.LOOKUP_TYPE' | translate}}" [sortable]="true"></p-column>
+        <p-column field="lookupName" header="{{'LOOKUPS.LOOKUP_VALUE' | translate}}" [sortable]="true"></p-column>
+        <p-column field="lookupTypeCategory" header="{{'LOOKUPS.LOOKUP_TYPE_CATEGORY' | translate}}" [sortable]="true"></p-column>
+        <p-column field="description" header="{{'COMMON_FIELDS.DESCRIPTION' | translate}}" [sortable]="true"></p-column>
+        <p-column field="isEnabled" header="{{'COMMON_FIELDS.ENABLED' | translate}}" styleClass="text-capitalize enabled" [sortable]="true"></p-column>
+        <p-column field="actions" header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-three-col">
+          <template let-alllookups="rowData" pTemplate="body">
+            <a *ngIf="lookupviewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+              (click)="singleLookups('VIEW',alllookups)">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="lookupviewstatus == 'false'" data-toggle="tooltip" class="not-active" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="singleLookups('VIEW',alllookups)"></i>
+            </a>
+            <a *ngIf="lookupeditstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}"
+              (click)="singleLookups('EDIT',alllookups)">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="lookupeditstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="singleLookups('EDIT',alllookups)"></i>
+            </a>
+            <a *ngIf="lookupdeletedstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+              (click)="singleLookups('DELETE', alllookups)">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="lookupdeletedstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="singleLookups('DELETE', alllookups)"></i>
+            </a>
+          </template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
+<app-lookups-popup (uploaded)="eventEmiter($event)"></app-lookups-popup>
+
+<div bsModal #mgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvanceSearchPopup()"
+  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideAdvanceSearchPopup()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="text-capitalize form-control input-sm"
+              id="enterpriseName" name="enterpriseName" [(ngModel)]="enterprisevalue" onkeypress="return event.charCode != 34">
+            <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+              id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label>{{'LOOKUPS.LOOKUP_TYPE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" class="text-capitalize form-control input-sm" id="lookup" name="lookup" onkeypress="return event.charCode != 34"
+              [(ngModel)]="lookuptype" value="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label>{{'LOOKUPS.LOOKUP_VALUE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" class="text-capitalize form-control input-sm" id="lookup" name="lookup" onkeypress="return event.charCode != 34"
+              [(ngModel)]="lookupvalue" value="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label>{{'LOOKUPS.LOOKUP_TYPE_CATEGORY' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" class="text-capitalize form-control input-sm" id="lookup" name="lookup" onkeypress="return event.charCode != 34"
+              [(ngModel)]="lookuptypecategory" value="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <label class="checkbox-inline" for="">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                <input id="inline-checkbox123" name="inline-checkbox1" type="checkbox" value="" [(ngModel)]="enabledvalue" class="regular-checkbox big-checkbox">
+                <label for="inline-checkbox123"></label>
+              </label>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button type="button" class="btn btn-primary" (click)="advance()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="clear()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="hideAdvanceSearchPopup()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>

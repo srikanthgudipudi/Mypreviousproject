@@ -1,0 +1,69 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+ -->
+<div class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card-group mb-0">
+                    <div class="card p-2 login-card">
+                        <div class="card-block">
+                            <div class="text-center">
+                                <img src="assets/img/logo.png" width="250" class="mb-1">
+                            </div>
+                            <h4>{{'COMMON_BLOCK_TITLES.SECURITY_QUESTIONS' |translate}}</h4>
+                            <form class="popup-form" action="#" method="post" (keyup.enter)="nextSecurityQues(securityquesAnswered)">
+                                <div class="mb-1">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                                </span>
+                                        <!--<input type="text" class="form-control" placeholder="Username">-->
+                                        <input type="text" name="username" id="securityQues_username_input" [(ngModel)]="securityquesAnswered.username" minlength="6"
+                                            maxlength="16" (blur)="getSecurityQuestionsByUserName(securityquesAnswered.username)"
+                                            class="form-control" placeholder="Enter Your Username" [disabled]="disabledUserName" (keypress)='clearmessage()'>
+                                    </div>
+                                    <div class="text-danger">{{userMsgBlank | translate}}</div>
+                                    <div class="text-danger">{{errorUserMsg | translate}}</div>
+                                    <div class="text-danger">{{noQuesErrorMsg | translate}}</div>
+                                </div>
+                                <div class="input-group  mb-1">
+                                    <select id="securityQues_country_select" class="form-control securityque" name="ques1" [(ngModel)]="securityquesAnswered.question" (change)="clearText()">
+                                        <option *ngFor="let c of questions" [ngValue]="c">{{c}}</option>
+                                    </select>
+                                </div>
+                                <div class="mb-1">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Your Answer" name="answer1" [(ngModel)]="securityquesAnswered.answer"
+                                            (keypress)='clearmessage()'>
+                                    </div>
+                                    <div class="text-danger">{{answerMsgBlank | translate}}</div>
+                                    <div class="text-danger">{{validateallfields | translate}}</div>
+                                    <div class="text-danger">{{wrongAnswerErrorMsg | translate}}</div>
+                                </div>
+                                <div class="row pull-right">
+                                    <!--<div class="col-12">
+                                    <button type="button" class="btn btn-primary px-2">Next</button>
+                                </div>-->
+                                    <button type="button" name="wp-submit" class="btn btn-primary px-2" (click)="this.disabled=true;nextSecurityQues(securityquesAnswered)"
+                                        *ngIf="securityFieldEnabled">{{ 'COMMON_BUTTONS.BUTTON_NEXT' | translate}}</button>
+                                    <div class="clearfix"></div>
+                                    <input type="submit" id="securityQues_submit_button" *ngIf="!securityFieldEnabled" value="Submit" (click)="ValidateAnsweredSecurityques(securityquesAnswered)"
+                                        class="resetpopup-form btn btn-primary" data-dismiss="modal">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="login-footer">
+                        &copy; 2017 <a href="#">{{'FOOTER.APP_TITLE' | translate}}</a>
+                        <!-- <span class="float-right"> <app-powered></app-powered> </span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

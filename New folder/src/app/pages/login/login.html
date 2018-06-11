@@ -1,0 +1,58 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+ -->
+<div *ngIf="isRequesting" class="rotate dotted colored"></div>
+<div *ngIf="!isRequesting" class="app flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-8 col-md-6 col-lg-4">
+        <div class="card-group mb-0">
+          <div class="card p-2 login-card">
+            <div class="card-block">
+              <div class="text-center">
+                <img src="assets/img/pigeon-logo.png" width="250" class="mb-1">
+              </div>
+              <h4>{{'LOGIN.LOGIN' | translate}}</h4>
+              <p class="text-muted">{{'LOGIN.SIGN_IN' | translate}}</p>
+              <div class="input-group form-group">
+                <span class="input-group-addon">
+                  <i class="fa fa-user"></i>
+                </span>
+                <input autofocus type="text" [(ngModel)]="model.userName" (keypress)="clearmessage();handleKeyPress($event)" class="form-control"
+                  placeholder="{{'LOGIN.USER_NAME' | translate}}" maxlength="60">
+              </div>
+              <div class="input-group form-group">
+                <span class="input-group-addon">
+                  <i class="fa fa-lock"></i>
+                </span>
+                <input type="password" [(ngModel)]="model.password" (keypress)="clearmessage();handleKeyPress($event)" class="form-control"
+                  placeholder="{{'LOGIN.PASSWORD' | translate}}" maxlength="20">
+              </div>
+              <div id="login_popup_error" *ngIf="error" class="text-danger"> {{error | translate}}</div>
+              <div class="row">
+                <div class="col-6">
+                  <button type="button" class="btn btn-link px-0" [routerLink]="['/pages/forgotpwd']">{{'LOGIN.FORGOT_PASSWORD' | translate}}</button>
+                </div>
+                <div class="col-6 text-right">
+                  <button type="button" (click)="getAuthorised()" class="btn btn-primary px-2">{{'LOGIN.LOGIN' | translate}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="login-footer">
+            &copy; 2017
+            <a href="#">{{'FOOTER.APP_TITLE' | translate}}</a>
+            <span class="float-right">
+              <app-powered></app-powered>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

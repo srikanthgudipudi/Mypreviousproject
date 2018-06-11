@@ -1,0 +1,3182 @@
+[
+  {
+    "_id": 5,
+    "createdAt": "2016-01-01T00:00:00.000Z",
+    "createdBy": "admin@srisys.com",
+    "fleetCode": "SF1001",
+    "fleetImageFilePath": "assets/fleets/5",
+    "fleetName": "Scb Floor 1",
+    "fleetType": "L12-Floor",
+    "floorPlanFleetObj": 5,
+    "isEnabled": "Active",
+    "notes": "",
+    "reasonActivate": "",
+    "reasonInactivate": "",
+    "updatedAt": "2018-03-14T05:59:02.000Z",
+    "updatedBy": "admin@srisys.com",
+    "isDeleted": false,
+    "isTransactable": false,
+    "isEventsEnabled": false,
+    "isSpecial": false,
+    "settings": {
+      "reservationCanBeBumped": false,
+      "maxReservationWindowInHrs": 10,
+      "longTermReservationEligible": false,
+      "expirationGracePeriodInMins": 15,
+      "earlyCheckinWindowInMins": 15,
+      "configurable": false,
+      "checkinRequired": true,
+      "advancedReservationWindowInDays": 5
+    },
+    "visuals": [],
+    "attributes": [],
+    "preferences": {
+      "rowsPerPage": 10,
+      "defaultTheme": "Dark-Sea-Green",
+      "dateFormat": "MMM D, YY",
+      "currencyFormat": "#,###.##",
+      "defaultCurrency": "USD - United States Dollar",
+      "defaultTimezone": "IST - Indian Standard Time (UTC+05:30)",
+      "defaultLanguage": "English (EN)"
+    },
+    "contactDetails": {
+      "email": "info@vedicsys.com",
+      "workNumber": "707-506-2833",
+      "workNumberExtn": null,
+      "workNumberCountrycode": "+91 - India"
+    },
+    "address": {
+      "addressLine1": "4-1-17, Street 11, Nacharam",
+      "city": "Hyderabad",
+      "country": "India",
+      "state": "Telangana",
+      "ZIP": "500076",
+      "addressLine2": "",
+      "geoCoordinates": [
+        "+17.4227940069800",
+        "+78.5448909735500"
+      ]
+    },
+    "floorPlanDetails": {
+      "finalZoom": 21,
+      "floorMetaDataJSON": "SCBFloor1-Metadata-180314.json",
+      "floorPlanImageFileName": "SCBFloor1-Floorplan-180314.png",
+      "navPathJSON": "SCBFloor1-NavPath-180314.json",
+      "pathBoundariesJSON": "SCBFloor1-Pathboundaries-180314.json",
+      "startZoom": 3,
+      "floorPlanAvailable": true
+    },
+    "fleetImageFileName": null,
+    "path": "VI0001 => VH0001 => S00001",
+    "enterprise": {
+      "enterpriseId": 1,
+      "enterpriseName": "Vedic Systems"
+    },
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        "78.5448909735500",
+        "17.4227940069800"
+      ]
+    },
+    "features": [
+      {
+        "type": "Feature",
+        "fleetId": 5,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448909735500",
+            "17.4227940069800"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "SF1001",
+          "fleetname": "Scb Floor 1, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L12-Floor",
+          "iconcolor": "grey"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 9,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448765566800",
+            "17.4227274689900"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "SH1002",
+          "fleetname": "Scbf1 Hall 1, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L14-Hall",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-h"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 10,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490857555",
+            "17.42270315703"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "SH2002",
+          "fleetname": "SCBF1 Hall 2, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L14-Hall",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-h"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 11,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54494646175",
+            "17.42267468644"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "SH3002",
+          "fleetname": "SCBF1 Hall 3, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L14-Hall",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-h"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 17,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54480531067",
+            "17.4227154728"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "SC1002",
+          "fleetname": "SCBF1 Cabin 1, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L20-Room",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-r"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 18,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449873656000",
+            "17.4227140332800"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "SC2002",
+          "fleetname": "Scbf1 Cabin 2, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L20-Room",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-r"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 19,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486230744",
+            "17.42276297725"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "SAR001",
+          "fleetname": "SCBF1 Acctg Room, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L20-Room",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-r"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 74,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54484654963",
+            "17.42271079435"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S001",
+          "fleetname": "F01S001, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 75,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485287797",
+            "17.42271735218"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S002",
+          "fleetname": "F01S002, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 76,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485912248",
+            "17.42272383004"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S003",
+          "fleetname": "F01S003, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 77,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486561846",
+            "17.42273030789"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S004",
+          "fleetname": "F01S004, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 78,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487190489",
+            "17.42273690571"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S005",
+          "fleetname": "F01S005, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 79,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487814941",
+            "17.4227435835"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S006",
+          "fleetname": "F01S006, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 80,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488468729",
+            "17.42275010135"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S007",
+          "fleetname": "F01S007, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 81,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489093181",
+            "17.42275665918"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S008",
+          "fleetname": "F01S008, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 82,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489726014",
+            "17.42276329698"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S009",
+          "fleetname": "F01S009, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 83,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485664982",
+            "17.42269352006"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S010",
+          "fleetname": "F01S010, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 84,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486281052",
+            "17.4227000379"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S011",
+          "fleetname": "F01S011, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 85,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486913886",
+            "17.42270647577"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S012",
+          "fleetname": "F01S012, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 86,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487534147",
+            "17.42271311358"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S013",
+          "fleetname": "F01S013, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 87,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488179553",
+            "17.42271979137"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S014",
+          "fleetname": "F01S014, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 88,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488829151",
+            "17.4227263492"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S015",
+          "fleetname": "F01S015, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 89,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489445221",
+            "17.42273286705"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S016",
+          "fleetname": "F01S016, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 90,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490044527",
+            "17.42273922494"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S017",
+          "fleetname": "F01S017, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 91,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490673169",
+            "17.42274574279"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S018",
+          "fleetname": "F01S018, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 92,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491297621",
+            "17.42275234061"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S019",
+          "fleetname": "F01S019, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 93,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487588629",
+            "17.42268832178"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S020",
+          "fleetname": "F01S020, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 94,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488217272",
+            "17.42269487961"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S021",
+          "fleetname": "F01S021, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 95,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488841724",
+            "17.4227015574"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S022",
+          "fleetname": "F01S022, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 96,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448944103",
+            "17.42270775535"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S023",
+          "fleetname": "F01S023, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 100,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491984937",
+            "17.42273414662"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S027",
+          "fleetname": "F01S027, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 101,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54492609389",
+            "17.4227408644"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S028",
+          "fleetname": "F01S028, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 102,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489910416",
+            "17.42267064762"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S029",
+          "fleetname": "F01S029, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 103,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490555823",
+            "17.42267728542"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S030",
+          "fleetname": "F01S030, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 104,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491188657",
+            "17.42268404319"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S031",
+          "fleetname": "F01S031, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 105,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491817299",
+            "17.42269044107"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S032",
+          "fleetname": "F01S032, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 106,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54492445942",
+            "17.42269699891"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S033",
+          "fleetname": "F01S033, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 107,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54493087158",
+            "17.42270359673"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S034",
+          "fleetname": "F01S034, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 108,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54493682273",
+            "17.4227100346"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S035",
+          "fleetname": "F01S035, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 109,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54494315106",
+            "17.42271671239"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S036",
+          "fleetname": "F01S036, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 110,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54494960513",
+            "17.42272331021"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S037",
+          "fleetname": "F01S037, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 111,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488539975",
+            "17.42263054086"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S038",
+          "fleetname": "F01S038, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 112,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489160236",
+            "17.42263733862"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S039",
+          "fleetname": "F01S039, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 113,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489809833",
+            "17.42264381648"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S040",
+          "fleetname": "F01S040, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 114,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449040914",
+            "17.42265005442"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S041",
+          "fleetname": "F01S041, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 115,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491021018",
+            "17.42265673221"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S042",
+          "fleetname": "F01S042, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 116,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449164547",
+            "17.42266321007"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S043",
+          "fleetname": "F01S043, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 117,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54492341168",
+            "17.42267024775"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S044",
+          "fleetname": "F01S044, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 97,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490065482",
+            "17.42271435317"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S024",
+          "fleetname": "F01S024, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 98,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490706697",
+            "17.422720911"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S025",
+          "fleetname": "F01S025, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 99,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491347913",
+            "17.42272762878"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S026",
+          "fleetname": "F01S026, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 118,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54492969811",
+            "17.42267676559"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S045",
+          "fleetname": "F01S045, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 119,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54493611027",
+            "17.42268324345"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S046",
+          "fleetname": "F01S046, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 120,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449468391",
+            "17.42269463969"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S047",
+          "fleetname": "F01S047, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 122,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54495966341",
+            "17.42270767538"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S049",
+          "fleetname": "F01S049, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 121,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54495308362",
+            "17.42270111755"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S048",
+          "fleetname": "F01S048, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 123,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449058935",
+            "17.42261190701"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S050",
+          "fleetname": "F01S050, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 124,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491217993",
+            "17.42261854482"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S051",
+          "fleetname": "F01S051, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 125,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491846636",
+            "17.42262510266"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S052",
+          "fleetname": "F01S052, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 126,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449252557",
+            "17.42263198039"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S053",
+          "fleetname": "F01S053, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 127,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54493179359",
+            "17.42263869817"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S054",
+          "fleetname": "F01S054, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 128,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54493782856",
+            "17.42264501608"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S055",
+          "fleetname": "F01S055, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 129,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54494386353",
+            "17.42265157392"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S056",
+          "fleetname": "F01S056, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 130,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54495014995",
+            "17.42265813175"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S057",
+          "fleetname": "F01S057, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 131,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54495643638",
+            "17.42266476956"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S058",
+          "fleetname": "F01S058, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 132,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54496783577",
+            "17.42267596586"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S059",
+          "fleetname": "F01S059, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 133,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54497420602",
+            "17.42268236374"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S060",
+          "fleetname": "F01S060, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 134,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54498049244",
+            "17.4226891615"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S061",
+          "fleetname": "F01S061, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 135,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54483925737",
+            "17.42275569949"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S062",
+          "fleetname": "F01S062, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 136,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485183023",
+            "17.42276961489"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S063",
+          "fleetname": "F01S063, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 137,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486834258",
+            "17.42278640933"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "F01S064",
+          "fleetname": "F01S064, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 194,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449085755500",
+            "17.4227031570300"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "TF0001",
+          "fleetname": "Test Fleet, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 195,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448765566800",
+            "17.4227274689900"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor 1",
+          "fleetid": "TF0002",
+          "fleetname": "Test Fleet1, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      }
+    ]
+  },
+  {
+    "_id": 4,
+    "createdAt": "2016-01-01T00:00:00.000Z",
+    "createdBy": "admin@srisys.com",
+    "fleetCode": "SFG001",
+    "fleetImageFilePath": "assets/fleets/4",
+    "fleetName": "Scb Floor G",
+    "fleetType": "L12-Floor",
+    "floorPlanFleetObj": 4,
+    "isEnabled": "Active",
+    "notes": "Scb Floor G",
+    "reasonActivate": "",
+    "reasonInactivate": "",
+    "updatedAt": "2018-03-14T13:23:53.000Z",
+    "updatedBy": "admin@srisys.com",
+    "isDeleted": false,
+    "isTransactable": false,
+    "isEventsEnabled": false,
+    "isSpecial": false,
+    "settings": {
+      "reservationCanBeBumped": false,
+      "maxReservationWindowInHrs": 10,
+      "longTermReservationEligible": false,
+      "expirationGracePeriodInMins": 15,
+      "earlyCheckinWindowInMins": 15,
+      "configurable": false,
+      "checkinRequired": true,
+      "advancedReservationWindowInDays": 5
+    },
+    "visuals": [],
+    "attributes": [],
+    "preferences": {
+      "rowsPerPage": 10,
+      "defaultTheme": "Dark-Sea-Green",
+      "dateFormat": "MMM D, YY",
+      "currencyFormat": "#,###.##",
+      "defaultCurrency": "USD - United States Dollar",
+      "defaultTimezone": "IST - Indian Standard Time (UTC+05:30)",
+      "defaultLanguage": "English (EN)"
+    },
+    "contactDetails": {
+      "email": "info@vedicsys.com",
+      "workNumber": "707-506-2833",
+      "workNumberExtn": null,
+      "workNumberCountrycode": "+91 - India"
+    },
+    "address": {
+      "addressLine1": "4-1-17, Street 11, Nacharam",
+      "city": "Hyderabad",
+      "country": "India",
+      "state": "Telangana",
+      "ZIP": "500076",
+      "addressLine2": "",
+      "geoCoordinates": [
+        "+17.4227305079900",
+        "+78.5449347270800"
+      ]
+    },
+    "floorPlanDetails": {
+      "finalZoom": 21,
+      "floorMetaDataJSON": "SCBFloorG-Metadata-180314.json",
+      "floorPlanImageFileName": "SCBFloorG-Floorplan-180314.png",
+      "navPathJSON": "SCBFloorG-NavPath-180314.json",
+      "pathBoundariesJSON": "SCBFloorG-Pathboundaries-180314.json",
+      "startZoom": 3,
+      "floorPlanAvailable": true
+    },
+    "fleetImageFileName": null,
+    "path": "VI0001 => VH0001 => S00001",
+    "enterprise": {
+      "enterpriseId": 1,
+      "enterpriseName": "Vedic Systems"
+    },
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        "78.5449347270800",
+        "17.4227305079900"
+      ]
+    },
+    "features": [
+      {
+        "type": "Feature",
+        "fleetId": 4,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449347270800",
+            "17.4227305079900"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SFG001",
+          "fleetname": "Scb Floor G, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L12-Floor",
+          "iconcolor": "grey"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 6,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448440348900",
+            "17.4227492218000"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SH1001",
+          "fleetname": "Scbfg Hall 1, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L14-Hall",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-h"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 7,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487353919",
+            "17.42272522973"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SH2001",
+          "fleetname": "SCBFG Hall 2, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L14-Hall",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-h"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 8,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490622861",
+            "17.42270251724"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SH3001",
+          "fleetname": "SCBFG Hall 3, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L14-Hall",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-h"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 12,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449067766000",
+            "17.4226343372500"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SCR001",
+          "fleetname": "Scbfg Conf Room, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L20-Room",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-r"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 13,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5449494489",
+            "17.42266261971"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SS0001",
+          "fleetname": "SCBFG Stores, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L30-Storeroom",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-storeroom"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 14,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54496776276",
+            "17.42268408041"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SCR002",
+          "fleetname": "SCBFG Council Room, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L20-Room",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-r"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 15,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54480275487",
+            "17.42270507024"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SC1001",
+          "fleetname": "SCBFG Cabin 1, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L20-Room",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-r"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 16,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448826106900",
+            "17.4228073646100"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "SC2001",
+          "fleetname": "Scbfg Cabin 2, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L20-Room",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-r"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 20,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54481375614",
+            "17.42273054889"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S001",
+          "fleetname": "F00S001, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 21,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54482012669",
+            "17.42273693819"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S002",
+          "fleetname": "F00S002, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 22,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54482645381",
+            "17.42274352155"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S003",
+          "fleetname": "F00S003, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 23,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54483257291",
+            "17.42274977905"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S004",
+          "fleetname": "F00S004, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 24,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54483876654",
+            "17.4227563624"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S005",
+          "fleetname": "F00S005, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 25,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54484504398",
+            "17.42276295462"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S006",
+          "fleetname": "F00S006, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 26,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485211617",
+            "17.42276988157"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S007",
+          "fleetname": "F00S007, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 27,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485826636",
+            "17.42277637011"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S008",
+          "fleetname": "F00S008, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 28,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486480455",
+            "17.42278331037"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S009",
+          "fleetname": "F00S009, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 29,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54483107803",
+            "17.42272038133"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S010",
+          "fleetname": "F00S010, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 30,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54483739274",
+            "17.42272696614"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S011",
+          "fleetname": "F00S011, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 31,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54484386266",
+            "17.42273348581"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S012",
+          "fleetname": "F00S012, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 32,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485023169",
+            "17.4227401817"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S013",
+          "fleetname": "F00S013, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 33,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485639735",
+            "17.42274682721"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S014",
+          "fleetname": "F00S014, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 34,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486231002",
+            "17.42275327432"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S015",
+          "fleetname": "F00S015, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 35,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448686744",
+            "17.42275978657"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S016",
+          "fleetname": "F00S016, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 36,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487501547",
+            "17.42276630624"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S017",
+          "fleetname": "F00S017, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 37,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448457937",
+            "17.42271012493"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S018",
+          "fleetname": "F00S018, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 38,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485236915",
+            "17.42271692894"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S019",
+          "fleetname": "F00S019, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 39,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485851622",
+            "17.42272335235"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S020",
+          "fleetname": "F00S020, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 40,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486499856",
+            "17.42272996827"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S021",
+          "fleetname": "F00S021, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 41,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487129306",
+            "17.42273665676"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S022",
+          "fleetname": "F00S022, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 42,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487750688",
+            "17.42274314087"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S023",
+          "fleetname": "F00S023, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 43,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488393488",
+            "17.42274958943"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S024",
+          "fleetname": "F00S024, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 44,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489017041",
+            "17.42275624534"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S025",
+          "fleetname": "F00S025, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 45,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489686231",
+            "17.42276292496"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S026",
+          "fleetname": "F00S026, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 46,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54485735509",
+            "17.4226935962"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S027",
+          "fleetname": "F00S027, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 47,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448636496",
+            "17.42270023729"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S028",
+          "fleetname": "F00S028, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 48,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54486997672",
+            "17.42270671697"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S029",
+          "fleetname": "F00S029, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 49,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487624174",
+            "17.42271328105"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S030",
+          "fleetname": "F00S030, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 50,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488271166",
+            "17.42272010433"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S031",
+          "fleetname": "F00S031, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 51,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488901394",
+            "17.42272645663"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S032",
+          "fleetname": "F00S032, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 52,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489534572",
+            "17.42273304442"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S033",
+          "fleetname": "F00S033, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 53,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490129718",
+            "17.4227394056"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S034",
+          "fleetname": "F00S034, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 54,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490757462",
+            "17.42274602596"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S035",
+          "fleetname": "F00S035, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 55,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491390174",
+            "17.42275255747"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S036",
+          "fleetname": "F00S036, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 56,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54487687816",
+            "17.42268835321"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S037",
+          "fleetname": "F00S037, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 57,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488338686",
+            "17.422694978"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S038",
+          "fleetname": "F00S038, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 58,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54488940355",
+            "17.42270156135"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S039",
+          "fleetname": "F00S039, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 59,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489540934",
+            "17.42270780998"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S040",
+          "fleetname": "F00S040, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 60,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490188391",
+            "17.42271437851"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S041",
+          "fleetname": "F00S041, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 61,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490819084",
+            "17.42272099"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S042",
+          "fleetname": "F00S042, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 62,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491456764",
+            "17.42272739414"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S043",
+          "fleetname": "F00S043, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 63,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54492095839",
+            "17.42273411818"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S044",
+          "fleetname": "F00S044, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 64,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54492722653",
+            "17.42274086591"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S045",
+          "fleetname": "F00S045, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 65,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54489767566",
+            "17.42267249095"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S046",
+          "fleetname": "F00S046, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 66,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54490406176",
+            "17.42267913501"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S047",
+          "fleetname": "F00S047, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 67,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491036869",
+            "17.4226858309"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S048",
+          "fleetname": "F00S048, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 68,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54491686345",
+            "17.42269236686"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S049",
+          "fleetname": "F00S049, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 69,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54492338769",
+            "17.42269914274"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S050",
+          "fleetname": "F00S050, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 70,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54492963564",
+            "17.42270570239"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S051",
+          "fleetname": "F00S051, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 71,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54493544431",
+            "17.42271173923"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S052",
+          "fleetname": "F00S052, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 72,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54494189852",
+            "17.42271837902"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S053",
+          "fleetname": "F00S053, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 73,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.54494808284",
+            "17.42272479202"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "F00S054",
+          "fleetname": "F00S054, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      },
+      {
+        "type": "Feature",
+        "fleetId": 196,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            "78.5448440348900",
+            "17.4227492218000"
+          ]
+        },
+        "properties": {
+          "level": "Scb Floor G",
+          "fleetid": "TS-001",
+          "fleetname": "Test Seat - 1, Hyderabad",
+          "enterpriseid": 1,
+          "geometry/type": "Point",
+          "special": "false",
+          "fleetType": "L50-Seat",
+          "iconcolor": "grey",
+          "iconname": "asset-icon-s"
+        }
+      }
+    ]
+  }
+]

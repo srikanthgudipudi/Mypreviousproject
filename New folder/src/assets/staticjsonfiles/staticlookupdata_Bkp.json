@@ -1,0 +1,1515 @@
+
+{
+"data": [
+{
+	"_id" : "TAX_TYPES",
+	"values" : [
+		"Anti-Dumping Duty",
+		"City Tax",
+		"Consumption Tax",
+		"County Tax",
+		"Environmental Tax",
+		"Excise Duty",
+		"Federal Tax",
+		"Sales Tax",
+		"State Tax",
+		"Service Tax",
+		"Tax Type13",
+		"Value Added Tax",
+		"Tax Type15",
+		"Tax Type14",
+		"Custom Duty"
+	]
+},
+
+
+{
+	"_id" : "USER_ROLES",
+	"values" : [
+		"Company Admin",
+		"Super Admin",
+		"Company Executive",
+		"Company Reports Analyzer",
+		"Company Supervisor",
+		"Location Reports Analyzer",
+		"Receptionist",
+		"Sub Admin",
+		"Tech Help"
+	]
+},
+
+
+{
+	"_id" : "SECRET_QUESTIONS",
+	"values" : [
+		"What is the name of the company of your first job?",
+		"In which city were you born?",
+		"What is your favorite color?",
+		"What is your favorite sport?",
+		"What is your mother's maiden name?",
+		"What was your childhood nickname?",
+		"What was your favorite place to visit as a child?",
+		"What was the name of your elementary school?"
+	]
+},
+
+
+{
+	"_id" : "RESERVATION_TYPES",
+	"values" : [
+		"CLOSED",
+		"RESERVED"
+	]
+},
+
+
+{
+	"_id" : "REGISTRATION_STAUSES",
+	"values" : [
+		"CLOSED",
+		"OPEN"
+	]
+},
+
+
+{
+	"_id" : "USER_TYPES",
+	"values" : [
+		"BOT USER",
+		"REAL USER"
+	]
+},
+
+
+{
+	"_id" : "PREFERENCES",
+	"values" : [
+		"LANGUAGE",
+		"ROWCOUNT"
+	]
+},
+
+
+{
+	"_id" : "PERSON_TYPES",
+	"values" : [
+		"DIGITAL DISPLAY",
+		"REAL DEVICE"
+	]
+},
+
+
+{
+	"_id" : "PAYMENT_TERMS",
+	"values" : [
+		"Due Upon Receipt",
+		"Net 40",
+		"Immediate",
+		"Proximate Month of 1",
+		"Split Payments of 3",
+		"Split Payments of 4",
+		"Net 14",
+		"Net 10",
+		"Net 30",
+		"Proximate Days of 10"
+	]
+},
+
+
+{
+	"_id" : "UI_THEMES",
+	"values" : [
+		"Army-Green",
+		"Bazaar",
+		"Carnaby-Tan",
+		"Cerulean",
+		"Light-Cyan",
+		"Purple-Heart",
+		"Verdigris",
+		"Chamoisee",
+		"Light-Brown",
+		"Hunter-Green"
+	]
+},
+
+
+{
+	"_id" : "PAGE_TYPES",
+	"values" : [
+		"PEOPLE_FINDER",
+		"ASSET_FINDER"
+	]
+},
+
+
+{
+	"_id" : "TIME_ZONES",
+	"values" : [
+		"ACDT",
+		"ACST",
+		"ACT",
+		"ADT",
+		"AEDT",
+		"AEST",
+		"AMST",
+		"AMT",
+		"AKST",
+		"ART",
+		"AST",
+		"AWDT",
+		"AWST",
+		"AZOST",
+		"AKDT",
+		"BIT",
+		"BOT",
+		"BRT",
+		"BST",
+		"BDT",
+		"AZT",
+		"CAT",
+		"BIOT",
+		"CEST",
+		"CET",
+		"CHADT",
+		"CHAST",
+		"CHOT",
+		"CDT",
+		"CCT",
+		"CHST",
+		"CEDT",
+		"CKT",
+		"CLST",
+		"CLT",
+		"COST",
+		"COT",
+		"CST",
+		"AFT",
+		"CVT",
+		"CWST",
+		"CXT",
+		"DAVT",
+		"DDUT",
+		"DFT",
+		"EASST",
+		"EAST",
+		"EAT",
+		"ECT",
+		"EDT",
+		"CHUT",
+		"CIST",
+		"CIT",
+		"EEDT",
+		"EEST",
+		"EET",
+		"EGST",
+		"EGT",
+		"FJT",
+		"FKST",
+		"BTT",
+		"CT",
+		"FKT",
+		"FNT",
+		"GALT",
+		"FET",
+		"EIT",
+		"GAMT",
+		"GILT",
+		"GIT",
+		"GMT",
+		"GET",
+		"GST",
+		"GFT",
+		"GYT",
+		"HADT",
+		"HAEC",
+		"HAST",
+		"EST",
+		"HKT",
+		"HMT",
+		"HOVT",
+		"HST",
+		"ICT",
+		"IOT",
+		"IST",
+		"JST",
+		"IRST",
+		"KRAT",
+		"KGT",
+		"IRKT",
+		"KOST",
+		"IDT",
+		"LINT",
+		"MART",
+		"MAGT",
+		"LHST",
+		"MDT",
+		"MAWT",
+		"KST",
+		"IRDT",
+		"MIST",
+		"MET",
+		"MIT",
+		"MMT",
+		"MSK",
+		"MST",
+		"MUT",
+		"MHT",
+		"NDT",
+		"MYT",
+		"NCT",
+		"NFT",
+		"NPT",
+		"NST",
+		"MEST",
+		"OMST",
+		"MVT",
+		"NZST",
+		"ORAT",
+		"NZDT",
+		"PDT",
+		"PET",
+		"PHT",
+		"PETT",
+		"PGT",
+		"PKT",
+		"PMDT",
+		"PST",
+		"PHOT",
+		"NT",
+		"PMST",
+		"PONT",
+		"PYT",
+		"RET",
+		"SAKT",
+		"ROTT",
+		"SAMT",
+		"SAST",
+		"SBT",
+		"PYST",
+		"NUT",
+		"SST",
+		"SRT",
+		"SLT",
+		"SYOT",
+		"THA",
+		"TJT",
+		"TKT",
+		"TFT",
+		"TLT",
+		"TMT",
+		"TOT",
+		"TAHT",
+		"TVT",
+		"UCT",
+		"UTC",
+		"ULAT",
+		"UYST",
+		"UZT",
+		"VET",
+		"VLAT",
+		"SGT",
+		"SCT",
+		"UYT",
+		"WAKT",
+		"WAST",
+		"WAT",
+		"VUT",
+		"WEDT",
+		"WEST",
+		"WET",
+		"WST",
+		"YEKT",
+		"Z",
+		"YAKT",
+		"VOST",
+		"VOLT"
+	]
+},
+
+
+{
+	"_id" : "NOTIFICATION_TYPES",
+	"values" : [
+		"Complaint",
+		"Congratulations",
+		"Normal Alert",
+		"Medium Alert",
+		"For Your Info",
+		"High Alert"
+	]
+},
+
+
+{
+	"_id" : "MENU",
+	"values" : [
+		"DESC",
+		"PAGE",
+		"SUB_MENU",
+		"URL"
+	]
+},
+
+
+{
+	"_id" : "GENDER",
+	"values" : [
+		"Female",
+		"Male",
+		"Other"
+	]
+},
+
+
+{
+	"_id" : "ROOM_STATUS",
+	"values" : [
+		"AVAILABLE",
+		"IN_USE",
+		"RESERVED"
+	]
+},
+
+
+{
+	"_id" : "FLEET_TYPES",
+	"values" : [
+		"Country",
+		"State",
+		"Region",
+		"Province",
+		"City",
+		"Area",
+		"Campus",
+		"Building",
+		"Bay",
+		"Floor",
+		"Room",
+		"Hall"
+	]
+},
+
+
+{
+	"_id" : "EVENT_STATUSES",
+	"values" : [
+		"CLOSE",
+		"OPEN"
+	]
+},
+
+
+{
+	"_id" : "ROOM_TYPES",
+	"values" : [
+		"ROOM",
+		"SEAT"
+	]
+},
+
+
+{
+	"_id" : "OBJECT_TYPES",
+	"values" : [
+		"IMAGE",
+		"VIDEO"
+	]
+},
+
+
+{
+	"_id" : "PAYMENT_MODES",
+	"values" : [
+		"Credit Card",
+		"Debit Card",
+		"Demand Draft",
+		"Cash",
+		"Net Banking",
+		"Check",
+		"Phone Banking",
+		"Payment Mode01",
+		"Standing Order",
+		"Faster Payments"
+	]
+},
+
+
+{
+	"_id" : "ENTERPRISE_TYPES",
+	"values" : [
+		"INDOOR",
+		"OUTDOOR"
+	]
+},
+
+
+{
+	"_id" : "DEPARTMENTS",
+	"values" : [
+		"ACCOUNTING",
+		"BABY_CARE",
+		"MAINTENANCE",
+		"MARKETING",
+		"IT",
+		"HUMAN_RESOURCES",
+		"HEALTH_CARE"
+	]
+},
+
+
+{
+	"_id" : "EVENT_TYPES",
+	"values" : [
+		"PRIVATE",
+		"PUBLIC"
+	]
+},
+
+
+{
+	"_id" : "DATE_FORMATS",
+	"values" : [
+		"DD/MM/YY",
+		"MM/DD/YY",
+		"MM/DD/YYYY",
+		"MMM D, YYYY",
+		"DD/MM/YYYY",
+		"MMM D, YY",
+		"YY/MM/DD",
+		"YYYY-MM-DD",
+		"MMMM D, YYYY",
+		"YY-MM-DD",
+		"YYYY/MM/DD",
+		"MMMM D, YY"
+	]
+},
+
+
+{
+	"_id" : "LANGUAGES",
+	"values" : [
+		"Akan",
+		"Albanian",
+		"American Sign (asl)",
+		"Arabic",
+		"Arabic Bengali",
+		"Afrikaans",
+		"Armenian",
+		"Aramaic",
+		"Asante",
+		"Afghani (dari)",
+		"Azari",
+		"Azerbaijani",
+		"Basque",
+		"Belarusian",
+		"Braille",
+		"Bantu",
+		"Bashkir",
+		"Berber",
+		"Bulgarian",
+		"Burmese",
+		"Bosnian",
+		"Catalan",
+		"Bengali",
+		"Cebuano",
+		"Creole",
+		"Circassian (chechen)",
+		"Croatian",
+		"Czech",
+		"Danish",
+		"Default",
+		"Cambodian",
+		"Cantonese",
+		"Assyrian",
+		"Dinka",
+		"Chechen",
+		"Chinese",
+		"Dravidian",
+		"Dongola",
+		"Edo",
+		"Dutch",
+		"English",
+		"Esperanto",
+		"Druze",
+		"Estonian",
+		"Fukien",
+		"Farsi",
+		"French",
+		"Fuzhou",
+		"Filipino",
+		"Fante",
+		"Galician",
+		"Georgian",
+		"Ghana",
+		"Fulani",
+		"Harari",
+		"Hausa",
+		"Hebrew",
+		"Haitian",
+		"Gujarati",
+		"Hindi",
+		"German",
+		"Hungarian",
+		"Igbo",
+		"Finnish",
+		"Hmong",
+		"Greek",
+		"Indonesian (bahasa)",
+		"Indonesian",
+		"Japanese",
+		"Irish",
+		"Javanese",
+		"Kannada",
+		"Kazakh",
+		"Icelandic",
+		"Italian",
+		"Korean",
+		"Lango",
+		"Lao",
+		"Latin",
+		"Kyrgyz",
+		"Latvian",
+		"Khmer",
+		"Malay",
+		"Maltese",
+		"Macedonian",
+		"Kurdish",
+		"Mandarin",
+		"Maori",
+		"Marathi",
+		"Mongolian",
+		"Lithuanian",
+		"Persian",
+		"Polish",
+		"Romanian",
+		"Punjabi",
+		"Russian",
+		"Norwegian",
+		"Nepali",
+		"Serbian",
+		"Portuguese",
+		"Somali",
+		"Swahili",
+		"Slovenian",
+		"Swedish",
+		"Telugu",
+		"Tamil",
+		"Thai",
+		"Spanish",
+		"Turkish",
+		"Slovak",
+		"Ukrainian",
+		"Welsh",
+		"Yoruba",
+		"Zulu",
+		"Urdu",
+		"Vietnamese",
+		"Yiddish",
+		"Ethiopian (amharic)"
+	]
+},
+
+
+{
+	"_id" : "CURRENCIES",
+	"values" : [
+		"AFN",
+		"ALL",
+		"AUD",
+		"AWG",
+		"BAM",
+		"BBD",
+		"AMD",
+		"ANG",
+		"AED",
+		"BIF",
+		"BHD",
+		"BMD",
+		"BOB",
+		"BND",
+		"AOA",
+		"BSD",
+		"BWP",
+		"BTN",
+		"BYR",
+		"ARS",
+		"CDF",
+		"CAD",
+		"CHF",
+		"BRL",
+		"COP",
+		"BGN",
+		"AZN",
+		"CUC",
+		"CVE",
+		"CUP",
+		"CNY",
+		"CLP",
+		"DOP",
+		"BZD",
+		"DZD",
+		"EGP",
+		"ERN",
+		"EUR",
+		"BDT",
+		"CZK",
+		"FKP",
+		"GBP",
+		"CRC",
+		"GGP",
+		"GHS",
+		"GMD",
+		"GIP",
+		"ETB",
+		"GYD",
+		"HKD",
+		"HNL",
+		"DJF",
+		"HTG",
+		"HUF",
+		"IDR",
+		"GTQ",
+		"IMP",
+		"INR",
+		"GEL",
+		"IQD",
+		"GNF",
+		"FJD",
+		"ISK",
+		"ILS",
+		"JOD",
+		"JPY",
+		"KES",
+		"HRK",
+		"KHR",
+		"JEP",
+		"JMD",
+		"KMF",
+		"KYD",
+		"DKK",
+		"KWD",
+		"IRR",
+		"LBP",
+		"LKR",
+		"KGS",
+		"LSL",
+		"KPW",
+		"LAK",
+		"LTL",
+		"LVL",
+		"LYD",
+		"KZT",
+		"MDL",
+		"MGA",
+		"KRW",
+		"MNT",
+		"LRD",
+		"MOP",
+		"MRO",
+		"MUR",
+		"MWK",
+		"MAD",
+		"MXN",
+		"MKD",
+		"MMK",
+		"NGN",
+		"NAD",
+		"MVR",
+		"MZN",
+		"NZD",
+		"OMR",
+		"NOK",
+		"PEN",
+		"PAB",
+		"NIO",
+		"NPR",
+		"PLN",
+		"PHP",
+		"QAR",
+		"RON",
+		"PYG",
+		"RSD",
+		"PKR",
+		"PGK",
+		"SAR",
+		"RUB",
+		"SDG",
+		"SBD",
+		"RWF",
+		"MYR",
+		"SCR",
+		"SLL",
+		"SOS",
+		"SPL",
+		"SEK",
+		"SRD",
+		"SGD",
+		"STD",
+		"SVC",
+		"SHP",
+		"TMT",
+		"TOP",
+		"TRY",
+		"TJS",
+		"SZL",
+		"TTD",
+		"TVD",
+		"SYP",
+		"TND",
+		"THB",
+		"UGX",
+		"TWD",
+		"UZS",
+		"VEF",
+		"VND",
+		"TZS",
+		"UYU",
+		"USD",
+		"UAH",
+		"XCD",
+		"XDR",
+		"XPF",
+		"ZAR",
+		"YER",
+		"XAF",
+		"XOF",
+		"ZMW",
+		"ZWD",
+		"VUV",
+		"WST"
+	]
+},
+
+
+{
+	"_id" : "CARD_TYPES",
+	"values" : [
+		"American Express",
+		"Discover",
+		"MasterCard",
+		"Quick Silver",
+		"Barclay's",
+		"Western Union",
+		"Freedom",
+		"Maestro",
+		"Visa",
+		"Venture"
+	]
+},
+
+
+{
+	"_id" : "LEVEL_TYPES",
+	"values" : [
+		"AREAS",
+		"ENTERPRISES",
+		"REGIONS",
+		"ROOMS",
+		"FLOORS",
+		"EVENTS",
+		"SITES"
+	]
+},
+
+
+{
+	"_id" : "PAGE_NAMES",
+	"values" : [
+		"Advertisements",
+		"Areas",
+		"Config Option Values",
+		"Enterprises",
+		"Config Options",
+		"Enterprise Specials",
+		"Entity Features",
+		"Events",
+		"Entity Objects",
+		"Event Registrations",
+		"Enterprise More",
+		"Floors",
+		"Persons",
+		"Regions",
+		"Lookup Codes",
+		"Reservations",
+		"Role Rights",
+		"Funfacts",
+		"Universal Images",
+		"Sites",
+		"Login History",
+		"Users",
+		"Rooms",
+		"Entity Menu"
+	]
+},
+
+
+{
+	"_id" : "CALENDAR_VIEWS",
+	"values" : [
+		"MONTHLY",
+		"WEEKLY"
+	]
+},
+
+
+{
+	"_id" : "DESIGNATIONS",
+	"values" : [
+		"ASSOCIATE_DIRECTOR",
+		"ASSISTANT_MANAGER",
+		"DIRECTOR_EXHIBITIONS",
+		"GENERAL_MANAGER",
+		"MOBILE_USER",
+		"DIRECTOR_SALES"
+	]
+},
+
+
+{
+	"_id" : "COUNTRIES",
+	"values" : [
+		"American Samoa",
+		"Aland Islands",
+		"Andorra",
+		"Afghanistan",
+		"Angola",
+		"Antarctica",
+		"Antigua and Barbuda",
+		"Australia",
+		"Argentina",
+		"Austria",
+		"Albania",
+		"Aruba",
+		"Bahrain",
+		"Bahamas",
+		"Belgium",
+		"Barbados",
+		"Benin",
+		"Bhutan",
+		"Bolivia",
+		"Bangladesh",
+		"Belize",
+		"Azerbaijan",
+		"Botswana",
+		"Bouvet Island",
+		"Bosnia and Herzegovina",
+		"Brazil",
+		"Bermuda",
+		"British Virgin Islands",
+		"Burundi",
+		"Bulgaria",
+		"Burkina Faso",
+		"Cameroon",
+		"Canada",
+		"Cape Verde",
+		"Central African Republic",
+		"Cambodia",
+		"Cayman Islands",
+		"Chad",
+		"China",
+		"Chile",
+		"Brunei",
+		"Congo",
+		"Costa Rica",
+		"British Indian Ocean Territory",
+		"Colombia",
+		"Christmas Island",
+		"Cook Islands",
+		"Cocos (Keeling) Islands",
+		"Croatia",
+		"Cuba",
+		"Cyprus",
+		"Democratic Republic of Congo",
+		"Czech Republic",
+		"East Timor",
+		"Dominican Republic",
+		"Dominica",
+		"Disputed Territory",
+		"Ecuador",
+		"El Salvador",
+		"Djibouti",
+		"Denmark",
+		"Faroe Islands",
+		"Falkland Islands",
+		"Federated States of Micronesia",
+		"Fiji",
+		"Ethiopia",
+		"Egypt",
+		"France",
+		"Equatorial Guinea",
+		"Finland",
+		"French Guyana",
+		"French Polynesia",
+		"Eritrea",
+		"French Southern Territories",
+		"Gamb",
+		"Georgia",
+		"Germany",
+		"Ghana",
+		"Greenland",
+		"Gabon",
+		"Estonia",
+		"Grenada",
+		"Guadeloupe",
+		"Guam",
+		"Guatemala",
+		"Heard Island and McDonald Islands",
+		"Gibraltar",
+		"Honduras",
+		"Hong Kong",
+		"Guinea",
+		"Haiti",
+		"Guyana",
+		"Hungary",
+		"India",
+		"Indonesia",
+		"Iraq",
+		"Greece",
+		"Iceland",
+		"Iraq-Saudi Arabia Neutral Zone",
+		"Ireland",
+		"Israel",
+		"Iran",
+		"Italy",
+		"Ivory Coast",
+		"Jamaica",
+		"Japan",
+		"Jordan",
+		"Kazakhstan",
+		"Kiribati",
+		"Kenya",
+		"Kyrgyz Republic",
+		"Laos",
+		"Latvia",
+		"Lebanon",
+		"Guinea-Bissau",
+		"Lesotho",
+		"Liberia",
+		"Kuwait",
+		"Luxembourg",
+		"Lithuania",
+		"Macedonia",
+		"Macau",
+		"Madagascar",
+		"Malaw",
+		"Malaysia",
+		"Libya",
+		"Malta",
+		"Marshall Islands",
+		"Martinique",
+		"Mauritania",
+		"Mali",
+		"Mexico",
+		"Monaco",
+		"Mongolia",
+		"Liechtenstein",
+		"Mauritius",
+		"Montserrat",
+		"Morocco",
+		"Mozambique",
+		"Myanmar",
+		"Namibia",
+		"Nauru",
+		"Moldova",
+		"Netherlands",
+		"Netherlands Antilles",
+		"New Caledonia",
+		"New Zealand",
+		"Niger",
+		"Mayotte",
+		"Nigeria",
+		"Niue",
+		"Norfolk Island",
+		"Nepal",
+		"Norway",
+		"Oman",
+		"Pakistan",
+		"Montenegro",
+		"Palestinian Territories",
+		"Northern Mariana Islands",
+		"Paraguay",
+		"Nicaragua",
+		"Philippines",
+		"Pitcairn Islands",
+		"Papua New Guinea",
+		"Portugal",
+		"Palau",
+		"Qatar",
+		"Poland",
+		"Romania",
+		"Peru",
+		"Maldives",
+		"Reunion",
+		"North Korea",
+		"Puerto Rico",
+		"Panama",
+		"Russia",
+		"Rwanda",
+		"Saint Helena and Dependencies",
+		"Saint Kitts & Nevis",
+		"Saint Lucia",
+		"Saint Pierre and Miquelon",
+		"Sao Tome and Principe",
+		"Saudi Arabia",
+		"Senegal",
+		"Serbia",
+		"Seychelles",
+		"Sierra Leone",
+		"Singapore",
+		"Slovakia",
+		"Slovenia",
+		"Solomon Islands",
+		"Somalia",
+		"Samoa",
+		"South Africa",
+		"Saint Vincent and the Grenadines",
+		"Spain",
+		"San Marino",
+		"Spratly Islands",
+		"Sri Lanka",
+		"Sudan",
+		"Suriname",
+		"Svalbard and Jan Mayen Islands",
+		"South Georgia and the South Sandwich Islands",
+		"South Korea",
+		"Switzerland",
+		"Sweden",
+		"Syria",
+		"Taiwan",
+		"Tajikistan",
+		"Tanzania",
+		"Thailand",
+		"Swaziland",
+		"Togo",
+		"Tunisia",
+		"Turkey",
+		"Trinidad and Tobago",
+		"Turkmenistan",
+		"Turks and Caicos Islands",
+		"Tuvalu",
+		"Uganda",
+		"Ukraine",
+		"Tokelau",
+		"Union of the Comoros",
+		"Tonga",
+		"United States",
+		"United Kingdom",
+		"United States Minor Outlying Islands",
+		"US Virgin Islands",
+		"Uruguay",
+		"Uzbekistan",
+		"Vanuatu",
+		"United Arab Emirates",
+		"Yemen",
+		"Zambia",
+		"Western Sahara",
+		"Zimbabwe",
+		"Vatican City",
+		"Venezuela",
+		"Wallis and Futuna Islands",
+		"Vietnam"
+	]
+},
+
+
+{
+	"_id" : "INDOOR_MAP_FEATURES",
+	"values" : [
+		"CUBICLE",
+		"HUDDLES",
+		"SQUARE",
+		"STORAGE",
+		"MEETING"
+	]
+},
+
+
+{
+	"_id" : "BILLING_CYCLES",
+	"values" : [
+		"Bi-monthly",
+		"Bi-weekly",
+		"Half-yearly",
+		"Monthly",
+		"Yearly",
+		"Quarterly",
+		"Weekly"
+	]
+},
+
+
+{
+	"_id" : "SEAT_STATUS",
+	"values" : [
+		"AVAILABLE",
+		"TAGGED"
+	]
+},
+
+
+{
+	"_id" : "ATTRIBUTE_TYPES",
+	"values" : [
+		"Adventure",
+		"Religion",
+		"Rural Tourism",
+		"Sports & Leisure",
+		"Wellness",
+		"Wildlife",
+		"Nature",
+		"Beaches",
+		"Heritage",
+		"Quick Breaks"
+	]
+},
+
+
+{
+	"_id" : "AUDIT_ACTION_TYPES",
+	"values" : [
+		"Add",
+		"Update"
+	]
+},
+
+
+{
+	"_id" : "DOCUMENT_TYPES",
+	"values" : [
+		"Image",
+		"Video",
+		"Other",
+		"Audio"
+	]
+},
+
+
+{
+	"_id" : "USER_STATUS",
+	"values" : [
+		"Inactive",
+		"Active",
+		"Blocked",
+		"Fraud",
+		"Verified"
+	]
+},
+
+
+{
+	"_id" : "RESERVATION_STATUSES",
+	"values" : [
+		"CLOSED",
+		"OPEN"
+	]
+},
+
+
+{
+	"_id" : "ASSET_TYPES",
+	"values" : [
+		"Seat",
+		"Bed",
+		"Equipment"
+	]
+},
+
+
+{
+	"_id" : "AMOUNT_FORMATS",
+	"values" : [
+		"# ###,##",
+		"# ###.##",
+		"#, ###.##",
+		"#,###.##",
+		"#.###,##"
+	]
+},
+
+
+{
+	"_id" : "BOOLEAN",
+	"values" : [
+		"No",
+		"Yes"
+	]
+},
+
+
+{
+	"_id" : "ALL_VALUES",
+	"values" : [
+		"ALL_AREAS",
+		"ALL_FLOORS",
+		"ALL_REGIONS",
+		"ALL_ROOMS",
+		"ALL_SITES"
+	]
+},
+
+
+{
+	"_id" : "FEEDBACK_TYPES",
+	"values" : [
+		"Complaint",
+		"General",
+		"Praise"
+	]
+},
+
+
+{
+	"_id" : "ALERT_STATUSES",
+	"values" : [
+		"AlertStatus04",
+		"AlertStatus05",
+		"AlertStatus06",
+		"Caution",
+		"Normal",
+		"Warning"
+	]
+},
+
+
+{
+	"_id" : "CONFIG_OPTIONS",
+	"values" : [
+		"ABOUT_PAGE_TITLE",
+		"",
+		"ABOUT_PROMPT",
+		"ADDRESS1_PROMPT",
+		"ADD_TO_MY_CALENDAR_BUTTON_PROMPT",
+		"AREA_PROMPT",
+		"BUTTON_TEXT_STYLE",
+		"BACK_BUTTON_PROMPT",
+		"BUTTON_TEXT_FONT_SIZE",
+		"CALENDAR_PAGE_TITLE",
+		"ADDRESS2_PROMPT",
+		"CATCH_US_ON_FACEBOOK_PROMPT",
+		"CALENDAR_PROMPT",
+		"CHECK_RESERVATION_STATUS_BYDATE_VALIDATION_MSG",
+		"CHECK_RESERVATION_STATUS_MSG",
+		"CANCEL_BUTTON_PROMPT",
+		"CONTACT_US_PROMPT",
+		"DESIGNATION_PROMPT",
+		"CHECK_RESERVATION_STATUS_PROMPT",
+		"DATE_PROMPT",
+		"DEVICE_ERROR_MSG01",
+		"DEPARTMENT_PROMPT",
+		"DIRECTIONS_PROMPT",
+		"DONE_BUTTON_PROMPT",
+		"DISABLED_TEXT_COLOR",
+		"DEVICE_ERROR_MSG02",
+		"DEVICE_ERROR_MSG03",
+		"DROP_DOWNLIST_SELECTION_MSG",
+		"EDIT_BUTTON_PROMPT",
+		"EMAIL2_PROMPT",
+		"END_DATE_TIME_PROMPT",
+		"END_DATE_VALIDATION_MSG",
+		"EMAIL1_PROMPT",
+		"END_DATE_VALIDATION_WITH_START_DATE_MSG",
+		"END_DATE_PROMPT",
+		"END_TIME_VALIDATION_MSG",
+		"END_TIME_VALIDATION_WITH_DYNAMIC_TIME_INTERVAL",
+		"EDIT_RESERVATION_BY_UNAUTHORISED_PERSON_MSG",
+		"ENTERPRISE_PROMPT",
+		"EMAIL3_PROMPT",
+		"ERROR_MSG_TEXT_SIZE",
+		"EVENTS_PROMPT",
+		"FIELD_PROMPT_FONT_SZE",
+		"END_TIME_PROMPT",
+		"DATE_TIME_FORMAT",
+		"FIELD_PROMPT_STYLE",
+		"FIELD_VALUE_FONT_SIZE",
+		"FIELD_VALUE_STYLE",
+		"EVENT_NAME_PROMPT",
+		"FILTER_BUTTON_ON_MAPS",
+		"EVENT_DETAILS_PROMPT",
+		"FILTER_BUTTON_AT_SITES",
+		"EVENT_IMAGES_PROMPT",
+		"FILTER_BUTTON_ON_CALENDAR",
+		"FUNFACTS_TEXT_SIZE",
+		"FLOOR_NAME_PROMPT",
+		"FIRST_NAME_PROMPT",
+		"FLOOR_PROMPT",
+		"GREEN_CIRCLE_COLOR_CODE_ANDROID",
+		"GREEN_CIRCLE_COLOR_CODE_IPHONE",
+		"FILTER_POPUP_AT AREAS",
+		"IMAGES_BUTTON_PROMPT",
+		"INDOOR_OR_OUTDOOR",
+		"LAST_NAME_PROMPT",
+		"LEGEND_TEXT_STYLE",
+		"LEGEND_TEXT_FONT_SIZE",
+		"LIST_ROW_TEXT_SIZE",
+		"FILTER_POPUP_AT_REGIONS",
+		"GREEN_CIRCLE_IMAGE",
+		"MAP_ENTERPRISE",
+		"MAP_ENTITY",
+		"MAP_PROMPT",
+		"MENU_BUTTONS",
+		"MENU_CALENDAR_BY_LEVEL",
+		"MAP_REGIONS",
+		"MEDIA_BUTTON",
+		"MENU_ITEM03_PROMPT",
+		"MAP_ENTITIES_BY_LEVEL",
+		"MENU_PARKS_BY_LEVEL",
+		"MENU_ITEM04_PROMPT",
+		"MENU_ITEM05_PROMPT",
+		"MENU_ITEM02_PROMPT",
+		"MESSAGE_STYLE",
+		"MODULE_ADVERTISEMENTS",
+		"MOBILE_PROMPT",
+		"LOCATION_PROMPT",
+		"MENU_TEXT_COLOR",
+		"MODULE_CALENDAR",
+		"MODULE_EVENT_REGISTRATIONS",
+		"MODULE_FLOORS",
+		"MESSAGE_FONT_SIZE",
+		"MENU_ITEM01_PROMPT",
+		"MODULE_AREAS",
+		"MODULE_PEOPLE_FINDER",
+		"MODULE_FUNFACTS",
+		"MODULE_ROOMS",
+		"MODULE_OUTDOOR_MAPS",
+		"MODULE_SITES",
+		"MODULE_RESERVATIONS",
+		"MODULE_MEMBERS",
+		"MODULE_TAGNGO",
+		"MODULE_SPECIALS",
+		"MODULE_USER_FAVORITES",
+		"MODULE_INDOOR_MAPS",
+		"MODULE_MEDIA",
+		"NEXT_BUTTON_PROMPT",
+		"NOIMAGES_FOUND_MSG",
+		"NOT_TAGGEDIN_PROMPT",
+		"NODATA_FOUND_MSG",
+		"NO_BUTTON_PROMPT",
+		"OK_BUTTON_PROMPT",
+		"PARK_LOCATE_BUTTON",
+		"PARK_MENU_BUTTON",
+		"PEOPLE_PROMPT",
+		"PASSWORD_PROMPT",
+		"PERSON_INFO_PAGE_TITLE",
+		"PHONE_PROMPT",
+		"MONTHLY_PROMPT",
+		"PURPOSE_LENGTH_VALIDATION_MSG",
+		"MENU_SITES_BY_LEVEL",
+		"PURPOSE_VALIDATION_MSG",
+		"RED_CIRCLE_COLOR_CODE_ANDROID",
+		"RED_CIRCLE_COLOR_CODE_IPHONE",
+		"PURPOSE PROMPT",
+		"RESERVATIONS_NODATA_FOUND_MSG",
+		"RED_CIRCLE_IMAGE",
+		"REGION_PROMPT",
+		"REGISTER_BUTTON_PROMPT",
+		"RESERVATION_CLOSED_MSG",
+		"RESERVATION_ERROR_MSG",
+		"RESERVATION_SUCCESS_MSG",
+		"RESERVATION_ALERT_WINDOW",
+		"RESERVATION_DETAILS_PAGE_TITLE",
+		"RESERVATION_SUCCESS_MSG_BY_MAP",
+		"RESERVATION_NAME_PROMPT",
+		"MORE_PAGE_TITLE",
+		"RESERVATION_UPDATE_SUCCESS_MSG",
+		"RESERVATION_UPDATE_ERROR_MSG",
+		"RESERVED_BY_PROMPT",
+		"RESERVE_A_ROOM_PROMPT",
+		"PREVIOUS_BUTTON_PROMPT",
+		"RESERVATION_UNAVAILABLE_MSG",
+		"ROOM_NAME_PROMPT",
+		"RESERVE_END_PROMPT",
+		"RESERVE_PROMPT",
+		"ROOM_PROMPT",
+		"RESERVE_START_PROMPT",
+		"ROOM_STATUS_LEGEND_PROMPT01",
+		"ROOM_STATUS_LEGEND_PROMPT02",
+		"ROOM_RESERVED_PROMPT",
+		"ROOM_STATUS_PROMPT",
+		"SAVE_BUTTON_PROMPT",
+		"SEARCH_NODATA_FOUND_MSG",
+		"SEARCH_STATUS_LEGEND_PROMPT02",
+		"ROOM_VALIDATION_MSG",
+		"SEARCH_BUTTON_PROMPT",
+		"SEARCH_STATUS_LEGEND_PROMPT01",
+		"SGIC_PROMPT",
+		"ROOMS_LIST_ROW_TEXT_SIZE",
+		"SITE_LOCATE_BUTTON",
+		"SEAT_PROMPT",
+		"SELECT_A_SEAT_PROMPT",
+		"SITE_MENU_BUTTON",
+		"START_DATE_PROMPT",
+		"SITE_PROMPT",
+		"START_TIME_PROMPT",
+		"START_TIME_VALIDATION_MSG",
+		"START_DATE_TIME_PROMPT",
+		"START_DATE_VALIDATION_MSG",
+		"STATUS_PROMPT",
+		"SUPPORT_ENTERPRISE_BUTTON",
+		"SUPPORT_ENTERPRISE_LINK",
+		"RESERVE_ROOM_PROMPT",
+		"SELECT_A_ROOM_PROMPT",
+		"SUBMIT_BUTTON_PROMPT",
+		"TAGGED_DATE_PROMPT",
+		"TAGGED_SEAT_SELECTION_MSG02",
+		"TAGGED_BY_PROMPT",
+		"TAGGED_SEAT_SELECTION_MSG01",
+		"TAGIN_CONFIRM_MSG",
+		"TAGGED_TIME_PROMPT",
+		"TAGIN_SUCCESS_MSG",
+		"TAGOUT_BEFORE_RETAGIN_MSG",
+		"TAGOUT_ERROR_MSG02",
+		"SUPPORT_ENTERPRISE_URL",
+		"TAGIN_PROMPT",
+		"TAGOUT_ERROR_MSG01",
+		"TAGOUT_ERROR_MSG03",
+		"TAGOUT_PROMPT",
+		"TAGOUT_AUTO_WINDOW",
+		"TAGOUT_SUCCESS_MSG",
+		"SEAT_TAGGED_PROMPT",
+		"TEXT_COLOR",
+		"TAG_STATUS_PROMPT",
+		"TEXT_FIELD_FONT_SIZE",
+		"TAG_STATUS_LEGEND_PROMPT01",
+		"TITLE_FONT_SIZE",
+		"TITLE_TEXT_STYLE",
+		"TEXT_FIELD_STYLE",
+		"TIME_INTERVAL_BETWEEN_START_AND_END_TIME",
+		"TITLE_TEXT_AND_BACKGROUND_COLOR",
+		"UNAME_PWD_VALIDATION_MSG02",
+		"UNAME_PWD_VALIDATION_MSG04",
+		"UNRESERVE_ERROR_MSG",
+		"TAG_STATUS_LEGEND_PROMPT02",
+		"UNAME_PWD_VALIDATION_MSG01",
+		"UNAME_PWD_VALIDATION_MSG03",
+		"USERNAME_PROMPT",
+		"WAYFIND_PROMPT",
+		"WEEKLY_CALENDAR",
+		"WEEKLY_PROMPT",
+		"YES_BUTTON_PROMPT",
+		"UNRESERVE_SUCCESS_MSG",
+		"TAG_A_SEAT_PROMPT",
+		"UNRESERVE_ERROR_MSG_IPHONE",
+		"UNRESERVE_PROMPT"
+	]
+},
+
+
+{
+	"_id" : "ALERT_SEVERITIES",
+	"values" : [
+		"High",
+		"Low",
+		"Normal"
+	]
+},
+
+
+{
+	"_id" : "ADVERTISE_TYPES",
+	"values" : [
+		"ADVERTISE1",
+		"ADVERTISE2"
+	]
+}
+]
+}

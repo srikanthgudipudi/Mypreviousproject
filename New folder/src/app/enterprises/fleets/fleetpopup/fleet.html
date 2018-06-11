@@ -1,0 +1,1804 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+ -->
+<!-- View Fleet Popup Start -->
+<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideChildModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg fleet-popup">
+    <div *ngIf="actionType=='View'|| actionType=='Delete' || actionType=='Active' || actionType=='Inactive'" class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}{{fleetCommonName}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="form-control input-sm " id="" name="enterpriseId" [(ngModel)]="enterpriseName" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{fleetCommonName}}</label>
+            <input type="text" class="form-control input-sm" id="fleetId" name="name" [(ngModel)]="fleet.fleetName" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{fleetCommonName}}{{'FLEETS.FLEET_CODE' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm" id="fleetcode" name="fleetcode" (keypress)="clearmessage()" [(ngModel)]="fleet.fleetCode"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+            <input type="text" class="form-control input-sm " id="typeId" value="{{fleet.fleetType}}" disabled>
+          </div>
+
+          <div class="col-md-4 form-group">
+            <label>{{'FLEETS.FLEET_PARENT' | translate}}{{fleetCommonName}}</label>
+            <input type="text" class="form-control input-sm " id="taggableId" name="path" [(ngModel)]="fleet.path" disabled>
+          </div>
+
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">
+              {{'FLEETS.SPECIAL' | translate}}
+              <input id="inline-checkbox1" name="inline-checkbox2" type="checkbox" [(ngModel)]="fleet.isSpecial" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid"
+                disabled>
+              <label for="inline-checkbox1"></label>
+            </label>
+          </div>
+          <div class="col-md-4 form-group">
+            {{'FLEETS.TRANSACTABLE' | translate}}
+            <input id="inline-checkbox7" name="inline-checkbox2" type="checkbox" [(ngModel)]="fleet.isTransactable" ng-reflect-name="inline-checkbox1"
+              class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid" disabled>
+              <label for="inline-checkbox7"></label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">
+              {{'FLEETS.EVENTS_ENABLED' | translate}}
+              <input id="inline-checkbox1" name="inline-checkbox2" type="checkbox" [(ngModel)]="fleet.isEventsEnabled" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid"
+                disabled>
+              <label for="inline-checkbox1"></label>
+            </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <input type="text" class="form-control input-sm" (click)="clearmessage()" disabled [(ngModel)]="fleet.isEnabled">
+          </div>
+
+          <div class="col-md-8 form-group">
+            <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea class="form-control input-sm" name="description" [(ngModel)]="fleet.notes" disabled></textarea>
+          </div>
+          <div *ngIf="retext == false && actionType == 'Active'" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonInactivate}}" disabled>
+          </div>
+          <div *ngIf="retext == false && actionType == 'Active'" class="col-md-4 form-group">
+            <span class="text-danger">*</span>
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <select id="theme" (change)="getreason($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+              <option value=''>Select</option>
+              <option *ngFor="let clang of reasons; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+              </select>
+          </div>
+          <!--ACTIVE REASON END-->
+
+          <!--INACTIVE REASON-->
+
+          <div *ngIf="retext == false && actionType == 'Inactive'" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonActivate}}" disabled>
+          </div>
+          <div *ngIf="retext == false && actionType == 'Inactive'" class="col-md-4 form-group">
+            <span class="text-danger">*</span>
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <select id="theme" (change)="getreason($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+              <option value=''>Select</option>
+              <option *ngFor="let clang of reasons; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+              </select>
+          </div>
+          <div *ngIf="retext == true" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonActivate}}" disabled>
+          </div>
+          <div *ngIf="retext == true" class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonInactivate}}" disabled>
+          </div>
+
+        </div>
+        <p-accordion>
+          <p-accordionTab header="{{'FLEETS.FLOOR_PLAN' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label class="checkbox-inline" for="inline-checkbox1">
+                  {{'FLEETS.FLOOR_PLAN_AVAILABLE' | translate}}
+                  <input id="inline-checkbox" name="inline-checkbox" type="checkbox" [(ngModel)]="floorPlanDetails.floorPlanAvailable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid"
+                    disabled>
+                  <label for="inline-checkbox"></label>
+                </label>
+              </div>
+              <div *ngIf="floorPlanDetails.floorPlanAvailable == true" class="col-md-4 form-group">
+                <label>{{'FLEETS.START_ZOOM' | translate}}</label>
+                <input type="text" class="form-control input-sm" maxlength="3" onchange="textfield()" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  id="StartZoomId" name="StartZoomname" [(ngModel)]="floorPlanDetails.startZoom" disabled>
+              </div>
+              <div *ngIf="floorPlanDetails.floorPlanAvailable == true" class="col-md-4 form-group">
+                <label>{{'FLEETS.FINAL_ZOOM' | translate}}</label>
+                <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                  id="FinalZoomId" name="FinalZoomName" [(ngModel)]="floorPlanDetails.finalZoom" disabled>
+              </div>
+              <div *ngIf="floorPlanDetails.floorPlanAvailable == true" class="col-md-4 form-group uploadjsbtn">
+                <div class="input-group">
+                  <label class="form-control-label">{{'FLEETS.FLOOR_PLAN_IMAGE' | translate}}</label>
+                  <label>: {{floorImageName}}</label>
+                </div>
+                <div class="input-file-container">
+                  <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetfloorimg" (change)="clearmessage()" accept='image/*|video/*'
+                    name="file-input" (change)="imageUploaded($event)" disabled>
+                    <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                </div>
+                <div class="file-return">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+              </div>
+              <div *ngIf="floorPlanDetails.floorPlanAvailable == true" class="col-md-4 form-group uploadjsbtn">
+                <div class="input-group">
+                  <label>{{'FLEETS.FLOOR_PLAN_JSON' | translate}}</label>
+                  <label>: {{floorPlanDetails.navPathJSON}}</label>
+                </div>
+                <div class="input-file-container">
+                  <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetjsonfile" (change)="clearmessage()" accept='image/*|video/*'
+                    name="file-input" (change)="fleetjsonfileUpload($event)" disabled>
+                    <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                </div>
+                <div class="file-return">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+              </div>
+              <div *ngIf="floorPlanDetails.floorPlanAvailable == true" class="col-md-4 form-group uploadjsbtn">
+                <div class="input-group">
+                  <label>{{'FLEETS.FLOOR_METADATA_JSON' | translate}}</label>
+                  <label>: {{floorPlanDetails.floorMetaDataJSON}}</label>
+                </div>
+                <div class="input-file-container">
+                  <input class="input-file" id="file-input" type="file" [(ngModel)]="floorMetaDatajsonfile" (change)="clearmessage()" accept='image/*|video/*'
+                    name="file-input" (change)="floorMetaDatajsonfileUpload($event)" disabled>
+                    <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                </div>
+                <div class="file-return" id="floorMetaDatajsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+              </div>
+              <div *ngIf="floorPlanDetails.floorPlanAvailable == true" class="col-md-6 form-group uploadjsbtn">
+                <div class="input-group">
+                  <label>{{'FLEETS.FLOOR_PATH_BOUNDRIES_JSON' | translate}}</label>
+                  <label>: {{floorPlanDetails.pathBoundariesJSON}}</label>
+                </div>
+                <div class="input-file-container">
+                  <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetPathBoundaiesjsonfile" (change)="clearmessage()"
+                    accept='image/*|video/*' name="file-input" (change)="fleetPathBoundaiesjsonfileUpload($event)" disabled>
+                    <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                </div>
+                <div class="file-return">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+            <div class="row">
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                <div class="input-group">
+                  <div class="input-group-mobile">
+                    <input type="text" class="form-control input-sm country-code" value="{{this.worknumber}}" disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" value="{{fleet.contactDetails.email}}" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label> {{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" value="{{fleet.address.addressLine1}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label> {{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" value="{{fleet.address.addressLine2}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                <input type="text" class="form-control input-sm" value="{{fleet.address.city}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                <input type="text" class="form-control input-sm " id="" value="{{fleet.address.country}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" value="{{fleet.address.state}}" disabled>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" value="{{fleet.address.ZIP}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" value="{{latitude}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" value="{{longitude}}" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="advancedReservationWindowInDaysId" name="advancedReservationWindowInDaysName"
+                  disabled value="{{advancedReservationWindowInDays}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="earlyCheckinWindowInMinsId" name="earlyCheckinWindowInMinsName" disabled
+                  value="{{earlyCheckinWindowInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                  disabled value="{{expirationGracePeriodInMins}}">
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_ELIGIBLE' | translate}}</label>
+                <input id="inline-checkbox4" class="regular-checkbox big-checkbox" name="inline-checkbox4" type="checkbox" [(ngModel)]="longTermReservationEligible"
+                  disabled>
+                  <label for="inline-checkbox4"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                <input id="inline-checkbox1" class="regular-checkbox big-checkbox" name="inline-checkbox1" type="checkbox" [(ngModel)]="reservationCanBeBumped"
+                  disabled>
+                  <label for="inline-checkbox1"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CHECK_IN_REQUIRED' | translate}}</label>
+                <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" [(ngModel)]="checkinRequired"
+                  disabled>
+                  <label for="inline-checkbox2"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_CONFIGURABLE' | translate}}</label>
+                <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" type="checkbox" [(ngModel)]="configurable"
+                  disabled>
+                  <label for="inline-checkbox3"></label>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" disabled
+                  value="{{maxReservationWindowInHrs}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{fleetCommonName}}{{'COMMON_BLOCK_TITLES.FLEET_VISUALS' | translate}}">
+            <div class="row" *ngFor="let file of oldFiles; let i = index">
+              <div class="col-md-4"> {{fleetvisualsImages[i]}}</div>
+              <div class="col-md-6">{{file.displayDate}}</div>
+              <div class="col-md-2 text-center">
+                <a data-placement="top" data-toggle="tooltip" title="View Record">
+                  <i aria-hidden="true" class="fa fa-15x fa-eye viewicon" (click)=" viewfile(file.visualFilePath, file.visualFileName)"></i>
+                </a>
+                <a class="not-active" data-placement="top" data-toggle="tooltip" title="Delete Record">
+                  <i aria-hidden="true" class="fa fa-15x fa-trash deleteicon" (click)="removeOldFile(i)"></i>
+                </a>
+              </div>
+            </div>
+            <div id="filePopupId" class="white_content-view">
+              <a href="javascript:void(0)" onclick="document.getElementById('filePopupId').style.display='none';">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </a>
+              <img id="fileImageId" src="{{fileSrc}}" onError="this.onerror=null;this.src='assets/img/logo.png';" width="100%" />
+              <audio id="fileAudioId" src="{{fileSrc}}" width="100%" controls autoplay></audio>
+              <video id="fileVideoId" src="{{fileSrc}}" width="100%" controls autoplay></video>
+              <div id="fileOtherId">
+                Unsupported File
+              </div>
+            </div>
+            <br>
+            <div class="col-md-4 form-group uploadjsbtn">
+              <div class="input-group">
+                <label></label>
+              </div>
+              <div class="input-file-container">
+                <input class="input-file" id="file-input" type="file" (change)="fleetsVisuals($event);" accept='image/*,video/*, audio/*'
+                  disabled>
+                  <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+              </div>
+              <div class="file-return" id="viewfleetvisualsimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="timeZone" [(ngModel)]="fleet.preferences.defaultTimezone" disabled>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="theme" name="theme" value="{{fleet.preferences.defaultTheme}}" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="LANGUAGE" [(ngModel)]="fleet.preferences.defaultLanguage" disabled>
+              </div>
+
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="CURRENCY" [(ngModel)]="fleet.preferences.defaultCurrency" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="CURRENCY_FORMAT" [(ngModel)]="fleet.preferences.currencyFormat"
+                  disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="DATE_FORMAT" [(ngModel)]="fleet.preferences.dateFormat" disabled>
+              </div>
+              <div class="col-md-4 form-group">
+                <label>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="" maxlength="15" (click)="clearmessage()" disabled value="{{fleet.preferences.rowsPerPage}}">
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{fleetCommonName}}{{'COMMON_BLOCK_TITLES.FLEET_ATTRIBUTES' | translate}}">
+            <div class="row">
+              <div class="col-md-4 form-group" *ngFor="let item of fleet.attributes; let i = index">
+                <label>{{item.attribute.attributeName}}</label>
+                <input disabled type="text" class="form-control input-sm" id="itemText{{i}}" name="createfleet.attributes.attributeValue"
+                  [(ngModel)]="fleet.attributes[i].attributeValue">
+                  <input type="hidden" class="form-control input-sm" id="itemId{{i}}" name="item._id" value="{{item._id}}">
+              </div>
+            </div>
+          </p-accordionTab>
+
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm " id="" name="CREATEDBY" [(ngModel)]="fleet.createdBy" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="CREATION_DATE" [(ngModel)]="createAt" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" class="form-control input-sm " id="" name="LAST_UPDATED_BY" [(ngModel)]="fleet.updatedBy" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" class="form-control input-sm" id="" name="LAST_UPDATED_DATE" [(ngModel)]="updateAt" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="text-danger">{{error | translate}}</div>
+          <div class="text-danger">{{errorpass}}</div>
+        </div>
+      </div>
+      <div *ngIf="actionType=='Delete'" class="modal-footer">
+        <div class="col-md-12 p0 fleetft">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary" (click)="deleteFleets(fleet)">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="actionType=='View'" class="modal-footer">
+        <div class="col-md-12 p0 fleetft">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="[actionType] == 'Active'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="activatefleet(fleet._id)">{{'COMMON_BUTTONS.BUTTON_ACTIVATE' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="[actionType]=='Inactive'">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary bottomargin" (click)="inactivateFleet(fleet._id)">{{'COMMON_BUTTONS.BUTTON_INACTIVATE' | translate}}</button>
+            <button class="btn btn-primary bottomargin" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="actionType=='Edit'" class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}{{fleetCommonName}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="parentfleetId" name="enterpriseId" [(ngModel)]="enterpriseName" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>
+                  <span class="text-danger">*</span>{{fleetCommonName}}</label>
+            </div>
+            <input type="text" class="form-control input-sm text-capitalize" id="fleetId" name="name" (keypress)="clearmessage()" onkeypress="return event.charCode != 34"
+              [ngModel]="editfleetname" (ngModelChange)="editfleetname=$event">
+          </div>
+
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm" id="parentfleetId" name="enterpriseId" value="{{fleetType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{fleetCommonName}}{{'FLEETS.FLEET_CODE' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm" id="fleetcode" name="fleetcode" (keypress)="clearmessage()" [(ngModel)]="fleet.fleetCode"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FLEETS.FLEET_PARENT' | translate}}{{fleetCommonName}}</label>
+            <input type="text" class="form-control input-sm" id="parentfleetId" name="enterpriseId" [(ngModel)]="fleet.path" disabled>
+          </div>
+
+          <input type="hidden" class="form-control input-sm " id="" name="parentpath" [(ngModel)]="fleet.fleetType">
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">
+              {{'FLEETS.SPECIAL' | translate}}
+              <input id="inline-checkbox1" name="inline-checkbox1" type="checkbox" [(ngModel)]="isSpecial" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+              <label for="inline-checkbox1"></label>
+            </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox2">
+              {{'FLEETS.TRANSACTABLE' | translate}}
+              <input id="inline-checkbox2" name="inline-checkbox2" type="checkbox" [(ngModel)]="isTransactable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+              <label for="inline-checkbox2"></label>
+            </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox3">
+              {{'FLEETS.EVENTS_ENABLED' | translate}}
+              <input id="inline-checkbox3" name="inline-checkbox3" type="checkbox" [(ngModel)]="isEventsEnabled" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+              <label for="inline-checkbox3"></label>
+            </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <input type="text" class="form-control input-sm" (click)="clearmessage()" disabled [(ngModel)]="fleet.isEnabled">
+          </div>
+          <div class="col-md-8 form-group">
+            <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea class="form-control input-sm" name="description" onkeypress="return event.charCode != 34" [(ngModel)]="notes"></textarea>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_ACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonActivate}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_REASON_FIELDS.REASON_INACTIVATE_ACTION' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="reason" name="reason" value="{{reasonInactivate}}" disabled>
+          </div>
+          <div class="col-md-12">
+            <p-accordion>
+              <p-accordionTab header="{{'FLEETS.FLOOR_PLAN' | translate}}">
+                <div class="row">
+                  <div *ngIf="floorcheck == 'false'" class="col-md-4 form-group">
+                    <label class="checkbox-inline" for="inline-checkbox">
+                      {{'FLEETS.FLOOR_PLAN_AVAILABLE' | translate}}
+                      <input id="inline-checkbox" name="inline-checkbox" type="checkbox" [(ngModel)]="floorplanavilable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                      <label for="inline-checkbox"></label>
+                    </label>
+                  </div>
+                  <div *ngIf="floorcheck == 'true'" class="col-md-4 form-group">
+                    <label class="checkbox-inline" for="inline-checkbox1">
+                      {{'FLEETS.FLOOR_PLAN_AVAILABLE' | translate}}
+                      <input id="inline-checkbox" name="inline-checkbox" type="checkbox" [(ngModel)]="floorplanavilable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid"
+                        disabled>
+                      <label for="inline-checkbox"></label>
+                    </label>
+                  </div>
+                  <div *ngIf="floorplanavilable == true" class="col-md-4 form-group">
+                    <label>{{'FLEETS.START_ZOOM' | translate}}</label>
+                    <input type="text" class="form-control input-sm" maxlength="3" (change)="clearmessage()" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                      id="StartZoomId" name="StartZoomname" [(ngModel)]="startZoomValue">
+                  </div>
+                  <div *ngIf="floorplanavilable == true" class="col-md-4 form-group">
+                    <label>{{'FLEETS.FINAL_ZOOM' | translate}}</label>
+                    <input type="text" class="form-control input-sm" maxlength="3" (change)="clearmessage()" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                      id="FinalZoomId" name="FinalZoomName" [(ngModel)]="finalZoomValue">
+                  </div>
+                  <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                    <div class="input-group">
+                      <label class="form-control-label">{{'FLEETS.FLOOR_PLAN_IMAGE' | translate}}</label>
+                      <label>: {{floorImageName}}</label>
+                    </div>
+                    <div class="input-file-container">
+                      <input class="input-file" id="file-input" type="file" accept="image/*" [(ngModel)]="fleetfloorimg" (change)="clearmessage()"
+                        accept='image/*|video/*' name="file-input" (change)="imageUploaded($event)">
+                        <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                    </div>
+                    <div class="file-return" id="editfleetfloorimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                  </div>
+                  <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                    <div class="input-group">
+                      <label>{{'FLEETS.FLOOR_PLAN_JSON' | translate}}</label>
+                      <label>: {{fleet.floorPlanDetails.navPathJSON}}</label>
+                    </div>
+                    <div class="input-file-container">
+                      <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetjsonfile" (change)="clearmessage()" accept='image/*|video/*'
+                        name="file-input" (change)="fleetjsonfileUpload($event)">
+                        <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                    </div>
+                    <div class="file-return" id="editfleetjsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                  </div>
+                  <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                    <div class="input-group">
+                      <label>{{'FLEETS.FLOOR_METADATA_JSON' | translate}}</label>
+                      <label>: {{fleet.floorPlanDetails.floorMetaDataJSON}}</label>
+                    </div>
+                    <div class="input-file-container">
+                      <input class="input-file" id="file-input" type="file" [(ngModel)]="floorMetaDatajsonfile" (change)="clearmessage()" accept='image/*|video/*'
+                        name="file-input" (change)="floorMetaDatajsonfileUpload($event)">
+                        <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                    </div>
+                    <div class="file-return" id="editfloorMetaDatajsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                  </div>
+                  <div *ngIf="floorplanavilable == true" class="col-md-6 form-group uploadjsbtn">
+                    <div class="input-group">
+                      <label>{{'FLEETS.FLOOR_PATH_BOUNDRIES_JSON' | translate}}</label>
+                      <label>: {{fleet.floorPlanDetails.pathBoundariesJSON}}</label>
+                    </div>
+                    <div class="input-file-container">
+                      <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetPathBoundaiesjsonfile" (change)="clearmessage()"
+                        accept='image/*|video/*' name="file-input" (change)="fleetPathBoundaiesjsonfileUpload($event)">
+                        <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                    </div>
+                    <div class="file-return" id="editfleetPathBoundaiesjsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                  </div>
+                </div>
+              </p-accordionTab>
+              <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+                <div class="row">
+
+                  <div class="col-md-4 form-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                    <div class="input-group">
+                      <div class="input-group-mobile">
+                        <select class="form-control input-sm country-code" (change)="getMobileCountryCodeEdit($event.target.value); clearmessage()"
+                          name="select" [(ngModel)]="worknumbercountrycode">
+                          <option *ngFor="let clang of countryCodes; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                          </select>
+                          <input type="text" class="form-control input-sm mob-num" id="mobile_id" name="contactDetails.mobile" maxlength="12" (keypress)="hyphen_generate_mobile(worknumber);"
+                            (click)="clearmessage()" [(ngModel)]="worknumber" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                          />
+                          <input type="text" maxlength="5" class="form-control input-sm ext-num" name="contactDetails.ext" [(ngModel)]="fleet.contactDetails.workNumberExtn"
+                          />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <span class="text-danger">*</span>
+                      <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                    </div>
+                    <input type="text" class="form-control input-sm" id="" name="contactDetails.email" onkeypress="return event.charCode != 34"
+                      [(ngModel)]="email">
+                  </div>
+                </div>
+              </p-accordionTab>
+              <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+                <div class="row">
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <span class="text-danger">*</span>
+                      <label> {{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+
+                    </div>
+                    <input type="text" class="form-control input-sm text-capitalize" id="" (keypress)="clearmessage()" name="address.addressLine1"
+                      onkeypress="return event.charCode != 34" [(ngModel)]="addressLine1">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <label> {{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                    </div>
+                    <input type="text" class="form-control input-sm text-capitalize" id="" (keypress)="clearmessage()" name="address.addressLine2"
+                      onkeypress="return event.charCode != 34" [(ngModel)]="addressLine2">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <span class="text-danger">*</span>
+                      <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                    </div>
+                    <input type="text" class="form-control input-sm text-capitalize" id="" (keypress)="clearmessage()" name="address.city" onkeypress="return event.charCode != 34"
+                      [(ngModel)]="city">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <span class="text-danger">*</span>
+                      <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                    </div>
+                    <select type="text" class="form-control input-sm " id="Country" name="address.country" [(ngModel)]="country" (change)="getCountryStates($event.target.value);clearmessage()"
+                      (change)="clearmessage()">
+                      <option *ngFor="let clang of countries; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                      </select>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <span class="text-danger">*</span>
+                      <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                    </div>
+                    <select id="address.state_id" class="form-control input-sm" name="address.state" [(ngModel)]="state" (change)="clearmessage()">
+                      <option value=''>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                      <option *ngFor="let clang of states; let i='index'" value="{{clang}}">{{clang}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <span class="text-danger">*</span>
+                      <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                    </div>
+                    <input type="text" class="form-control input-sm text-capitalize" id="" (keypress)="clearmessage()" name="address.zip" maxlength="10"
+                      onkeypress="return event.charCode != 34" [(ngModel)]="addresszip">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <span class="text-danger">*</span>
+                      <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                    </div>
+                    <input type="text" class="form-control input-sm" id="" name="geoLoc[0]" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                      [(ngModel)]="latitude" maxlength="18">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="input-group">
+                      <span class="text-danger">*</span>
+                      <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                    </div>
+                    <input type="text" class="form-control input-sm" id="" name="geoLoc[1]" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                      [(ngModel)]="longitude" maxlength="18">
+                  </div>
+                </div>
+              </p-accordionTab>
+              <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+                <div class="row">
+                  <div class="col-md-4 form-group">
+                    <label>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                    <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                      [(ngModel)]="advancedReservationWindowInDays" name="advancedReservationWindowInDaysName" id="advancedReservationWindowInDaysId">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                    <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                      [(ngModel)]="earlyCheckinWindowInMins" name="earlyCheckinWindowInMinsName" id="earlyCheckinWindowInMinsId">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                    <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                      maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                      [(ngModel)]="expirationGracePeriodInMins">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_ELIGIBLE' | translate}}</label>
+                    <input id="inline-checkbox4" class="regular-checkbox big-checkbox" name="inline-checkbox4" type="checkbox" [(ngModel)]="longTermReservationEligible">
+                    <label for="inline-checkbox4"></label>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                    <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" [(ngModel)]="reservationCanBeBumped">
+                    <label for="inline-checkbox2"></label>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CHECK_IN_REQUIRED' | translate}}</label>
+                    <input id="inline-checkbox5" class="regular-checkbox big-checkbox" name="inline-checkbox5" type="checkbox" [(ngModel)]="checkinRequired">
+                    <label for="inline-checkbox5"></label>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CONFIGURABLE' | translate}}</label>
+                    <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" type="checkbox" [(ngModel)]="configurable">
+                    <label for="inline-checkbox3"></label>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                    <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                      id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" maxlength="3" [(ngModel)]="maxReservationWindowInHrs">
+                  </div>
+                </div>
+              </p-accordionTab>
+              <p-accordionTab header="{{fleetCommonName}}{{'COMMON_BLOCK_TITLES.FLEET_VISUALS' | translate}}">
+                <div class="row" *ngFor="let file of oldFiles; let i = index">
+                  <div class="col-md-4"> {{fleetvisualsImages[i]}}</div>
+                  <div class="col-md-6">{{file.displayDate}}</div>
+                  <div class="col-md-2 text-center">
+                    <a data-placement="top" data-toggle="tooltip" title="View Record">
+                      <i aria-hidden="true" class="fa fa-15x fa-eye viewicon" (click)=" viewfile(file.visualFilePath, file.visualFileName)"></i>
+                    </a>
+                    <a data-placement="top" data-toggle="tooltip" title="Delete Record">
+                      <i aria-hidden="true" class="fa fa-15x fa-trash deleteicon" (click)="removeOldFile(i)"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="row" *ngFor="let item of fleetsVisual; let i = index">
+                  <div class="col-md-4"> {{newfleetvisualsImages[i]}}</div>
+                  <div class="col-md-6">{{item.displayDate}}</div>
+                  <div class="col-md-2 text-center">
+                    <a data-placement="top" data-toggle="tooltip" title="View Record">
+                      <i aria-hidden="true" class="fa fa-15x fa-eye viewicon"></i>
+                    </a>
+                    <a data-placement="top" data-toggle="tooltip" title="Delete Record">
+                      <i aria-hidden="true" class="fa fa-15x fa-trash deleteicon" (click)="removeFile(i)"></i>
+                    </a>
+                  </div>
+                </div>
+                <div id="filePopupId" class="white_content">
+                  <label>{{visualFilename}}</label>
+                  <a href="javascript:void(0)" onclick="document.getElementById('filePopupId').style.display='none';">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </a>
+                  <img id="fileImageId" src="{{fileSrc}}" onError="this.onerror=null;this.src='assets/img/logo.png';" width="100%" />
+                  <audio id="fileAudioId" src="{{fileSrc}}" width="100%" controls autoplay></audio>
+                  <video id="fileVideoId" src="{{fileSrc}}" width="100%" controls autoplay></video>
+                  <div id="fileOtherId">
+                    Unsupported File
+                  </div>
+                </div>
+                <br>
+                <div class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label></label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" (change)="fleetsVisuals($event);" accept='image/*,video/*, audio/*'>
+                    <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="fleetvisualsimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+
+              </p-accordionTab>
+
+              <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+                <div class="row">
+                  <div class="col-md-4 form-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                    <select type="text" class="form-control input-sm" id="Timezone" (change)="getTimezones($event.target.value); clearmessage()"
+                      name="timezone">
+                      <option *ngFor="let tzone of timeZone; let i='index'" [selected]="fleet?.preferences?.defaultTimezone == tzone.lookupName+ ' - '+tzone.description"
+                        value="{{tzone.lookupName}} - {{tzone.description}}" id="profilePage_timezone_select_option_{{i}}">{{tzone.lookupName}} - {{tzone.description}}</option>
+                        </select>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="file-input">
+                        <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                      <select class="form-control input-sm" (change)="changetheme($event.target.value)">
+                        <option *ngFor="let clang of themes; let i='index'" value="{{clang.lookupName}}" [selected]="fleet?.preferences?.defaultTheme == clang.lookupName"
+                          id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                    <select type="text" class="form-control input-sm" id="language" (change)="getLanguage($event.target.value); clearmessage()"
+                      name="language">
+                      <option *ngFor="let clang of languages; let i='index'" [selected]="fleet?.preferences?.defaultLanguage == clang.lookupName"
+                        value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                        </select>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                    <select type="text" class="form-control input-sm" id="currency" (change)="getCurrency($event.target.value); clearmessage()"
+                      name="currencies">
+                      <option *ngFor="let curency of currencies; let i='index'" [selected]="fleet?.preferences?.defaultCurrency == curency.lookupName+ ' - ' + curency.description"
+                        value="{{curency.lookupName}} - {{curency.description}}" id="curency{{i}}">{{curency.lookupName}} - {{curency.description}}</option>
+                        </select>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                    <select type="text" class="form-control input-sm" id="currency" (change)="getCurrencyformat($event.target.value); clearmessage()"
+                      name="currencies">
+                      <option *ngFor="let clang of amountformats; let i='index'" [selected]="fleet?.preferences?.currencyFormat== clang.lookupName"
+                        value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                        </select>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                    <select type="text" class="form-control input-sm" id="dateFormat" (change)="getDateFormat($event.target.value); clearmessage()"
+                      name="dateFormat">
+                      <option *ngFor="let dformat of datefomat; let i='index'" [selected]="fleet?.preferences?.dateFormat == dformat.lookupName"
+                        value="{{dformat.lookupName}}" id="dformat{{i}}">{{dformat.lookupName}}</option>
+                        </select>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                    <select id="rowsperpage" (change)="changerowsperpage($event.target.value); clearmessage()" name="rowsperpage" class="form-control input-sm"
+                      size="1">
+                      <option *ngFor="let clang of rowsPerpages; let i='index'" value="{{clang.description}}" id="clang{{i}}" [selected]="fleet?.preferences?.rowsPerPage == clang.description">{{clang.description}}</option>
+                      </select>
+                  </div>
+                </div>
+              </p-accordionTab>
+              <p-accordionTab header="{{fleetCommonName}}{{'COMMON_BLOCK_TITLES.FLEET_ATTRIBUTES' | translate}}">
+                <div class="row">
+                  <div class="col-md-4 form-group" *ngFor="let item of fleet.attributes; let i = index">
+                    <span class="text-danger" *ngIf="item.attribute.isMandatory">*</span>
+                    <label>{{item.attribute.attributeName}}</label>
+                    <select *ngIf="item.attribute.attributeType=='List Field'" id="edititemText{{i}}" (change)="clearmessage()" name="select"
+                      class="form-control input-sm" value="{{item.attributeValue}}" size="1">
+                      <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                      <option *ngFor="let clang of item.lookupdata; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}" [selected]="clang.lookupName === item.attributeValue">{{clang.description}}</option>
+                      </select>
+                      <input *ngIf="item.attribute.attributeType=='Text Field'" type="text" class="form-control input-sm" id="edititemText{{i}}"
+                        name="createfleet.attributes.attributeValue" (keypress)="clearmessage()" value="{{item.attributeValue}}">
+                        <input type="hidden" class="form-control input-sm" id="edititemId{{i}}" name="item._id" value="{{item.attribute._id}}">
+                  </div>
+                  <div class="col-md-4 form-group" *ngFor="let attribute of attributeList; let j = index">
+                    <span *ngIf="attribute.isMandatory" class="text-danger">*</span>
+                    <label>{{attribute.attributeName}}</label>
+                    <select *ngIf="attribute.attributeType=='List Field'" id="editattritem{{j}}" [(ngModel)]="attribute.defaultValue" (change)="clearmessage()"
+                      name="select" class="form-control input-sm" size="1">
+                      <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                      <option *ngFor="let clang of attribute['lookupsData']; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}" [selected]="clang.lookupName === attribute.attributeValue">{{clang.description}}</option>
+                      </select>
+                      <input *ngIf="attribute.attributeType=='Text Field'" type="text" id="editattritemText{{j}}" class="form-control input-sm"
+                        name="createfleet.attributes.attributeValue" [(ngModel)]="attribute.defaultValue" (keypress)="clearmessage()"
+                        value="{{attribute.defaultValue}}">
+                        <input type="hidden" class="form-control input-sm" id="editnewitemId{{j}}" name="edititem" value="{{attribute._id}}">
+                  </div>
+                </div>
+              </p-accordionTab>
+              <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                    <input type="text" class="form-control input-sm" id="" name="CREATEDBY" [(ngModel)]="fleet.createdBy" disabled>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                    <input type="text" class="form-control input-sm" id="" name="CREATION_DATE" [(ngModel)]="createAt" disabled>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                    <input type="text" class="form-control input-sm" id="" name="LAST_UPDATED_BY" [(ngModel)]="fleet.updatedBy" disabled>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                    <input type="text" class="form-control input-sm" id="" name="LAST_UPDATED_DATE" [(ngModel)]="updateAt" disabled>
+                  </div>
+                </div>
+              </p-accordionTab>
+            </p-accordion>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="text-danger">{{error | translate}}</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0 fleetft">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button class="btn btn-primary" (click)="updateFleet(fleet)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary btn-sm" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="actionType=='ChildSubmit'" class="modal-content">
+      <form ngNativeValidate (ngSubmit)="createSingleFleet(createfleet)">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="closePopupModal()" aria-label="Close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row">
+            <div class="col-md-12">
+              <app-logoheader></app-logoheader>
+              <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                class="pull-right">
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="clearfix"></div>
+          <h5 class="popupsection-title">{{pagename | translate}}{{fleetCommonName}}</h5>
+          <div class="clearfix"></div>
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="parentfleetId" name="enterpriseId" [(ngModel)]="createfleet.enterprise.enterpriseName"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <span class="text-danger">*</span>
+                <label>{{fleetCommonName}}</label>
+
+              </div>
+              <input type="text" class="form-control input-sm text-capitalize" name="name" [(ngModel)]="createfleet.fleetName" minlength="4">
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <span class="text-danger">*</span>
+                <label>{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+
+              </div>
+              <select id="" class="form-control input-sm" name="fleetType" (change)="getEnterpriseType($event.target.value);clearmessage()">
+                <option value=''>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+               <option *ngFor="let clang of childfleetTypes; let i='index'" [selected]="createfleet.fleetTypeName == clang" value="{{clang.fleetTypeName}}~{{clang.isSpecial}}~{{clang.isTransactable }}~{{clang.isEventsEnabled}}">{{clang.fleetTypeName}}</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'FLEETS.FLEET_PARENT' | translate}}{{fleetCommonName}}</label>
+              <input type="text" class="form-control input-sm" id="parentfleetId" name="path" [(ngModel)]="parentpath" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                {{'FLEETS.SPECIAL' | translate}}
+                <input *ngIf="[special] == 'true'" id="specialId" name="specialName" type="checkbox" disabled [(ngModel)]="specialvalue"
+                  class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <input *ngIf="[special] == 'false'" id="specialId" name="specialName" type="checkbox" disabled class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <label for="specialId"></label>
+              </label>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                {{'FLEETS.TRANSACTABLE' | translate}}
+                <input *ngIf="[transactablevalue] == 'true'" id="inlineId" name="inlineName" type="checkbox" [(ngModel)]="transactable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <input *ngIf="[transactablevalue] == 'false'" id="inlineId" name="inlineName" type="checkbox" disabled class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <label for="inlineId"></label>
+              </label>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                {{'FLEETS.EVENTS_ENABLED' | translate}}
+                <input *ngIf="[eventsenabledvalue] == 'true'" id="eventsenabledId" name="eventsenabledName" type="checkbox" [(ngModel)]="eventsenabled"
+                  class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <input *ngIf="[eventsenabledvalue] == 'false'" id="eventsenabledId" name="eventsenabledName" type="checkbox" disabled class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <input *ngIf="[transactable] == 'false'" id="eventsenabledId" name="eventsenabledName" type="checkbox" disabled class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <label for="eventsenabledId"></label>
+              </label>
+            </div>
+            <!-- <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                {{'FLEETS.TRANSACTABLE' | translate}}
+                <input id="inline-checkbox3" name="inline-checkbox1" type="checkbox" [(ngModel)]="transactable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <label for="inline-checkbox3"></label>
+              </label>
+            </div> -->
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+              <select id="" class="form-control input-sm" (click)="clearmessage()" (change)="ChangeStatus($event.target.value)">
+                <option *ngFor="let clang of statuslist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+              </select>
+            </div>
+            <div class="col-md-8 form-group">
+              <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+              <textarea class="form-control input-sm" name="description" [(ngModel)]="createfleet.description"></textarea>
+            </div>
+          </div>
+          <p-accordion>
+            <p-accordionTab header="{{'FLEETS.FLOOR_PLAN' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">
+                    {{'FLEETS.FLOOR_PLAN_AVAILABLE' | translate}}
+                  <input id="inline-checkbox" name="inline-checkbox" type="checkbox" [(ngModel)]="floorplanavilable" (change)="clearmessage1()" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                    <label for="inline-checkbox"></label>
+                  </label>
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group">
+                  <label>{{'FLEETS.START_ZOOM' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" (keypress)="clearmessage()" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    id="StartZoomId" name="StartZoomname" [(ngModel)]="startZoomValue">
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group">
+                  <label>{{'FLEETS.FINAL_ZOOM' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" (keypress)="clearmessage()" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    id="FinalZoomId" name="FinalZoomName" [(ngModel)]="finalZoomValue">
+                </div>
+
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label>{{'FLEETS.FLOOR_PLAN_IMAGE' | translate}}</label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" accept="image/*" [(ngModel)]="fleetfloorimg" (change)="clearmessage()"
+                      accept='image/*|video/*' name="file-input" (change)="imageUploaded($event)">
+                      <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="childfleetfloorimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label>{{'FLEETS.FLOOR_PLAN_JSON' | translate}}</label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetjsonfile" (change)="clearmessage()" accept='image/*|video/*'
+                      name="file-input" (change)="fleetjsonfileUpload($event)">
+                      <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="childfleetjsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label>{{'FLEETS.FLOOR_METADATA_JSON' | translate}}</label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" [(ngModel)]="floorMetaDatajsonfile" (change)="clearmessage()" accept='image/*|video/*'
+                      name="file-input" (change)="floorMetaDatajsonfileUpload($event)">
+                      <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="childfloorMetaDatajsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label>{{'FLEETS.FLOOR_PATH_BOUNDRIES_JSON' | translate}}</label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetPathBoundaiesjsonfile" (change)="clearmessage()"
+                      accept='image/*|video/*' name="file-input" (change)="fleetPathBoundaiesjsonfileUpload($event)">
+                      <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="childfleetPathBoundaiesjsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                  <div class="input-group">
+                    <div class="input-group-mobile">
+                      <select class="form-control input-sm country-code" (change)="getMobileCountryCode($event.target.value); clearmessage()" name="select"
+                        [(ngModel)]="mobileCountryCode">
+                        <option *ngFor="let clang of countryCodes; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                        </select>
+                        <input type="text" class="form-control input-sm mob-num" id="mobile_id" name="contactDetails.mobile" maxlength="12" (keypress)="hyphen_generate_mobile(createfleet.contactDetails.mobile);"
+                          (click)="clearmessage()" [(ngModel)]="createfleet.contactDetails.mobile" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                        />
+                        <input type="text" maxlength="5" class="form-control input-sm ext-num" name="contactDetails.ext" [(ngModel)]="createfleet.contactDetails.ext"
+                        />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                  </div>
+                  <input type="email" class="form-control input-sm" id="" (keypress)="clearmessage()" name="contactDetails.email" [(ngModel)]="createfleet.contactDetails.email">
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label> {{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm text-capitalize" id="" name="address.addressLine1" (keypress)="clearmessage()"
+                    [(ngModel)]="createfleet.address.addressLine1">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label> {{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm text-capitalize" id="" name="address.addressLine2" (keypress)="clearmessage()"
+                    [(ngModel)]="createfleet.address.addressLine2">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm text-capitalize" id="" name="address.city" (keypress)="clearmessage()" [(ngModel)]="createfleet.address.city">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                  </div>
+                  <select id="" class="form-control input-sm" name="address.country" (change)="getselectCountry($event.target.value);clearmessage()"
+                    (change)="clearmessage()">
+                    <option *ngFor="let clang of countries; let i='index'" [selected]="selectCountry == clang.lookupName" value="{{clang.lookupName}}">{{clang.lookupName}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                  </div>
+                  <select id="" class="form-control input-sm" name="address.state" (change)="getselectState($event.target.value);clearmessage()">
+                    <option value=''>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                    <option *ngFor="let clang of states; let i='index'" [selected]="state == clang" value="{{clang}}">{{clang}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm text-capitalize" id="" name="address.zip" maxlength="10" (keypress)="clearmessage()"
+                    [(ngModel)]="createfleet.address.ZIP">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm" id="" name="geoLoc[0]" (click)="clearmessage()" [(ngModel)]="latitude" maxlength="18">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm" id="" name="geoLoc[1]" (click)="clearmessage()" [(ngModel)]="longitude"
+                    maxlength="18">
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    [(ngModel)]="advancedReservationWindowInDays" name="advancedReservationWindowInDaysName" id="advancedReservationWindowInDaysId">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    [(ngModel)]="earlyCheckinWindowInMins" name="earlyCheckinWindowInMinsName" id="earlyCheckinWindowInMinsId">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                    maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    [(ngModel)]="expirationGracePeriodInMins">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_ELIGIBLE' | translate}}</label>
+                  <input id="inline-checkbox4" class="regular-checkbox big-checkbox" name="inline-checkbox4" type="checkbox" [(ngModel)]="longTermReservationEligible">
+                  <label for="inline-checkbox4"></label>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                  <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" [(ngModel)]="reservationCanBeBumped">
+                  <label for="inline-checkbox2"></label>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CHECK_IN_REQUIRED' | translate}}</label>
+                  <input id="inline-checkbox5" class="regular-checkbox big-checkbox" name="inline-checkbox5" type="checkbox" [(ngModel)]="checkinRequired">
+                  <label for="inline-checkbox5"></label>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CONFIGURABLE' | translate}}</label>
+                  <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" type="checkbox" [(ngModel)]="configurable">
+                  <label for="inline-checkbox3"></label>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" maxlength="3" [(ngModel)]="maxReservationWindowInHrs">
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                  </div>
+                  <select id="" class="form-control input-sm" name="timeZone" (change)="getTimezone($event.target.value);clearmessage()">
+                    <option *ngFor="let clang of timeZone; let i='index'" [selected]="defaultTimezone == clang.lookupName+ ' - ' +clang.description"
+                      value="{{clang.lookupName}} - {{clang.description}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="file-input">
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                    <select class="form-control input-sm" (change)="changetheme($event.target.value)">
+                      <option *ngFor="let clang of themes; let i='index'" value="{{clang.lookupName}}" [selected]="defaultTheme == clang.lookupName"
+                        id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                  <select id="Language" (change)="getLanguage($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of languages; let i='index'" [selected]="defaultLanguage1 == clang.lookupName" value="{{clang.lookupName}}"
+                      id="clang{{i}}">{{clang.lookupName}}</option>
+                      </select>
+                </div>
+
+
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                  <select id="Currency" (change)="getCurrency($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of currencies; let i='index'" [selected]="defaultCurrency == clang.lookupName+ ' - ' +clang.description"
+                      value="{{clang.lookupName}} - {{clang.description}}" id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                      </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                  <select id="CurrencyFormat" (change)="getCurrencyformat($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of amountformats; let i='index'" [selected]="currencyFormat == clang.lookupName" value="{{clang.lookupName}}"
+                      id="clang{{i}}">{{clang.lookupName}}</option>
+                      </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                  <select id="DateFormat" (change)="getDateFormat($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of datefomat; let i='index'" [selected]="dateFormat == clang.lookupName" value="{{clang.lookupName}}"
+                      id="clang{{i}}">{{clang.lookupName}}</option>
+                      </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                  <select id="rowsperpage" (change)="changerowsperpage($event.target.value); clearmessage()" name="rowsperpage" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of rowsPerpages; let i='index'" value="{{clang.description}}" id="clang{{i}}" [selected]="rowsPerPage == clang.description">{{clang.description}}</option>
+                    </select>
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{fleetCommonName}}{{'COMMON_BLOCK_TITLES.FLEET_ATTRIBUTES' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group" *ngFor="let item of attributeList; let i = index">
+                  <label>{{item.attributeName}}</label>
+                  <span *ngIf="item.isMandatory" class="text-danger">*</span>
+                  <select *ngIf="item.attributeType=='List Field'" id="itemText{{i}}" (change)="saveAttributes($event.target.value); clearmessage()"
+                    name="select" class="form-control input-sm" size="1">
+                    <option *ngFor="let clang of item['lookupsData']; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.description}}</option>
+                    </select>
+                    <input *ngIf="item.attributeType=='Text Field'" type="text" class="form-control input-sm" id="itemText{{i}}" name="createfleet.attributes.attributeValue"
+                      (keypress)="clearmessage()">
+                      <input type="hidden" class="form-control input-sm" id="itemId{{i}}" name="item._id" value="{{item._id}}">
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="text-danger">{{error | translate}}</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md-12 p0 fleetft">
+            <div class="pull-left">
+              <app-powered></app-powered>
+            </div>
+            <div class="pull-right text-right">
+              <div>
+                <input type="submit" name="wp-submit" data-dismiss="myModal" id="profile_change_pswd_submitbtn" class="btn btn-primary" value="{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}">
+                <button type="button" class="btn btn-primary btn-sm" (click)="closePopupModal();getTimezone('');getEnterpriseType('') ">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="actionType=='FleetSubmit'" class="modal-content">
+      <form ngNativeValidate (ngSubmit)="createSingleFleet(createfleet)">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="closePopupModal()" aria-label="Close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row">
+            <div class="col-md-12">
+              <app-logoheader></app-logoheader>
+              <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                class="pull-right">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="popupsection-title">{{pagename | translate}}{{fleetCommonName}}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <span class="text-danger">*</span>
+                <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+
+              </div>
+              <select *ngIf="[enterprisesSize] == 'false'" class="form-control input-sm" id="header_country_select" (change)="getEnterprisepathById($event.target.value); clearmessage();"
+                name="enterprise">
+                <option value="Select" selected>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                <option *ngFor="let enterprise of enterpriselist" value="{{enterprise._id}}${{enterprise.enterpriseName}}${{enterprise.enterpriseIconFilePath}}${{enterprise.address.addressLine1}}${{enterprise.address.addressLine2}}${{enterprise.address.city}}${{enterprise.address.country}}${{enterprise.address.state}}${{enterprise.address.geoCoordinates[0]}}${{enterprise.address.geoCoordinates[1]}}${{enterprise.preferences.defaultTimezone}}${{enterprise.preferences.defaultLanguage}}${{enterprise.preferences.dateFormat}}${{enterprise.preferences.defaultCurrency}}${{enterprise.preferences.currencyFormat}}${{enterprise.preferences.defaultTheme}}${{enterprise.address.ZIP}}${{enterprise.enterpriseIcon}}${{enterprise.preferences.defaultTheme}}${{enterprise.preferences.rowsPerPage}}${{enterprise.contactDetails.workNumberCountrycode}}${{enterprise.contactDetails.workNumber}}${{enterprise.contactDetails.workNumberExtn}}${{enterprise.contactDetails.email}}${{enterprise.settings.advancedReservationWindowInDays}}${{enterprise.settings.earlyCheckinWindowInMins}}${{enterprise.settings.expirationGracePeriodInMins}}${{enterprise.settings.maxReservationWindowInHrs}}${{enterprise.settings.reservationCanBeBumped}}${{enterprise.settings.checkinRequired}}
+              ${{enterprise.settings.longTermReservationEligible}}${{enterprise.settings.configurable}}">{{enterprise.enterpriseName}}</option>
+                  </select>
+                  <input *ngIf="[enterprisesSize] == 'true'" type="text" class="form-control input-sm " id="{{createfleet.enterprise.enterpriseName}}"
+                    name="enterpriseId" [(ngModel)]="createfleet.enterprise.enterpriseName" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <span class="text-danger">*</span>
+                <label>{{fleetCommonName}}</label>
+              </div>
+              <input type="text" class="form-control input-sm text-capitalize" name="name" (keypress)="clearmessage()" onkeypress="return event.charCode != 34"
+                [(ngModel)]="createfleet.fleetName">
+            </div>
+            <div class="col-md-4 form-group">
+              <div class="input-group">
+                <span class="text-danger">*</span>
+                <label>{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+
+              </div>
+              <select id="" class="form-control input-sm" name="address.state" (change)="getEnterpriseType($event.target.value);clearmessage()">
+                <option value='select'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                <option *ngFor="let clang of fleetTypes; let i='index'" value="{{clang.fleetTypeName}}~{{clang.isSpecial}}~{{clang.isTransactable }}~{{clang.isEventsEnabled}}">{{clang.fleetTypeName}}</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'FLEETS.FLEET_PARENT' | translate}}{{fleetCommonName}}</label>
+              <select class="form-control input-sm" id="header_country_select" (change)="fleetpath($event.target.value); clearmessage()"
+                name="enterprise">
+                <option value="0">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                <option *ngFor="let enterprisepath of enterprisepathlist" value="{{enterprisepath.path}}${{enterprisepath.fleetCode}}${{enterprisepath._id}}${{enterprisepath.floorPlanFleetObj}}">{{enterprisepath.fleetCode}} - {{enterprisepath.fleetName}}</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                {{'FLEETS.SPECIAL' | translate}}
+                <input *ngIf="[special] == 'true'" id="specialId" name="specialName" type="checkbox" disabled [(ngModel)]="specialvalue"
+                  class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <input *ngIf="[special] == 'false'" id="specialId" name="specialName" type="checkbox" disabled class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <label for="specialId"></label>
+              </label>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                {{'FLEETS.TRANSACTABLE' | translate}}
+                <input *ngIf="[transactablevalue] == 'true'" id="inlineId" name="inlineName" type="checkbox" [(ngModel)]="transactable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <input *ngIf="[transactablevalue] == 'false'" id="inlineId" name="inlineName" type="checkbox" disabled class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <label for="inlineId"></label>
+              </label>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+                {{'FLEETS.EVENTS_ENABLED' | translate}}
+                <input *ngIf="[eventsenabledvalue] == 'true'" id="eventsenabledId" name="eventsenabledName" type="checkbox" [(ngModel)]="eventsenabled"
+                  class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <input *ngIf="[eventsenabledvalue] == 'false'" id="eventsenabledId" name="eventsenabledName" type="checkbox" disabled class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <input *ngIf="[transactable] == 'false'" id="eventsenabledId" name="eventsenabledName" type="checkbox" disabled class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                <label for="eventsenabledId"></label>
+              </label>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+              <select id="" class="form-control input-sm" (click)="clearmessage()" (change)="ChangeStatus($event.target.value)">
+                <option *ngFor="let clang of statuslist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+              </select>
+            </div>
+            <div class="col-md-8 form-group">
+              <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+              <textarea class="form-control input-sm" name="description" (keypress)="clearmessage()" onkeypress="return event.charCode != 34"
+                [(ngModel)]="createfleet.notes"></textarea>
+            </div>
+          </div>
+          <p-accordion>
+            <p-accordionTab header="{{'FLEETS.FLOOR_PLAN' | translate}}">
+              <div class="row">
+                <div *ngIf="floorcheck == 'false'" class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">
+                    {{'FLEETS.FLOOR_PLAN_AVAILABLE' | translate}}
+                    <input id="inline-checkbox" name="inline-checkbox" type="checkbox" [(ngModel)]="floorplanavilable" (change)="clearmessage1()" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                    <label for="inline-checkbox"></label>
+                  </label>
+                </div>
+                <div *ngIf="floorcheck == 'true'" class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">
+                    {{'FLEETS.FLOOR_PLAN_AVAILABLE' | translate}}
+                    <input id="inline-checkbox" name="inline-checkbox" type="checkbox" [(ngModel)]="floorplanavilable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid"
+                      disabled>
+                    <label for="inline-checkbox"></label>
+                  </label>
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group">
+                  <label>{{'FLEETS.START_ZOOM' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" (keypress)="clearmessage()" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    id="StartZoomId" name="StartZoomname" [(ngModel)]="startZoomValue">
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group">
+                  <label>{{'FLEETS.FINAL_ZOOM' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" (keypress)="clearmessage()" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    id="FinalZoomId" name="FinalZoomName" [(ngModel)]="finalZoomValue">
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label>{{'FLEETS.FLOOR_PLAN_IMAGE' | translate}}</label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetfloorimg" (change)="clearmessage()" accept='image/*|video/*'
+                      name="file-input" (change)="imageUploaded($event)">
+                      <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="fleetfloorimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label>{{'FLEETS.FLOOR_PLAN_JSON' | translate}}</label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetjsonfile" (change)="clearmessage()" accept='image/*|video/*'
+                      name="file-input" (change)="fleetjsonfileUpload($event)">
+                      <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="fleetjsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label>{{'FLEETS.FLOOR_METADATA_JSON' | translate}}</label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" [(ngModel)]="floorMetaDatajsonfile" (change)="clearmessage()" accept='image/*|video/*'
+                      name="file-input" (change)="floorMetaDatajsonfileUpload($event)">
+                      <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="floorMetaDatajsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+                <div *ngIf="floorplanavilable == true" class="col-md-4 form-group uploadjsbtn">
+                  <div class="input-group">
+                    <label>{{'FLEETS.FLOOR_PATH_BOUNDRIES_JSON' | translate}}</label>
+                  </div>
+                  <div class="input-file-container">
+                    <input class="input-file" id="file-input" type="file" [(ngModel)]="fleetPathBoundaiesjsonfile" (change)="clearmessage()"
+                      accept='image/*|video/*' name="file-input" (change)="fleetPathBoundaiesjsonfileUpload($event)">
+                      <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                  </div>
+                  <div class="file-return" id="fleetPathBoundaiesjsonfile">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_BLOCK_TITLES.CONTACT_DETAILS' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_FIELDS.WORK_NUMBER' | translate}}</label>
+                  <div class="input-group">
+                    <div class="input-group-mobile">
+                      <select class="form-control input-sm country-code" (change)="getMobileCountryCode($event.target.value); clearmessage()" name="select"
+                        [(ngModel)]="mobileCountryCode">
+                        <option *ngFor="let clang of countryCodes; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                        </select>
+                        <input type="text" class="form-control input-sm mob-num" id="mobile_id" name="contactDetails.mobile" maxlength="12" (keypress)="hyphen_generate_mobile(createfleet.contactDetails.mobile);"
+                          (click)="clearmessage()" [(ngModel)]="createfleet.contactDetails.mobile" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                        />
+                        <input type="text" maxlength="5" class="form-control input-sm ext-num" name="contactDetails.ext" [(ngModel)]="createfleet.contactDetails.ext"
+                        />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+                  </div>
+                  <input type="email" class="form-control input-sm" id="" (keypress)="clearmessage()" name="contactDetails.email" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="createfleet.contactDetails.email">
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESS_DETAILS' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label> {{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE1' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm text-capitalize" id="" name="address.addressLine1" (keypress)="clearmessage()"
+                    onkeypress="return event.charCode != 34" [(ngModel)]="createfleet.address.addressLine1">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label> {{'COMMON_ADDRESS_DETAILS_BLOCK.ADDRESSLINE2' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm text-capitalize" id="" name="address.addressLine2" (keypress)="clearmessage()"
+                    onkeypress="return event.charCode != 34" [(ngModel)]="createfleet.address.addressLine2">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm text-capitalize" id="" name="address.city" (keypress)="clearmessage()" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="createfleet.address.city">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+                  </div>
+                  <select id="" class="form-control input-sm" name="address.country" (change)="getselectCountry($event.target.value);clearmessage()"
+                    (change)="clearmessage()">
+                    <option *ngFor="let clang of countries; let i='index'" [selected]="selectCountry == clang.lookupName" value="{{clang.lookupName}}">{{clang.lookupName}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+                  </div>
+                  <select id="" class="form-control input-sm" name="address.state" (change)="getselectState($event.target.value);clearmessage()">
+                    <option value=''>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                    <option *ngFor="let clang of states; let i='index'" [selected]="state == clang" value="{{clang}}">{{clang}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.ZIP' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm text-capitalize" id="" name="address.zip" maxlength="10" (keypress)="clearmessage()"
+                    onkeypress="return event.charCode != 34" [(ngModel)]="createfleet.address.ZIP">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LATITUDE' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm" id="" name="geoLoc[0]" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="latitude" maxlength="18">
+                </div>
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <span class="text-danger">*</span>
+                    <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.LONGITUDE' | translate}}</label>
+                  </div>
+                  <input type="text" class="form-control input-sm" id="" name="geoLoc[1]" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                    [(ngModel)]="longitude" maxlength="18">
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_BLOCK_TITLES.SETTINGS' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.SETTINGS_ADVANCED_RESERVATION_WINDOW_IN_DAYS' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    id="advancedReservationWindowInDaysId" name="advancedReservationWindowInDaysName" [(ngModel)]="advancedReservationWindowInDays">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.SETTINGS_CHECKIN_PRIOR_IN_MINS' | translate}}</label>
+                  <input type="text" class="form-control input-sm" maxlength="3" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    [(ngModel)]="earlyCheckinWindowInMins" name="earlyCheckinWindowInMinsName" id="earlyCheckinWindowInMinsId">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.SETTINGS_EXPIRATION_GRACE_PERIOD_IN_MINS' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="expirationGracePeriodInMinsId" name="expirationGracePeriodInMinsName"
+                    maxlength="3" [(ngModel)]="expirationGracePeriodInMins" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_LONG_TERM_RESERVATION_ELIGIBLE' | translate}}</label>
+                  <input id="inline-checkbox4" class="regular-checkbox big-checkbox" name="inline-checkbox4" type="checkbox" [(ngModel)]="longTermReservationEligible">
+                  <label for="inline-checkbox4"></label>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CAN_RESERVATION_BE_BUMPED' | translate}}</label>
+                  <input id="inline-checkbox5" class="regular-checkbox big-checkbox" name="inline-checkbox5" type="checkbox" [(ngModel)]="reservationCanBeBumped">
+                  <label for="inline-checkbox5"></label>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CHECK_IN_REQUIRED' | translate}}</label>
+                  <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox2" type="checkbox" [(ngModel)]="checkinRequired">
+                  <label for="inline-checkbox2"></label>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label class="checkbox-inline" for="inline-checkbox1">{{'ENTERPRISES.SETTINGS_CONFIGURABLE' | translate}}</label>
+                  <input id="inline-checkbox3" class="regular-checkbox big-checkbox" name="inline-checkbox3" type="checkbox" [(ngModel)]="configurable">
+                  <label for="inline-checkbox3"></label>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>{{'ENTERPRISES.SETTINGS_MAX_RESERVATION_WINDOW_IN_HRS' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="maxReservationWindowInHrsId" name="maxReservationWindowInHrsName" maxlength="3"
+                    [(ngModel)]="maxReservationWindowInHrs" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;"
+                    value="">
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'COMMON_BLOCK_TITLES.PREFERENCES' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group">
+                  <div class="input-group">
+                    <label>
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_TIME_ZONE' | translate}}</label>
+                  </div>
+                  <select id="" class="form-control input-sm" name="timeZone" (change)="getTimezone($event.target.value);clearmessage()">
+                    <option *ngFor="let clang of timeZone; let i='index'" [selected]="defaultTimezone == clang.lookupName+ ' - ' +clang.description"
+                      value="{{clang.lookupName}} - {{clang.description}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="file-input">
+                      <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_THEME' | translate}}</label>
+                    <select class="form-control input-sm" (change)="changetheme($event.target.value)">
+                      <option *ngFor="let clang of themes; let i='index'" value="{{clang.lookupName}}" [selected]="defaultTheme == clang.lookupName"
+                        id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_LANGUAGE' | translate}}</label>
+                  <select id="Language" (change)="getLanguage($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of languages; let i='index'" [selected]="defaultLanguage1 == clang.lookupName" value="{{clang.lookupName}}"
+                      id="clang{{i}}">{{clang.lookupName}}</option>
+                      </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY' | translate}}</label>
+                  <select id="Currency" (change)="getCurrency($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of currencies; let i='index'" [selected]="defaultCurrency == clang.lookupName+ ' - ' +clang.description"
+                      value="{{clang.lookupName}} - {{clang.description}}" id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                      </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_CURRENCY_FORMAT' | translate}}</label>
+                  <select id="CurrencyFormat" (change)="getCurrencyformat($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of amountformats; let i='index'" [selected]="currencyFormat == clang.lookupName" value="{{clang.lookupName}}"
+                      id="clang{{i}}">{{clang.lookupName}}</option>
+                      </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_DATE_FORMAT' | translate}}</label>
+                  <select id="DateFormat" (change)="getDateFormat($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of datefomat; let i='index'" [selected]="dateFormat == clang.lookupName" value="{{clang.lookupName}}"
+                      id="clang{{i}}">{{clang.lookupName}}</option>
+                      </select>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label>
+                    <span class="text-danger">*</span>{{'COMMON_DEFAULT_FIELDS.DEFAULT_ROWS_PER_PAGE' | translate}}</label>
+                  <select id="rowsperpage" (change)="changerowsperpage($event.target.value); clearmessage()" name="rowsperpage" class="form-control input-sm"
+                    size="1">
+                    <option *ngFor="let clang of rowsPerpages; let i='index'" value="{{clang.description}}" id="clang{{i}}" [selected]="rowsPerPage == clang.description">{{clang.description}}</option>
+                    </select>
+                </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab *ngIf="addinfo == true" header="{{fleetCommonName}}{{'COMMON_BLOCK_TITLES.FLEET_ATTRIBUTES' | translate}}">
+              <div class="row">
+                <div class="col-md-4 form-group" *ngFor="let item of attributeList; let i = index">
+                  <span *ngIf="item.isMandatory" class="text-danger">*</span>
+                  <label>{{item.attributeName}}</label>
+                  <select *ngIf="item.attributeType=='List Field'" id="itemText{{i}}" (change)="clearmessage()" name="select" class="form-control input-sm"
+                    size="1">
+                    <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                    <option *ngFor="let clang of item['lookupsData']; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}" [selected]="clang.description === item.defaultValue">{{clang.description}}</option>
+                    </select>
+                    <input *ngIf="item.attributeType=='Text Field'" type="text" class="form-control input-sm" id="itemText{{i}}" name="createfleet.attributes.attributeValue"
+                      (keypress)="clearmessage()" value="{{item.defaultValue}}">
+                      <input type="hidden" class="form-control input-sm" id="itemId{{i}}" name="item._id" value="{{item._id}}">
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="text-danger">{{error | translate}}</div>
+            <div class="text-danger">{{errorpass}}</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md-12 p0 fleetft">
+            <div class="pull-left">
+              <app-powered></app-powered>
+            </div>
+            <div class="pull-right text-right">
+              <div class="pull-right">
+                <input type="submit" name="wp-submit" data-dismiss="myModal" id="profile_change_pswd_submitbtn" class="btn btn-primary" value="{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}">
+                <button type="button" class="btn btn-primary btn-sm" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <p-overlayPanel #op1>
+    <img src="/assets/img/static-img/a2.jpg" alt="Galleria 1" />
+  </p-overlayPanel>

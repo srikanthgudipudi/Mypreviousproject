@@ -1,0 +1,382 @@
+<!--Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com -->
+<div bsModal #infoModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="closePopupModal()" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <!-- header start -->
+            <div class="modal-header">
+                <button type="button" class="close" (click)="closePopupModal()" aria-label="Close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-logoheader></app-logoheader>
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                            class="pull-right">
+                    </div>
+                </div>
+            </div>
+            <!-- header end -->
+            <!-- body start -->
+            <div class="modal-body">
+                <div class="clearfix"></div>
+                <h5 class="popupsection-title">{{pagename | translate}}</h5>
+                <div class="clearfix"></div>
+                <!-- Start of code for create popup -->
+                <div class="row" *ngIf="[actionType]=='Create'">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <label>
+                                        <span class="text-danger">&#42;</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                                </div>
+                                <div *ngIf="[enterprisesSize] == 'false'">
+                                    <select id="enterpriseId" (change)="getList($event.target.value);clearmessage()" name="enterpriseName" class="form-control input-sm"
+                                        size="1">
+                                        <option value='undefined'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                        <option *ngFor="let entrp of enterprisesNames; let i='index'" value="{{entrp._id}}${{entrp.enterpriseName}}${{entrp.enterpriseIconFilePath}}${{entrp.enterpriseIcon}}"
+                                            id="entrp{{i}}">{{entrp.enterpriseName}}</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="[enterprisesSize] == 'true'">
+                                    <input type="text" class="form-control input-sm" (keypress)="clearmessage()" [(ngModel)]="enterprisesName" id="enterpriseId"
+                                        name="enterprisename" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <label>{{fleetCommonName}}</label>
+                                </div>
+                                <select id="fleetId" class="form-control input-sm" (change)="getMenuListByFleetId($event.target.value);clearmessage()">
+                                    <option value='undefined'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                    <option *ngFor="let fleetNameslist of fleetNameList; let i='index'" value="{{fleetNameslist._id}}${{fleetNameslist.fleetName}}"
+                                        id="fleetNameslist{{i}}">{{fleetNameslist.fleetName}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <label>
+                                        <span class="text-danger">&#42;</span>{{'ENTERPRISE_STATIC_CONTENT.MENU_NAME' | translate}}</label>
+                                </div>
+                                <input type="text" class="form-control input-sm text-capitalize" (keypress)="clearmessage()" onkeypress="return event.charCode != 34"
+                                    [(ngModel)]="menuName" id="menuName" name="menuName" maxlength="20">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <label>
+                                        <span class="text-danger">&#42;</span>{{'ENTERPRISE_STATIC_CONTENT.MENU_TYPE' | translate}}</label>
+                                </div>
+                                <select id="menuTypeId" class="form-control input-sm" (change)="openMenutype($event.target.value);selectedMenuType($event.target.value);clearmessage()">
+                                    <option value='undefined'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                    <option *ngFor="let menu of menuTypeList; let i='index'" value="{{menu.description}}" id="menu{{i}}">{{menu.description}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group" *ngIf="[enableDescription] == 'true'">
+                                <div class="input-group">
+                                    <label>
+                                        <span class="text-danger">&#42;</span>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                                </div>
+                                <input type="text" class="form-control input-sm" (keypress)="clearmessage()" [(ngModel)]="menuDescription" id="description"
+                                    name="description">
+                            </div>
+                            <div class="col-md-6 form-group" *ngIf="[enableURL] == 'true'">
+                                <div class="input-group">
+                                    <label>
+                                        <span class="text-danger">&#42;</span>{{'ENTERPRISE_STATIC_CONTENT.URL' | translate}}</label>
+                                </div>
+                                <input type="text" class="form-control input-sm" (keypress)="clearmessage()" [(ngModel)]="url" id="url" name="url">
+                            </div>
+                            <div class="col-md-6 form-group" *ngIf="[enablePage] == 'true'">
+                                <div class="input-group">
+                                    <label>
+                                        <span class="text-danger">&#42;</span>{{'ENTERPRISE_STATIC_CONTENT.PAGE_NAME' | translate}}</label>
+                                </div>
+                                <select id="pageId" class="form-control input-sm" (change)="selectedPageDetails($event.target.value);clearmessage()">
+                                    <option value='undefined'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                    <option *ngFor="let page of pagesList; let i='index'" value="{{page.description}}" id="page{{i}}">{{page.description}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group" *ngIf="[enableSubMenu] == 'true'">
+                                <div class="input-group">
+                                    <label>{{'ENTERPRISE_STATIC_CONTENT.PARENT_MENU' | translate}}</label>
+                                </div>
+                                <select id="parentId" class="form-control input-sm" (change)="selectedParentMenuDetails($event.target.value);clearmessage()">
+                                    <option value='undefined'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                    <option *ngFor="let menulist of menuList; let i='index'" value="{{menulist._id}}${{menulist.menuName}}${{menulist.path}}"
+                                        id="menulist{{i}}">{{menulist.path}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="checkbox-inline" for="inline-checkbox1">
+                                    <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+                                    <input id="inline-checkbox1" name="inline-checkbox1" type="checkbox" [(ngModel)]="isEnabled" class="regular-checkbox big-checkbox">
+                                    <label for="inline-checkbox1"></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 img-block">
+                        <div class="row img-block-content">
+                            <div class="col-md-12 enterprise-icon">
+                                <label class="form-control-label">
+                                    <span class="text-danger">&#42;</span>{{'ENTERPRISE_STATIC_CONTENT.MENU_IMAGE' | translate}}</label>
+                                <img alt="" class="" id="profilepageprofilePicimg" [src]="imgSrc" height="77" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+                            </div>
+                            <div class="col-md-12 form-group uploadjsbtn">
+                                <div class="input-group">
+                                    <label class="empty-label">&nbsp;</label>
+                                </div>
+                                <div class="input-file-container">
+                                    <input class="input-file" id="file-input" type="file" (change)="imageUploaded($event)" [(ngModel)]="file" accept='image/*'
+                                        name="file">
+                                    <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                                </div>
+                                <div class="file-return" id="createstaticcontentimg">{{'COMMON_FIELDS.NO_FILE_CHOSEN' | translate}}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <div class="input-group">
+                            <label>
+                                <span class="text-danger"></span>{{'COMMON_FIELDS.DISPLAY_SEQUENCE' | translate}}</label>
+                        </div>
+                        <input type="text" class="form-control input-sm" (keypress)="clearmessage()" [(ngModel)]="menuSequence" id="sequence" name="sequence"
+                            maxlength="2" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <div class="input-group">
+                            <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+                        </div>
+                        <textarea id="notes" name="notes" (keypress)="clearmessage()" onkeypress="return event.charCode != 34" [(ngModel)]="notes"
+                            (keypress)="clearmessage()" class="form-control input-sm" maxlength="200"></textarea>
+                    </div>
+                </div>
+                <!-- End of code for create popup -->
+                <!-- Edit Entity Menu Popup Starts -->
+                <div class="row" *ngIf="[actionType]=='Edit'">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="enterpriseId" name="enterpriseName" disabled value="{{enterpriseStaticContentAdd1.enterprise.enterpriseName}}">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{fleetCommonName}}</label>
+                                <input type="text" class="form-control input-sm" id="fleetId" name="fleetName" disabled value="{{enterpriseStaticContentAdd1.fleet.fleetName}}">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>
+                                    <span class="text-danger">&#42;</span>{{'ENTERPRISE_STATIC_CONTENT.MENU_NAME' | translate}}</label>
+                                <input type="text" class="text-capitalize form-control input-sm" id="menuName1" name="menuName1" (keypress)="clearmessage()"
+                                    onkeypress="return event.charCode != 34" [(ngModel)]="menuNameedit">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'ENTERPRISE_STATIC_CONTENT.MENU_TYPE' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="menuType" name="menuType" disabled value="{{enterpriseStaticContentAdd1.menuType}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 img-block">
+                        <div class="row img-block-content">
+                            <div class="col-md-12 img-block-column">
+                                <label class="form-control-label">{{'ENTERPRISE_STATIC_CONTENT.MENU_IMAGE' | translate}}</label>
+                                <img alt="" class="" id="profilepageprofilePicimg" [src]="imgSrc" height="77" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="[enterpriseStaticContentAdd1.menuType] == 'Text'" class="col-md-4 form-group">
+                        <label>
+                            <span class="text-danger">&#42;</span>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="description" name="description" (keypress)="clearmessage()" [(ngModel)]="enterpriseStaticContentAdd1.menuDescription"
+                            value="{{enterpriseStaticContentAdd1.menuDescription}}">
+                    </div>
+                    <div *ngIf="[enterpriseStaticContentAdd1.menuType] == 'URL'" class="col-md-4 form-group">
+                        <label>
+                            <span class="text-danger">&#42;</span>{{'ENTERPRISE_STATIC_CONTENT.URL' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="url" name="url" (keypress)="clearmessage()" [(ngModel)]="enterpriseStaticContentAdd1.url"
+                            value="{{enterpriseStaticContentAdd1.url}}">
+                    </div>
+                    <div *ngIf="[enterpriseStaticContentAdd1.menuType] == 'Sub Menu'" class="col-md-4 form-group">
+                        <label>{{'ENTERPRISE_STATIC_CONTENT.PARENT_MENU' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="parentID" name="parentName" disabled value="{{enterpriseStaticContentAdd1.parentPath}}">
+                    </div>
+                    <div *ngIf="[enterpriseStaticContentAdd1.menuType] == 'Page'" class="col-md-4 form-group">
+                        <label>
+                            <span class="text-danger">&#42;</span>{{'ENTERPRISE_STATIC_CONTENT.PAGE_NAME' | translate}}</label>
+                        <select id="menuTypeId" class="form-control input-sm" [(ngModel)]="enterpriseStaticContentAdd1.page" value="{{enterpriseStaticContentAdd1.page}}"
+                            (change)="clearmessage()">
+                            <option *ngFor="let page of pagesList; let i='index'" value="{{page.description}}" id="page{{i}}">{{page.description}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label class="checkbox-inline" for="inline-checkbox1">
+                            <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+                            <input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" [(ngModel)]="enterpriseStaticContentAdd1.isEnabled"
+                                value="{{enterpriseStaticContentAdd1.isEnabled}}" class="regular-checkbox big-checkbox">
+                            <label for="inline-checkbox1"></label>
+                        </label>
+                    </div>
+                    <div class="col-md-4 form-group uploadjsbtn">
+                        <div class="input-group">
+                            <label>{{menuimg}}</label>
+                        </div>
+                        <div class="input-file-container">
+                            <input class="input-file" id="file-input" type="file" [(ngModel)]="file" (change)="clearmessage()" accept='image/*' name="file-input"
+                                (change)="imageUploaded($event)">
+                            <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                        </div>
+                        <div class="file-return" id="editstaticcontentimg"></div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>
+                            <span class="text-danger"></span>{{'COMMON_FIELDS.DISPLAY_SEQUENCE' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="sequence" name="sequence" (keypress)="clearmessage()" [(ngModel)]="menuSequenceedit"
+                            maxlength="2" onkeypress=" var key = window.event ? event.keyCode : event.which;if (event.keyCode == 8 || event.keyCode == 127)  return true; else if ( key < 48 || key > 57 ) return false; else return true;">
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+                        <textarea class="form-control input-sm" id="notes" name="notes" maxlength="200" (keypress)="clearmessage()" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="notesedit"></textarea>
+                    </div>
+                </div>
+                <!-- Edit Entity Menu Popup Ends -->
+                <!-- View and Delete Entity Menu Popup Starts -->
+                <div class="row" *ngIf="[actionType]=='View' || [actionType]=='Delete'">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="enterpriseId" name="enterpriseName" disabled value="{{enterpriseStaticContentObj.enterprise.enterpriseName}}">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{fleetCommonName}}</label>
+                                <input type="text" class="form-control input-sm" id="fleetId" name="fleetName" disabled value="{{enterpriseStaticContentObj.fleet.fleetName}}">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'ENTERPRISE_STATIC_CONTENT.MENU_NAME' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="menuName" name="menuName" disabled value="{{enterpriseStaticContentObj.menuName}}">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'ENTERPRISE_STATIC_CONTENT.MENU_TYPE' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="menuType" name="menuType" disabled value="{{enterpriseStaticContentObj.menuType}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 img-block">
+                        <div class="row img-block-content">
+                            <div class="col-md-12 img-block-column">
+                                <label class="form-control-label">{{'ENTERPRISE_STATIC_CONTENT.MENU_IMAGE' | translate}}</label>
+                                <img alt="" class="" id="profilepageprofilePicimg" [src]="imgSrc" height="77" onError="this.onerror=null;this.src='/assets/img/default-profile-icon.png';">
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="[enterpriseStaticContentObj.menuType] == 'Text'" class="col-md-4 form-group">
+                        <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="description" name="description" disabled value="{{enterpriseStaticContentObj.menuDescription}}">
+                    </div>
+                    <div *ngIf="[enterpriseStaticContentObj.menuType] == 'URL'" class="col-md-4 form-group">
+                        <label>{{'ENTERPRISE_STATIC_CONTENT.URL' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="url" name="url" disabled value="{{enterpriseStaticContentObj.url}}">
+                    </div>
+                    <div *ngIf="[enterpriseStaticContentObj.menuType] == 'Sub Menu'" class="col-md-4 form-group">
+                        <label>{{'ENTERPRISE_STATIC_CONTENT.PARENT_MENU' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="parentID" name="parentName" disabled value="{{enterpriseStaticContentObj.parentPath}}">
+                    </div>
+                    <div *ngIf="[enterpriseStaticContentObj.menuType] == 'Page'" class="col-md-4 form-group">
+                        <label>{{'ENTERPRISE_STATIC_CONTENT.PAGE_NAME' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="menuTypeId" name="menuTypeId" disabled value="{{enterpriseStaticContentObj.page}}">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label class="checkbox-inline" for="inline-checkbox1">
+                            <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+                            <input id="inline-checkbox1" name="inline-checkbox1" type="checkbox" [(ngModel)]="enterpriseStaticContentObj.isEnabled" disabled
+                                class="regular-checkbox big-checkbox">
+                            <label for="inline-checkbox1"></label>
+                        </label>
+                    </div>
+                    <div class="col-md-4 form-group uploadjsbtn">
+                        <div class="input-group">
+                            <label>{{menuimg}}</label>
+                        </div>
+                        <div class="input-file-container">
+                            <input class="input-file" id="file-input" type="file" (change)="imageUploaded($event)" [(ngModel)]="file" accept='image/*|video/*'
+                                disabled>
+                            <label tabindex="0" for="my-file" class="input-file-trigger">{{'COMMON_FIELDS.CHOOSE_FILE' | translate}}</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'COMMON_FIELDS.DISPLAY_SEQUENCE' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="sequence" name="sequence" disabled value="{{enterpriseStaticContentObj.menuSequence}}">
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+                        <textarea id="notes" name="notes" class="form-control input-sm" disabled value="{{enterpriseStaticContentObj.notes}}" maxlength="200"></textarea>
+                    </div>
+                </div>
+                <!-- View and Delete Entity Menu Popup Ends -->
+                <!-- Entity Menu record history for create, edit view and delete -->
+                <p-accordion *ngIf="actionType=='View' || [actionType]=='Delete' || actionType=='Edit'">
+                    <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                                <input type="text" id="createdId" class="form-control input-sm" name="username" disabled value="{{enterpriseStaticContentObj.createdBy}}">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                                <input type="text" id="createdAtId" class="form-control input-sm" name="createdname" value="{{createdAt}}" disabled>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                                <input type="text" id="updatedId" class="form-control input-sm" name="updatename" disabled value="{{enterpriseStaticContentObj.updatedBy}}">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                                <input type="text" id="udatedAtId" class="form-control input-sm" name="updatedatname" value="{{updatedAt}}" disabled>
+                            </div>
+                        </div>
+                    </p-accordionTab>
+                </p-accordion>
+                <!-- Entity Menu record history Popup Ends -->
+            </div>
+            <!-- Body end -->
+            <!-- error message -->
+            <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+            <!-- Footer starts -->
+            <div class="modal-footer">
+                <div class="col-md-12 p0">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <!-- Create footer -->
+                    <div class="pull-right text-right" *ngIf="[actionType] == 'Create'">
+                        <button class="btn btn-primary" (click)="createEnterpriseStaticContent()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <!-- View Footer -->
+                    <div class="pull-right text-right" *ngIf="[actionType] == 'View'">
+                        <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <!-- Delete Footer -->
+                    <div class="pull-right text-right" *ngIf="[actionType] == 'Delete'">
+                        <button class="btn btn-primary" (click)="deleteEnterpriseStaticContent()">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+                        <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <!-- Edit footer -->
+                    <div class="pull-right text-right" *ngIf="[actionType] == 'Edit'">
+                        <button class="btn btn-primary" (click)="updateEnterpriseStaticContent(enterpriseStaticContentAdd1)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer end -->
+        </div>
+    </div>
+</div>

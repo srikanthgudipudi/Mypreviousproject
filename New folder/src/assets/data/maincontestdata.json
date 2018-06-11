@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+     "conteststatus":"Active",
+      "contestname": "Weekly Contest",
+      "contestduration": "15-01-2017 to 21-01-2017",
+      "contestcategories": "All",
+      "action": ""
+    }, 
+    {
+     "conteststatus":"Active ",
+      "contestname": "Monthly Contest ",
+      "contestduration": "01-03-2017 to 01-04-2017",
+      "contestcategories": "Fails",
+      "action": ""
+    },
+    {
+     "conteststatus":"Inactive",
+      "contestname": "Praposed Contest ",
+      "contestduration": "",
+      "contestcategories": "Sports",
+      "action": ""
+    }
+     
+     
+  ]
+}

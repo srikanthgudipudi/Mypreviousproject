@@ -1,0 +1,103 @@
+header.navbar {
+  // position: relative;
+  // height: $navbar-height;
+  // padding: 0;
+  // background-color: $navbar-bg;
+  // @include borders($navbar-border);
+  // flex-direction: row;
+   .navbar-top .nav-item{
+    background: #3a4e56;
+    padding: 0 5px;
+    margin: 0 1px 0 0 !important;
+    border-radius: 3px;
+   }
+   .navbar-top .nav-item .nav-link{
+    color: #ffffff !important;
+   }
+  .navbar-brand {
+    display: inline-block;
+    // width: $navbar-brand-width;
+    height: $navbar-height;
+    margin-right: 0;
+    padding: 10px 10px 10px 2px;
+    // background-color: $navbar-brand-bg;
+    // background-image: $navbar-brand-logo;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: $navbar-brand-logo-size;
+   //  @include borders($navbar-brand-border);
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    min-height: auto;
+    max-height: 30px;
+    margin-top: 1px;
+   // align-items: center;
+  }
+
+  .nav-item {
+    position: relative;
+    min-width: 30px;
+    margin: 0 !important;
+    text-align: center;
+
+    .nav-link {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      .badge {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -16px;
+        margin-left: 0px;
+      }
+
+      > .img-avatar {
+        height: $navbar-height - 20px;
+        margin: 0 10px;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    padding-bottom: 0;
+    line-height: $line-height-base;
+  }
+
+  .dropdown-item {
+    min-width: 180px;
+  }
+}
+
+.navbar-brand {
+  color: $navbar-active-color;
+
+  @include hover-focus {
+    color: $navbar-active-color;
+  }
+}
+
+.navbar-nav {
+  .nav-link {
+    color: $navbar-color;
+
+    @include hover-focus {
+      color: $navbar-hover-color;
+    }
+  }
+
+  .open > .nav-link,
+  .active > .nav-link,
+  .nav-link.open,
+  .nav-link.active {
+    @include plain-hover-focus {
+      color: $navbar-active-color;
+    }
+  }
+}
+
+.navbar-divider {
+  background-color: rgba(0,0,0,.075);
+}

@@ -1,0 +1,1421 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [78.54948308318855,17.42001010728161]
+    },
+    "properties": {
+     "level":"0",
+     "fleetid":"A01S020",
+     "fleetname":"A01S020",
+     "geometry/type":"Point",
+     "special":"true",
+     "fleetType":"fireexit",
+     "iconcolor":"#00ff00",
+     "iconname":"fire",
+     "pin":"#ff0000"
+     }
+  }, 
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [78.54949012398721,17.419882147650206]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"A01S021",
+    "fleetname":"A01S021",
+    "geometry/type":"Point",
+    "special":"true",
+    "fleetType":"fireexit",
+    "iconcolor":"#9999ff",
+    "iconname":"fire"
+    }
+  }, 
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [78.54950990527868,17.419962122430352]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"A01S028",
+    "fleetname":"A01S028",
+    "geometry/type":"Point",
+    "special":"true",
+    "fleetType":"firstaid",
+    "iconcolor":"#9999ff",
+    "iconname":"plus-square"
+    }
+  }, 
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [78.54951828718187,17.419863593496203]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"A01S028",
+    "fleetname":"A01S028",
+    "geometry/type":"Point",
+    "special":"true",
+    "fleetType":"firstaid",
+    "iconcolor":"#9999ff",
+    "iconname":"plus-square"
+    }
+  }, 
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [78.54958232492208,17.419922135044654]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"A01S029",
+    "fleetname":"A01S029",
+    "geometry/type":"Point",
+    "special":"true",
+    "fleetType":"firstaid",
+    "iconcolor":"#9999ff",
+    "iconname":"plus-square"
+    }
+  }, 
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [78.54947034269573,17.419978757180214]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"A01S030",
+    "fleetname":"A01S030",
+    "geometry/type":"Point",
+    "special":"true",
+    "fleetType":"firstaid",
+    "iconcolor":"#9999ff",
+    "iconname":"plus-square"
+    }
+  }, 
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [78.54950688779356,17.419927573329613]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"A01S031",
+    "fleetname":"A01S031",
+    "geometry/type":"Point",
+    "special":"true",
+    "fleetType":"firstaid",
+    "iconcolor":"#9999ff",
+    "iconname":"plus-square"
+    }
+  }, 
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.549509535,17.4198898826 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S027",
+    "fleetname":"F01S027",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495360953,17.4198783707 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S051",
+    "fleetname":"F01S051",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495236949,17.4199255374 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S013",
+    "fleetname":"F01S013",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495530201,17.4199170634 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S040",
+    "fleetname":"F01S040",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495133892,17.4198793301 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S047",
+    "fleetname":"F01S047",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495120017,17.4198890856 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00R04",
+    "fleetname":"F00R04",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"green",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495116297,17.4199456832 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S002",
+    "fleetname":"F01S002",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494976195,17.4199525166 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00S001",
+    "fleetname":"F00S001",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495404521,17.4199205809 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S032",
+    "fleetname":"F01S032",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495013239,17.419882208 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S025",
+    "fleetname":"F01S025",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.549526376,17.4198687775 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S049",
+    "fleetname":"F01S049",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495151487,17.4199338515 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S012",
+    "fleetname":"F01S012",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494759846,17.4199202147 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00T01",
+    "fleetname":"F00T01",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"red",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494961588,17.4199933128 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01R02",
+    "fleetname":"F01R02",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"orange",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.549543636,17.4199081097 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S042",
+    "fleetname":"F01S042",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495221029,17.419902034 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S030",
+    "fleetname":"F01S030",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.549538944,17.419955916 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S007",
+    "fleetname":"F01S007",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495558688,17.4198965979 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S055",
+    "fleetname":"F01S055",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.549542463,17.4199432849 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S017",
+    "fleetname":"F01S017",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494601166,17.4199317322 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01R04",
+    "fleetname":"F01R04",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"green",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495357601,17.419916264 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S031",
+    "fleetname":"F01S031",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495294761,17.4198946792 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S043",
+    "fleetname":"F01S043",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495307329,17.4199634306 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S006",
+    "fleetname":"F01S006",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495431521,17.4199150096 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00R06",
+    "fleetname":"F00R06",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"red",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495478253,17.4198889233 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S053",
+    "fleetname":"F01S053",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495339168,17.419951599 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S008",
+    "fleetname":"F01S008",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494638046,17.4199379702 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00R02",
+    "fleetname":"F00R02",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"red",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495624041,17.4199258572 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S038",
+    "fleetname":"F01S038",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495214327,17.4198871645 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S045",
+    "fleetname":"F01S045",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495216929,17.4198666292 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00T03",
+    "fleetname":"F00T03",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"green",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.549521684,17.4199552764 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S004",
+    "fleetname":"F01S004",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494805685,17.4199061403 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01R05",
+    "fleetname":"F01R05",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"green",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495002347,17.4199065109 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S021",
+    "fleetname":"F01S021",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495739667,17.4199140255 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S059",
+    "fleetname":"F01S059",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495245327,17.4199423256 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S010",
+    "fleetname":"F01S010",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495540255,17.419933212 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S035",
+    "fleetname":"F01S035",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495140595,17.4198941996 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S028",
+    "fleetname":"F01S028",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494524698,17.4199495198 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01ST01",
+    "fleetname":"F01ST01",
+    "geometry/type":"Point",
+    "fleetType":"stairways",
+    "iconcolor":"red",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495402846,17.419882208 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S052",
+    "fleetname":"F01S052",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495283869,17.4199298544 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S014",
+    "fleetname":"F01S014",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494949853,17.4199074198 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00R03",
+    "fleetname":"F00R03",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"orange",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494923588,17.4198981967 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S023",
+    "fleetname":"F01S023",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495637447,17.4199036329 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S057",
+    "fleetname":"F01S057",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495163217,17.4199503199 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S003",
+    "fleetname":"F01S003",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495451442,17.4199252176 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S033",
+    "fleetname":"F01S033",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495053457,17.4198862052 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S026",
+    "fleetname":"F01S026",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495315708,17.419873734 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S050",
+    "fleetname":"F01S050",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.54955855,17.4199375289 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S036",
+    "fleetname":"F01S036",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495265013,17.4198957435 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00R05",
+    "fleetname":"F00R05",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"orange",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494832507,17.4199817964 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01R01",
+    "fleetname":"F01R01",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"red",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495483281,17.4199124267 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S041",
+    "fleetname":"F01S041",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495090323,17.4198750131 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S048",
+    "fleetname":"F01S048",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495079348,17.4199452267 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00R07",
+    "fleetname":"F00R07",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"green",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495069376,17.4199413662 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S001",
+    "fleetname":"F01S001",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494883371,17.4198945193 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S024",
+    "fleetname":"F01S024",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.549559723,17.4199001154 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S056",
+    "fleetname":"F01S056",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495476578,17.4199480815 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S018",
+    "fleetname":"F01S018",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495169459,17.4199741188 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01R03",
+    "fleetname":"F01R03",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"orange",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495092836,17.4199146651 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S019",
+    "fleetname":"F01S019",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495182488,17.4198983566 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S029",
+    "fleetname":"F01S029",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494813705,17.4199145142 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00T02",
+    "fleetname":"F00T02",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"green",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495521822,17.419892121 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S054",
+    "fleetname":"F01S054",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495384413,17.4199394476 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S016",
+    "fleetname":"F01S016",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494918002,17.4199619626 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00R01",
+    "fleetname":"F00R01",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"orange",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495674313,17.4199301741 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S037",
+    "fleetname":"F01S037",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495252868,17.4198911617 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S044",
+    "fleetname":"F01S044",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495257058,17.4199591137 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S005",
+    "fleetname":"F01S005",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495042565,17.4199103481 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S020",
+    "fleetname":"F01S020",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495786587,17.4199185024 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S060",
+    "fleetname":"F01S060",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495297275,17.4199469623 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S009",
+    "fleetname":"F01S009",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495578797,17.4199213804 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S039",
+    "fleetname":"F01S039",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495087744,17.4199615747 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00S002",
+    "fleetname":"F00S002",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"green",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495170758,17.4198831673 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S046",
+    "fleetname":"F01S046",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495330789,17.4199344911 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S015",
+    "fleetname":"F01S015",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494965481,17.4199025137 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S022",
+    "fleetname":"F01S022",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495312111,17.4198752155 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00T04",
+    "fleetname":"F00T04",
+    "geometry/type":"Point",
+    "fleetType":"Room",
+    "iconcolor":"orange",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.549567934,17.4199074702 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S058",
+    "fleetname":"F01S058",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"orange",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495198407,17.4199381685 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S011",
+    "fleetname":"F01S011",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494542004,17.4199529874 ]
+    },
+    "properties": {
+    "level":"0",
+    "fleetid":"F00ST01",
+    "fleetname":"F00ST01",
+    "geometry/type":"Point",
+    "fleetType":"stairways",
+    "iconcolor":"red",
+    "iconname":"star"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5495498362,17.4199290549 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S034",
+    "fleetname":"F01S034",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 78.5494735744,17.4199124757 ]
+    },
+    "properties": {
+    "level":"1",
+    "fleetid":"F01S061",
+    "fleetname":"F01S061",
+    "geometry/type":"Point",
+    "fleetType":"Seat",
+    "iconcolor":"red",
+    "iconname":""
+    }
+  }
+]
+}

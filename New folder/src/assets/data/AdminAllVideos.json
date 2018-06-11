@@ -1,0 +1,106 @@
+{
+  "data": [
+    {
+      "videoId": "7529f614-f216-471a-9bd3-18bb17068a40",
+      "title": "Fall Flat - The fail compilation looks funny but terrible",
+      "country": "India",
+      "language": "English",
+      "contest": [
+        "DAILY"
+      ],
+      "userName": "testuser",
+      "category": "Fails",
+      "description": "Fall Flat - The fail compilation looks funny but terrible",
+      "url": "https://d34o6uhrx4oe3i.cloudfront.net/7529f614-f216-471a-9bd3-18bb17068a40/",
+      "videoStatus": "Uploaded",
+      "flagType": [
+        "Sexual Content"
+      ],
+      "flagedOn": "2017-04-11 12:30:00",
+      "createdBy": "testuser",
+      "createdAt": "2017-03-06 00:01:00"
+    },
+    {
+      "videoId": "258a391c-d5e2-42d2-9d24-c3a7458765cf",
+      "title": "Cats can do anything - doubt it, see the mirror dancing",
+      "country": "India",
+      "language": "English",
+      "contest": [
+        "DAILY"
+      ],
+      "userName": "testuser",
+      "category": "Pets & Animals",
+      "description": "Cats can do anything - doubt it, see the mirror dancing",
+      "url": "https://d34o6uhrx4oe3i.cloudfront.net/258a391c-d5e2-42d2-9d24-c3a7458765cf/",
+      "videoStatus": "Published",
+      "flagType": [
+        "Hateful or Abusive Content"
+      ],
+      "flagedOn": "2017-04-11 12:30:00",
+      "createdBy": "testuser",
+      "createdAt": "2017-03-06 00:01:00"
+    },
+    {
+      "videoId": "1de8e916-6826-4a0d-923f-c45e43b00cdf",
+      "title": "Three police buddies finally caught the thief",
+      "country": "India",
+      "language": "English",
+      "contest": [
+        "DAILY"
+      ],
+      "userName": "testuser",
+      "category": "Gaming",
+      "description": "Three police buddies finally caught the thief",
+      "url": "https://d34o6uhrx4oe3i.cloudfront.net/1de8e916-6826-4a0d-923f-c45e43b00cdf/",
+      "videoStatus": "Published",
+      "flagType": [
+        "Inappropriate Language"
+      ],
+      "flagedOn": "2017-04-11 12:30:00",
+      "createdBy": "testuser",
+      "createdAt": "2017-03-06 00:01:00"
+    },
+    {
+      "videoId": "0d98a749-2229-4da7-8c71-b031b0e30dea",
+      "title": "Most Funniest Moments - Try not to laugh",
+      "country": "India",
+      "language": "English",
+      "contest": [
+        "DAILY"
+      ],
+      "userName": "testuser",
+      "category": "Fails",
+      "description": "Most Funniest Moments - Try not to laugh",
+      "url": "https://d34o6uhrx4oe3i.cloudfront.net/0d98a749-2229-4da7-8c71-b031b0e30dea/",
+      "videoStatus": "Unpublish",
+      "flagType": [
+        "Harmful Dangerous Acts"
+      ],
+      "flagedOn": "2017-04-11 12:30:00",
+      "createdBy": "testuser",
+      "createdAt": "2017-03-06 00:01:00"
+    },
+    {
+      "videoId": "d570373f-c096-4848-895d-d2b05c704548",
+      "title": "Temple Run Pretty awesome - Have fun and adventure",
+      "country": "India",
+      "language": "English",
+      "contest": [
+        "DAILY"
+      ],
+      "userName": "testuser",
+      "category": "Gaming",
+      "description": "Temple Run Pretty awesome - Have fun and adventure",
+      "url": "https://d34o6uhrx4oe3i.cloudfront.net/d570373f-c096-4848-895d-d2b05c704548/",
+      "videoStatus": "Delete",
+      "flagType": [
+        "Child Abuse",
+        "Copyright Violation",
+        "Captions or Description Issue"
+      ],
+      "flagedOn": "2017-04-11",
+      "createdBy": "testuser",
+      "createdAt": "2017-03-06 00:01:00"
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div id="allusers" class="tab-pane">
+    <div class="card">
+        <div class="card-header">
+            <div class="row no-gutter">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_MESSAGE_HISTORY' | translate}}</h5>
+                    <div class="cardicons-header pull-left">
+                        <a *ngIf="addstatus == 'true'" data-toggle="tooltip" data-placement="top" (click)="showmessage('Create','')" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="addstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="showmessage('Create','')"></i>
+                        </a>
+                        <a *ngIf="exportstatus == 'true'" data-toggle="tooltip" data-placement="top" (click)="exportData(searchstring)" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="exportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="locates('locate')"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group mb0">
+                        <div class="input-group">
+                            <button type="button" (click)="getadvancedsearch()" class="btn btn-primary btn-sm advanced-btn">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+                            <input type="text" [(ngModel)]="searchstring" #input (keypress)="handleKeyPress($event)" pInputText size="50" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}"
+                                class="form-control input-sm mb0">
+                            <span class="input-group-btn">
+                                <button type="button" (click)="allMessageSearch(searchstring)" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <p-dataTable [responsive]="true" [stacked]="stacked" [value]="messagedata" [rows]="10" [paginator]="true" [pageLinks]="2"
+                expandableRows="true" sortMode="multiple">
+                <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column field="messageFrom.userName" header="{{'MESSAGE_HISTORY.MESSAGE_FROM' | translate}}" [sortable]="true" styleClass="user-name">
+                </p-column>
+                <p-column field="messageTo.userAccount" header="{{'MESSAGE_HISTORY.MESSAGE_TO' | translate}}" [sortable]="true" styleClass="user-name">
+                </p-column>
+                <p-column field="messageType" header="{{'MESSAGE_HISTORY.TYPE' | translate}}" [sortable]="true" styleClass="duration">
+                </p-column>
+                <p-column field="message" header="{{'MESSAGE_HISTORY.MESSAGE' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column field="messageDate" header="{{'MESSAGE_HISTORY.MESSAGE_DATE' | translate}}" [sortable]="true" styleClass="messagehistorydate">
+                    <template let-user="rowData" pTemplate="body">
+                        <span>
+                            {{user.messageDate}} {{userpreferedtimezone}}
+                        </span>
+                    </template>
+                </p-column>
+                <p-column field="messageStatus" header="{{'COMMON_FIELDS.STATUS' | translate}}" [sortable]="true" styleClass="status">
+                    <ng-template let-user="rowData" pTemplate="body">
+                        <span class="fa-stack message-stack fa-lg" *ngIf="user.messageStatus === 'Read'">
+                            <i class="fa fa-check check-font fa-stack-1x enterpriseinactive"></i>
+                            <i class="fa fa-check check-font check-position fa-stack-2x enterpriseinactive"></i>
+                        </span>
+                        <span class="fa-stack message-stack fa-lg" *ngIf="user.messageStatus === 'Received'">
+                            <i class="fa fa-check check-font fa-stack-1x cancle-action"></i>
+                            <i class="fa fa-check check-font check-position fa-stack-2x cancle-action"></i>
+                        </span>
+                    </ng-template>
+                </p-column>
+                <p-column header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-four-col">
+                    <ng-template let-user="rowData" pTemplate="body">
+                        <a *ngIf="viewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+                            (click)="showmessage('View',user)">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="viewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+                            (click)="showmessage('View',user)">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                        </a>
+                        <span *ngIf="user.messageFrom.userAccount != useraccount">
+                            <a *ngIf="user.messageStatus == 'Received' && viewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_READ_ACTION' | translate}}"
+                                (click)="showmessage('Read',user)">
+                                <i class="fa fa-15x fa-envelope notification-unread" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                        <span *ngIf="user.messageFrom.userAccount == useraccount">
+                            <a *ngIf="user.messageStatus == 'Received' && viewstatus == 'true'" class="not-active" data-toggle="tooltip" data-placement="top"
+                                title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_READ_ACTION' | translate}}">
+                                <i class="fa fa-15x fa-envelope notification-unread" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                        <a *ngIf="user.messageStatus == 'Read'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_UNREAD_ACTION' | translate}}"
+                            disabled>
+                            <i class="fa fa-15x fa-envelope-open notification-read" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="deletestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+                            (click)="showmessage('Delete',user)">
+                            <i class="fa fa-15x fa-trash text-danger" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="deletestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-trash text-danger" aria-hidden="true" (click)="showmessage('Delete',user)"></i>
+                        </a>
+                        <a *ngIf="user.groupId == null" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singlelocate('locate', user)"></i>
+                        </a>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+</div>
+<app-message-popup (updatedList)="emitChanges($event)"></app-message-popup>
+<div bsModal #mgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvanceModal()" tabindex="-1"
+    role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="hideAdvanceModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                            class="pull-right">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="text-capitalize form-control input-sm"
+                            id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseName" onkeypress="return event.charCode != 34">
+                        <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+                            id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'MESSAGE_HISTORY.MESSAGE_FROM' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="text-capitalize form-control input-sm" id="userName" name="userName" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="userName" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'MESSAGE_HISTORY.MESSAGE_TO' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="text-capitalize form-control input-sm" id="userAccount" name="userAccount" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="userAccount" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'MESSAGE_HISTORY.MESSAGE_TYPE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="messageType" name="messageType" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="messageType" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label>{{'MESSAGE_HISTORY.MESSAGE' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <input type="text" class="form-control input-sm" id="messageType" name="messageType" onkeypress="return event.charCode != 34"
+                            [(ngModel)]="message" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label for="">{{'COMMON_FIELDS.DATE_FROM' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <p-calendar readonlyInput="readonlyInput" [(ngModel)]="fromDate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                            [showIcon]="true" [showTime]="true"></p-calendar>
+                        <select id="Timezone" (change)="changeTimezones($event.target.value);" class="form-control input-sm duration-list">
+                            <option *ngFor="let clang of timeZones; let i='index'" [selected]="advuserpreferedtimezone == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5 form-control-label">
+                        <label for="">{{'COMMON_FIELDS.DATE_TO' | translate}}</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <p-calendar readonlyInput="readonlyInput" [(ngModel)]="toDate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                            [showIcon]="true" [showTime]="true"></p-calendar>
+                        <select id="Timezone" (change)="changeTimezones($event.target.value);" class="form-control input-sm duration-list">
+                            <option *ngFor="let clang of timeZones; let i='index'" [selected]="advuserpreferedtimezone == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div> -->
+            <div class="modal-footer">
+                <div class="col-md-12 p0">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <div class="pull-right text-right">
+                        <button type="button" class="btn btn-primary" (click)="advanceSearch()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                        <button type="button" class="btn btn-primary" (click)="clear()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+                        <button type="button" class="btn btn-primary" (click)="hideAdvanceModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>

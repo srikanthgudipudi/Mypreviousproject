@@ -1,0 +1,224 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div id="maincontest">
+  <div class="card">
+    <div class="card-header">
+      <div class="row no-gutter">
+        <div class="col-md-9">
+          <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_ENTERPRISES' | translate}}</h5>
+          <div class="cardicons-header pull-left">
+            <a *ngIf="enterprisesaddstatus =='true'" data-toggle="tooltip" (click)="singleEnterprises('CREATE','')" data-placement="top"
+              title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="enterprisesaddstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="singleEnterprises('CREATE','')"></i>
+            </a>
+            <a *ngIf="enterprisesexportstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+              (click)="exportData(searchstring)">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="enterprisesexportstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+            </a>
+            <a *ngIf="locatestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="locates('locate')"></i>
+            </a>
+            <a *ngIf="locatestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="locates('locate')"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group mb0">
+            <div class="input-group">
+              <button type="button" class="btn btn-primary btn-sm advanced-btn" (click)="advancedEnterprises()">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+              <input type="text" id="input1-group2" [(ngModel)]="searchstring" #input (keypress)="handleKeyPress($event)" name="input1-group2"
+                maxlength="10" class="form-control input-sm mb0" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}">
+              <span class="input-group-btn">
+                <button type="button" (click)="getAllenterprisesList(searchstring)" class="btn btn-primary btn-sm">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-block">
+      <p-dataTable [value]="allenterprisesDetails" styleClass="table" [rows]="rowsPerPage" [paginator]="true" [pageLinks]="2" sortMode="multiple"
+        [responsive]="true" expandableRows="true" [stacked]="stacked">
+        <p-column field="enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="fleetsCount" header="{{fleetsCommonName}} #" styleClass="duration" [sortable]="true">
+          <template let-user1="rowData" pTemplate="body">
+            <div class="text-right">{{user1.fleetsCount}}</div>
+          </template>
+        </p-column>
+        <p-column field="resourcesCount" header="{{'ENTERPRISES.COUNT_RESOURCES' | translate}}" styleClass="user-name" [sortable]="true">
+          <template let-user1="rowData" pTemplate="body">
+            <div class="text-right">{{user1.resourcesCount}}</div>
+          </template>
+        </p-column>
+        <p-column field="usersCount" header="{{'ENTERPRISES.COUNT_USERS' | translate}}" styleClass="duration" [sortable]="true">
+          <template let-user="rowData" pTemplate="body">
+            <div class="text-right">{{user.usersCount}}</div>
+          </template>
+        </p-column>
+        <p-column field="address.country" header="{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}" [sortable]="true"></p-column>
+        <p-column field="address.state" header="{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}" [sortable]="true"></p-column>
+        <p-column field="address.city" header="{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}" [sortable]="true"></p-column>
+        <p-column field="isEnabled" styleClass="text-capitalize status" header="{{'COMMON_FIELDS.STATUS' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="actions" styleClass="action-four-col" header="{{'COMMON_FIELDS.ACTIONS' | translate}}">
+          <template let-allenterprise="rowData" pTemplate="body">
+            <a *ngIf="enterprisesviewstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+              (click)="singleEnterprises('VIEW',allenterprise)">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="enterprisesviewstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="singleEnterprises('VIEW',allenterprise)"></i>
+            </a>
+            <a *ngIf="enterpriseseditstatus =='true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}"
+              (click)="singleEnterprises('EDIT',allenterprise)">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="enterpriseseditstatus =='false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="singleEnterprises('EDIT',allenterprise)"></i>
+            </a>
+              <a *ngIf="allenterprise.isEnabled=='Inactive' && activestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_PAGE_TITLES.ACTIVATE_ENTERPRISE' | translate}}"
+                (click)="singleEnterprises('ACTIVE',allenterprise)">
+                <i class="fa fa-15x fa-user-secret enterpriseactive" aria-hidden="true"></i>
+              </a>
+              <a *ngIf="allenterprise.isEnabled=='Active' && inactivestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_PAGE_TITLES.INACTIVATE_ENTERPRISE' | translate}}"
+                (click)="singleEnterprises('INACTIVE',allenterprise)">
+                <i class="fa fa-15x fa-user-secret enterpriseinactive" aria-hidden="true"></i>
+              </a>
+              <a *ngIf="activestatus == 'false' || inactivestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_PAGE_TITLES.INACTIVATE_ENTERPRISE' | translate}}">
+              <i class="fa fa-15x fa-user-secret enterpriseinactive" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="locatestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singlelocate('locate', allenterprise)"></i>
+            </a>
+            <a *ngIf="locatestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singlelocate('locate', allenterprise)"></i>
+            </a>
+          </template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
+<div bsModal #advancedModel="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvancedModal()"
+  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideAdvancedModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="col-md-4 form-control-label">
+            <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}} </label>
+          </div>
+          <div class=" col-md-8">
+            <input name="" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="form-control input-sm"
+              [(ngModel)]="enterpriseValue" (click)="clearmessage()" onkeypress="return event.charCode != 34" />
+            <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+              id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 form-control-label">
+            <label for="">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+          </div>
+          <div class=" col-md-8">
+            <select id="" class="form-control input-sm" [(ngModel)]="isEnabledValue" (click)="clearmessage()">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of statuslist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 form-control-label">
+            <label for="">{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+          </div>
+          <div class=" col-md-8">
+            <input name="" class="form-control input-sm" [(ngModel)]="cityValue" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 form-control-label">
+            <label for="">{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+          </div>
+          <div class=" col-md-8">
+            <input name="" class="form-control input-sm" [(ngModel)]="stateValue" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 form-control-label">
+            <label for="">{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+          </div>
+          <div class=" col-md-8">
+            <select id="" class="form-control input-sm" [(ngModel)]="countryValue" (click)="clearmessage()">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of countries;" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 form-control-label">
+            <label for="">{{'COMMON_FIELDS.EMAIL_ID' | translate}}</label>
+          </div>
+          <div class=" col-md-8">
+            <input name="" class="form-control input-sm" [(ngModel)]="emailValue" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 form-control-label">
+            <label>{{'ENTERPRISES.SSO_ENABLED' | translate}}</label>
+          </div>
+          <input type="checkbox" id="inline-checkboxsso12" name="inline-checkbox1" (click)="clearmessage()" value="true" class="regular-checkbox big-checkbox"
+            [(ngModel)]="ssoenable">
+          <label for="inline-checkboxsso12"></label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button type="button" class="btn btn-primary" (click)="advancedEnterprise()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="clearAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="hideAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-enterprises-popup (deleted)="getAllenterprisesList('')"></app-enterprises-popup>

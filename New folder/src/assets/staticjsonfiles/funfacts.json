@@ -1,0 +1,68 @@
+{
+  "data": [
+    {
+   "_id" : "1",
+    "enterpriseId" : "Srisys",
+    "fleetAssetId" : "India",
+    "funfact" : "some fact here",
+    "description" : "description",
+    "targetStartDateTime" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "targetEndDateTime" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "isEnabled" : true,
+    "isDeleted" : false,
+    "createdBy" : "SD",
+    "createdAt" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "updatedBy" : "",
+    "updatedAt" : "",
+      "actions": ""
+    },
+    {
+        "_id" : "2",
+    "enterpriseId" : "Microsoft",
+    "fleetAssetId" : "India",
+    "funfact" : "some fact here",
+    "description" : "description",
+    "targetStartDateTime" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "targetEndDateTime" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "isEnabled" : true,
+    "isDeleted" : false,
+    "createdBy" : "SD",
+    "createdAt" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "updatedBy" : "",
+    "updatedAt" : "",
+      "actions": ""
+    },
+    {
+        "_id" : "3",
+    "enterpriseId" : "Oracle",
+    "fleetAssetId" : "India",
+    "funfact" : "some fact here",
+    "description" : "description",
+    "targetStartDateTime" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "targetEndDateTime" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "isEnabled" : true,
+    "isDeleted" : false,
+    "createdBy" : "SD",
+    "createdAt" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "updatedBy" : "",
+    "updatedAt" : "",
+      "actions": ""
+    },
+    {
+        "_id" : "4",
+    "enterpriseId" : "Sun Microsystems",
+    "fleetAssetId" : "India",
+    "funfact" : "some fact here",
+    "description" : "description",
+    "targetStartDateTime" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "targetEndDateTime" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "isEnabled" : true,
+    "isDeleted" : false,
+    "createdBy" : "SD",
+    "createdAt" : "ISODate(2017-07-10T07:22:37.202-04:00)",
+    "updatedBy" : "",
+    "updatedAt" : "",
+      "actions": ""
+    }
+    ]
+}

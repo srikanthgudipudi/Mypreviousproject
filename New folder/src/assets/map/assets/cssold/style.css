@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+html,body{height:100%;margin:0;padding:0; overflow:hidden;font-family: 'Open Sans', sans-serif !important;}
+.leaflet-container
+{
+    font-family: 'Open Sans', sans-serif !important; 
+}
+
+.searchrow
+{
+position: relative;
+left: 8px;
+margin-top: 0px;
+top: 0px;
+z-index: 999;
+transition: left 0.5s;
+-webkit-transform: translateX(0px);
+transform: translateX(0px);
+transition-property: -webkit-transform,transform,visibility,opacity;
+transition-duration: 200ms;
+transition-timing-function: cubic-bezier(0.0,0.0,0.2,1);
+}
+.buscador-principal
+{
+box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);
+}
+.input-group {
+   position: relative;
+   display: table;
+   border-collapse: separate;
+}
+.input-group .form-control:not(:first-child):not(:last-child), .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child) {
+   border-radius: 0;
+}
+.contentwrap
+{
+   background: white;
+   color: #333;
+   box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+   padding: 13px 19px;
+   text-align: left;
+   border-radius: 12px;
+   text-align: center;
+}
+.search-icon{
+   position: absolute;
+   z-index: 999;
+   top:11px;
+   left:50px;
+   cursor: pointer;
+}
+/* The side navigation menu */
+.sidenav {
+   height: 100%; /* 100% Full-height */
+   width: 0; /* 0 width - change this with JavaScript */
+   position: fixed; /* Stay in place */
+   z-index: 9999; /* Stay on top */
+   top: 0;
+   left: 0;
+   background-color: rgba(255, 255, 255, 1); /* Black*/
+   overflow-x: hidden; /* Disable horizontal scroll */
+   padding-top: 10px; /* Place content 60px from the top */
+   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+   padding: 0px;
+   text-decoration: none;
+   font-size: 16px;
+   color: #337ab7;
+   display: block;
+   transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a.closebtn:hover{
+   color: #337ab7;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+   position: absolute;
+   top: 16px;
+   right: 0;
+   font-size: 18px;
+   z-index: 9999;
+   color: #ababab;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+   transition: margin-left .5s;
+   padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+   .sidenav {padding-top: 15px;}
+   .sidenav a {font-size: 18px;}
+}
+
+.search-btn{
+background: #fff;
+padding: 5px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+.content{
+   position: absolute;
+   top: 50px;
+   left: 8px;
+}
+.media{
+   margin: 10px 0;
+}
+.well
+{
+    padding: 4px !important;
+    margin: 1px !important;
+}
+p{
+    margin: 0px !important;
+}
+#results{
+    padding-left: 10px;
+}
+#results .row [class^="col-"]{
+    padding: 0px;
+}

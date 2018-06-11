@@ -1,0 +1,1923 @@
+{
+  "features": [
+    {
+      "path": "VI0001 => VH0001 => S00001",
+      "type": "Feature",
+      "fleetId": 4,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4227305079900",
+          "+78.5449347270800"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SFG001",
+        "fleetname": "Scb Floor G",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L12-Floor",
+        "iconcolor": "Green1"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001",
+      "type": "Feature",
+      "fleetId": 6,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4227492218000",
+          "+78.5448440348900"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SH1001",
+        "fleetname": "Scbfg Hall 1",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L14-Hall",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-h"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001",
+      "type": "Feature",
+      "fleetId": 7,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272522973",
+          "+78.54487353919"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SH2001",
+        "fleetname": "SCBFG Hall 2",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L14-Hall",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-h"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001",
+      "type": "Feature",
+      "fleetId": 8,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42270251724",
+          "+78.54490622861"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SH3001",
+        "fleetname": "SCBFG Hall 3",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L14-Hall",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-h"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001",
+      "type": "Feature",
+      "fleetId": 12,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4226343372500",
+          "+78.5449067766000"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SCR001",
+        "fleetname": "Scbfg Conf Room",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L20-Room",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-r"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001",
+      "type": "Feature",
+      "fleetId": 13,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42266261971",
+          "+78.5449494489"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SS0001",
+        "fleetname": "SCBFG Stores",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L30-Storeroom",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-storeroom"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001",
+      "type": "Feature",
+      "fleetId": 14,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42268408041",
+          "+78.54496776276"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SCR002",
+        "fleetname": "SCBFG Council Room",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L20-Room",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-r"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001",
+      "type": "Feature",
+      "fleetId": 15,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42270507024",
+          "+78.54480275487"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SC1001",
+        "fleetname": "SCBFG Cabin 1",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L20-Room",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-r"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001",
+      "type": "Feature",
+      "fleetId": 16,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4228073646100",
+          "+78.5448826106900"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "SC2001",
+        "fleetname": "Scbfg Cabin 2",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L20-Room",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-r"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 20,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42273054889",
+          "+78.54481375614"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S001",
+        "fleetname": "F00S001",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 21,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42273693819",
+          "+78.54482012669"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S002",
+        "fleetname": "F00S002",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 22,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42274352155",
+          "+78.54482645381"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S003",
+        "fleetname": "F00S003",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 23,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42274977905",
+          "+78.54483257291"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S004",
+        "fleetname": "F00S004",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 24,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4227563624",
+          "+78.54483876654"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S005",
+        "fleetname": "F00S005",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 25,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42276295462",
+          "+78.54484504398"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S006",
+        "fleetname": "F00S006",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 26,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42276988157",
+          "+78.54485211617"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S007",
+        "fleetname": "F00S007",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 27,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42277637011",
+          "+78.54485826636"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S008",
+        "fleetname": "F00S008",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 28,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42278331037",
+          "+78.54486480455"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S009",
+        "fleetname": "F00S009",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 29,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272038133",
+          "+78.54483107803"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S010",
+        "fleetname": "F00S010",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 30,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272696614",
+          "+78.54483739274"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S011",
+        "fleetname": "F00S011",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 31,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42273348581",
+          "+78.54484386266"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S012",
+        "fleetname": "F00S012",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 32,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4227401817",
+          "+78.54485023169"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S013",
+        "fleetname": "F00S013",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 33,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42274682721",
+          "+78.54485639735"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S014",
+        "fleetname": "F00S014",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 34,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42275327432",
+          "+78.54486231002"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S015",
+        "fleetname": "F00S015",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 35,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42275978657",
+          "+78.5448686744"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S016",
+        "fleetname": "F00S016",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 36,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42276630624",
+          "+78.54487501547"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S017",
+        "fleetname": "F00S017",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH3001",
+      "type": "Feature",
+      "fleetId": 37,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42271012493",
+          "+78.5448457937"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S018",
+        "fleetname": "F00S018",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 38,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42271692894",
+          "+78.54485236915"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S019",
+        "fleetname": "F00S019",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 39,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272335235",
+          "+78.54485851622"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S020",
+        "fleetname": "F00S020",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 40,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272996827",
+          "+78.54486499856"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S021",
+        "fleetname": "F00S021",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 41,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42273665676",
+          "+78.54487129306"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S022",
+        "fleetname": "F00S022",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 42,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42274314087",
+          "+78.54487750688"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S023",
+        "fleetname": "F00S023",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 43,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42274958943",
+          "+78.54488393488"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S024",
+        "fleetname": "F00S024",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 44,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42275624534",
+          "+78.54489017041"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S025",
+        "fleetname": "F00S025",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 45,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42276292496",
+          "+78.54489686231"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S026",
+        "fleetname": "F00S026",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 46,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4226935962",
+          "+78.54485735509"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S027",
+        "fleetname": "F00S027",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 47,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42270023729",
+          "+78.5448636496"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S028",
+        "fleetname": "F00S028",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 48,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42270671697",
+          "+78.54486997672"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S029",
+        "fleetname": "F00S029",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 49,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42271328105",
+          "+78.54487624174"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S030",
+        "fleetname": "F00S030",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 50,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272010433",
+          "+78.54488271166"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S031",
+        "fleetname": "F00S031",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 51,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272645663",
+          "+78.54488901394"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S032",
+        "fleetname": "F00S032",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 52,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42273304442",
+          "+78.54489534572"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S033",
+        "fleetname": "F00S033",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 53,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4227394056",
+          "+78.54490129718"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S034",
+        "fleetname": "F00S034",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 54,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42274602596",
+          "+78.54490757462"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S035",
+        "fleetname": "F00S035",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 55,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42275255747",
+          "+78.54491390174"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S036",
+        "fleetname": "F00S036",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH2001",
+      "type": "Feature",
+      "fleetId": 56,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42268835321",
+          "+78.54487687816"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S037",
+        "fleetname": "F00S037",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 57,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.422694978",
+          "+78.54488338686"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S038",
+        "fleetname": "F00S038",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 58,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42270156135",
+          "+78.54488940355"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S039",
+        "fleetname": "F00S039",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 59,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42270780998",
+          "+78.54489540934"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S040",
+        "fleetname": "F00S040",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 60,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42271437851",
+          "+78.54490188391"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S041",
+        "fleetname": "F00S041",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 61,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272099",
+          "+78.54490819084"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S042",
+        "fleetname": "F00S042",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 62,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272739414",
+          "+78.54491456764"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S043",
+        "fleetname": "F00S043",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 63,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42273411818",
+          "+78.54492095839"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S044",
+        "fleetname": "F00S044",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 64,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42274086591",
+          "+78.54492722653"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S045",
+        "fleetname": "F00S045",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 65,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42267249095",
+          "+78.54489767566"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S046",
+        "fleetname": "F00S046",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 66,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42267913501",
+          "+78.54490406176"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S047",
+        "fleetname": "F00S047",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 67,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4226858309",
+          "+78.54491036869"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S048",
+        "fleetname": "F00S048",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 68,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42269236686",
+          "+78.54491686345"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S049",
+        "fleetname": "F00S049",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 69,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42269914274",
+          "+78.54492338769"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S050",
+        "fleetname": "F00S050",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 70,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42270570239",
+          "+78.54492963564"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S051",
+        "fleetname": "F00S051",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 71,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42271173923",
+          "+78.54493544431"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S052",
+        "fleetname": "F00S052",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 72,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42271837902",
+          "+78.54494189852"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S053",
+        "fleetname": "F00S053",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 73,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.42272479202",
+          "+78.54494808284"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "F00S054",
+        "fleetname": "F00S054",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    },
+    {
+      "path": "VI0001 => VH0001 => S00001 => SFG001 => SH1001",
+      "type": "Feature",
+      "fleetId": 196,
+      "eventId": "",
+      "fleetReservationId": "",
+      "fleetReservationUserId": "",
+      "reservedResourceId": "",
+      "fleetReservationStatus": "",
+      "eventStatus": "",
+      "fleetStatus": "Active",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          "+17.4227492218000",
+          "+78.5448440348900"
+        ]
+      },
+      "properties": {
+        "level": "Scb Floor G",
+        "fleetid": "TS-001",
+        "fleetname": "Test Seat - 1",
+        "enterpriseid": 1,
+        "geometry/type": "Point",
+        "special": false,
+        "fleetType": "L50-Seat",
+        "iconcolor": "Green1",
+        "iconname": "asset-icon-s"
+      }
+    }
+  ]
+}

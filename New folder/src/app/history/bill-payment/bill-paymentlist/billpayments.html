@@ -1,0 +1,278 @@
+<div id="allusers" class="tab-pane">
+    <div class="card">
+        <div class="card-header">
+            <div class="row no-gutter">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">{{'BILL_PAYMENT_HISTORY.BILLPAYMENT_HISTORY' | translate}}</h5>
+                    <div class="cardicons-header pull-left">
+                        <a *ngIf="addstatus == 'true'" data-toggle="tooltip" (click)="billPayment('CREATE', '')" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="addstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="billPayment('CREATE', '')"></i>
+                        </a>
+                        <a *ngIf="exportstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+                            (click)="exportData(searchstring)">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="exportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group mb0">
+                        <div class="input-group">
+                            <button type="button" (click)="advancedBillpaymentsearch()" class="btn btn-primary btn-sm advanced-btn">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+                            <input type="text" pInputText size="50" type="text" id="input1-group2" #input [(ngModel)]="searchstring" (keypress)="handleKeyPress($event)"
+                                name="input1-group2" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}" class="form-control input-sm mb0">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary btn-sm" (click)="getBillpaymenthistory(searchstring)">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <p-dataTable [responsive]="true" [stacked]="stacked" styleClass="table billpayments" [value]="billpaymentsDetails" [rows]="rowsPerPage"
+                [paginator]="true" [pageLinks]="2" expandableRows="true" sortMode="multiple">
+                <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true"></p-column>
+                <p-column field="billPeriodType" header="{{'BILL_PAYMENT_HISTORY.PERIOD_TYPE' | translate}}" [sortable]="true" styleClass="duration"></p-column>
+                <p-column field="billPeriodStartDate" header="{{'BILL_PAYMENT_HISTORY.PERIOD_START_DATE' | translate}}" [sortable]="true"
+                    styleClass="startdate">
+                    <template let-user="rowData" pTemplate="body">
+                        <span>
+                            {{user.billPeriodStartDate}} {{userpreferedtimezone}}
+                        </span>
+                    </template>
+                </p-column>
+                <p-column field="billPeriodEndDate" header="{{'BILL_PAYMENT_HISTORY.PERIOD_END_DATE' | translate}}" [sortable]="true" styleClass="enddate">
+                    <template let-user="rowData" pTemplate="body">
+                        <span>
+                            {{user.billPeriodEndDate}} {{userpreferedtimezone}}
+                        </span>
+                    </template>
+                </p-column>
+                <p-column field="amountDue" header="{{'BILL_PAYMENT_HISTORY.AMOUNT_DUE' | translate}}" [sortable]="true" styleClass="duration">
+                    <template let-user="rowData" pTemplate="body">
+                        <div class="text-right">{{user.amountDue}}</div>
+                    </template>
+                </p-column>
+                <p-column field="invoiceDate" header="{{'BILL_PAYMENT_HISTORY.INVOICE_DATE' | translate}}" [sortable]="true" styleClass="invoicedate">
+                    <template let-user="rowData" pTemplate="body">
+                        <span>
+                            {{user.invoiceDate}} {{userpreferedtimezone}}
+                        </span>
+                    </template>
+                </p-column>
+                <p-column field="payDetails.amountPaid" header="{{'BILL_PAYMENT_HISTORY.AMOUNT_PAID' | translate}}" [sortable]="true" styleClass="duration">
+                    <template let-user="rowData" pTemplate="body">
+                        <div class="text-right">{{user.payDetails.amountPaid}}</div>
+                    </template>
+                </p-column>
+                <p-column field="payDetails.paidDate" header="{{'BILL_PAYMENT_HISTORY.PAID_DATE' | translate}}" [sortable]="true" styleClass="paiddate">
+                    <template let-user="rowData" pTemplate="body">
+                        <div *ngIf="user.payDetails.paidDate != null" class="text-right">{{user.payDetails.paidDate}} {{userpreferedtimezone}}</div>
+                        <div *ngIf="user.payDetails.paidDate == null" class="text-right">{{user.payDetails.paidDate}}</div>
+                    </template>
+                </p-column>
+                <p-column field="billPaymentStatus" header="Status" [sortable]="true" styleClass="{{'COMMON_FIELDS.STATUS' | translate}}"></p-column>
+                <p-column header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-three-col">
+                    <ng-template let-billPayments="rowData" pTemplate="body">
+                        <a *ngIf="viewstatus == 'true'" (click)="billPayment('VIEW', billPayments)" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="viewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="billPayment('VIEW', billPayments)"></i>
+                        </a>
+                        <a *ngIf="billPayments.amountDue != billPayments.payDetails.amountPaid && editstatus == 'true'" class="active" (click)="billPayment('EDIT', billPayments)"
+                            data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="billPayments.amountDue == billPayments.payDetails.amountPaid && editstatus == 'true'" class="not-active" data-toggle="tooltip"
+                            data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="editstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="deletestatus == 'true'" (click)="billPayment('DELETE', billPayments)" data-toggle="tooltip" data-placement="top"
+                            title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="deletestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="billPayment('DELETE', billPayments)"></i>
+                        </a>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+
+    <div bsModal #billpaymentadvancedModel="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="hideBillpaymentAdvancedModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+                            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                                class="pull-right">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label for="roleid">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="text-capitalize form-control input-sm"
+                                id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseName" onkeypress="return event.charCode != 34">
+                            <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+                                id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label>{{'BILL_PAYMENT_HISTORY.PERIOD_START_DATE' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="startdate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                                [showIcon]="true" [showTime]="true" (onSelect)="clearmessages();"></p-calendar>
+                            <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessages();" class="form-control input-sm duration-list">
+                                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                    id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label>{{'BILL_PAYMENT_HISTORY.PERIOD_END_DATE' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="enddate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                                [showIcon]="true" [showTime]="true" (onSelect)="clearmessages();"></p-calendar>
+                            <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessages()" class="form-control input-sm duration-list">
+                                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                    id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label>{{'BILL_PAYMENT_HISTORY.PAID_START_DATE' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="Paidstartdate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                                [showIcon]="true" [showTime]="true" (onSelect)="clearmessages();"></p-calendar>
+                            <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessages();" class="form-control input-sm duration-list">
+                                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                    id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label>{{'BILL_PAYMENT_HISTORY.PAID_END_DATE' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="Paidenddate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                                [showIcon]="true" [showTime]="true" (onSelect)="clearmessages();"></p-calendar>
+                            <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessages()" class="form-control input-sm duration-list">
+                                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                    id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label>{{'BILL_PAYMENT_HISTORY.INVOICE_START_DATE' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="Invoicestartdate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                                [showIcon]="true" [showTime]="true" (onSelect)="clearmessages();"></p-calendar>
+                            <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessages();" class="form-control input-sm duration-list">
+                                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                    id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label>{{'BILL_PAYMENT_HISTORY.INVOICE_END_DATE' | translate}}</label>
+                        </div>
+                        <div class=" col-md-8">
+                            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="Invoiceenddate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+                                [showIcon]="true" [showTime]="true" (onSelect)="clearmessages();"></p-calendar>
+                            <select id="Timezone" (change)="changeTimezones($event.target.value); clearmessages()" class="form-control input-sm duration-list">
+                                <option *ngFor="let clang of timeZones; let i='index'" [selected]="timezoneCodes == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                                    id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label>{{'BILL_PAYMENT_HISTORY.PERIOD_TYPE' | translate}}</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select id="" class="form-control input-sm" (change)="clearmessages()" [(ngModel)]="billPeriodType">
+                                <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                <option *ngFor="let clang of periodtypes; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}">{{clang.lookupName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label class="checkbox-inline" for="inline-checkbox1">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select id="" class="form-control input-sm" (click)="clearmessages()" [(ngModel)]="paymentstatus">
+                                <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                                <option *ngFor="let clang of statuslist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}">{{clang.lookupName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 form-control-label">
+                            <label>
+                                <span class="text-danger"></span>{{'BILL_PAYMENT_HISTORY.INVOICE_NUMBER' | translate}}</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" (keypress)="clearmessages()" class="text-capitalize form-control input-sm" id="" name="" onkeypress="return event.charCode != 34"
+                                value="" [(ngModel)]="invoicenumber">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-danger text-center">{{error | translate}}</div>
+                <!-- footer -->
+                <div class="modal-footer">
+                    <div class="col-md-12 p0">
+                        <div class="pull-left">
+                            <app-powered></app-powered>
+                        </div>
+                        <div class="pull-right text-right">
+                            <button type="button" (click)="advancedBillpaymenthistory()" class="btn btn-primary">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+                            <button type="button" (click)="clearBillpaymentAdvancedModal()" class="btn btn-primary">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+                            <button type="button" (click)="hideBillpaymentAdvancedModal()" class="btn btn-primary">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<app-billpaymenthistory-popup (deleted)="delete($event)"></app-billpaymenthistory-popup>

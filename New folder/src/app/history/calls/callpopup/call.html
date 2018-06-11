@@ -1,0 +1,118 @@
+<div bsModal #infoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" (keyup.Esc)="closePopupModal()" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <!-- header starts -->
+            <div class="modal-header">
+                <button type="button" class="close" (click)="closePopupModal()" aria-label="Close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <app-logoheader></app-logoheader>
+                        <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                            class="pull-right">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="popupsection-title">{{pagename | translate}}</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- header ends -->
+
+            <!-- body starts -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="enterpriseID" name="enterprisename" value="{{singleCallHistoryDetails?.enterprise?.enterpriseName}}"
+                            disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'CALL_HISTORY.CALLTYPE' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="browserName" name="browserName" value="{{singleCallHistoryDetails?.callType}}"
+                            disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'CALL_HISTORY.USERNAME' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="OS" name="OS" value="{{singleCallHistoryDetails?.callFrom?.userName}}"
+                            disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'CALL_HISTORY.MOBILENUMBER' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="ipAddress" name="ipAddress" [(ngModel)]="fromMobileNo" disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'CALL_HISTORY.TOUSERNAME' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="deviceType" name="deviceType" value="{{singleCallHistoryDetails?.callTo?.userName}}"
+                            disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'CALL_HISTORY.TOMOBILENUMBER' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="deviceAddress" name="deviceAddress" [(ngModel)]="toMobileNo" disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'COMMON_FIELDS.START_DATE' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="startdateId" name="startdate" [(ngModel)]="callStartDate" dateFormat="yy-mm-dd"
+                            disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'COMMON_FIELDS.END_DATE' | translate}}</label>
+                        <div class="clearfix"></div>
+                        <input type="text" class="form-control input-sm" id="endDateId" name="endDate" [(ngModel)]="callEndDate" dateFormat="yy-mm-dd"
+                            disabled>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>{{'COMMON_FIELDS.DURATION' | translate}}</label>
+                        <input type="text" class="form-control input-sm" id="browserName" name="browserName" value="{{singleCallHistoryDetails?.callDuration}}"
+                            disabled>
+                    </div>
+                </div>
+                <p-accordion>
+                    <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="createdBy" name="createdBy" value="{{singleCallHistoryDetails?.createdBy}}"
+                                    disabled>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="createdAt" name="createdAt" value="{{createdAt}}" disabled>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="updatedBy" name="updatedBy" value="{{singleCallHistoryDetails?.updatedBy}}"
+                                    disabled>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                                <input type="text" class="form-control input-sm" id="updatedAt" name="updatedAt" value="{{updatedAt}}" disabled>
+                            </div>
+                        </div>
+                    </p-accordionTab>
+                </p-accordion>
+            </div>
+            <!-- body ends -->
+
+            <!-- footer starts -->
+            <div class="modal-footer">
+                <div class="col-md-12 p0">
+                    <div class="pull-left">
+                        <app-powered></app-powered>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionType] == 'View'">
+                        <button class="btn btn-primary" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                    <div class="pull-right text-right" *ngIf="[actionType] == 'Delete'">
+                        <button class="btn btn-primary bottomargin" (click)="deleteCallHistory(singleCallHistoryDetails?._id)">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+                        <button class="btn btn-primary bottomargin" (click)="closePopupModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <!-- footer ends -->
+        </div>
+    </div>
+</div>

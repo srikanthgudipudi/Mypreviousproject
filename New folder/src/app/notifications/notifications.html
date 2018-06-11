@@ -1,0 +1,298 @@
+<div id="main" class="">
+  <div class="card">
+    <div class="card-header">
+      <div class="row no-gutter">
+        <div class="col-md-9">
+          <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_NOTIFICATIONS' | translate}}</h5>
+          <div class="cardicons-header pull-left">
+            <a *ngIf="exportstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+              (click)="exportData(searchString)">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="exportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchString)"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group mb0">
+            <div class="input-group">
+              <button type="button" (click)="AdvancePopupModal()" class="btn btn-primary btn-sm advanced-btn">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+              <input type="text" #input [(ngModel)]="searchString" pInputText size="50" (keypress)="handleKeyPress($event)" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}"
+                class="form-control input-sm mb0">
+              <span class="input-group-btn">
+                <button type="button" (click)="getNotifications(searchString)" class="btn btn-primary btn-sm">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-block">
+      <p-dataTable [value]="notifications" styleClass="table notificationslist" [rows]="rowsPerPage" [paginator]="true" [pageLinks]="2"
+        sortMode="multiple" [responsive]="true" expandableRows="true" [stacked]="stacked">
+        <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true"></p-column>
+        <p-column field="userAccount" header="{{'COMMON_FIELDS.USER_NAME' | translate}}" [sortable]="true" styleClass="user-name"></p-column>
+        <p-column field="notificationType" header="{{'NOTIFICATIONS.NOTIFICATION_TYPE' | translate}}" [sortable]="true" styleClass="type"></p-column>
+        <p-column field="notificationMessage" header="{{'NOTIFICATIONS.NOTIFICATION_MESSAGE' | translate}}" [sortable]="true">
+          <ng-template let-notify="rowData" pTemplate="body">
+            <a (click)="getRecordDetails(notify.recordId, notify.pageName)">{{notify.notificationMessage[0]}}
+              <b class="notification-msg">{{notify.notificationMessage[1]}}</b>{{notify.notificationMessage[2]}}</a>
+          </ng-template>
+        </p-column>
+        <p-column field="notificationDate" header="{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}" [sortable]="true"
+          styleClass="createddate"></p-column>
+        <p-column field="readStatus" header="{{'COMMON_FIELDS.STATUS' | translate}}" [sortable]="true" styleClass="status"></p-column>
+        <p-column field="actions" header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-three-col">
+          <ng-template let-notifications="rowData" pTemplate="body">
+            <a *ngIf="viewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+              (click)="deleteNotificationPopup('View',notifications)">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="viewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="deleteNotificationPopup('View',notifications)"></i>
+            </a>
+            <a *ngIf="[notifications.readStatus] == 'Unread' && [readstatus] == 'true'" data-toggle="tooltip" class="" data-placement="top"
+              title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_READ_ACTION' | translate}}" (click)="deleteNotificationPopup('Read',notifications)">
+              <i class="fa fa-15x fa-envelope notification-unread" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="[readstatus] == 'false'" class="not-active" data-toggle="tooltip" class="" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_READ_ACTION' | translate}}">
+              <i class="fa fa-15x fa-envelope notification-unread" aria-hidden="true" (click)="deleteNotificationPopup('Read',notifications)"></i>
+            </a>
+            <a *ngIf="unreadstatus == 'false'" class="not-active" data-toggle="tooltip" class="" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_UNREAD_ACTION' | translate}}"
+              (click)="deleteNotificationPopup('Unread',notifications)">
+              <i class="fa fa-15x fa-envelope-open notification-read" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="notifications.readStatus == 'Read' && [unreadstatus] == 'true'" data-toggle="tooltip" class="" data-placement="top"
+              title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_UNREAD_ACTION' | translate}}" (click)="deleteNotificationPopup('Unread',notifications)">
+              <i class="fa fa-15x fa-envelope-open notification-read" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="deletestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+              (click)="deleteNotificationPopup('Delete',notifications)">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="deletestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="deleteNotificationPopup('Delete',notifications)"></i>
+            </a>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
+
+<form id="Country_add_form">
+  <div bsModal #infoModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row">
+            <div class="col-md-12">
+              <app-logoheader></app-logoheader>
+              <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+                class="pull-right">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="popupsection-title">{{pagename}}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="enterpriseID" name="enterpriseName" value="{{singleNotification?.enterprise.enterpriseName}}"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.USER_NAME' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="notificationNameId" name="notificationName" value="{{singleNotification?.userAccount}}"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'NOTIFICATIONS.NOTIFICATION_TYPE' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="notificationType" name="notificationType" disabled value="{{singleNotification?.notificationType}}">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <label>{{'NOTIFICATIONS.NOTIFICATION_MESSAGE' | translate}}</label>
+              <textarea id="commentId" name="commentName" rows="2" class="form-control input-sm" maxlength="200" disabled>{{notificationMessage}}</textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="notificationDate" name="notificationdate" disabled value="{{datetime}}">
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="notificationStatusId" name="notificationStatus" disabled value="{{singleNotification?.readStatus}}">
+            </div>
+          </div>
+          <p-accordion>
+            <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="createdBy" name="createdBy" value="{{singleNotification?.createdBy}}"
+                    disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="createdAt" name="createdAt" value="{{createdAt}}" disabled>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="updatedBy" name="updatedBy" value="{{singleNotification?.updatedBy}}"
+                    disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                  <input type="text" class="form-control input-sm" id="updatedAt" name="updatedAt" value="{{updatedAt}}" disabled>
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md-12 p0">
+            <div class="pull-left">
+              <app-powered></app-powered>
+            </div>
+            <div class="pull-right text-right">
+              <button *ngIf="pagename =='Delete Notification'" type="submit" class="btn btn-primary" (click)="deleteNotification(singleNotification._id)">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+              <button *ngIf="pagename =='Read Notification'" type="submit" class="btn btn-primary" (click)="changeStatus(singleNotification, 'Read')">{{'COMMON_BUTTONS.BUTTON_READ' | translate}}</button>
+              <button *ngIf="pagename =='Unread Notification'" type="submit" class="btn btn-primary" (click)="changeStatus(singleNotification, 'Unread')">{{'COMMON_BUTTONS.BUTTON_UNREAD' | translate}}</button>
+              <button type="button" class="btn btn-primary" (click)="infoModal.hide()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div bsModal #mgModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvanceModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideAdvanceModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="text-capitalize form-control input-sm"
+              id="enterpriseName" name="enterpriseName" [(ngModel)]="enterprisevalue" onkeypress="return event.charCode != 34">
+            <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+              id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.USER_NAME' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" class="form-control input-sm" id="userId" name="userName" [(ngModel)]="userName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'NOTIFICATIONS.NOTIFICATION_TYPE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <select id="notificationType" name="notificationType" class="form-control input-sm" [(ngModel)]="notificationType">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of notificationTypes;" value="{{clang.description}}">{{clang.description}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'NOTIFICATIONS.NOTIFICATION_MESSAGE' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <input type="text" class="form-control input-sm" id="notificationMessage" name="notificationMessage" [(ngModel)]="notificationMessage">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.DATE_FROM' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <p-calendar readonlyInput="readonlyInput" (select)="advanfromDateChange()"[(ngModel)]="fromDate" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+              [showIcon]="true" [showTime]="true"></p-calendar>
+            <select id="Timezone" (change)="getTimezones($event.target.value);" class="form-control input-sm duration-list">
+              <option *ngFor="let clang of timeZones; let i='index'" [selected]="advuserpreferedtimezone == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.DATE_TO' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <p-calendar readonlyInput="readonlyInput" [(ngModel)]="toDate" (select)="advantoDateChange()" inputStyleClass="timezone-calendar calendar" dateFormat="yy-mm-dd"
+              [showIcon]="true" [showTime]="true"></p-calendar>
+            <select id="Timezone" (change)="getTimezones($event.target.value);" class="form-control input-sm duration-list">
+              <option *ngFor="let clang of timeZones; let i='index'" [selected]="advuserpreferedtimezone == clang.lookupName" value="{{clang.lookupName}}${{clang.description}}"
+                id="clang{{i}}">{{clang.lookupName}} - {{clang.description}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-5 form-control-label">
+            <label for="">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+          </div>
+          <div class=" col-md-7">
+            <select id="notificationStatus" name="notificationStatus" class="form-control input-sm" [(ngModel)]="notificationStatus">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of notificationStatuses;" value="{{clang.description}}">{{clang.description}}</option>
+            </select>
+          </div>
+        </div>
+         <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button type="button" class="btn btn-primary" (click)="submitAdvancedSearch()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="clear()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="hideAdvanceModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

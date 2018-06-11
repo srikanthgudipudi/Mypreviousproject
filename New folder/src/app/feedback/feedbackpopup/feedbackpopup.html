@@ -1,0 +1,282 @@
+<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideChildModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/oracle_logo.png';"
+              height="30" class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class=" col-md-12">
+            <h5 class="popupsection-title">{{pagename | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <!-- View feedback Popup Sarts -->
+        <div class="row" *ngIf="[actionType]=='View' || [actionType]=='Delete'">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="enterpriseId" name="enterprisename" disabled value="{{feedbackObj.enterprise.enterpriseName}}">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FEEDBACK.USER_FROM' | translate}}</label>
+            <input type="text" class="form-control input-sm" maxlength="50" id="" name="" disabled value="{{feedbackObj.userFrom}}">
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FEEDBACK.FEEDBACK_TYPE' | translate}}</label>
+            <div class="clearfix"></div>
+            <input type="text" class="form-control input-sm" id="startdateId" name="startdate" value="{{feedbackObj.feedbackType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FEEDBACK.OBJECT_TYPE' | translate}}</label>
+            <div class="clearfix"></div>
+            <input type="text" class="form-control input-sm" id="startdateId" name="startdate" value="{{feedbackObj.objectType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FEEDBACK.OBJECT_NAME' | translate}}</label>
+            <div class="clearfix"></div>
+            <input type="text" class="form-control input-sm" id="startdateId" name="startdate" value="{{feedbackObj.objectName.objName}}"
+              disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <div class="clearfix"></div>
+            <input type="text" class="form-control input-sm" id="duration" name="duration" value="{{feedbackObj.feedbackStatus}}" disabled>
+          </div>
+          <div class="col-md-12 form-group">
+            <label>{{'FEEDBACK.FEEDBACK' | translate}}</label>
+            <div class="clearfix"></div>
+            <input type="text" class="form-control input-sm" id="startdateId" name="startdate" value="{{feedbackObj.feedback}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+            <textarea id="commentId" name="commentName" class="form-control input-sm" disabled value="{{feedbackObj.notes}}" maxlength="200"></textarea>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'FEEDBACK.ACTION_TAKEN' | translate}}</label>
+            <div class="clearfix"></div>
+            <input type="text" class="form-control input-sm" id="enddateId" name="enddate" value="{{feedbackObj.actionTaken}}" disabled>
+          </div>
+          <div *ngIf="feedbackObj.feedbackStatus === 'Open'" class="col-md-4 form-group">
+            <label>{{'FEEDBACK.ACTION_DATE' | translate}}</label>
+            <input id="commentId" name="commentName" class="form-control input-sm" disabled value="" maxlength="200">
+          </div>
+          <div *ngIf="feedbackObj.feedbackStatus === 'Closed'" class="col-md-4 form-group">
+            <label>{{'FEEDBACK.ACTION_DATE' | translate}}</label>
+            <input id="commentId" name="commentName" class="form-control input-sm" disabled value="{{updateAt}}" maxlength="200">
+          </div>
+        </div>
+        <p-accordion *ngIf="actionType=='View'|| [actionType]=='Delete'">
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" id="createdId" class="form-control input-sm" name="username" disabled value="{{feedbackObj.createdBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" id="createdAtId" class="form-control input-sm" name="createdname" value="{{createAt}}" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" id="updatedId" class="form-control input-sm" name="updatename" disabled value="{{feedbackObj.updatedBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" id="udatedAtId" class="form-control input-sm" name="updatedatname" value="{{updateAt}}" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+        <!-- Edit popup -->
+        <!-- Edit Fun Facts Popup Sarts -->
+        <div class="row" *ngIf="actionType=='Edit'">
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="enterpriseId" name="enterprisename" disabled value="{{feedbackupdate.enterprise.enterpriseName}}">
+            <input type="text" class="form-control input-sm" id="enterpriseId" name="enterprisename" hidden value="{{feedbackupdate.enterprise.enterpriseId}}">
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'FEEDBACK.USER_FROM' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm text-capitalize" name="" value="{{feedbackupdate.userFrom}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'FEEDBACK.FEEDBACK_TYPE' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm text-capitalize" name="" value="{{feedbackupdate.feedbackType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'FEEDBACK.OBJECT_TYPE' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm text-capitalize" name="" value="{{feedbackupdate.objectType}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'FEEDBACK.OBJECT_NAME' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm text-capitalize" name="" value="{{feedbackupdate.objectName.objName}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            <div class="clearfix"></div>
+            <input type="text" class="form-control input-sm" id="duration" name="duration" value="{{feedbackupdate.feedbackStatus}}"
+              disabled>
+          </div>
+          <div class="col-md-12 form-group">
+            <div class="input-group">
+              <label>{{'FEEDBACK.FEEDBACK' | translate}}</label>
+            </div>
+            <textarea name="" class="form-control input-sm" maxlength="200" value="{{feedbackupdate.feedback}}" disabled></textarea>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+            </div>
+            <textarea name="" class="form-control input-sm" maxlength="200" value="{{feedbackupdate.notes}}" disabled></textarea>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label><span class="text-danger">&#42;</span>{{'FEEDBACK.ACTION_TAKEN' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm text-capitalize" onkeypress="return event.charCode != 34" [(ngModel)]="actiontaken"
+              id="funfactId" name="funFact">
+          </div>
+          <div *ngIf="feedbackObj.feedbackStatus === 'Open'" class="col-md-4 form-group">
+            <label>{{'FEEDBACK.ACTION_DATE' | translate}}</label>
+            <input id="commentId" name="commentName" class="form-control input-sm" disabled value="" maxlength="200">
+          </div>
+          <div *ngIf="feedbackObj.feedbackStatus === 'Closed'" class="col-md-4 form-group">
+            <label>{{'FEEDBACK.ACTION_DATE' | translate}}</label>
+            <input id="commentId" name="commentName" class="form-control input-sm" disabled value="{{updateAt}}" maxlength="200">
+          </div>
+        </div>
+        <p-accordion *ngIf="actionType=='Edit'">
+          <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                <input type="text" id="createdId" class="form-control input-sm" name="username" disabled value="{{feedbackObj.createdBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                <input type="text" id="createdAtId" class="form-control input-sm" name="createdname" value="{{createAt}}" disabled>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                <input type="text" id="updatedId" class="form-control input-sm" name="updatename" disabled value="{{feedbackObj.updatedBy}}">
+              </div>
+              <div class="col-md-6 form-group">
+                <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                <input type="text" id="udatedAtId" class="form-control input-sm" name="updatedatname" value="{{updateAt}}" disabled>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+        <!-- Create Fun Facts Popup Sarts -->
+        <div class="row" *ngIf="actionType=='Create'">
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            </div>
+            <div>
+              <input type="text" class="form-control input-sm" (keypress)="clearmessage()" id="enterpriseId" name="enterprisename" disabled
+                value="{{enterprise}}">
+            </div>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'FEEDBACK.USER_FROM' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm" name="" value="{{user_Account}}" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label><span class="text-danger">&#42;</span>{{'FEEDBACK.FEEDBACK_TYPE' | translate}}</label>
+            </div>
+            <select id="status" (change)="feedbackType($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+            <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+            <option *ngFor="let eventtype of feedbackTypeList; let i='index'" value="{{eventtype._id}}${{eventtype.lookupName}}" id="eventtype{{i}}">{{eventtype.lookupName}}</option>
+            </select>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label><span class="text-danger">&#42;</span>{{'FEEDBACK.OBJECT_TYPE' | translate}}</label>
+            </div>
+            <select id="status" (change)="selectobjectType($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+            <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+            <option *ngFor="let eventtype of objectList; let i='index'" value="{{eventtype.lookupName}}" id="eventtype{{i}}">{{eventtype.lookupName}}</option>
+            </select>
+          </div>
+          <!-- </div> -->
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label><span class="text-danger">&#42;</span>{{'FEEDBACK.OBJECT_NAME' | translate}}</label>
+            </div>
+            <select id="status" (change)="selectobjectName($event.target.value); clearmessage()" name="select" class="form-control input-sm"
+              size="1">
+            <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+            <option *ngFor="let eventtype of objectNameList; let i='index'" value="{{eventtype}}" id="eventtype{{i}}">{{eventtype}} </option>
+            </select>
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'COMMON_FIELDS.STATUS' | translate}}</label>
+            </div>
+            <input type="text" class="form-control input-sm" (keypress)="clearmessage()" id="enterpriseId" name="enterprisename" disabled
+              value="{{feedbackstatus}}">
+          </div>
+          <div class="col-md-12 form-group">
+            <div class="input-group">
+              <label><span class="text-danger">&#42;</span>{{'FEEDBACK.FEEDBACK' | translate}}</label>
+            </div>
+            <textarea name="" class="form-control input-sm" maxlength="200" [(ngModel)]="feedback"></textarea>
+
+          </div>
+          <div class="col-md-4 form-group">
+            <div class="input-group">
+              <label>{{'COMMON_FIELDS.NOTES' | translate}}</label>
+            </div>
+            <textarea name="" class="form-control input-sm" maxlength="200" [(ngModel)]="notes"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="text-danger text-center">{{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionType] == 'Create'">
+            <button class="btn btn-primary" (click)="createfeedback()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionType] == 'Edit'">
+            <button class="btn btn-primary" (click)="updatefeedback(feedbackupdate)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionType] == 'View'">
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionType] == 'Delete'">
+            <button class="btn btn-primary" (click)="deleteFeedback()">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

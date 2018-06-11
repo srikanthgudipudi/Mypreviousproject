@@ -1,0 +1,45 @@
+{
+  "data": [
+    
+    {
+	"_id" : "1",
+	"enterpriseId" : 1,
+	"fleetAssetId" : "India",
+	"userId" : "testuser1",
+	"ipAddress" : "1.1.1.1",
+	"deviceType" : "Android",
+	"deviceId" : "abcd",
+	"macAddress" : "12-34-56-78-90-12",
+	"browserName" : "Chrome",
+	"browserVersion" : "v55.67",
+	"loginTime" : "ISODate(2017-07-10T07:41:12.754-04:00)",
+	"logoutTime" :  "ISODate(2017-07-10T07:41:12.754-04:00)",
+	"remarks" : "",
+	"createdBy" : "SD",
+	"createdAt" :  "ISODate(2017-07-10T07:41:12.754-04:00)",
+	"updatedBy" : "",
+	"updatedAt" : ""
+},
+{
+	"_id" : "1",
+	"enterpriseId" : 1,
+	"fleetAssetId" : "India",
+	"userId" : "testuser1",
+	"ipAddress" : "1.1.1.1",
+	"deviceType" : "Android",
+	"deviceId" : "abcd",
+	"macAddress" : "12-34-56-78-90-12",
+	"browserName" : "Chrome",
+	"browserVersion" : "v55.67",
+	"loginTime" :  "ISODate(2017-07-10T07:41:12.754-04:00)",
+	"logoutTime" :  "ISODate(2017-07-10T07:41:12.754-04:00)",
+	"remarks" : "",
+	"createdBy" : "SD",
+	"createdAt" :  "ISODate(2017-07-10T07:41:12.754-04:00)",
+	"updatedBy" : "",
+	"updatedAt" : ""
+}
+
+
+  ]
+}

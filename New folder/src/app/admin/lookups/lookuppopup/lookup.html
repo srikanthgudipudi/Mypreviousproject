@@ -1,0 +1,229 @@
+<!-- 
+  Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+-->
+<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideChildModal()" tabindex="-1"
+  role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <!-- Header-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideChildModal()" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <app-logoheader></app-logoheader>
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';"
+              height="30" class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{ pagename | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <!-- Header-->
+        <!-- create popup   -->
+        <div class="row" *ngIf="actionType =='Create'">
+          <div class="col-md-4 form-group">
+            <label *ngIf="[enterprisesSize] == 'false'"> <span class="text-danger" >*</span>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <label *ngIf="[enterprisesSize] == 'true'">{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+            <select *ngIf="[enterprisesSize] == 'false'" id="userType" (change)="getEnterpriseResources($event.target.value); clearmessage()"
+              name="select" class="form-control input-sm" size="1">
+              <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+              <option *ngFor="let clang of enterprisesNames; let i='index'" value="{{clang._id+'~'+clang.enterpriseName+'~'+clang.enterpriseIconFilePath+'~'+clang.enterpriseIcon}}" id="clang{{i}}">{{clang.enterpriseName}}</option>
+            </select>
+            <input *ngIf="[enterprisesSize] == 'true'" type="text" [(ngModel)]="enterprisesName" class="form-control input-sm" id="sample"
+              name="" value="" disabled>
+          </div>
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger">*</span>{{'LOOKUPS.LOOKUP_TYPE' | translate}}</label>
+            <select id="country" class="form-control input-sm" [(ngModel)]="lTypeName" (change)="NewlookupName($event.target.value); clearmessage()" (keypress)="clearmessage()">
+              <option value="" >{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+             <option *ngFor="let lookuptype of countries" value="{{lookuptype}}">{{lookuptype}}</option>  
+                        </select>
+          </div>
+          <!-- for new lookup starts -->
+          <div class="col-md-4 form-group" *ngIf="status =='0'">
+            <label><span class="text-danger">*</span>{{'LOOKUPS.LOOKUP_TYPE' | translate}}</label>
+            <input type="text" class="form-control input-sm text-capitalize" [(ngModel)]="lTypeName" id="username" name="username" value=""
+              (keypress)="clearmessage()" placeholder="Enter New Lookuptype">
+          </div>
+          <div class="col-md-4 form-group">
+              <label>{{'LOOKUPS.LOOKUP_TYPE_CATEGORY' | translate}}</label>
+              <input type="text" class="form-control input-sm text-capitalize" [(ngModel)]="lTypeCategory" id="username" name="username" 
+                disabled>
+            </div>
+          <!-- for new lookup ends -->
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger">*</span>{{'LOOKUPS.LOOKUP_VALUE' | translate}}</label>
+            <input type="text" class="form-control input-sm" id="username" [(ngModel)]="lName" name="username" value=""
+              (keypress)="clearmessage()" onkeypress= 'return event.charCode != 34'>
+            <input type="hidden" name="enterpriseId" class="form-control" id="lookupName">
+          </div>
+          <div class="col-md-4 form-group">
+            <label class="checkbox-inline" for="inline-checkbox1">
+              <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+            <input id="inline-checkbox1" class="regular-checkbox big-checkbox" [(ngModel)]="checkBoxValue" (change)="clearmessage()" name="inline-checkbox1" type="checkbox"
+              >
+              <label for="inline-checkbox1"></label>
+            </label>
+          </div>
+          <div class="col-md-4 form-group">
+            <label><span class="text-danger">*</span>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+            <textarea id="commentId" name="commentName" [(ngModel)]="comment" (keypress)="clearmessage()" onkeypress= 'return event.charCode != 34' class="form-control input-sm" maxlength="200"></textarea>
+          </div>
+        </div>
+        <!--create ending  -->
+        <!--View and Delete  -->
+        <div *ngIf="[actionType] =='View' || [actionType] =='Delete'">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="username" name="username" value="{{looksobj.enterprise.enterpriseName}}"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'LOOKUPS.LOOKUP_TYPE' | translate}}</label>
+              <input id="" class="form-control input-sm" (change)="clearmessage()" value="{{looksobj.lookupTypeName}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+                <label>{{'LOOKUPS.LOOKUP_TYPE_CATEGORY' | translate}}</label>
+                <input type="text" class="form-control input-sm text-capitalize" value="{{looksobj.lookupTypeCategory}}"  id="username" name="username" 
+                  disabled>
+              </div>
+            <div class="col-md-4 form-group">
+              <label>{{'LOOKUPS.LOOKUP_VALUE' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="username" name="username"
+                value="{{looksobj.lookupName}}" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">
+              <label>{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+              <input id="inline-checkbox2" class="regular-checkbox big-checkbox" name="inline-checkbox1" type="checkbox" [(ngModel)]="looksobj.isEnabled" disabled>
+               <label for="inline-checkbox2"></label>
+              </label>
+             
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+              <textarea id="commentId" disabled name="commentName" value="{{descriptions}}" (keypress)="clearmessage()" class="form-control input-sm"
+                maxlength="200"></textarea>
+            </div>
+          </div>
+          <p-accordion>
+            <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{looksobj.createdBy}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{createdAt}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{looksobj.updatedBy}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{updatedAt}}" disabled>
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+        <!--View and Delete  -->
+        <!--Edit popup-->
+        <div *ngIf="actionType =='Edit'">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.ENTERPRISE' | translate}}</label>
+              <input type="text" class="form-control input-sm text-capitalize" id="username" [(ngModel)]="editobj.enterprise.enterpriseName"
+                name="username" (keypress)="clearmessage()" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'LOOKUPS.LOOKUP_TYPE' | translate}}</label>
+              <input id="" class="form-control input-sm text-capitalize" (keypress)="clearmessage()" [(ngModel)]="editobj.lookupTypeName"
+                disabled>
+            </div>
+            <div class="col-md-4 form-group">
+                <label>{{'LOOKUPS.LOOKUP_TYPE_CATEGORY' | translate}}</label>
+                <input type="text" class="form-control input-sm text-capitalize" [(ngModel)]="editobj.lookupTypeCategory" id="username" name="username" 
+                  disabled>
+              </div>
+            <div class="col-md-4 form-group">
+              <label>{{'LOOKUPS.LOOKUP_VALUE' | translate}}</label>
+              <input type="text" class="form-control input-sm" id="username" [(ngModel)]="editobj.lookupName" name="username"
+                (keypress)="clearmessage()" disabled>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="checkbox-inline" for="inline-checkbox1">{{'COMMON_FIELDS.ENABLED' | translate}}
+             <input id="inline-checkbox3" class="regular-checkbox big-checkbox" [(ngModel)]="isEnabled" (change)="clearmessage()" name="inline-checkbox1" type="checkbox" > 
+              <label for="inline-checkbox3"></label>
+               </label>
+            </div>
+            <div class="col-md-4 form-group">
+              <label>{{'COMMON_FIELDS.DESCRIPTION' | translate}}</label>
+              <textarea id="commentId" name="commentName" [(ngModel)]="descriptions" (keypress)="clearmessage()" (keypress)="clearmessage()"
+                class="form-control input-sm" maxlength="200" disabled></textarea>
+            </div>
+          </div>
+          <p-accordion>
+            <p-accordionTab header="{{'COMMON_RECORD_HISTORY_BLOCK.RECORD_HISTORY' | translate}}">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_BY' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{looksobj.createdBy}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.CREATED_DATE' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{createdAt}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_BY' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{looksobj.updatedBy}}" disabled>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label>{{'COMMON_RECORD_HISTORY_BLOCK.LAST_UPDATED_DATE' | translate}}</label>
+                  <input type="text" id="" class="form-control input-sm" name="username" value="{{updatedAt}}" disabled>
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+      </div>
+      <div class="text-danger text-center">{{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+              <app-powered></app-powered>
+           </div>
+          <div class="pull-right text-right" *ngIf="[actionType] == 'Create'">
+            <button class="btn btn-primary" (click)="createUserInfo()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionType] == 'Edit'">
+            <button class="btn btn-primary" (click)="editlookupdetails(editobj)">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionType] == 'View'">
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+          <div class="pull-right text-right" *ngIf="[actionType] == 'Delete'">
+            <button class="btn btn-primary" (click)="Deletelookup(looksobj._id)">{{'COMMON_BUTTONS.BUTTON_DELETE' | translate}}</button>
+            <button class="btn btn-primary" (click)="hideChildModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

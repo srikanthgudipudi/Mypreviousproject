@@ -1,0 +1,354 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div id="main" class="">
+  <div class="card">
+    <div class="card-header">
+      <div class="row no-gutter">
+        <div class="col-md-9">
+          <h5 class="section-title mb0 pull-left">{{fleetsCommonName}}</h5>
+          <div class="cardicons-header pull-left">
+            <a *ngIf="fleetaddstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}"
+              (click)="fleetDetails('create','')">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetaddstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="fleetDetails('create','')"></i>
+            </a>
+            <a *ngIf="fleetimportstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}"
+              (click)="importPopup()">
+              <i class="fa fa-15x fa-download page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetimportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-download page-title-icons" aria-hidden="true" (click)="importPopup()"></i>
+            </a>
+            <a *ngIf="fleetexportstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+              (click)="exportData(searchstring)">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetexportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+            </a>
+            <a *ngIf="fleetlocatestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="locates('locate')"></i>
+            </a>
+            <a *ngIf="fleetlocatestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="locates('locate')"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group mb0">
+            <div class="input-group">
+              <button type="button" class="btn btn-primary btn-sm advanced-btn" (click)="advancedSearchFleets()">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+              <input type="text" id="input1-group2" #input [(ngModel)]="searchstring" (keypress)="handleKeyPress($event)" name="input1-group2"
+                class="form-control input-sm mb0" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}">
+              <span class="input-group-btn">
+                <button type="button" (click)="getAllFleetssSearchList(searchstring)" class="btn btn-primary btn-sm">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-block">
+      <p-dataTable [value]="allfleetsDetails" styleClass="table" [rows]="rowsPerPage" [paginator]="true" [pageLinks]="2" sortMode="multiple"
+        [responsive]="true" expandableRows="true" [stacked]="stacked">
+        <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="path" header="{{'FLEETS.FLEET_PARENT' | translate}}{{fleetCommonName}}" [sortable]="true">
+        </p-column>
+        <p-column field="fleetName" header="{{fleetCommonName}}" [sortable]="true">
+        </p-column>
+        <p-column field="fleetType" header="{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}" [sortable]="true"></p-column>
+        <p-column field="fleetCode" header="{{fleetCommonName}}{{'FLEETS.FLEET_CODE' | translate}}" [sortable]="true" styleClass="user-name">
+        </p-column>
+        <p-column field="isEnabled" styleClass="text-capitalize status" header="{{'COMMON_FIELDS.STATUS' | translate}}" [sortable]="true"></p-column>
+        <p-column field="actions" header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="fleet-action">
+          <ng-template let-allfleets="rowData" pTemplate="body">
+            <a *ngIf="fleetviewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+              (click)="fleetDetails('VIEW',allfleets)">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetviewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="fleetDetails('VIEW',allfleets)"></i>
+            </a>
+            <a *ngIf="fleetaddstatus == 'true' " [ngClass]="(allfleets.isEnabled === 'Inactive')?'not-active':''" data-toggle="tooltip"
+              data-placement="top" title="Create Child Fleet">
+              <i class="fa fa-15x fa-plus text-success" aria-hidden="true" (click)="fleetDetails('CRECHILD', allfleets)"></i>
+            </a>
+            <a *ngIf="fleetaddstatus == 'false'" class="not-active" [ngClass]="(allfleets.isEnabled === 'Inactive')?'not-active':''"
+              data-toggle="tooltip" data-placement="top" title="Create Child Fleet">
+              <i class="fa fa-15x fa-plus text-success" aria-hidden="true" (click)="fleetDetails('CRECHILD', allfleets)"></i>
+            </a>
+            <a *ngIf="fleeteditstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}"
+              (click)="fleetDetails('EDIT',allfleets)">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleeteditstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="fleetDetails('EDIT',allfleets)"></i>
+            </a>
+            <span *ngIf="fleeteditstatus == 'true'">
+              <a *ngIf="[allfleets.isEnabled] == 'Active'" data-toggle="tooltip" class="" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_INACTIVATE_ACTION' | translate}}"
+                (click)="fleetDetails('Inactive',allfleets)">
+                <i class="fa fa-15x fa-user-secret enterpriseinactive"></i>
+              </a>
+              <a *ngIf="[allfleets.isEnabled] == 'Inactive'" data-toggle="tooltip" class="" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_ACTIVATE_ACTION' | translate}}"
+                (click)="fleetDetails('Active',allfleets)">
+                <i class="fa fa-15x fa-user-secret enterpriseactive"></i>
+              </a>
+            </span>
+            <span *ngIf="fleeteditstatus == 'false'">
+              <a *ngIf="[allfleets.isEnabled] == 'Active'" data-toggle="tooltip" class="not-active" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_INACTIVATE_ACTION' | translate}}"
+                (click)="fleetDetails('Inactive',allfleets)">
+                <i class="fa fa-15x fa-user-secret enterpriseinactive"></i>
+              </a>
+              <a *ngIf="[allfleets.isEnabled] == 'Inactive'" data-toggle="tooltip" class="not-active" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_ACTIVATE_ACTION' | translate}}"
+                (click)="fleetDetails('Active',allfleets)">
+                <i class="fa fa-15x fa-user-secret enterpriseactive"></i>
+              </a>
+            </span>
+            <a *ngIf="fleetdeletedstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+              (click)="fleetDetails('DELETE',allfleets)">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="fleetdeletedstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="fleetDetails('DELETE',allfleets)"></i>
+            </a>
+            <a *ngIf="fleetlocatestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singlelocate('locate', allfleets)"></i>
+            </a>
+            <a *ngIf="fleetlocatestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singlelocate('locate', allfleets)"></i>
+            </a>
+            <a *ngIf="allfleets.isTransactable == true"  data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CALENDAR_ACTION' | translate}}">
+              <i class="fa fa-calendar" aria-hidden="true" (click)="calendar(allfleets)"></i>
+            </a>
+            <a *ngIf="allfleets.isTransactable == false"  class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CALENDAR_ACTION' | translate}}">
+              <i class="fa fa-calendar" aria-hidden="true" (click)="calendar(allfleets)"></i>
+            </a>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
+<!-- advance popup  -->
+<div bsModal #advancedModel="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvancedModal()"
+  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideAdvancedModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6 p-r">
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'COMMON_FIELDS.ENTERPRISE' | translate}} </label>
+              </div>
+              <div class=" col-md-8">
+                <select *ngIf="[userrole] == 'Super Admin' || [userrole] == 'Sub Admin'|| [userrole] == 'Tech Help'" class="form-control input-sm" id="header_country_select" (change)="getEnterprisepathById($event.target.value); clearmessage();"
+                [(ngModel)]="enterpriseValue">
+                <option value="" selected>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                <option *ngFor="let enterprise of enterpriselist" value="{{enterprise._id}}${{enterprise.enterpriseName}}" [selected]="enterprise.enterpriseName === advsearch.selectedenterpriseId">{{enterprise.enterpriseName}}</option>
+                  </select>
+                <input type="text" *ngIf="[userrole] != 'Super Admin' && [userrole] != 'Sub Admin'&& [userrole] != 'Tech Help'" class="text-capitalize form-control input-sm"
+                  id="enterpriseName" name="enterpriseName" [(ngModel)]="enterpriseNames" disabled>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'COMMON_ADDRESS_DETAILS_BLOCK.CITY' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <input name="" class="form-control input-sm" [(ngModel)]="advsearch.city" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'COMMON_ADDRESS_DETAILS_BLOCK.STATE' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <input name="" class="form-control input-sm" [(ngModel)]="advsearch.state" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label>{{'COMMON_ADDRESS_DETAILS_BLOCK.COUNTRY' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <select id="" class="form-control input-sm" (change)="Changecountry($event.target.value);clearmessage()">
+                  <option value='select'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of countries; let i='index'" [selected]="clang.lookupName === advsearch.country" value="{{clang.lookupName}}">{{clang.lookupName}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'FLEETS.FLEET_PARENT' | translate}}{{fleetCommonName}}</label>
+              </div>
+              <div class=" col-md-8">
+                <input name="" class="form-control input-sm" [(ngModel)]="advsearch.parentFleet" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{fleetCommonName}}</label>
+              </div>
+              <div class=" col-md-8">
+                <input name="" class="form-control input-sm" [(ngModel)]="advsearch.fleetName" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{fleetCommonName}}{{'FLEETS.FLEET_CODE' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <input name="" class="form-control input-sm" [(ngModel)]="advsearch.fleetCode" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'COMMON_FIELDS.STATUS' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <select id="" class="form-control input-sm" (change)="ChangeStatus($event.target.value)">
+                  <option value='select'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of statuslist; let i='index'" value="{{clang.lookupName}}" id="profilePage_timezone_select_option_{{i}}"
+                    [selected]="clang.lookupName === advsearch.status">{{clang.lookupName}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 p-l">
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label>{{fleetCommonName}}{{'FLEETS.FLEET_TYPE' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <select id="" class="form-control input-sm" (change)="ChangeFleetTypes($event.target.value);clearmessage()">
+                  <option value=''>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of fleetTypes; let i='index'" [selected]="clang.fleetTypeName === advsearch.fleetType" value="{{clang.fleetTypeName}}">{{clang.fleetTypeName}}</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="addinfo == true">
+              <div *ngFor="let item of attributeList; let i = index">
+                <div class="form-group row">
+                  <div class="col-md-4 form-control-label">
+                    <label>{{item.attributeName}}</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select *ngIf="item.attributeType=='List Field'" id="itemText{{i}}" (change)="clearmessage()" name="select" class="form-control input-sm"
+                      size="1">
+                      <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                      <option *ngFor="let clang of item['lookupsData']; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}" [selected]="clang.description === item.defaultValue">{{clang.description}}</option>
+                    </select>
+                    <input *ngIf="item.attributeType=='Text Field'" type="text" class="form-control input-sm" id="itemText{{i}}" name="createfleet.attributes.attributeValue"
+                      (keypress)="clearmessage()" value="{{item.defaultValue}}">
+                    <input type="hidden" class="form-control input-sm" id="itemId{{i}}" name="item._id" value="{{item._id}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button type="button" class="btn btn-primary" (click)="advancedFleets()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="clearAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="hideAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #fleetImportModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideImportModal()"
+  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideImportModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/oracle_logo.png';"
+              height="30" class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_IMPORT_ACTION' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="col-md-4 form-group">
+            <input type="file" id="file-input" [(ngModel)]="csvFile" accept='.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="custom-file-input'
+              class="custom-file-input" name="file-input" (change)="csvUploaded($event)">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6 pull-left fleetftsub">
+            {{'COMMON_FIELDS.PLEASE_DOWNLOAD' | translate}}
+            <!-- <input type="button" value="Download" onClick="window.location.href='assets/imports/Srisys-Pigeon-ImportTemplate-Fleets.xlsx'" target="_blank">-->
+            <a href="assets/import_templates/Srisys-Pigeon-ImportTemplate-Fleets.xlsx"
+             download="Srisys-Pigeon-ImportTemplate-Fleets.xlsx">{{'COMMON_FIELDS.TEMPLATE' | translate}}</a>
+          </div>
+        </div>
+      </div>
+      <div id="login_popup_error" class="text-danger text-center"> {{error | translate}}</div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button type="button" class="btn btn-primary" (click)="importList()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="hideImportModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-fleets-popup (uploaded)="getFleetList($event)"></app-fleets-popup>

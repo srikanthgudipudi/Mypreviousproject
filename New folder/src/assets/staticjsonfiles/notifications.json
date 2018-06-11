@@ -1,0 +1,20 @@
+{
+  "result": [
+{
+    "enterpriseId" : 1,
+
+    "message" : "Hi You have an new follower selenium",
+
+    "notificationType" : "INFO",
+    "type":""
+},
+{
+    "enterpriseId" : 2,
+
+    "message" : "Hi You have an new follower selenium",
+
+    "notificationType" : "INFO",
+    "type":""
+}   
+ ]
+}

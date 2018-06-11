@@ -1,0 +1,208 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Other",
+      "code": "",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 2,
+      "name": "Arabic",
+      "code": "ar",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 3,
+      "name": "Bengali ",
+      "code": "bn",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 4,
+      "name": "Burmese",
+      "code": "MY",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 5,
+      "name": "Croatian",
+      "code": "cro",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 6,
+      "name": "Czech",
+      "code": "cz",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 24,
+      "name": "Danish",
+      "code": "da",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 7,
+      "name": "Dutch",
+      "code": "nl",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 8,
+      "name": "English",
+      "code": "en",
+      "defaultlanguage": "true"
+    },
+    {
+      "id": 9,
+      "name": "French",
+      "code": "fr",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 10,
+      "name": "German",
+      "code": "de",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 11,
+      "name": "Greek",
+      "code": "el",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 12,
+      "name": "Hindi",
+      "code": "hy",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 13,
+      "name": "Indonesian",
+      "code": "id",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 14,
+      "name": "Italian",
+      "code": "it",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 15,
+      "name": "Japanese",
+      "code": "ja",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 16,
+      "name": "Korean",
+      "code": "ko",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 17,
+      "name": "Mandarin",
+      "code": "zh-gyoyu",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 18,
+      "name": "Marathi",
+      "code": "mr",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 19,
+      "name": "Norwegian  ",
+      "code": "ja",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 20,
+      "name": "Persian",
+      "code": "pe",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 21,
+      "name": "Polish",
+      "code": "pl",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 22,
+      "name": "Portuguese",
+      "code": "pt",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 23,
+      "name": "Romanian",
+      "code": "rm",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 24,
+      "name": "Russian",
+      "code": "ru",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 25,
+      "name": "Spanish",
+      "code": "es",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 26,
+      "name": "Swedish",
+      "code": "sv",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 27,
+      "name": "Tamil",
+      "code": "ta",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 28,
+      "name": "Telugu",
+      "code": "te",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 29,
+      "name": "Thai",
+      "code": "th",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 30,
+      "name": "Turkish ",
+      "code": "tr",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 31,
+      "name": "Ukranian",
+      "code": "UK",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 32,
+      "name": "Urdu",
+      "code": "ur",
+      "defaultlanguage": "false"
+    },
+    {
+      "id": 33,
+      "name": "Vietnamese",
+      "code": "vi",
+      "defaultlanguage": "false"
+    }
+  ]
+}

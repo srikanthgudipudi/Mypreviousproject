@@ -1,0 +1,99 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div id="allusers" class="tab-pane">
+    <div class="card">
+        <div class="card-header">
+            <div class="row no-gutter">
+                <div class="col-md-9">
+                    <h5 class="section-title mb0 pull-left">{{'COMMON_PAGE_TITLES.LIST_MESSAGE_GROUPS' | translate}}</h5>
+                    <div class="cardicons-header pull-left">
+                        <a *ngIf="addstatus == 'true'" data-toggle="tooltip" data-placement="top" (click)="showmessage('CreateMessageGroup','')"
+                            title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_GROUP_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="addstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_GROUP_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="showmessage('CreateMessageGroup','')"></i>
+                        </a>
+                        <!--<a *ngIf="exportstatus == 'true'" data-toggle="tooltip" data-placement="top" (click)="exportData(searchstring)" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-location-arrow page-title-icons" aria-hidden="true" (click)="locates('locate')"></i>
+                        </a>-->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group mb0">
+                        <div class="input-group">
+                            <!--<button type="button" (click)="getadvancedsearch()" class="btn btn-primary btn-sm advanced-btn">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>-->
+                            <input type="text" [(ngModel)]="searchstring" #input (keypress)="handleKeyPress($event)" pInputText size="50" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}"
+                                class="form-control input-sm mb0">
+                            <span class="input-group-btn">
+                                <button type="button" (click)="allMessageSearch(searchstring)" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <p-dataTable [responsive]="true" [stacked]="stacked" [value]="messagedata" [rows]="10" [paginator]="true" [pageLinks]="2"
+                expandableRows="true" sortMode="multiple">
+                <p-column field="enterprise.enterpriseName" header="{{'COMMON_FIELDS.ENTERPRISE' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column field="groupName" header="{{'MESSAGE_GROUP.GROUP_NAME' | translate}}" [sortable]="true">
+                </p-column>
+                <p-column field="groupStartDate" header="{{'MESSAGE_HISTORY.MESSAGE_DATE' | translate}}" [sortable]="true" styleClass="messagehistorydate">
+                    <template let-user="rowData" pTemplate="body">
+                        <span>
+                            {{user.groupStartDate}} {{userpreferedtimezone}}
+                        </span>
+                    </template>
+                </p-column>
+                <p-column field="groupStatus" header="{{'COMMON_FIELDS.STATUS' | translate}}" [sortable]="true" styleClass="status">
+                </p-column>
+                <p-column header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-four-col">
+                    <ng-template let-user="rowData" pTemplate="body">
+                        <a *ngIf="viewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+                            (click)="showmessage('View',user)">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="viewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="showmessage('View',user)"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}" (click)="showmessage('Edit',user)">
+                            <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="[user.groupStatus] == 'Active'" data-toggle="tooltip" class="" data-placement="top" title="{{'COMMON_BUTTONS.BUTTON_BLOCK' | translate}}"
+                            (click)="showmessage('Block',user)">
+                            <i class="fa fa-15x fa-user-secret enterpriseinactive"></i>
+                        </a>
+                        <a *ngIf="[user.groupStatus] == 'Closed'" data-toggle="tooltip" class="" data-placement="top" title="{{'COMMON_BUTTONS.BUTTON_UNBLOCK' | translate}}"
+                            (click)="showmessage('Unblock',user)">
+                            <i class="fa fa-15x fa-user-secret enterpriseactive"></i>
+                        </a>
+                        <a *ngIf="deletestatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+                            (click)="showmessage('Delete',user)">
+                            <i class="fa fa-15x fa-trash text-danger" aria-hidden="true"></i>
+                        </a>
+                        <a *ngIf="deletestatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+                            <i class="fa fa-15x fa-trash text-danger" aria-hidden="true" (click)="showmessage('Delete',user)"></i>
+                        </a>
+                        <!--<a data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_LOCATE_ACTION' | translate}}">
+                                            <i class="fa fa-15x fa-location-arrow viewicon" aria-hidden="true" (click)="singlelocate('locate', user)"></i>
+                                        </a>-->
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+</div>
+<app-message-groupspopup (updatedList)="emitMessageGroup($event)"></app-message-groupspopup>

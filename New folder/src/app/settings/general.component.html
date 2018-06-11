@@ -1,0 +1,106 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com
+ -->
+<p-tabView>
+    <p-tabPanel header="General">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb0">General Settings</h5>
+                    </div>
+                    <div class="card-block2">
+                        <form action="" id="general_settings_form" method="post" enctype="multipart/form-data" class="form-horizontal ">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="file-input">Logo</label><br>
+                                        <!--<input type="text" id="file-name" name="file-name" disabled [(ngModel)]="generalPojo.logoName">-->
+                                        <input type="file" required id="file-input" name="file-input" (click)="clearmessage()" accept='image/*' (change)="imageUploaded($event)">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="textarea-input">Description</label>
+                                        <textarea id="textarea-input" required name="textarea-input" [(ngModel)]="generalPojo.logoDescription" (click)="clearmessage()"
+                                            class="form-control" rows="3" placeholder="content..." maxlength="100"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                        <p class="text-danger">{{errors}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-primary" (click)="addImage()"><i class="fa fa fa-check"></i> Save</button>
+                        <button type="reset" class="btn btn-sm btn-danger" (click)="cancel()"><i class="fa fa-ban"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Lookups">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb0">Lookup Settings</h5>
+                    </div>
+                    <div class="card-block2">
+                        <div class="row">
+                            <div class="col-sm-3">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-primary" (click)="addImage()"><i class="fa fa fa-check"></i> Save</button>
+                        <button type="reset" class="btn btn-sm btn-danger" (click)="cancel()"><i class="fa fa-ban"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Language">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb0">Language Settings</h5>
+                    </div>
+                    <div class="card-block2">
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-primary" (click)="addImage()"><i class="fa fa fa-check"></i> Save</button>
+                        <button type="reset" class="btn btn-sm btn-danger" (click)="cancel()"><i class="fa fa-ban"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Notifications">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="section-title mb0">Notification Settings</h5>
+                    </div>
+                    <div class="card-block2">
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-primary" (click)="addImage()"><i class="fa fa fa-check"></i> Save</button>
+                        <button type="reset" class="btn btn-sm btn-danger" (click)="cancel()"><i class="fa fa-ban"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-tabPanel>
+</p-tabView>

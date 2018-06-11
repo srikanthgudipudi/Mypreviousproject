@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+     "conteststatus":"Active",
+      "contestname":"67 th Republic Day contest",
+      "contestduration":"01-01-2017 to 30-01-2017",
+      "contestcategories":"All"
+    },
+     {
+     "conteststatus":"Up Coming",
+      "contestname":"Fools Day contest",
+      "contestduration":"15-08-2016 to 15-09-2016",
+      "contestcategories":" Fails"
+    },
+     {
+     "conteststatus":"Completed",
+      "contestname":"2016 Holidays Contest",
+      "contestduration":"20-05-2016 to 20-06-2016",
+      "contestcategories":"sports"
+    }        
+  ]
+}

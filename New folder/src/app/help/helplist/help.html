@@ -1,0 +1,281 @@
+<!--
+Application Name = Indoor Navigation
+Version = 1.0
+Release Date = September 06, 2017
+Copyright = ©2017 SRISYS Inc
+Developed by = Srisys Inc, 7908 Cincinnati Dayton Rd, Suite C, West Chester,
+OH 45069 USA web: www.srisys.com <http://www.srisys.com>
+ -->
+<div id="main" class="">
+  <div class="card faq">
+    <div class="card-header">
+      <div class="row no-gutter">
+        <div class="col-md-9">
+          <h5 class="section-title mb0 pull-left">{{'HELP.LIST_HELP' | translate}}</h5>
+          <div class="cardicons-header pull-left">
+            <a *ngIf="helpaddstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}"
+              (click)="helpDetails('create','')">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true"></i>
+            </a>
+            <!-- <a *ngIf="helpaddstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_CREATE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-plus-square page-title-icons" aria-hidden="true" (click)="helpDetails('create','')"></i>
+            </a> -->
+            <a *ngIf="helpexportstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}"
+              (click)="exportData(searchstring)">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true"></i>
+            </a>
+            <!-- <a *ngIf="helpexportstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EXPORT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-upload page-title-icons" aria-hidden="true" (click)="exportData(searchstring)"></i>
+            </a> -->
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group mb0">
+            <div class="input-group" style="display:none">
+              <button disabled type="button" class="btn btn-primary btn-sm advanced-btn" (click)="advancedSearchhelp()">{{'COMMON_BUTTONS.BUTTON_ADVANCED' | translate}}</button>
+              <input type="text" id="input1-group2" #input [(ngModel)]="searchstring" (keypress)="handleKeyPress($event)" name="input1-group2"
+                class="form-control input-sm mb0" placeholder="{{'COMMON_FIELDS.SEARCH_TEXT' | translate}}">
+              <span class="input-group-btn">
+                <button type="button" (click)="getAllhelpSeachList(searchstring)" class="btn btn-primary btn-sm">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-block faqmain">
+      <!-- <p-dataTable [value]="allhelpDetails" styleClass="table" [rows]="rowsPerPage" [paginator]="true" [pageLinks]="2" sortMode="multiple"
+        [responsive]="true" expandableRows="true" [stacked]="stacked">
+        <p-column field="page" header="{{'HELP.LIST_PAGE' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="feature" header="{{'HELP.LIST_FEATURE' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="question" header="{{'HELP.LIST_QUESTION' | translate}}" [sortable]="true">
+        </p-column>
+        <p-column field="answer" header="{{'HELP.LIST_ANSWER' | translate}}" [sortable]="true"></p-column>
+        <p-column field="isEnabled" styleClass="text-capitalize enabled" header="{{'COMMON_FIELDS.ENABLED' | translate}}" [sortable]="true"></p-column>
+        <p-column field="actions" header="{{'COMMON_FIELDS.ACTIONS' | translate}}" styleClass="action-three-col">
+          <ng-template let-allfleets="rowData" pTemplate="body">
+            <a *ngIf="helpviewstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}"
+              (click)="helpDetails('VIEW',allfleets)">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="helpviewstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_VIEW_ACTION' | translate}}">
+              <i class="fa fa-15x fa-eye viewicon" aria-hidden="true" (click)="helpDetails('VIEW',allfleets)"></i>
+            </a>
+            <a *ngIf="helpeditstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}"
+              (click)="helpDetails('EDIT',allfleets)">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="helpeditstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_EDIT_ACTION' | translate}}">
+              <i class="fa fa-15x fa-pencil editicon" aria-hidden="true" (click)="helpDetails('EDIT',allfleets)"></i>
+            </a>
+            <a *ngIf="helpdeletedstatus == 'true'" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}"
+              (click)="helpDetails('DELETE',allfleets)">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="helpdeletedstatus == 'false'" class="not-active" data-toggle="tooltip" data-placement="top" title="{{'COMMON_BUTTON_TOOLTIPS.TOOLTIP_DELETE_ACTION' | translate}}">
+              <i class="fa fa-15x fa-trash deleteicon" aria-hidden="true" (click)="helpDetails('DELETE',allfleets)"></i>
+            </a>
+          </ng-template>
+        </p-column>
+      </p-dataTable> -->
+<!-- FAQ -->
+<p-accordion>
+  <p-accordionTab header="Advertisements">
+   <div class="faqmain">
+  <p-accordion class="subfaq" [multiple]="false">
+    <p-accordionTab header="Can I contact my colleague using the App?">
+      <div class="pa-5">Yes, User can call your colleague directly from the Pigeon application. You can also view the call history.</div>
+    </p-accordionTab>
+  
+    <p-accordionTab header="How to register or create an account in PiGeoN? ">
+      <div class="pa-5">Users cannot create their account directly with the PiGeoN. The Enterprise Admin will create an account for the Users. The User ID along with a link to reset the password will be mailed to user to his/her registered email address.</div>
+    </p-accordionTab>
+ 
+    <p-accordionTab header="Where can I view the summary of my activities on the Pigeon app?">
+      <div class="pa-5">You can view the pictorial summary of all your activities on the Dashboard.</div>
+    </p-accordionTab>
+  </p-accordion>
+ </div> 
+  </p-accordionTab>
+
+  <p-accordionTab header="App Type Attributes">
+       <div class="faqmain">
+    <p-accordion class="subfaq">
+      <p-accordionTab header="What is Fleet type attributes?">
+        <div class="pa-5">Fleet type attribute is the specific property or an additional facility of an individual fleet. Example: AC Rooms, Rotating Chairs, Secured Entry etc.</div>
+      </p-accordionTab>
+    
+      <p-accordionTab header="How to add extra attributes to a fleet type?">
+        <div class="pa-5">Fleet type attributes are usually predefined by the Enterprise Admin. Contact your Admin to request for additional attributes to the fleet.</div>
+      </p-accordionTab>
+
+    </p-accordion>
+    </div>
+    </p-accordionTab>
+
+    <p-accordionTab header="Events">
+        <div class="faqmain">
+      <p-accordion class="subfaq">
+        <p-accordionTab header="What are Events?">
+          <div class="pa-5">Events are the Meetings or the Team gatherings hosted within the enterprise.</div>
+        </p-accordionTab>
+     
+        <p-accordionTab header="Can any user create an Event?">
+          <div class="pa-5">Users with a designated role determined by the Enterprise Admin will be able to create an Event.</div>
+        </p-accordionTab>
+    
+        <p-accordionTab header="How can I view the Event Details?">
+          <div class="pa-5">In the Events page, click on the 'eye' icon to view the details of the Event.</div>
+        </p-accordionTab>
+      </p-accordion>
+      </div>
+      </p-accordionTab>
+
+      <p-accordionTab header="Event Registration">
+        <div class="faqmain">
+      <p-accordion class="subfaq">
+        <p-accordionTab header="Can I choose my seating position in an Event?">
+          <div class="pa-5">No. Currently we do not support reservation of fleets within the Event.</div>
+        </p-accordionTab>
+     
+        <p-accordionTab header="Can I reserve more than one seat for an event? / Can I reserve the seat for others?">
+          <div class="pa-5">It depends on how the Event is configured. It is up to the Event creator to allow or not allow multi reservations.</div>
+        </p-accordionTab>
+    
+        <p-accordionTab header="Up to what time could we reserve for an Event?">
+          <div class="pa-5">Event Registrations closing time varies for every event. Refer to the Event details section for the complete details.</div>
+        </p-accordionTab>
+      </p-accordion>
+      </div>
+      </p-accordionTab>
+    </p-accordion>
+
+      <!--  faq-->
+    </div>
+  </div>
+
+</div>
+<!-- ------------------------- -->
+<div bsModal #advancedModel="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" (keyup.Esc)="hideAdvancedModal()"
+  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hideAdvancedModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <img src="assets/img/mapapp-logo.png" height="30" class="pull-left">
+            <img src="{{apiEndPoint}}/{{enterpriseIconFilePath}}" onError="this.onerror=null;this.src='assets/img/logo.png';" height="30"
+              class="pull-right">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="popupsection-title">{{'COMMON_PAGE_TITLES.ADVANCED_SEARCH' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'HELP.LIST_PAGE' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <select id="" class="form-control input-sm" (change)="Changepage($event.target.value);clearmessage()">
+                  <option value='select'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of helpNameList; let i='index'" [selected]="clang.lookupName === advsearch.page" value="{{clang.lookupName}}">{{clang.lookupName}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'HELP.LIST_FEATURE' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <select id="" class="form-control input-sm" (change)="Changefeature($event.target.value);clearmessage()">
+                  <option value='select'>{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                  <option *ngFor="let clang of helpFeaturusList; let i='index'" [selected]="clang.lookupName === advsearch.feature" value="{{clang.lookupName}}">{{clang.lookupName}}</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label>{{'HELP.LIST_QUESTION' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <input name="" class="form-control input-sm" [(ngModel)]="questionvalue" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'HELP.LIST_ANSWER' | translate}}</label>
+              </div>
+              <div class=" col-md-8">
+                <input name="" class="form-control input-sm" [(ngModel)]="Answervalue" (click)="clearmessage()" onkeypress="return event.charCode != 34"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 form-control-label">
+                <label for="">{{'COMMON_FIELDS.ENABLED' | translate}}</label>
+              </div>
+              <div class="col-md-8">
+                <label class="checkbox-inline" for="inline-checkbox1">
+                  <input id="inline-checkbox5" name="inline-checkbox2" type="checkbox" [(ngModel)]="enable" class="regular-checkbox big-checkbox ng-untouched ng-pristine ng-valid">
+                  <label for="inline-checkbox5"></label>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 p-l">
+            <div *ngIf="addinfo == true">
+              <div *ngFor="let item of attributeList; let i = index">
+                <div class="form-group row">
+                  <div class="col-md-4 form-control-label">
+                    <span *ngIf="item.isMandatory" class="text-danger">*</span>
+                    <label>{{item.attributeName}}</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select *ngIf="item.attributeType=='List Field'" id="itemText{{i}}" (change)="clearmessage()" name="select" class="form-control input-sm"
+                      size="1">
+                      <option value="">{{'COMMON_FIELDS.SELECT_BOX_DEFAULT' | translate}}</option>
+                      <option *ngFor="let clang of item['lookupsData']; let i='index'" value="{{clang.lookupName}}" id="clang{{i}}" [selected]="clang.description === item.defaultValue">{{clang.description}}</option>
+                    </select>
+                    <input *ngIf="item.attributeType=='Text Field'" type="text" class="form-control input-sm" id="itemText{{i}}" name="createfleet.attributes.attributeValue"
+                      (keypress)="clearmessage()" value="{{item.defaultValue}}">
+                    <input type="hidden" class="form-control input-sm" id="itemId{{i}}" name="item._id" value="{{item._id}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of additional info block of fleet type attributes -->
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12 p0">
+          <div class="pull-left">
+            <app-powered></app-powered>
+          </div>
+          <div class="pull-right text-right">
+            <button type="button" class="btn btn-primary" (click)="advancedhelp()">{{'COMMON_BUTTONS.BUTTON_SUBMIT' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="clearAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLEAR' | translate}}</button>
+            <button type="button" class="btn btn-primary" (click)="hideAdvancedModal()">{{'COMMON_BUTTONS.BUTTON_CLOSE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
+<app-fleets-popup (uploaded)="gethelpList($event)"></app-fleets-popup>

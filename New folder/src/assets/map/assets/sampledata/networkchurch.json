@@ -1,0 +1,101 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": "way/519487184",
+            "properties": {                  
+                "highway": "motorway",
+                "name": "Christ Church Walk Path"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        174.9609493,
+                        -41.182023
+                    ],
+                    [
+                        174.9604684,
+                        -41.182113
+                    ],
+                    [
+                        174.9601126,
+                        -41.1821129
+                    ],
+                    [
+                        174.9598551,
+                        -41.1821128
+                    ],
+                    [
+                        174.9596641,
+                        -41.1821128
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/519520113",
+            "properties": {
+                "highway": "motorway",
+                "name": "Walk Path Right-1"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        174.9601126,
+                        -41.1821129
+                    ],
+                    [
+                        174.9601086,
+                        -41.181955
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/519520114",
+            "properties": {
+                    "highway": "motorway",
+                    "name": "Walk Path Left-1"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        174.9598551,
+                        -41.1821128
+                    ],
+                    [
+                        174.9598565,
+                        -41.1822759
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "way/519520115",
+            "properties": {
+                   "highway": "motorway",
+                    "name": "Walk Path Left-2"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        174.9596641,
+                        -41.1821128
+                    ],
+                    [
+                        174.9596634,
+                        -41.1821952
+                    ]
+                ]
+            }
+        }
+     ]
+}
